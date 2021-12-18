@@ -1,21 +1,15 @@
 import SwiftUI
 import Models
 
-extension MileageStatus {
-    var statusColor: Color {
-        switch self {
-        case .great: return .green
-        case .good: return Color.green.opacity(0.6)
-        case .okay: return Color.yellow
-        case .maintenanceRecommended: return Color.orange
-        case .maintenceNeeded: return Color.red
-        }
-    }
-}
 
-struct MileageScaleView: View {
-    var mileage: Mileage
-    var width: CGFloat = 96
+public struct MileageScaleView: View {
+    public init(mileage: Mileage, width: CGFloat = 96) {
+        self.mileage = mileage
+        self.width = width
+    }
+    
+    public var mileage: Mileage
+    public var width: CGFloat = 96
     
     var value: Float {
         let miles = Float(mileage.miles)
@@ -24,7 +18,7 @@ struct MileageScaleView: View {
         return min(percent, 1)
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 4) {
             Text(mileage.mileageStatusTypeId.title)
                 .font(.callout)

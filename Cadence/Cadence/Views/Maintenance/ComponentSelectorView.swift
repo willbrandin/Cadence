@@ -1,6 +1,7 @@
 import SwiftUI
 import ComposableArchitecture
 import Models
+import MileageScaleFeature
 
 typealias ComponentSelectorReducer = Reducer<ComponentSelectorState, ComponentSelectorAction, ComponentSelectorEnvironment>
 

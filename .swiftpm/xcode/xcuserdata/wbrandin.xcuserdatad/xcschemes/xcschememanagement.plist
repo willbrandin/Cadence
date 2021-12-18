@@ -7,7 +7,7 @@
 		<key>AddBikeFlowFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>16</integer>
 		</dict>
 		<key>AddBikeFlowFeatureTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,17 +17,17 @@
 		<key>AppFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>9</integer>
 		</dict>
 		<key>BikeClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>24</integer>
 		</dict>
 		<key>BikeTypeSelectionFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>25</integer>
 		</dict>
 		<key>BrandClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -37,7 +37,7 @@
 		<key>BrandListFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>63</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Cadence-Package.xcscheme_^#shared#^_</key>
 		<dict>
@@ -47,7 +47,7 @@
 		<key>CloudKitClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>20</integer>
 		</dict>
 		<key>CombineHelpers.xcscheme_^#shared#^_</key>
 		<dict>
@@ -57,17 +57,17 @@
 		<key>ComponentClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>15</integer>
 		</dict>
 		<key>ComposableHelpers.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>52</integer>
+			<integer>22</integer>
 		</dict>
 		<key>CoreDataStack.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>14</integer>
 		</dict>
 		<key>CustomDump (Playground) 1.xcscheme</key>
 		<dict>
@@ -137,10 +137,15 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>EditBikeFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
+		</dict>
 		<key>EmailClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>23</integer>
 		</dict>
 		<key>FileClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -150,7 +155,7 @@
 		<key>MaintenanceClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>10</integer>
 		</dict>
 		<key>ManagedObjects.xcscheme_^#shared#^_</key>
 		<dict>
@@ -160,7 +165,17 @@
 		<key>MileageClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>12</integer>
+		</dict>
+		<key>MileagePickerFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>34</integer>
+		</dict>
+		<key>MileageScaleFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>38</integer>
 		</dict>
 		<key>Models.xcscheme_^#shared#^_</key>
 		<dict>
@@ -170,22 +185,22 @@
 		<key>RideClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>8</integer>
 		</dict>
 		<key>SaveNewBikeFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>19</integer>
 		</dict>
 		<key>ShareSheetClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>30</integer>
+			<integer>13</integer>
 		</dict>
 		<key>StoreKitClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>30</integer>
 		</dict>
 		<key>Style.xcscheme_^#shared#^_</key>
 		<dict>
@@ -195,22 +210,22 @@
 		<key>SwiftUIHelpers.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>56</integer>
+			<integer>17</integer>
 		</dict>
 		<key>UIApplicationClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>35</integer>
+			<integer>21</integer>
 		</dict>
 		<key>UIUserInterfaceStyleClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>39</integer>
+			<integer>18</integer>
 		</dict>
 		<key>UserDefaultsClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>31</integer>
+			<integer>11</integer>
 		</dict>
 		<key>World.xcscheme_^#shared#^_</key>
 		<dict>

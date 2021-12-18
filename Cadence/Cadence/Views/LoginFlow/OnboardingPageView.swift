@@ -3,6 +3,7 @@ import ComposableArchitecture
 import Models
 import Style
 import SwiftUIHelpers
+import MileageScaleFeature
 
 typealias OnboardingReducer = Reducer<OnboardingState, OnboardingAction, OnboardingEnvironment>
 

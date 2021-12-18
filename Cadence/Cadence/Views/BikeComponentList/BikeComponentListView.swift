@@ -7,6 +7,7 @@ import ComponentClient
 import MaintenanceClient
 import Style
 import SwiftUIHelpers
+import EditBikeFeature
 
 typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
 

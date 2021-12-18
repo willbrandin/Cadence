@@ -3,12 +3,20 @@ import ComposableArchitecture
 import Models
 import BikeClient
 
-typealias EditBikeReducer = Reducer<EditBikeState, EditBikeAction, EditBikeEnvironment>
+public typealias EditBikeReducer = Reducer<EditBikeState, EditBikeAction, EditBikeEnvironment>
 
-struct EditBikeState: Equatable {
-    var bike: Bike = .yetiMountain
+public struct EditBikeState: Equatable {
+    public init(
+        bike: Bike = .yetiMountain,
+        isSaveBikeRequestInFlight: Bool = false
+    ) {
+        self.bike = bike
+        self.isSaveBikeRequestInFlight = isSaveBikeRequestInFlight
+    }
+    
+    public var bike: Bike = .yetiMountain
         
-    var bikeName: String {
+    public var bikeName: String {
         get {
             return bike.name
         }
@@ -18,11 +26,11 @@ struct EditBikeState: Equatable {
         }
     }
     
-    var isSaveBikeRequestInFlight = false
-    @BindableState var alert: AlertState<EditBikeAction>?
+    public var isSaveBikeRequestInFlight = false
+    @BindableState public var alert: AlertState<EditBikeAction>?
 }
 
-enum EditBikeAction: Equatable, BindableAction {
+public enum EditBikeAction: Equatable, BindableAction {
     case binding(BindingAction<EditBikeState>)
     case updateBikeName(name: String)
     case saveBike
@@ -32,12 +40,20 @@ enum EditBikeAction: Equatable, BindableAction {
     case alertDismissed
 }
 
-struct EditBikeEnvironment {
-    var bikeClient: BikeClient = .mocked
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+public struct EditBikeEnvironment {
+    public init(
+        bikeClient: BikeClient = .mocked,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    ) {
+        self.bikeClient = bikeClient
+        self.mainQueue = mainQueue
+    }
+    
+    public var bikeClient: BikeClient = .mocked
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
 }
 
-let editBikeReducer = EditBikeReducer
+public let editBikeReducer = EditBikeReducer
 { state, action, environment in
     switch action {
     case let .updateBikeName(name):
@@ -76,16 +92,16 @@ let editBikeReducer = EditBikeReducer
 }
 .binding()
 
-struct EditBikeNavigationView: View {
+public struct EditBikeNavigationView: View {
     let store: Store<EditBikeState, EditBikeAction>
     
-    init(
+    public init(
         store: Store<EditBikeState, EditBikeAction>
     ) {
         self.store = store
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             EditBikeView(
                 store: self.store

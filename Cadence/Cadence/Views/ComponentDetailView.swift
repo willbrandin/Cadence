@@ -2,6 +2,7 @@ import SwiftUI
 import ComposableArchitecture
 import ComponentClient
 import MaintenanceClient
+import MileageScaleFeature
 import Models
 import Style
 import SwiftUIHelpers

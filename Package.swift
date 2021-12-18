@@ -19,10 +19,13 @@ let package = Package(
         .library(name: "ComposableHelpers", targets: ["ComposableHelpers"]),
         .library(name: "CoreDataStack", targets: ["CoreDataStack"]),
         .library(name: "DateHelpers", targets: ["DateHelpers"]),
+        .library(name: "EditBikeFeature", targets: ["EditBikeFeature"]),
         .library(name: "EmailClient", targets: ["EmailClient"]),
         .library(name: "FileClient", targets: ["FileClient"]),
         .library(name: "MaintenanceClient", targets: ["MaintenanceClient"]),
         .library(name: "MileageClient", targets: ["MileageClient"]),
+        .library(name: "MileagePickerFeature", targets: ["MileagePickerFeature"]),
+        .library(name: "MileageScaleFeature", targets: ["MileageScaleFeature"]),
         .library(name: "Models", targets: ["Models"]),
         .library(name: "SaveNewBikeFeature", targets: ["SaveNewBikeFeature"]),
         .library(name: "RideClient", targets: ["RideClient"]),
@@ -73,10 +76,13 @@ let package = Package(
                 "ComponentClient",
                 "CoreDataStack",
                 "DateHelpers",
+                "EditBikeFeature",
                 "EmailClient",
                 "FileClient",
                 "MaintenanceClient",
                 "MileageClient",
+                "MileagePickerFeature",
+                "MileageScaleFeature",
                 "Models",
                 "SaveNewBikeFeature",
                 "RideClient",
@@ -160,6 +166,14 @@ let package = Package(
         ),
         .target(name: "DateHelpers"),
         .target(
+            name: "EditBikeFeature",
+            dependencies: [
+                "Models",
+                "BikeClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "EmailClient",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
@@ -179,6 +193,20 @@ let package = Package(
                 "World",
                 "CoreDataStack",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "MileagePickerFeature",
+            dependencies: [
+                "ComposableHelpers",
+                "Models",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "MileageScaleFeature",
+            dependencies: [
+                "Models",
             ]
         ),
         .target(

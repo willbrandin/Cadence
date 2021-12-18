@@ -94,10 +94,8 @@
 		CEA919BB26DADE0700963EAE /* ComponentGroupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA919BA26DADE0700963EAE /* ComponentGroupSelectionView.swift */; };
 		CEA919BF26DAE75500963EAE /* ComponentTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA919BE26DAE75500963EAE /* ComponentTypeSelectionView.swift */; };
 		CEB4898426EAE57800540A42 /* BikeComponentFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */; };
-		CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA37F72704E8CE001B647B /* EditBikeView.swift */; };
 		CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE64AE276D4142007CAF57 /* FileClient+UserSettings.swift */; };
 		CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64B0276D5560007CAF57 /* AppFeature */; };
-		CEF18D1626DC7356007509C3 /* MileageScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF18D1526DC7356007509C3 /* MileageScaleView.swift */; };
 		CEF18D2026DD2D26007509C3 /* BundleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF18D1F26DD2D26007509C3 /* BundleConfiguration.swift */; };
 		CEF80DBC26F0315400D2E5E9 /* TypeSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */; };
 		CEF80DC526F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */; };
@@ -110,7 +108,6 @@
 		CEF80DCF26F034E300D2E5E9 /* ComponentDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DCE26F034E300D2E5E9 /* ComponentDetailViewTests.swift */; };
 		CEF80DD426F0355200D2E5E9 /* testComponentView.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DD226F0355200D2E5E9 /* testComponentView.iPhone_5_5.png */; };
 		CEF80DD526F0355200D2E5E9 /* testComponentView.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */; };
-		CEF80DD726F0392500D2E5E9 /* MileagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DD626F0392500D2E5E9 /* MileagePickerView.swift */; };
 		CEFEDD1A26F4117A00999416 /* Data+JSONPrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD1926F4117A00999416 /* Data+JSONPrettyPrint.swift */; };
 		CEFEDD1C26F4118700999416 /* Encodable+ToJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD1B26F4118700999416 /* Encodable+ToJsonData.swift */; };
 /* End PBXBuildFile section */
@@ -233,9 +230,7 @@
 		CEA919BA26DADE0700963EAE /* ComponentGroupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentGroupSelectionView.swift; sourceTree = "<group>"; };
 		CEA919BE26DAE75500963EAE /* ComponentTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTypeSelectionView.swift; sourceTree = "<group>"; };
 		CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentFeatureTests.swift; sourceTree = "<group>"; };
-		CEBA37F72704E8CE001B647B /* EditBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBikeView.swift; sourceTree = "<group>"; };
 		CECE64AE276D4142007CAF57 /* FileClient+UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileClient+UserSettings.swift"; sourceTree = "<group>"; };
-		CEF18D1526DC7356007509C3 /* MileageScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageScaleView.swift; sourceTree = "<group>"; };
 		CEF18D1F26DD2D26007509C3 /* BundleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleConfiguration.swift; sourceTree = "<group>"; };
 		CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectionViewTests.swift; sourceTree = "<group>"; };
 		CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentGroup.iPhone_6_5.png; sourceTree = "<group>"; };
@@ -248,7 +243,6 @@
 		CEF80DCE26F034E300D2E5E9 /* ComponentDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailViewTests.swift; sourceTree = "<group>"; };
 		CEF80DD226F0355200D2E5E9 /* testComponentView.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentView.iPhone_5_5.png; sourceTree = "<group>"; };
 		CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentView.iPhone_6_5.png; sourceTree = "<group>"; };
-		CEF80DD626F0392500D2E5E9 /* MileagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileagePickerView.swift; sourceTree = "<group>"; };
 		CEFEDD1926F4117A00999416 /* Data+JSONPrettyPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+JSONPrettyPrint.swift"; sourceTree = "<group>"; };
 		CEFEDD1B26F4118700999416 /* Encodable+ToJsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+ToJsonData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,15 +369,6 @@
 				CE39F84A27067DC100D2E8C5 /* SignUpView.swift */,
 			);
 			path = LoginFlow;
-			sourceTree = "<group>";
-		};
-		CE1A955926E2C94B00BB3441 /* Mileage */ = {
-			isa = PBXGroup;
-			children = (
-				CEF18D1526DC7356007509C3 /* MileageScaleView.swift */,
-				CEF80DD626F0392500D2E5E9 /* MileagePickerView.swift */,
-			);
-			path = Mileage;
 			sourceTree = "<group>";
 		};
 		CE1A956126E42A2800BB3441 /* BikeComponentList */ = {
@@ -705,10 +690,8 @@
 				CE8D423A26EE48510034A4B2 /* AppSettings */,
 				CE1A956126E42A2800BB3441 /* BikeComponentList */,
 				CE1A956626E44FC900BB3441 /* Components */,
-				CEBA37F62704E8BF001B647B /* EditBikeView */,
 				CE1A955626E2C16A00BB3441 /* LoginFlow */,
 				CE6FA42C26F1658500CAF40A /* Maintenance */,
-				CE1A955926E2C94B00BB3441 /* Mileage */,
 				CE18B3D926DC523C00DFF70F /* HomeView.swift */,
 				CE18B3CE26DB2E6000DFF70F /* ComponentDetailView.swift */,
 			);
@@ -729,14 +712,6 @@
 				CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */,
 			);
 			path = BikeComponentTests;
-			sourceTree = "<group>";
-		};
-		CEBA37F62704E8BF001B647B /* EditBikeView */ = {
-			isa = PBXGroup;
-			children = (
-				CEBA37F72704E8CE001B647B /* EditBikeView.swift */,
-			);
-			path = EditBikeView;
 			sourceTree = "<group>";
 		};
 		CEF18D1E26DD2D19007509C3 /* Utility */ = {
@@ -1027,18 +1002,15 @@
 				CE39F84B27067DC100D2E8C5 /* SignUpView.swift in Sources */,
 				CE1A956026E2DB7A00BB3441 /* OnboardingPageView.swift in Sources */,
 				CE1A955826E2C18800BB3441 /* AppCore.swift in Sources */,
-				CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */,
 				CE8D424B26EEAC720034A4B2 /* AppIcon.swift in Sources */,
 				CE18B3DA26DC523C00DFF70F /* HomeView.swift in Sources */,
 				CE8D424226EE50D80034A4B2 /* AppDelegate.swift in Sources */,
 				CE1A956826E55D7900BB3441 /* CDTextField.swift in Sources */,
 				CE8D424D26EEAC850034A4B2 /* ColorScheme.swift in Sources */,
-				CEF80DD726F0392500D2E5E9 /* MileagePickerView.swift in Sources */,
 				CEF18D2026DD2D26007509C3 /* BundleConfiguration.swift in Sources */,
 				CE1A955C26E2C96400BB3441 /* MileageAnimationView.swift in Sources */,
 				CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */,
 				CE2E41A7270B508B00BEA5E4 /* AddRideFlowRootView.swift in Sources */,
-				CEF18D1626DC7356007509C3 /* MileageScaleView.swift in Sources */,
 				CE1A956326E42A4A00BB3441 /* BikeComponentRow.swift in Sources */,
 				CE8D424626EEAAE10034A4B2 /* ColorSchemePickerView.swift in Sources */,
 				CEA919BB26DADE0700963EAE /* ComponentGroupSelectionView.swift in Sources */,

@@ -3,6 +3,7 @@ import BikeClient
 import MileageClient
 import ComposableArchitecture
 import Models
+import MileageScaleFeature
 
 struct BikeComponentRow: View {
     let component: Component

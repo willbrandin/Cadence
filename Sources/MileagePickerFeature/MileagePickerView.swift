@@ -1,45 +1,36 @@
 import SwiftUI
 import ComposableArchitecture
 import ComposableHelpers
+import Models
 
-typealias MileagePickerReducer = Reducer<MileagePickerState, MileagePickerAction, MileagePickerEnvironment>
+public typealias MileagePickerReducer = Reducer<MileagePickerState, MileagePickerAction, MileagePickerEnvironment>
 
-// TODO: - Can we localize?
-
-enum MileageOption: Int, CaseIterable, Codable {
-    case twoHundredFifty = 250
-    case fiveHundred = 500
-    case oneThousand = 1_000
-    case custom
-    
-    var title: String {
-        switch self {
-        case .twoHundredFifty:
-            return "250"
-        case .fiveHundred:
-            return "500"
-        case .oneThousand:
-            return "1,000"
-        case .custom:
-            return "Custom"
-        }
+public struct MileagePickerState: Equatable {
+    public init(
+        selectedOption: MileageOption = .fiveHundred,
+        customText: String = "",
+        isShowingCustomTextField: Bool = false
+    ) {
+        self.selectedOption = selectedOption
+        self.customText = customText
+        self.isShowingCustomTextField = isShowingCustomTextField
     }
+    
+    @BindableState public var selectedOption: MileageOption = .fiveHundred
+    @BindableState public var customText = ""
+    public var isShowingCustomTextField = false
 }
 
-struct MileagePickerState: Equatable {
-    @BindableState var selectedOption: MileageOption = .fiveHundred
-    @BindableState var customText = ""
-    var isShowingCustomTextField = false
-}
-
-enum MileagePickerAction: BindableAction, Equatable {
+public enum MileagePickerAction: BindableAction, Equatable {
     case binding(BindingAction<MileagePickerState>)
     case didTapSave
 }
 
-struct MileagePickerEnvironment {}
+public struct MileagePickerEnvironment {
+    public init() {}
+}
 
-let mileagePickerReducer = MileagePickerReducer
+public let mileagePickerReducer = MileagePickerReducer
 { state, action, environment in
     switch action {
     case .binding(\.$selectedOption):
@@ -64,18 +55,18 @@ let mileagePickerReducer = MileagePickerReducer
     return .none
 }
 
-struct MileagePickerView: View {
+public struct MileagePickerView: View {
     let store: Store<MileagePickerState, MileagePickerAction>
     @ObservedObject var viewStore: ViewStore<MileagePickerState, MileagePickerAction>
     
-    init(
+    public init(
         store: Store<MileagePickerState, MileagePickerAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section(
                 footer: Text("As you ride your bike, Cadence will notify you as you get close to the alert you set. You can change this later if you would like.")

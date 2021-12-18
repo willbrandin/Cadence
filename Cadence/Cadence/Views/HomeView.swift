@@ -10,6 +10,7 @@ import BikeClient
 import ComponentClient
 import MaintenanceClient
 import MileageClient
+import MileageScaleFeature
 import RideClient
 import UserDefaultsClient
 import StoreKitClient
