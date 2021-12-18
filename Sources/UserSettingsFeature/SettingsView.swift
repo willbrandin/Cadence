@@ -10,33 +10,47 @@ import MileageClient
 import UserDefaultsClient
 import StoreKitClient
 import ShareSheetClient
+import SwiftUIHelpers
 import UIApplicationClient
 import UIUserInterfaceStyleClient
 
-struct UserSettings: Codable, Equatable {
-    var colorScheme: ColorScheme
-    var distanceUnit: DistanceUnit
-    var appIcon: AppIcon?
-}
-
 typealias UserSettingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment>
 
-struct SettingsState: Equatable {
-        
-    @BindableState var colorScheme: ColorScheme = .system
-    @BindableState var appIcon: AppIcon?
-    @BindableState var distanceUnit: DistanceUnit = .miles
-    var supportsAlternativeIcon: Bool = true
-    var isSyncWithiCloudOn = true
-    @BindableState var isColorSchemeNavigationActive = false
-    @BindableState var isUnitPickerNavigationActive = false
-    @BindableState var isAppIconNavigationActive = false
+public struct SettingsState: Equatable {
+    public init(
+        supportsAlternativeIcon: Bool = true,
+        isSyncWithiCloudOn: Bool = true,
+        colorScheme: ColorScheme = .system,
+        appIcon: AppIcon? = nil,
+        distanceUnit: DistanceUnit = .miles,
+        isColorSchemeNavigationActive: Bool = false,
+        isUnitPickerNavigationActive: Bool = false,
+        isAppIconNavigationActive: Bool = false
+    ) {
+        self.supportsAlternativeIcon = supportsAlternativeIcon
+        self.isSyncWithiCloudOn = isSyncWithiCloudOn
+        self.colorScheme = colorScheme
+        self.appIcon = appIcon
+        self.distanceUnit = distanceUnit
+        self.isColorSchemeNavigationActive = isColorSchemeNavigationActive
+        self.isUnitPickerNavigationActive = isUnitPickerNavigationActive
+        self.isAppIconNavigationActive = isAppIconNavigationActive
+    }
+    
+    public var supportsAlternativeIcon: Bool = true
+    public var isSyncWithiCloudOn = true
+    @BindableState public var colorScheme: ColorScheme = .system
+    @BindableState public var appIcon: AppIcon?
+    @BindableState public var distanceUnit: DistanceUnit = .miles
+    @BindableState public var isColorSchemeNavigationActive = false
+    @BindableState public var isUnitPickerNavigationActive = false
+    @BindableState public var isAppIconNavigationActive = false
     
     #if DEBUG
-    @BindableState var isStoreJsonNavigationActive = false
+    @BindableState public var isStoreJsonNavigationActive = false
     #endif
     
-    var userSettings: UserSettings {
+    public var userSettings: UserSettings {
         get {
             return UserSettings(
                 colorScheme: colorScheme,
@@ -52,7 +66,7 @@ struct SettingsState: Equatable {
     }
 }
 
-enum SettingsAction: BindableAction, Equatable {
+public enum SettingsAction: BindableAction, Equatable {
     case binding(BindingAction<SettingsState>)
     case iCloudSyncToggled(isOn: Bool)
     case onAppear
@@ -66,20 +80,44 @@ enum SettingsAction: BindableAction, Equatable {
     #endif
 }
 
-struct SettingsEnvironment {
-    var applicationClient: UIApplicationClient
-    var uiUserInterfaceStyleClient: UIUserInterfaceStyleClient
-    var fileClient: FileClient
-    var mainQueue: AnySchedulerOf<DispatchQueue>
-    var userDefaults: UserDefaultsClient
-    var mileageClient: MileageClient
-    var storeKitClient: StoreKitClient
-    var shareSheetClient: ShareSheetClient
-    var emailClient: EmailClient
-    var cloudKitClient: CloudKitClient
+public struct SettingsEnvironment {
+    public init(
+        applicationClient: UIApplicationClient,
+        uiUserInterfaceStyleClient: UIUserInterfaceStyleClient,
+        fileClient: FileClient,
+        mainQueue: AnySchedulerOf<DispatchQueue>,
+        userDefaults: UserDefaultsClient,
+        mileageClient: MileageClient,
+        storeKitClient: StoreKitClient,
+        shareSheetClient: ShareSheetClient,
+        emailClient: EmailClient,
+        cloudKitClient: CloudKitClient
+    ) {
+        self.applicationClient = applicationClient
+        self.uiUserInterfaceStyleClient = uiUserInterfaceStyleClient
+        self.fileClient = fileClient
+        self.mainQueue = mainQueue
+        self.userDefaults = userDefaults
+        self.mileageClient = mileageClient
+        self.storeKitClient = storeKitClient
+        self.shareSheetClient = shareSheetClient
+        self.emailClient = emailClient
+        self.cloudKitClient = cloudKitClient
+    }
+    
+    public var applicationClient: UIApplicationClient
+    public var uiUserInterfaceStyleClient: UIUserInterfaceStyleClient
+    public var fileClient: FileClient
+    public var mainQueue: AnySchedulerOf<DispatchQueue>
+    public var userDefaults: UserDefaultsClient
+    public var mileageClient: MileageClient
+    public var storeKitClient: StoreKitClient
+    public var shareSheetClient: ShareSheetClient
+    public var emailClient: EmailClient
+    public var cloudKitClient: CloudKitClient
 }
 
-let userSettingsReducer = UserSettingsReducer
+public let userSettingsReducer = UserSettingsReducer
 { state, action, environment in
     switch action {
         
@@ -142,18 +180,18 @@ let userSettingsReducer = UserSettingsReducer
         .debounce(id: SaveDebounceId(), for: .seconds(1), scheduler: environment.mainQueue)
 }
 
-struct SettingsView: View {
+public struct SettingsView: View {
     let store: Store<SettingsState, SettingsAction>
     @ObservedObject var viewStore: ViewStore<SettingsState, SettingsAction>
     
-    init(
+    public init(
         store: Store<SettingsState, SettingsAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section(
                 footer:
@@ -247,18 +285,18 @@ struct SettingsView: View {
                     .foregroundColor(.primary)
                     .padding(.leading, -16)
             ) {
-                NavigationLink(
-                    isActive: viewStore.binding(\.$isStoreJsonNavigationActive),
-                    destination: {
-                        StoreJsonView()
-                    }) {
-                    HStack {
-                        Image(systemName: "hammer")
-                            .foregroundColor(.accentColor)
-                        Text("Store Viewer")
-                    }
-                }
-                
+//                NavigationLink(
+//                    isActive: viewStore.binding(\.$isStoreJsonNavigationActive),
+//                    destination: {
+//                        StoreJsonView()
+//                    }) {
+//                    HStack {
+//                        Image(systemName: "hammer")
+//                            .foregroundColor(.accentColor)
+//                        Text("Store Viewer")
+//                    }
+//                }
+//
                 Button(action: { viewStore.send(.clearCache) }) {
                     HStack {
                         Image(systemName: "trash")
@@ -300,7 +338,7 @@ struct AppSettingsView_Previews: PreviewProvider {
 }
 
 
-extension SettingsEnvironment {
+public extension SettingsEnvironment {
     static var failing: Self {
         Self(
             applicationClient: .failing,

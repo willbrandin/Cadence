@@ -1,5 +1,7 @@
 import SwiftUI
 import ComposableArchitecture
+import AppFeature
+import AppDelegateFeature
 
 private(set) var globalViewStore: ViewStore<AppCoreState, AppCoreAction>!
 

@@ -1,20 +1,22 @@
 import SwiftUI
 import ComposableArchitecture
+import OnboardingFeature
+import HomeFeature
 
-struct AppCoreView: View {
+public struct AppCoreView: View {
     @Environment(\.scenePhase) var scenePhase
 
     let store: Store<AppCoreState, AppCoreAction>
     @ObservedObject var viewStore: ViewStore<AppCoreState, AppCoreAction>
     
-    init(
+    public init(
         store: Store<AppCoreState, AppCoreAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)        
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             HomeView(store: store.scope(
                 state: \.accountBikesState,

@@ -17,27 +17,65 @@ import ShareSheetClient
 import UIApplicationClient
 import UIUserInterfaceStyleClient
 
-struct AppCoreEnvironment {
-    var uiApplicationClient: UIApplicationClient
-    var uiUserInterfaceClient: UIUserInterfaceStyleClient
-    var bikeClient: BikeClient
-    var brandAPIClient: BrandClient
-    var componentClient: ComponentClient
-    var maintenanceClient: MaintenanceClient
-    var mileageClient: MileageClient
-    var rideClient: RideClient
-    var userDefaults: UserDefaultsClient
-    var mainQueue: AnySchedulerOf<DispatchQueue>
-    var fileClient: FileClient
-    var date: () -> Date
-    var uuid: () -> UUID
-    var storeKitClient: StoreKitClient
-    var shareSheetClient: ShareSheetClient
-    var emailClient: EmailClient
-    var cloudKitClient: CloudKitClient
+public struct AppCoreEnvironment {
+    public init(
+        uiApplicationClient: UIApplicationClient,
+        uiUserInterfaceClient: UIUserInterfaceStyleClient,
+        bikeClient: BikeClient,
+        brandAPIClient: BrandClient,
+        componentClient: ComponentClient,
+        maintenanceClient: MaintenanceClient,
+        mileageClient: MileageClient,
+        rideClient: RideClient,
+        userDefaults: UserDefaultsClient,
+        mainQueue: AnySchedulerOf<DispatchQueue>,
+        fileClient: FileClient,
+        date: @escaping () -> Date,
+        uuid: @escaping () -> UUID,
+        storeKitClient: StoreKitClient,
+        shareSheetClient: ShareSheetClient,
+        emailClient: EmailClient,
+        cloudKitClient: CloudKitClient
+    ) {
+        self.uiApplicationClient = uiApplicationClient
+        self.uiUserInterfaceClient = uiUserInterfaceClient
+        self.bikeClient = bikeClient
+        self.brandAPIClient = brandAPIClient
+        self.componentClient = componentClient
+        self.maintenanceClient = maintenanceClient
+        self.mileageClient = mileageClient
+        self.rideClient = rideClient
+        self.userDefaults = userDefaults
+        self.mainQueue = mainQueue
+        self.fileClient = fileClient
+        self.date = date
+        self.uuid = uuid
+        self.storeKitClient = storeKitClient
+        self.shareSheetClient = shareSheetClient
+        self.emailClient = emailClient
+        self.cloudKitClient = cloudKitClient
+    }
+    
+    public var uiApplicationClient: UIApplicationClient
+    public var uiUserInterfaceClient: UIUserInterfaceStyleClient
+    public var bikeClient: BikeClient
+    public var brandAPIClient: BrandClient
+    public var componentClient: ComponentClient
+    public var maintenanceClient: MaintenanceClient
+    public var mileageClient: MileageClient
+    public var rideClient: RideClient
+    public var userDefaults: UserDefaultsClient
+    public var mainQueue: AnySchedulerOf<DispatchQueue>
+    public var fileClient: FileClient
+    public var date: () -> Date
+    public var uuid: () -> UUID
+    public var storeKitClient: StoreKitClient
+    public var shareSheetClient: ShareSheetClient
+    public var emailClient: EmailClient
+    public var cloudKitClient: CloudKitClient
 }
 
-extension AppCoreEnvironment {
+public extension AppCoreEnvironment {
     static let live = Self(
         uiApplicationClient: .live,
         uiUserInterfaceClient: .live,
@@ -102,6 +140,7 @@ extension AppCoreEnvironment {
             cloudKitClient: .live
         )
     }
+    
     static let failing = Self(
         uiApplicationClient: .failing,
         uiUserInterfaceClient: .failing,

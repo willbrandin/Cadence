@@ -11,6 +11,7 @@ let package = Package(
         .library(name: "AddComponentFlowFeature", targets: ["AddComponentFlowFeature"]),
         .library(name: "AddComponentMaintenanceFeature", targets: ["AddComponentMaintenanceFeature"]),
         .library(name: "AddRideFlowFeature", targets: ["AddRideFlowFeature"]),
+        .library(name: "AppDelegateFeature", targets: ["AppDelegateFeature"]),
         .library(name: "AppFeature", targets: ["AppFeature"]),
         .library(name: "AppSupportFeature", targets: ["AppSupportFeature"]),
         .library(name: "BikeClient", targets: ["BikeClient"]),
@@ -32,19 +33,22 @@ let package = Package(
         .library(name: "EditBikeFeature", targets: ["EditBikeFeature"]),
         .library(name: "EmailClient", targets: ["EmailClient"]),
         .library(name: "FileClient", targets: ["FileClient"]),
+        .library(name: "HomeFeature", targets: ["HomeFeature"]),
         .library(name: "MaintenanceClient", targets: ["MaintenanceClient"]),
         .library(name: "MileageClient", targets: ["MileageClient"]),
         .library(name: "MileagePickerFeature", targets: ["MileagePickerFeature"]),
         .library(name: "MileageScaleFeature", targets: ["MileageScaleFeature"]),
         .library(name: "Models", targets: ["Models"]),
-        .library(name: "SaveNewBikeFeature", targets: ["SaveNewBikeFeature"]),
+        .library(name: "OnboardingFeature", targets: ["OnboardingFeature"]),
         .library(name: "RideClient", targets: ["RideClient"]),
+        .library(name: "SaveNewBikeFeature", targets: ["SaveNewBikeFeature"]),
         .library(name: "StoreKitClient", targets: ["StoreKitClient"]),
         .library(name: "ShareSheetClient", targets: ["ShareSheetClient"]),
         .library(name: "Style", targets: ["Style"]),
         .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
         .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
         .library(name: "UIUserInterfaceStyleClient", targets: ["UIUserInterfaceStyleClient"]),
+        .library(name: "UserSettingsFeature", targets: ["UserSettingsFeature"]),
         .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
         .library(name: "World", targets: ["World"])
     ],
@@ -109,12 +113,22 @@ let package = Package(
             ]
         ),
         .target(
+            name: "AppDelegateFeature",
+            dependencies: [
+                "FileClient",
+                "UserSettingsFeature",
+                "UIUserInterfaceStyleClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "AppFeature",
             dependencies: [
                 "AddBikeFlowFeature",
                 "AddComponentFlowFeature",
                 "AddComponentMaintenanceFeature",
                 "AddRideFlowFeature",
+                "AppDelegateFeature",
                 "AppSupportFeature",
                 "BikeClient",
                 "BikeComponentListFeature",
@@ -134,19 +148,22 @@ let package = Package(
                 "EditBikeFeature",
                 "EmailClient",
                 "FileClient",
+                "HomeFeature",
                 "MaintenanceClient",
                 "MileageClient",
                 "MileagePickerFeature",
                 "MileageScaleFeature",
                 "Models",
-                "SaveNewBikeFeature",
+                "OnboardingFeature",
                 "RideClient",
+                "SaveNewBikeFeature",
                 "StoreKitClient",
                 "ShareSheetClient",
                 "Style",
                 "SwiftUIHelpers",
                 "UIApplicationClient",
                 "UIUserInterfaceStyleClient",
+                "UserSettingsFeature",
                 "UserDefaultsClient",
                 "World",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
@@ -314,6 +331,34 @@ let package = Package(
             ]
         ),
         .target(
+            name: "HomeFeature",
+            dependencies: [
+                "AddBikeFlowFeature",
+                "AddRideFlowFeature",
+                "BikeComponentListFeature",
+                "CloudKitClient",
+                "Models",
+                "BrandClient",
+                "FileClient",
+                "EmailClient",
+                "BikeClient",
+                "ComponentClient",
+                "MaintenanceClient",
+                "MileageClient",
+                "MileageScaleFeature",
+                "RideClient",
+                "UserDefaultsClient",
+                "StoreKitClient",
+                "ShareSheetClient",
+                "SwiftUIHelpers",
+                "Style",
+                "UserSettingsFeature",
+                "UIApplicationClient",
+                "UIUserInterfaceStyleClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "MaintenanceClient",
             dependencies: [
                 "Models",
@@ -353,10 +398,15 @@ let package = Package(
             ]
         ),
         .target(
-            name: "SaveNewBikeFeature",
+            name: "OnboardingFeature",
             dependencies: [
+                "BikeComponentRowFeature",
+                "ComposableHelpers",
+                "MileageScaleFeature",
                 "Models",
                 "BikeClient",
+                "Style",
+                "SwiftUIHelpers",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -366,6 +416,14 @@ let package = Package(
                 "Models",
                 "World",
                 "CoreDataStack",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "SaveNewBikeFeature",
+            dependencies: [
+                "Models",
+                "BikeClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -393,6 +451,28 @@ let package = Package(
             name: "UIUserInterfaceStyleClient",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "UserSettingsFeature",
+            dependencies: [
+                "AppSupportFeature",
+                "CloudKitClient",
+                "ComposableHelpers",
+                "EmailClient",
+                "FileClient",
+                "MileageClient",
+                "Models",
+                "StoreKitClient",
+                "ShareSheetClient",
+                "SwiftUIHelpers",
+                "UserDefaultsClient",
+                "UIApplicationClient",
+                "UIUserInterfaceStyleClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ],
+            resources: [
+                .process("Resources/")
             ]
         ),
         .target(

@@ -6,14 +6,22 @@ import Style
 import SwiftUIHelpers
 import MileageScaleFeature
 
-typealias OnboardingReducer = Reducer<OnboardingState, OnboardingAction, OnboardingEnvironment>
+public typealias OnboardingReducer = Reducer<OnboardingState, OnboardingAction, OnboardingEnvironment>
 
-struct OnboardingState: Equatable {
-    var mileageAnimation = MileageAnimationState(width: 250)
-    var tabIndex = 0
+public struct OnboardingState: Equatable {
+    public init(
+        mileageAnimation: MileageAnimationState = MileageAnimationState(width: 250),
+        tabIndex: Int = 0
+    ) {
+        self.mileageAnimation = mileageAnimation
+        self.tabIndex = tabIndex
+    }
+    
+    public var mileageAnimation = MileageAnimationState(width: 250)
+    public var tabIndex = 0
 }
 
-enum OnboardingAction: Equatable {
+public enum OnboardingAction: Equatable {
     case didLogin
     case changeTabIndex(index: Int)
     case mileageAnimation(MileageAnimationAction)
@@ -21,7 +29,13 @@ enum OnboardingAction: Equatable {
     case continueTapped
 }
 
-struct OnboardingEnvironment {}
+public struct OnboardingEnvironment {
+    public init(mainQueue: AnySchedulerOf<DispatchQueue> = .main) {
+        self.mainQueue = mainQueue
+    }
+    
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+}
 
 private let reducer = OnboardingReducer
 { state, action, environment in
@@ -50,7 +64,7 @@ private let reducer = OnboardingReducer
     }
 }
 
-let onboardingReducer: OnboardingReducer =
+public let onboardingReducer: OnboardingReducer =
 .combine(
     mileageAnimationReducer
         .pullback(
@@ -102,18 +116,18 @@ struct OnboardingContainerView<Content: View>: View {
     }
 }
 
-struct OnboardingPageView: View {
+public struct OnboardingPageView: View {
     let store: Store<OnboardingState, OnboardingAction>
     @ObservedObject var viewStore: ViewStore<OnboardingState, OnboardingAction>
     
-    init(
+    public init(
         store: Store<OnboardingState, OnboardingAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Spacer()
             

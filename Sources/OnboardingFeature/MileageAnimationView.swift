@@ -3,7 +3,7 @@ import ComposableArchitecture
 import Models
 import ComposableHelpers
 
-extension MileageStatus {
+public extension MileageStatus {
     var animationValue: Float {
         switch self {
         case .great:
@@ -22,22 +22,38 @@ extension MileageStatus {
 
 typealias MileageAnimationReducer = Reducer<MileageAnimationState, MileageAnimationAction, MileageAnimationEnvironment>
 
-struct MileageAnimationState: Equatable {
+public struct MileageAnimationState: Equatable {
+    public init(
+        width: CGFloat = 200,
+        animationDidStart: Bool = false,
+        mileageStatus: MileageStatus = .great,
+        value: Float = MileageStatus.great.animationValue
+    ) {
+        self.width = width
+        self.animationDidStart = animationDidStart
+        self.mileageStatus = mileageStatus
+        self.value = value
+    }
+    
     var width: CGFloat = 200 // Todo: Remove from state -> View only
     var animationDidStart = false
     var mileageStatus: MileageStatus = .great
     var value: Float = MileageStatus.great.animationValue
 }
 
-enum MileageAnimationAction: Equatable {
+public enum MileageAnimationAction: Equatable {
     case cancel
     case viewLoaded
     case setStatus(MileageStatus)
     case startAnimation
 }
 
-struct MileageAnimationEnvironment {
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+public struct MileageAnimationEnvironment {
+    public init(mainQueue: AnySchedulerOf<DispatchQueue> = .main) {
+        self.mainQueue = mainQueue
+    }
+    
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
 }
 
 let mileageAnimationReducer = MileageAnimationReducer

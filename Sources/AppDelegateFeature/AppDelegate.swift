@@ -1,21 +1,22 @@
 import UIKit
 import ComposableArchitecture
 import FileClient
+import UserSettingsFeature
 import UIUserInterfaceStyleClient
 
-typealias AppDelegateReducer = Reducer<UserSettings, AppDelegateAction, AppDelegateEnvironment>
+public typealias AppDelegateReducer = Reducer<UserSettings, AppDelegateAction, AppDelegateEnvironment>
 
-enum AppDelegateAction: Equatable {
+public enum AppDelegateAction: Equatable {
     case didFinishLaunching
     case userSettingsLoaded(Result<UserSettings, NSError>)
 }
 
-struct AppDelegateEnvironment {
+public struct AppDelegateEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
     var uiUserInterfaceClient: UIUserInterfaceStyleClient
     var fileClient: FileClient
     
-    init(
+    public init(
         mainQueue: AnySchedulerOf<DispatchQueue>,
         uiUserInterfaceClient: UIUserInterfaceStyleClient,
         fileClient: FileClient
@@ -34,7 +35,7 @@ struct AppDelegateEnvironment {
     #endif
 }
 
-let appDelegateReducer = AppDelegateReducer
+public let appDelegateReducer = AppDelegateReducer
 { state, action, environment in
     switch action {
     case .didFinishLaunching:

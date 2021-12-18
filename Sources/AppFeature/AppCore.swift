@@ -1,15 +1,28 @@
 import SwiftUI
 import ComposableArchitecture
+import AppDelegateFeature
+import OnboardingFeature
+import HomeFeature
 
-typealias AppCoreReducer = Reducer<AppCoreState, AppCoreAction, AppCoreEnvironment>
+public typealias AppCoreReducer = Reducer<AppCoreState, AppCoreAction, AppCoreEnvironment>
 
-struct AppCoreState: Equatable {
-    var isOnboardingSheetActive = false
-    var onboardingFlowState:OnboardingState?
-    var accountBikesState: HomeState = HomeState()
+public struct AppCoreState: Equatable {
+    public init(
+        isOnboardingSheetActive: Bool = false,
+        onboardingFlowState: OnboardingState? = nil,
+        accountBikesState: HomeState = HomeState()
+    ) {
+        self.isOnboardingSheetActive = isOnboardingSheetActive
+        self.onboardingFlowState = onboardingFlowState
+        self.accountBikesState = accountBikesState
+    }
+    
+    public var isOnboardingSheetActive = false
+    public var onboardingFlowState:OnboardingState?
+    public var accountBikesState: HomeState = HomeState()
 }
 
-enum AppCoreAction: Equatable {
+public enum AppCoreAction: Equatable {
     case onboarding(OnboardingAction)
     case home(HomeAction)
     case appDelegate(AppDelegateAction)
@@ -43,7 +56,7 @@ private let reducer = AppCoreReducer
     }
 }
 
-let appCoreReducer: AppCoreReducer =
+public let appCoreReducer: AppCoreReducer =
 .combine(
     appDelegateReducer
         .pullback(

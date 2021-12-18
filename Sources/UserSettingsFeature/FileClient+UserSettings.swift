@@ -4,7 +4,7 @@ import FileClient
 
 public let userSettingsFileName = "user-settings"
 
-extension FileClient {
+public extension FileClient {
     func loadUserSettings() -> Effect<Result<UserSettings, NSError>, Never> {
         self.load(UserSettings.self, from: userSettingsFileName)
     }

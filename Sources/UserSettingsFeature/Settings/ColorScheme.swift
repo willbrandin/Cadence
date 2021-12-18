@@ -1,11 +1,11 @@
 import UIKit
 
-enum ColorScheme: String, CaseIterable, Codable, Equatable {
+public enum ColorScheme: String, CaseIterable, Codable, Equatable {
     case dark
     case light
     case system
     
-    var userInterfaceStyle: UIUserInterfaceStyle {
+    public var userInterfaceStyle: UIUserInterfaceStyle {
         switch self {
         case .dark:
             return .dark
@@ -16,7 +16,7 @@ enum ColorScheme: String, CaseIterable, Codable, Equatable {
         }
     }
     
-    var title: String {
+    public var title: String {
         switch self {
         case .dark:
             return "Dark"

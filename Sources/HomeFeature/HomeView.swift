@@ -19,27 +19,50 @@ import StoreKitClient
 import ShareSheetClient
 import SwiftUIHelpers
 import Style
+import UserSettingsFeature
 import UIApplicationClient
 import UIUserInterfaceStyleClient
 
-typealias AccountBikesReducer = Reducer<HomeState, HomeAction, HomeEnvironment>
+public typealias AccountBikesReducer = Reducer<HomeState, HomeAction, HomeEnvironment>
 
-struct HomeState: Equatable {
-    var bikes: IdentifiedArrayOf<Bike> = []
-    var selectedBike: Identified<Bike.ID, BikeComponentState>?
-    var isAccountBikesRequestInFlight = false
+public struct HomeState: Equatable {
+    public init(
+        bikes: IdentifiedArrayOf<Bike> = [],
+        selectedBike: Identified<Bike.ID, BikeComponentState>? = nil,
+        isAccountBikesRequestInFlight: Bool = false,
+        isAddBikeFlowActive: Bool = false,
+        addBikeFlowState: AddBikeFlowState? = nil,
+        settingsState: SettingsState = SettingsState(),
+        addRideState: AddRideFlowState? = nil,
+        isSettingsSheetActive: Bool = false,
+        isAddRideSheetActive: Bool = false
+    ) {
+        self.bikes = bikes
+        self.selectedBike = selectedBike
+        self.isAccountBikesRequestInFlight = isAccountBikesRequestInFlight
+        self.isAddBikeFlowActive = isAddBikeFlowActive
+        self.addBikeFlowState = addBikeFlowState
+        self.settingsState = settingsState
+        self.addRideState = addRideState
+        self.isSettingsSheetActive = isSettingsSheetActive
+        self.isAddRideSheetActive = isAddRideSheetActive
+    }
     
-    var isAddBikeFlowActive = false
-    var addBikeFlowState: AddBikeFlowState?
+    public var bikes: IdentifiedArrayOf<Bike> = []
+    public var selectedBike: Identified<Bike.ID, BikeComponentState>?
+    public var isAccountBikesRequestInFlight = false
+
+    public var isAddBikeFlowActive = false
+    public var addBikeFlowState: AddBikeFlowState?
     
-    @BindableState var isSettingsSheetActive = false
-    var settingsState = SettingsState()
+    @BindableState public var isSettingsSheetActive = false
+    public var settingsState = SettingsState()
     
-    @BindableState var isAddRideSheetActive = false
-    var addRideState: AddRideFlowState?
+    @BindableState public var isAddRideSheetActive = false
+    public var addRideState: AddRideFlowState?
 }
 
-enum HomeAction: Equatable, BindableAction {
+public enum HomeAction: Equatable, BindableAction {
     case binding(BindingAction<HomeState>)
     case setNavigation(selection: UUID?)
     case bikeComponent(BikeComponentAction)
@@ -52,24 +75,62 @@ enum HomeAction: Equatable, BindableAction {
     case addRide(AddRideFlowAction)
 }
 
-struct HomeEnvironment {
-    var uiApplicationClient: UIApplicationClient
-    var uiUserInterfaceStyleClient: UIUserInterfaceStyleClient
-    var mainQueue: AnySchedulerOf<DispatchQueue>
-    var fileClient: FileClient
-    var userDefaults: UserDefaultsClient
-    var bikeClient: BikeClient
-    var componentClient: ComponentClient
-    var maintenanceClient: MaintenanceClient
-    var mileageClient: MileageClient
-    var rideClient: RideClient
-    var brandAPIClient: BrandClient
-    var date: () -> Date
-    var uuid: () -> UUID
-    var storeKitClient: StoreKitClient
-    var shareSheetClient: ShareSheetClient
-    var emailClient: EmailClient
-    var cloudKitClient: CloudKitClient
+public struct HomeEnvironment {
+    public init(
+        uiApplicationClient: UIApplicationClient,
+        uiUserInterfaceStyleClient: UIUserInterfaceStyleClient,
+        mainQueue: AnySchedulerOf<DispatchQueue>,
+        fileClient: FileClient,
+        userDefaults: UserDefaultsClient,
+        bikeClient: BikeClient,
+        componentClient: ComponentClient,
+        maintenanceClient: MaintenanceClient,
+        mileageClient: MileageClient,
+        rideClient: RideClient,
+        brandAPIClient: BrandClient,
+        date: @escaping () -> Date,
+        uuid: @escaping () -> UUID,
+        storeKitClient: StoreKitClient,
+        shareSheetClient: ShareSheetClient,
+        emailClient: EmailClient,
+        cloudKitClient: CloudKitClient
+    ) {
+        self.uiApplicationClient = uiApplicationClient
+        self.uiUserInterfaceStyleClient = uiUserInterfaceStyleClient
+        self.mainQueue = mainQueue
+        self.fileClient = fileClient
+        self.userDefaults = userDefaults
+        self.bikeClient = bikeClient
+        self.componentClient = componentClient
+        self.maintenanceClient = maintenanceClient
+        self.mileageClient = mileageClient
+        self.rideClient = rideClient
+        self.brandAPIClient = brandAPIClient
+        self.date = date
+        self.uuid = uuid
+        self.storeKitClient = storeKitClient
+        self.shareSheetClient = shareSheetClient
+        self.emailClient = emailClient
+        self.cloudKitClient = cloudKitClient
+    }
+    
+    public var uiApplicationClient: UIApplicationClient
+    public var uiUserInterfaceStyleClient: UIUserInterfaceStyleClient
+    public var mainQueue: AnySchedulerOf<DispatchQueue>
+    public var fileClient: FileClient
+    public var userDefaults: UserDefaultsClient
+    public var bikeClient: BikeClient
+    public var componentClient: ComponentClient
+    public var maintenanceClient: MaintenanceClient
+    public var mileageClient: MileageClient
+    public var rideClient: RideClient
+    public var brandAPIClient: BrandClient
+    public var date: () -> Date
+    public var uuid: () -> UUID
+    public var storeKitClient: StoreKitClient
+    public var shareSheetClient: ShareSheetClient
+    public var emailClient: EmailClient
+    public var cloudKitClient: CloudKitClient
 }
 
 private let reducer: AccountBikesReducer =
@@ -199,7 +260,7 @@ Reducer { state, action, environment in
 }
 .binding()
 
-let homeReducer: AccountBikesReducer =
+public let homeReducer: AccountBikesReducer =
 .combine(
     userSettingsReducer
         .pullback(
@@ -359,12 +420,12 @@ struct BikeSection: View {
     }
 }
 
-struct HomeView: View {
+public struct HomeView: View {
     let store: Store<HomeState, HomeAction>
     @ObservedObject var viewStore: ViewStore<HomeState, HomeAction>
     @Environment(\.colorScheme) var colorScheme
 
-    init(
+    public init(
         store: Store<HomeState, HomeAction>
     ) {
         self.store = store
@@ -406,7 +467,7 @@ struct HomeView: View {
         }
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             Color(colorScheme == .light ? .secondarySystemBackground : .systemBackground)
                 .edgesIgnoringSafeArea(.all)
@@ -526,7 +587,7 @@ struct AccountBikesView_Previews: PreviewProvider {
     }
 }
 
-extension HomeEnvironment {
+public extension HomeEnvironment {
     static var mocked: Self {
         Self(
             uiApplicationClient: .noop,

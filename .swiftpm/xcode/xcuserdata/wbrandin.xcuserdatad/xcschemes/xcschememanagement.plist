@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>36</integer>
 		</dict>
+		<key>AppDelegateFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>85</integer>
+		</dict>
 		<key>AppFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -202,6 +207,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>HomeFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>81</integer>
+		</dict>
 		<key>MaintenanceClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -231,6 +241,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
+		</dict>
+		<key>OnboardingFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>77</integer>
 		</dict>
 		<key>RideClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -276,6 +291,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>28</integer>
+		</dict>
+		<key>UserSettingsFeature.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>70</integer>
 		</dict>
 		<key>World.xcscheme_^#shared#^_</key>
 		<dict>

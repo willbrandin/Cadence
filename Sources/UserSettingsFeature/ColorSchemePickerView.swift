@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct ColorSchemePickerView: View {
+public struct ColorSchemePickerView: View {
     @Binding var colorScheme: ColorScheme
     
-    var body: some View {
+    public var body: some View {
         Form {
             ForEach(ColorScheme.allCases, id: \.self) { scheme in
                 HStack {

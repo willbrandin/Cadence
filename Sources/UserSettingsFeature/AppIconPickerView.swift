@@ -1,17 +1,10 @@
-//
-//  AppIconPickerView.swift
-//  Cadence
-//
-//  Created by William Brandin on 9/30/21.
-//
-
 import SwiftUI
 
 struct AppIconImageView: View {
-    var image: String
+    var appIcon: AppIcon
     
     var body: some View {
-        Image(image)
+        Image(uiImage: UIImage(named: appIcon.rawValue, in: Bundle.module, with: nil)!)
             .resizable()
             .scaledToFit()
             .frame(width: 80, height: 80)
@@ -19,11 +12,11 @@ struct AppIconImageView: View {
     }
 }
 
-struct AppIconPickerView: View {
+public struct AppIconPickerView: View {
     @Binding var appIcon: AppIcon?
     @Environment(\.colorScheme) var colorScheme
 
-    var body: some View {
+    public var body: some View {
         ZStack {
             Color(colorScheme == .light ? .secondarySystemBackground : .systemBackground)
                 .edgesIgnoringSafeArea(.all)
@@ -34,14 +27,14 @@ struct AppIconPickerView: View {
                         
                         Button(action: { appIcon = icon }) {
                             if self.appIcon == icon {
-                                AppIconImageView(image: icon.rawValue)
+                                AppIconImageView(appIcon: icon)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 14, style: .continuous)
                                             .stroke(.secondary, lineWidth: 2)
                                     )
                                     .id(icon)
                             } else {
-                                AppIconImageView(image: icon.rawValue)
+                                AppIconImageView(appIcon: icon)
                                     .id(icon)
                             }
                         }
