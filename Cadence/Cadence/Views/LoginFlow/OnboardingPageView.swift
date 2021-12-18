@@ -1,4 +1,5 @@
 import SwiftUI
+import BikeComponentRowFeature
 import ComposableArchitecture
 import Models
 import Style

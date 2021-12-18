@@ -5,17 +5,29 @@ import ComponentClient
 import Models
 import RideClient
 
-typealias AddRideFlowReducer = Reducer<AddRideFlowState, AddRideFlowAction, AddRideFlowEnvironment>
+public typealias AddRideFlowReducer = Reducer<AddRideFlowState, AddRideFlowAction, AddRideFlowEnvironment>
 
-struct AddRideFlowState: Equatable {
-    var selectableBikes: [Bike]
-    var selectedBike: Bike
+public struct AddRideFlowState: Equatable {
+    public init(
+        selectableBikes: [Bike],
+        selectedBike: Bike,
+        miles: String = "",
+        date: Date = Date()
+    ) {
+        self.selectableBikes = selectableBikes
+        self.selectedBike = selectedBike
+        self.miles = miles
+        self.date = date
+    }
     
-    @BindableState var miles: String = ""
-    @BindableState var date: Date = Date()
+    public var selectableBikes: [Bike]
+    public var selectedBike: Bike
+    
+    @BindableState public var miles: String = ""
+    @BindableState public var date: Date = Date()
 }
 
-enum AddRideFlowAction: Equatable, BindableAction {
+public enum AddRideFlowAction: Equatable, BindableAction {
     case binding(BindingAction<AddRideFlowState>)
     case didAppear
     case didTapCloseFlow
@@ -29,16 +41,32 @@ enum AddRideFlowAction: Equatable, BindableAction {
     case updateBikeMileageResponse(Result<Bike, BikeClient.Failure>)
 }
 
-struct AddRideFlowEnvironment {
-    var bikeClient: BikeClient = .noop
-    var componentClient: ComponentClient = .noop
-    var rideClient: RideClient = .noop
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = { Date() }
-    var uuid: () -> UUID = { .init() }
+public struct AddRideFlowEnvironment {
+    public init(
+        bikeClient: BikeClient = .noop,
+        componentClient: ComponentClient = .noop,
+        rideClient: RideClient = .noop,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        date: @escaping () -> Date = { Date() },
+        uuid: @escaping () -> UUID = { .init() }
+    ) {
+        self.bikeClient = bikeClient
+        self.componentClient = componentClient
+        self.rideClient = rideClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
+    public var bikeClient: BikeClient = .noop
+    public var componentClient: ComponentClient = .noop
+    public var rideClient: RideClient = .noop
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    public var date: () -> Date = { Date() }
+    public var uuid: () -> UUID = { .init() }
 }
 
-let addRideReducer = AddRideFlowReducer
+public let addRideReducer = AddRideFlowReducer
 { state, action, environment in
     switch action {
     case let .setSelected(bike):
@@ -85,18 +113,18 @@ let addRideReducer = AddRideFlowReducer
 }
 .binding()
 
-struct AddRideFlowRootView: View {
+public struct AddRideFlowRootView: View {
     let store: Store<AddRideFlowState, AddRideFlowAction>
     @ObservedObject var viewStore: ViewStore<AddRideFlowState, AddRideFlowAction>
     
-    init(
+    public init(
         store: Store<AddRideFlowState, AddRideFlowAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section {
                 ForEach(viewStore.selectableBikes) { bike in

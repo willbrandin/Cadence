@@ -5,11 +5,19 @@ import ComposableArchitecture
 import Models
 import MileageScaleFeature
 
-struct BikeComponentRow: View {
+public struct BikeComponentRow: View {
     let component: Component
     let distanceUnit: DistanceUnit
     
-    var body: some View {
+    public init(
+        component: Component,
+        distanceUnit: DistanceUnit
+    ) {
+        self.component = component
+        self.distanceUnit = distanceUnit
+    }
+    
+    public var body: some View {
         VStack(spacing: 16) {
             VStack {
                 HStack {

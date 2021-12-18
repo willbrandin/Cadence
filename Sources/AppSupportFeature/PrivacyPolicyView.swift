@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct PrivacyPolicyView: View {
+public struct PrivacyPolicyView: View {
+    
+    public init() {}
         
-    var body: some View {
+    public var body: some View {
         ScrollView {
             Text(
                 """

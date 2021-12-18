@@ -1,28 +1,51 @@
 import SwiftUI
+import ComponentTypeSelectionFeature
 import ComposableArchitecture
+import ComponentTypeSelectionFeature
+import CreateComponentFeature
 import Models
 import BrandClient
 import BrandListFeature
 import ComponentClient
 import World
 
-typealias AddComponentFlowReducer = Reducer<AddComponentFlowState, AddComponentFlowAction, AddComponentFlowEnvironment>
+public typealias AddComponentFlowReducer = Reducer<AddComponentFlowState, AddComponentFlowAction, AddComponentFlowEnvironment>
 
-struct AddComponentFlowState: Equatable {
-    var bikeId: UUID
-    var groupSelectionState = ComponentGroupSelectionState()
+public struct AddComponentFlowState: Equatable {
+    public init(
+        bikeId: UUID,
+        groupSelectionState: ComponentGroupSelectionState = ComponentGroupSelectionState(),
+        isTypeSelectionNavigationActive: Bool = false,
+        typeSelectionState: ComponentTypeSelectionState = ComponentTypeSelectionState(),
+        isBrandNavigationActive: Bool = false,
+        brandListState: BrandListState = BrandListState(brandContext: .components),
+        isComponentDetailNavigationActive: Bool = false,
+        componentDetailState: CreateComponentState? = nil
+    ) {
+        self.bikeId = bikeId
+        self.groupSelectionState = groupSelectionState
+        self.isTypeSelectionNavigationActive = isTypeSelectionNavigationActive
+        self.typeSelectionState = typeSelectionState
+        self.isBrandNavigationActive = isBrandNavigationActive
+        self.brandListState = brandListState
+        self.isComponentDetailNavigationActive = isComponentDetailNavigationActive
+        self.componentDetailState = componentDetailState
+    }
     
-    var isTypeSelectionNavigationActive = false
-    var typeSelectionState = ComponentTypeSelectionState()
+    public var bikeId: UUID
+    public var groupSelectionState = ComponentGroupSelectionState()
+    
+    public var isTypeSelectionNavigationActive = false
+    public var typeSelectionState = ComponentTypeSelectionState()
 
-    var isBrandNavigationActive = false
-    var brandListState = BrandListState(brandContext: .components)
+    public var isBrandNavigationActive = false
+    public var brandListState = BrandListState(brandContext: .components)
     
-    var isComponentDetailNavigationActive = false
-    var componentDetailState: CreateComponentState?
+    public var isComponentDetailNavigationActive = false
+    public var componentDetailState: CreateComponentState?
 }
 
-enum AddComponentFlowAction: Equatable {
+public enum AddComponentFlowAction: Equatable {
     case didTapCloseFlow
     case flowComplete(Component)
     
@@ -36,7 +59,21 @@ enum AddComponentFlowAction: Equatable {
     case setComponentDetailNavigation(isActive: Bool)
 }
 
-struct AddComponentFlowEnvironment {
+public struct AddComponentFlowEnvironment {
+    public init(
+        brandClient: BrandClient = .mocked,
+        componentClient: ComponentClient = .noop,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        date: @escaping () -> Date = Current.date,
+        uuid: @escaping () -> UUID = Current.uuid
+    ) {
+        self.brandClient = brandClient
+        self.componentClient = componentClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
     var brandClient: BrandClient = .mocked
     var componentClient: ComponentClient = .noop
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
@@ -80,7 +117,7 @@ private let reducer = AddComponentFlowReducer
     }
 }
 
-let addComponentFlowReducer: AddComponentFlowReducer =
+public let addComponentFlowReducer: AddComponentFlowReducer =
 .combine(
     componentGroupSelectionReducer
         .pullback(
@@ -254,18 +291,18 @@ private struct TypeSelectionFlow: View {
     }
 }
 
-struct AddComponentFlowRoot: View {
+public struct AddComponentFlowRoot: View {
     let store: Store<AddComponentFlowState, AddComponentFlowAction>
     @ObservedObject var viewStore: ViewStore<AddComponentFlowState, AddComponentFlowAction>
     
-    init(
+    public init(
         store: Store<AddComponentFlowState, AddComponentFlowAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             VStack {
                 TypeSelectionFlow(store: self.store)

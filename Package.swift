@@ -8,16 +8,26 @@ let package = Package(
     platforms: [.iOS(.v15)],
     products: [
         .library(name: "AddBikeFlowFeature", targets: ["AddBikeFlowFeature"]),
+        .library(name: "AddComponentFlowFeature", targets: ["AddComponentFlowFeature"]),
+        .library(name: "AddComponentMaintenanceFeature", targets: ["AddComponentMaintenanceFeature"]),
+        .library(name: "AddRideFlowFeature", targets: ["AddRideFlowFeature"]),
         .library(name: "AppFeature", targets: ["AppFeature"]),
+        .library(name: "AppSupportFeature", targets: ["AppSupportFeature"]),
         .library(name: "BikeClient", targets: ["BikeClient"]),
+        .library(name: "BikeComponentListFeature", targets: ["BikeComponentListFeature"]),
+        .library(name: "BikeComponentRowFeature", targets: ["BikeComponentRowFeature"]),
         .library(name: "BikeTypeSelectionFeature", targets: ["BikeTypeSelectionFeature"]),
         .library(name: "BrandClient", targets: ["BrandClient"]),
         .library(name: "BrandListFeature", targets: ["BrandListFeature"]),
         .library(name: "CloudKitClient", targets: ["CloudKitClient"]),
         .library(name: "CombineHelpers", targets: ["CombineHelpers"]),
         .library(name: "ComponentClient", targets: ["ComponentClient"]),
+        .library(name: "ComponentDetailFeature", targets: ["ComponentDetailFeature"]),
+        .library(name: "ComponentSelectorFeature", targets: ["ComponentSelectorFeature"]),
+        .library(name: "ComponentTypeSelectionFeature", targets: ["ComponentTypeSelectionFeature"]),
         .library(name: "ComposableHelpers", targets: ["ComposableHelpers"]),
         .library(name: "CoreDataStack", targets: ["CoreDataStack"]),
+        .library(name: "CreateComponentFeature", targets: ["CreateComponentFeature"]),
         .library(name: "DateHelpers", targets: ["DateHelpers"]),
         .library(name: "EditBikeFeature", targets: ["EditBikeFeature"]),
         .library(name: "EmailClient", targets: ["EmailClient"]),
@@ -64,17 +74,62 @@ let package = Package(
             ]
         ),
         .target(
+            name: "AddComponentFlowFeature",
+            dependencies: [
+                "ComponentTypeSelectionFeature",
+                "CreateComponentFeature",
+                "ComponentTypeSelectionFeature",
+                "Models",
+                "BrandClient",
+                "BrandListFeature",
+                "ComponentClient",
+                "World",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "AddComponentMaintenanceFeature",
+            dependencies: [
+                "Models",
+                "World",
+                "MaintenanceClient",
+                "ComponentClient",
+                "ComponentSelectorFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "AddRideFlowFeature",
+            dependencies: [
+                "BikeClient",
+                "ComponentClient",
+                "Models",
+                "RideClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "AppFeature",
             dependencies: [
                 "AddBikeFlowFeature",
+                "AddComponentFlowFeature",
+                "AddComponentMaintenanceFeature",
+                "AddRideFlowFeature",
+                "AppSupportFeature",
                 "BikeClient",
+                "BikeComponentListFeature",
+                "BikeComponentRowFeature",
                 "BikeTypeSelectionFeature",
                 "BrandClient",
                 "BrandListFeature",
                 "CloudKitClient",
                 "CombineHelpers",
                 "ComponentClient",
+                "ComponentDetailFeature",
+                "ComponentSelectorFeature",
+                "ComponentTypeSelectionFeature",
                 "CoreDataStack",
+                "CreateComponentFeature",
                 "DateHelpers",
                 "EditBikeFeature",
                 "EmailClient",
@@ -98,11 +153,41 @@ let package = Package(
             ]
         ),
         .target(
+            name: "AppSupportFeature"
+        ),
+        .target(
             name: "BikeClient",
             dependencies: [
                 "Models",
                 "World",
                 "CoreDataStack",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "BikeComponentListFeature",
+            dependencies: [
+                "AddComponentFlowFeature",
+                "BikeClient",
+                "BrandClient",
+                "ComponentClient",
+                "ComponentDetailFeature",
+                "MaintenanceClient",
+                "EditBikeFeature",
+                "Models",
+                "World",
+                "Style",
+                "BikeComponentRowFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "BikeComponentRowFeature",
+            dependencies: [
+                "BikeClient",
+                "MileageClient",
+                "Models",
+                "MileageScaleFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -143,8 +228,37 @@ let package = Package(
             name: "ComponentClient",
             dependencies: [
                 "Models",
+                "MileageScaleFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "ComponentDetailFeature",
+            dependencies: [
+                "AddComponentMaintenanceFeature",
+                "ComponentClient",
+                "MaintenanceClient",
+                "MileageScaleFeature",
+                "Models",
+                "Style",
+                "SwiftUIHelpers",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "ComponentSelectorFeature",
+            dependencies: [
+                "Models",
                 "World",
                 "CoreDataStack",
+                "MileageScaleFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "ComponentTypeSelectionFeature",
+            dependencies: [
+                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -162,6 +276,19 @@ let package = Package(
             ],
             resources: [
                 .copy("Resources/Cadence.xcdatamodeld")
+            ]
+        ),
+        .target(
+            name: "CreateComponentFeature",
+            dependencies: [
+                "Models",
+                "BrandListFeature",
+                "BrandClient",
+                "ComponentClient",
+                "MileagePickerFeature",
+                "World",
+                "SwiftUIHelpers",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
         .target(name: "DateHelpers"),

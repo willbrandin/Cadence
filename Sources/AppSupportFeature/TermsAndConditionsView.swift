@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct TermsAndConditionsView: View {
-    var body: some View {
+public struct TermsAndConditionsView: View {
+    
+    public init() {}
+    
+    public var body: some View {
         ScrollView {
             Text(
                 """

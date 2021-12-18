@@ -1,4 +1,5 @@
 import SwiftUI
+import AddComponentFlowFeature
 import ComposableArchitecture
 import Models
 import BrandClient
@@ -8,21 +9,45 @@ import MaintenanceClient
 import Style
 import SwiftUIHelpers
 import EditBikeFeature
+import BikeComponentRowFeature
+import ComponentDetailFeature
 
-typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
+public typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
 
-struct BikeComponentState: Equatable {
-    var bike: Bike = .yetiMountain
-    var isShowing = false
-    var selection: Identified<Component.ID, ComponentDetailState>?
-    var isBikeOptionSheetActive = false
-    var isAddComponentFlowNavigationActive = false
-    var addComponentFlowState: AddComponentFlowState?
-    var editBikeState: EditBikeState?
-    var isEditBikeFlowNavigationActive = false
-    var distanceUnit: DistanceUnit = .miles
+public struct BikeComponentState: Equatable {
+    public init(
+        bike: Bike = .yetiMountain,
+        isShowing: Bool = false,
+        selection: Identified<Component.ID, ComponentDetailState>? = nil,
+        isBikeOptionSheetActive: Bool = false,
+        isAddComponentFlowNavigationActive: Bool = false,
+        addComponentFlowState: AddComponentFlowState? = nil,
+        editBikeState: EditBikeState? = nil,
+        isEditBikeFlowNavigationActive: Bool = false,
+        distanceUnit: DistanceUnit = .miles
+    ) {
+        self.bike = bike
+        self.isShowing = isShowing
+        self.selection = selection
+        self.isBikeOptionSheetActive = isBikeOptionSheetActive
+        self.isAddComponentFlowNavigationActive = isAddComponentFlowNavigationActive
+        self.addComponentFlowState = addComponentFlowState
+        self.editBikeState = editBikeState
+        self.isEditBikeFlowNavigationActive = isEditBikeFlowNavigationActive
+        self.distanceUnit = distanceUnit
+    }
     
-    var components: IdentifiedArrayOf<Component> {
+    public var bike: Bike = .yetiMountain
+    public var isShowing = false
+    public var selection: Identified<Component.ID, ComponentDetailState>?
+    public var isBikeOptionSheetActive = false
+    public var isAddComponentFlowNavigationActive = false
+    public var addComponentFlowState: AddComponentFlowState?
+    public var editBikeState: EditBikeState?
+    public var isEditBikeFlowNavigationActive = false
+    public var distanceUnit: DistanceUnit = .miles
+    
+    public var components: IdentifiedArrayOf<Component> {
         get {
             return IdentifiedArrayOf<Component>(uniqueElements: bike.components)
         }
@@ -39,7 +64,7 @@ struct BikeComponentState: Equatable {
     }
 }
 
-enum BikeComponentAction: Equatable {
+public enum BikeComponentAction: Equatable {
     case componentDetail(ComponentDetailAction)
     case setNavigation(selection: UUID?)
     case setBikeOptionSheet(isActive: Bool)
@@ -52,14 +77,32 @@ enum BikeComponentAction: Equatable {
     case editBike(EditBikeAction)
 }
 
-struct BikeComponentEnvironment {
-    var bikeClient: BikeClient = .noop
-    var brandAPIClient: BrandClient = .mocked
-    var componentClient: ComponentClient = .noop
-    var maintenanceClient: MaintenanceClient = .noop
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = { Date() }
-    var uuid: () -> UUID = { .init() }
+public struct BikeComponentEnvironment {
+    public init(
+        bikeClient: BikeClient = .noop,
+        brandAPIClient: BrandClient = .mocked,
+        componentClient: ComponentClient = .noop,
+        maintenanceClient: MaintenanceClient = .noop,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        date: @escaping () -> Date = { Date() },
+        uuid: @escaping () -> UUID = { .init() }
+    ) {
+        self.bikeClient = bikeClient
+        self.brandAPIClient = brandAPIClient
+        self.componentClient = componentClient
+        self.maintenanceClient = maintenanceClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
+    public var bikeClient: BikeClient = .noop
+    public var brandAPIClient: BrandClient = .mocked
+    public var componentClient: ComponentClient = .noop
+    public var maintenanceClient: MaintenanceClient = .noop
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    public var date: () -> Date = { Date() }
+    public var uuid: () -> UUID = { .init() }
 }
 
 private let reducer: BikeComponentReducer =
@@ -154,7 +197,7 @@ Reducer { state, action, environment in
     }
 }
  
-let bikeComponentReducer: BikeComponentReducer =
+public let bikeComponentReducer: BikeComponentReducer =
 .combine(
     componentDetailReducer
         .pullback(state: \Identified.value, action: .self, environment: { $0 })
@@ -281,13 +324,13 @@ struct BikeComponentSection: View {
     }
 }
 
-struct BikeComponentListView: View {
+public struct BikeComponentListView: View {
     let store: Store<BikeComponentState, BikeComponentAction>
     @ObservedObject var viewStore: ViewStore<BikeComponentState, BikeComponentAction>
     
     @Environment(\.colorScheme) var colorScheme
 
-    init(
+    public init(
         store: Store<BikeComponentState, BikeComponentAction>
     ) {
         self.store = store
@@ -329,7 +372,7 @@ struct BikeComponentListView: View {
         }
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             Color(colorScheme == .light ? .secondarySystemBackground : .systemBackground)
                 .edgesIgnoringSafeArea(.all)

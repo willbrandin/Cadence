@@ -1,4 +1,5 @@
 import SwiftUI
+import AddComponentMaintenanceFeature
 import ComposableArchitecture
 import ComponentClient
 import MaintenanceClient
@@ -7,19 +8,35 @@ import Models
 import Style
 import SwiftUIHelpers
 
-typealias ComponentDetailReducer = Reducer<ComponentDetailState, ComponentDetailAction, ComponentDetailEnvironment>
+public typealias ComponentDetailReducer = Reducer<ComponentDetailState, ComponentDetailAction, ComponentDetailEnvironment>
 
-struct ComponentDetailState: Equatable {
-    var component: Component = .shimanoSLXBrakes
-    var bikeComponents: [Component] = [.shimanoSLXBrakes, .shimanoXLTBrakeRotor, .shimanoSLXRearDerailleur]
-    var isShowingOptions: Bool = false
+public struct ComponentDetailState: Equatable {
+    public init(
+        component: Component = .shimanoSLXBrakes,
+        bikeComponents: [Component] = [.shimanoSLXBrakes, .shimanoXLTBrakeRotor, .shimanoSLXRearDerailleur],
+        isShowingOptions: Bool = false,
+        isAddComponentServiceNavigationActive: Bool = false,
+        addComponentServiceState: AddComponentMaintenanceState? = nil,
+        distanceUnit: DistanceUnit = .miles
+    ) {
+        self.component = component
+        self.bikeComponents = bikeComponents
+        self.isShowingOptions = isShowingOptions
+        self.isAddComponentServiceNavigationActive = isAddComponentServiceNavigationActive
+        self.addComponentServiceState = addComponentServiceState
+        self.distanceUnit = distanceUnit
+    }
     
-    var isAddComponentServiceNavigationActive = false
-    var addComponentServiceState: AddComponentMaintenanceState?
-    var distanceUnit: DistanceUnit = .miles
+    public var component: Component = .shimanoSLXBrakes
+    public var bikeComponents: [Component] = [.shimanoSLXBrakes, .shimanoXLTBrakeRotor, .shimanoSLXRearDerailleur]
+    public var isShowingOptions: Bool = false
+    
+    public var isAddComponentServiceNavigationActive = false
+    public var addComponentServiceState: AddComponentMaintenanceState?
+    public var distanceUnit: DistanceUnit = .miles
 }
 
-enum ComponentDetailAction: Equatable {
+public enum ComponentDetailAction: Equatable {
     case toggleShowOptions(Bool)
     case replace
     case delete
@@ -29,12 +46,26 @@ enum ComponentDetailAction: Equatable {
     case setComponentServiceNavigation(isActive: Bool)
 }
 
-struct ComponentDetailEnvironment {
-    var componentClient: ComponentClient
-    var maintenanceClient: MaintenanceClient
-    var mainQueue: AnySchedulerOf<DispatchQueue>
-    var date: () -> Date
-    var uuid: () -> UUID
+public struct ComponentDetailEnvironment {
+    public init(
+        componentClient: ComponentClient,
+        maintenanceClient: MaintenanceClient,
+        mainQueue: AnySchedulerOf<DispatchQueue>,
+        date: @escaping () -> Date,
+        uuid: @escaping () -> UUID
+    ) {
+        self.componentClient = componentClient
+        self.maintenanceClient = maintenanceClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
+    public var componentClient: ComponentClient
+    public var maintenanceClient: MaintenanceClient
+    public var mainQueue: AnySchedulerOf<DispatchQueue>
+    public var date: () -> Date
+    public var uuid: () -> UUID
 }
 
 private let reducer = ComponentDetailReducer
@@ -89,7 +120,7 @@ private let reducer = ComponentDetailReducer
     }
 }
 
-let componentDetailReducer: ComponentDetailReducer = .combine(
+public let componentDetailReducer: ComponentDetailReducer = .combine(
     addComponentMaintenanceReducer
         .optional()
         .pullback(
@@ -215,19 +246,19 @@ struct MaintenanceSectionView: View {
     }
 }
 
-struct ComponentDetailView: View {
+public struct ComponentDetailView: View {
     let store: Store<ComponentDetailState, ComponentDetailAction>
     @ObservedObject var viewStore: ViewStore<ComponentDetailState, ComponentDetailAction>
     @Environment(\.colorScheme) var colorScheme
 
-    init(
+    public init(
         store: Store<ComponentDetailState, ComponentDetailAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         ScrollView {
             ComponentDetailCardView(component: viewStore.component, distanceUnit: viewStore.distanceUnit)
             

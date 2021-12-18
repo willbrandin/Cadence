@@ -2,20 +2,30 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 
-typealias ComponentGroupSelectionReducer = Reducer<ComponentGroupSelectionState, ComponentGroupSelectionAction, ComponentGroupSelectionEnvironment>
+public typealias ComponentGroupSelectionReducer = Reducer<ComponentGroupSelectionState, ComponentGroupSelectionAction, ComponentGroupSelectionEnvironment>
 
-struct ComponentGroupSelectionState: Equatable {
-    var selectedComponentType: ComponentGroup? = nil
-    var components: [ComponentGroup] = ComponentGroup.allCases
+public struct ComponentGroupSelectionState: Equatable {
+    public init(
+        selectedComponentType: ComponentGroup? = nil,
+        components: [ComponentGroup] = ComponentGroup.allCases
+    ) {
+        self.selectedComponentType = selectedComponentType
+        self.components = components
+    }
+    
+    public var selectedComponentType: ComponentGroup? = nil
+    public var components: [ComponentGroup] = ComponentGroup.allCases
 }
 
-enum ComponentGroupSelectionAction: Equatable {
+public enum ComponentGroupSelectionAction: Equatable {
     case didSelect(ComponentGroup)
 }
 
-struct ComponentGroupSelectionEnvironment {}
+public struct ComponentGroupSelectionEnvironment {
+    public init() {}
+}
 
-let componentGroupSelectionReducer = ComponentGroupSelectionReducer
+public let componentGroupSelectionReducer = ComponentGroupSelectionReducer
 { state, action, environment in
     switch action {
     case let .didSelect(component):
@@ -24,19 +34,19 @@ let componentGroupSelectionReducer = ComponentGroupSelectionReducer
     }
 }
 
-struct ComponentGroupSelectionView: View {
+public struct ComponentGroupSelectionView: View {
     
     let store: Store<ComponentGroupSelectionState, ComponentGroupSelectionAction>
     @ObservedObject var viewStore: ViewStore<ComponentGroupSelectionState, ComponentGroupSelectionAction>
     
-    init(
+    public init(
         store: Store<ComponentGroupSelectionState, ComponentGroupSelectionAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List(viewStore.components) { component in
             Button(action: { viewStore.send(.didSelect(component)) }) {
                 HStack {

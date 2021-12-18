@@ -6,32 +6,67 @@ import BrandClient
 import ComponentClient
 import MileagePickerFeature
 import World
+import SwiftUIHelpers
 
-typealias CreateComponentReducer = Reducer<CreateComponentState, CreateComponentAction, CreateComponentEnvironment>
+public typealias CreateComponentReducer = Reducer<CreateComponentState, CreateComponentAction, CreateComponentEnvironment>
 
-struct CreateComponentState: Equatable {
-    @BindableState var model: String = ""
-    @BindableState var description: String = ""
-    @BindableState var date: Date = Current.date()
-    @BindableState var isCustomDate = false
-    @BindableState var isMileageSettingNavigationActive = false
+public struct CreateComponentState: Equatable {
+    public init(
+        model: String = "",
+        description: String = "",
+        date: Date = Current.date(),
+        isCustomDate: Bool = false,
+        isMileageSettingNavigationActive: Bool = false,
+        bikeId: UUID,
+        brand: Brand = .sram,
+        componentGroup: ComponentGroup = .drivetrain,
+        componentType: ComponentType = .cassette,
+        recommendedMiles: Int = 500,
+        isCreateComponentRequestInFlight: Bool = false,
+        mileagePickerState: MileagePickerState? = nil,
+        brandListState: BrandListState? = nil,
+        isBrandNavigationActive: Bool = false,
+        distanceUnit: DistanceUnit = .miles
+    ) {
+        self.model = model
+        self.description = description
+        self.date = date
+        self.isCustomDate = isCustomDate
+        self.isMileageSettingNavigationActive = isMileageSettingNavigationActive
+        self.bikeId = bikeId
+        self.brand = brand
+        self.componentGroup = componentGroup
+        self.componentType = componentType
+        self.recommendedMiles = recommendedMiles
+        self.isCreateComponentRequestInFlight = isCreateComponentRequestInFlight
+        self.mileagePickerState = mileagePickerState
+        self.brandListState = brandListState
+        self.isBrandNavigationActive = isBrandNavigationActive
+        self.distanceUnit = distanceUnit
+    }
+    
+    @BindableState public var model: String = ""
+    @BindableState public var description: String = ""
+    @BindableState public var date: Date = Current.date()
+    @BindableState public var isCustomDate = false
+    @BindableState public var isMileageSettingNavigationActive = false
 
-    var bikeId: UUID
-    var brand: Brand = .sram
-    var componentGroup: ComponentGroup = .drivetrain
-    var componentType: ComponentType = .cassette
-    var recommendedMiles = 500
-    var isCreateComponentRequestInFlight = false
-    var mileagePickerState: MileagePickerState?
-    var brandListState: BrandListState?
-    var isBrandNavigationActive = false
-    var distanceUnit: DistanceUnit = .miles
+    public var bikeId: UUID
+    public var brand: Brand = .sram
+    public var componentGroup: ComponentGroup = .drivetrain
+    public var componentType: ComponentType = .cassette
+    public var recommendedMiles = 500
+    public var isCreateComponentRequestInFlight = false
+    public var mileagePickerState: MileagePickerState?
+    public var brandListState: BrandListState?
+    public var isBrandNavigationActive = false
+    public var distanceUnit: DistanceUnit = .miles
 
-    var mileageText: String {
+    public var mileageText: String {
         return "\(recommendedMiles) \(distanceUnit.title)"
     }
 
-    var dateText: String {
+    public var dateText: String {
         if Date.isToday(date) {
             return "Today"
         } else {
@@ -41,7 +76,7 @@ struct CreateComponentState: Equatable {
     }
 }
 
-enum CreateComponentAction: Equatable, BindableAction {
+public enum CreateComponentAction: Equatable, BindableAction {
     case binding(BindingAction<CreateComponentState>)
     case didTapMileageAlert
     case didTapSave
@@ -52,15 +87,29 @@ enum CreateComponentAction: Equatable, BindableAction {
     case brandList(BrandListAction)
 }
 
-struct CreateComponentEnvironment {
-    var componentClient: ComponentClient = .noop
-    var brandClient: BrandClient = .mocked
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = Current.date
-    var uuid: () -> UUID = Current.uuid
+public struct CreateComponentEnvironment {
+    public init(
+        componentClient: ComponentClient = .noop,
+        brandClient: BrandClient = .mocked,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        date: @escaping () -> Date = Current.date,
+        uuid: @escaping () -> UUID = Current.uuid
+    ) {
+        self.componentClient = componentClient
+        self.brandClient = brandClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
+    public var componentClient: ComponentClient = .noop
+    public var brandClient: BrandClient = .mocked
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    public var date: () -> Date = Current.date
+    public var uuid: () -> UUID = Current.uuid
 }
 
-extension CreateComponentEnvironment {
+public extension CreateComponentEnvironment {
     static let failing = Self(
         componentClient: .failing,
         mainQueue: .failing,
@@ -161,7 +210,7 @@ private let reducer = CreateComponentReducer
 }
 .binding()
 
-let addComponentReducer: CreateComponentReducer = .combine(
+public let addComponentReducer: CreateComponentReducer = .combine(
     mileagePickerReducer
         .optional()
         .pullback(
@@ -184,18 +233,18 @@ let addComponentReducer: CreateComponentReducer = .combine(
     reducer
 )
 
-struct CreateComponentView: View {
+public struct CreateComponentView: View {
     let store: Store<CreateComponentState, CreateComponentAction>
     @ObservedObject var viewStore: ViewStore<CreateComponentState, CreateComponentAction>
     
-    init(
+    public init(
         store: Store<CreateComponentState, CreateComponentAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section {
                 

@@ -3,41 +3,55 @@ import ComposableArchitecture
 import Models
 import MileageScaleFeature
 
-typealias ComponentSelectorReducer = Reducer<ComponentSelectorState, ComponentSelectorAction, ComponentSelectorEnvironment>
+public typealias ComponentSelectorReducer = Reducer<ComponentSelectorState, ComponentSelectorAction, ComponentSelectorEnvironment>
 
-struct ComponentSelectorState: Equatable {
-    var components: [Component] = [
-        .shimanoSLXBrakes,
-        .shimanoXLTBrakeRotor,
-        .racefaceCogsette,
-        .wtbFrontWheelSet,
-        .yeti165Frame,
-        .racefaceCarbon69Handlebars
-    ]
+public struct ComponentSelectorState: Equatable {
+    public init(
+        components: [Component] = [
+            .shimanoSLXBrakes,
+            .shimanoXLTBrakeRotor,
+            .racefaceCogsette,
+            .wtbFrontWheelSet,
+            .yeti165Frame,
+            .racefaceCarbon69Handlebars
+        ],
+        selectedComponents: [UUID : Component] = [Component.racefaceCarbon69Handlebars.id: .racefaceCarbon69Handlebars],
+        filteredComponents: [Component] = [
+            .shimanoSLXBrakes,
+            .shimanoXLTBrakeRotor,
+            .racefaceCogsette,
+            .wtbFrontWheelSet,
+            .yeti165Frame,
+            .racefaceCarbon69Handlebars
+        ],
+        filterQuery: String = "",
+        distanceUnit: DistanceUnit = .miles
+    ) {
+        self.components = components
+        self.selectedComponents = selectedComponents
+        self.filteredComponents = filteredComponents
+        self.filterQuery = filterQuery
+        self.distanceUnit = distanceUnit
+    }
     
-    var selectedComponents: [UUID: Component] = [Component.racefaceCarbon69Handlebars.id: .racefaceCarbon69Handlebars]
-
-    var filteredComponents: [Component] = [
-        .shimanoSLXBrakes,
-        .shimanoXLTBrakeRotor,
-        .racefaceCogsette,
-        .wtbFrontWheelSet,
-        .yeti165Frame,
-        .racefaceCarbon69Handlebars
-    ]
+    public var components: [Component]
+    public var selectedComponents: [UUID: Component]
+    public var filteredComponents: [Component]
     
-    @BindableState var filterQuery = ""
-    var distanceUnit: DistanceUnit = .miles
+    @BindableState public var filterQuery = ""
+    public var distanceUnit: DistanceUnit = .miles
 }
 
-enum ComponentSelectorAction: Equatable, BindableAction {
+public enum ComponentSelectorAction: Equatable, BindableAction {
     case binding(BindingAction<ComponentSelectorState>)
     case didSelect(component: Component)
 }
 
-struct ComponentSelectorEnvironment {}
+public struct ComponentSelectorEnvironment {
+    public init() {}
+}
 
-let componentSelectorReducer = ComponentSelectorReducer
+public let componentSelectorReducer = ComponentSelectorReducer
 { state, action, environment in
     switch action {
     case let .didSelect(component):
@@ -109,18 +123,18 @@ struct ComponentSelectorRow: View {
     }
 }
 
-struct ComponentSelectorView: View {
+public struct ComponentSelectorView: View {
     let store: Store<ComponentSelectorState, ComponentSelectorAction>
     @ObservedObject var viewStore: ViewStore<ComponentSelectorState, ComponentSelectorAction>
     
-    init(
+    public init(
         store: Store<ComponentSelectorState, ComponentSelectorAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section(
                 header: Text("Some maintenance affects multiple components. Select all that may be affected.")

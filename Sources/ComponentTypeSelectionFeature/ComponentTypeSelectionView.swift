@@ -2,18 +2,28 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 
-struct ComponentTypeSelectionState: Equatable {
-    var selectedComponentType: ComponentType? = nil
-    var components: [ComponentType] = ComponentType.allCases
+public struct ComponentTypeSelectionState: Equatable {
+    public init(
+        selectedComponentType: ComponentType? = nil,
+        components: [ComponentType] = ComponentType.allCases
+    ) {
+        self.selectedComponentType = selectedComponentType
+        self.components = components
+    }
+    
+    public var selectedComponentType: ComponentType? = nil
+    public var components: [ComponentType] = ComponentType.allCases
 }
 
-enum ComponentTypeSelectionAction: Equatable {
+public enum ComponentTypeSelectionAction: Equatable {
     case didSelect(ComponentType)
 }
 
-struct ComponentTypeSelectionEnvironment {}
+public struct ComponentTypeSelectionEnvironment {
+    public init() {}
+}
 
-let componentTypeSelectionReducer: Reducer<ComponentTypeSelectionState, ComponentTypeSelectionAction, ComponentTypeSelectionEnvironment> = Reducer { state, action, environment in
+public let componentTypeSelectionReducer: Reducer<ComponentTypeSelectionState, ComponentTypeSelectionAction, ComponentTypeSelectionEnvironment> = Reducer { state, action, environment in
     switch action {
     case let .didSelect(component):
         state.selectedComponentType = component
@@ -21,19 +31,19 @@ let componentTypeSelectionReducer: Reducer<ComponentTypeSelectionState, Componen
     }
 }
 
-struct ComponentTypeSelectionView: View {
+public struct ComponentTypeSelectionView: View {
     
     let store: Store<ComponentTypeSelectionState, ComponentTypeSelectionAction>
     @ObservedObject var viewStore: ViewStore<ComponentTypeSelectionState, ComponentTypeSelectionAction>
     
-    init(
+    public init(
         store: Store<ComponentTypeSelectionState, ComponentTypeSelectionAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List(viewStore.components) { component in
             Button(action: { viewStore.send(.didSelect(component)) }) {
                 HStack {

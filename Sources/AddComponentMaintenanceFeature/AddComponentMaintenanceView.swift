@@ -4,30 +4,46 @@ import Models
 import World
 import MaintenanceClient
 import ComponentClient
+import ComponentSelectorFeature
 
-typealias ComponentMaintenanceReducer = Reducer<AddComponentMaintenanceState, AddComponentMaintenanceAction, AddComponentMaintenenanceEnvironment>
+public typealias ComponentMaintenanceReducer = Reducer<AddComponentMaintenanceState, AddComponentMaintenanceAction, AddComponentMaintenenanceEnvironment>
 
-struct AddComponentMaintenanceState: Equatable {
-    var components: [Component] = [
-        .shimanoSLXBrakes,
-        .shimanoXLTBrakeRotor,
-        .racefaceCogsette,
-        .wtbFrontWheelSet,
-        .yeti165Frame,
-        .racefaceCarbon69Handlebars
-    ]
+public struct AddComponentMaintenanceState: Equatable {
+    public init(
+        components: [Component] = [
+            .shimanoSLXBrakes,
+            .shimanoXLTBrakeRotor,
+            .racefaceCogsette,
+            .wtbFrontWheelSet,
+            .yeti165Frame,
+            .racefaceCarbon69Handlebars
+        ],
+        selectedComponents: [UUID : Component] = [Component.racefaceCarbon69Handlebars.id: .racefaceCarbon69Handlebars],
+        description: String = "",
+        serviceDate: Date = Current.date(),
+        isCustomDate: Bool = false,
+        alert: AlertState<AddComponentMaintenanceAction>? = nil,
+        isSelectedComponentsNavigationActive: Bool = false,
+        distanceUnit: DistanceUnit = .miles
+    ) {
+        self.components = components
+        self.selectedComponents = selectedComponents
+        self.isSelectedComponentsNavigationActive = isSelectedComponentsNavigationActive
+        self.distanceUnit = distanceUnit
+    }
     
-    var selectedComponents: [UUID: Component] = [Component.racefaceCarbon69Handlebars.id: .racefaceCarbon69Handlebars]
+    public var components: [Component]
+    public var selectedComponents: [UUID: Component]
     
-    @BindableState var description: String = ""
-    @BindableState var serviceDate: Date = Current.date()
-    @BindableState var isCustomDate = false
-    @BindableState var alert: AlertState<AddComponentMaintenanceAction>?
+    @BindableState public var description: String = ""
+    @BindableState public var serviceDate: Date = Current.date()
+    @BindableState public var isCustomDate = false
+    @BindableState public var alert: AlertState<AddComponentMaintenanceAction>?
 
-    var isSelectedComponentsNavigationActive = false
-    var distanceUnit: DistanceUnit = .miles
+    public var isSelectedComponentsNavigationActive = false
+    public var distanceUnit: DistanceUnit = .miles
     
-    var componentSelectorState: ComponentSelectorState {
+    public var componentSelectorState: ComponentSelectorState {
         get {
             return ComponentSelectorState(
                 components: self.components,
@@ -40,7 +56,7 @@ struct AddComponentMaintenanceState: Equatable {
         }
     }
     
-    var serviceDateText: String {
+    public var serviceDateText: String {
         if Date.isToday(serviceDate) {
             return "Today"
         } else {
@@ -52,7 +68,7 @@ struct AddComponentMaintenanceState: Equatable {
     fileprivate let mileageAdjustment: Int = 0
 }
 
-enum AddComponentMaintenanceAction: Equatable, BindableAction {
+public enum AddComponentMaintenanceAction: Equatable, BindableAction {
     case binding(BindingAction<AddComponentMaintenanceState>)
     case didSelect(component: Component)
     case setSelectComponentsNavigationActive(isActive: Bool)
@@ -64,12 +80,26 @@ enum AddComponentMaintenanceAction: Equatable, BindableAction {
     case serviceComponentsUpdateResponse(Result<[Component], ComponentClient.Failure>)
 }
 
-struct AddComponentMaintenenanceEnvironment {
-    var maintenanceClient: MaintenanceClient = .noop
-    var componentClient: ComponentClient = .noop
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = Current.date
-    var uuid: () -> UUID = Current.uuid
+public struct AddComponentMaintenenanceEnvironment {
+    public init(
+        maintenanceClient: MaintenanceClient = .noop,
+        componentClient: ComponentClient = .noop,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        date: @escaping () -> Date = Current.date,
+        uuid: @escaping () -> UUID = Current.uuid
+    ) {
+        self.maintenanceClient = maintenanceClient
+        self.componentClient = componentClient
+        self.mainQueue = mainQueue
+        self.date = date
+        self.uuid = uuid
+    }
+    
+    public var maintenanceClient: MaintenanceClient = .noop
+    public var componentClient: ComponentClient = .noop
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    public var date: () -> Date = Current.date
+    public var uuid: () -> UUID = Current.uuid
 }
 
 private let reducer = ComponentMaintenanceReducer
@@ -160,7 +190,7 @@ private let reducer = ComponentMaintenanceReducer
 }
 .binding()
 
-let addComponentMaintenanceReducer = ComponentMaintenanceReducer.combine(
+public let addComponentMaintenanceReducer = ComponentMaintenanceReducer.combine(
     componentSelectorReducer
         .pullback(
             state: \.componentSelectorState,
@@ -170,18 +200,18 @@ let addComponentMaintenanceReducer = ComponentMaintenanceReducer.combine(
     reducer
 )
 
-struct AddComponentMaintenanceView: View {
+public struct AddComponentMaintenanceView: View {
     let store: Store<AddComponentMaintenanceState, AddComponentMaintenanceAction>
     @ObservedObject var viewStore: ViewStore<AddComponentMaintenanceState, AddComponentMaintenanceAction>
     
-    init(
+    public init(
         store: Store<AddComponentMaintenanceState, AddComponentMaintenanceAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         Form {
             Section {
                 HStack {
