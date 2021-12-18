@@ -1,5 +1,6 @@
 import SwiftUI
 import ComposableArchitecture
+import Style
 
 typealias SignUpReducer = Reducer<SignUpState, SignUpAction, SignUpEnvironment>
 

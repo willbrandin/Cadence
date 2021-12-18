@@ -1,9 +1,16 @@
+import CloudKitClient
 import SwiftUI
 import ComposableArchitecture
+import ComposableHelpers
 import FileClient
 import EmailClient
 import Models
 import MileageClient
+import UserDefaultsClient
+import StoreKitClient
+import ShareSheetClient
+import UIApplicationClient
+import UIUserInterfaceStyleClient
 
 struct UserSettings: Codable, Equatable {
     var colorScheme: ColorScheme

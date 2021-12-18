@@ -4,7 +4,6 @@ import Models
 import BrandListFeature
 import BrandClient
 import ComponentClient
-import MileageClient
 import World
 
 typealias CreateComponentReducer = Reducer<CreateComponentState, CreateComponentAction, CreateComponentEnvironment>

@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct PrimaryButtonStyle: ButtonStyle {
+public struct PrimaryButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) var colorScheme
     
-    func makeBody(configuration: Self.Configuration) -> some View {
+    public init() {}
+    
+    public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(.title3, design: .default).bold())
             .foregroundColor(colorScheme == .dark ? .black : .white)

@@ -13,8 +13,8 @@ public struct UIApplicationClient {
 }
 
 @available(iOSApplicationExtension, unavailable)
-extension UIApplicationClient {
-    public static let live = Self(
+public extension UIApplicationClient {
+    static let live = Self(
         exit: {
             .fireAndForget {
                 assertionFailure("Application did Exit.")
@@ -45,9 +45,9 @@ extension UIApplicationClient {
     )
 }
 
-extension UIApplicationClient {
+public extension UIApplicationClient {
 #if DEBUG
-    public static let failing = Self(
+    static let failing = Self(
         exit: {
             return .failing("\(Self.self).exit is unimplemented")
         },
@@ -68,7 +68,7 @@ extension UIApplicationClient {
     )
 #endif
     
-    public static let noop = Self(
+    static let noop = Self(
         exit: { .none },
         alternateIconName: { nil },
         open: { _, _ in .none },

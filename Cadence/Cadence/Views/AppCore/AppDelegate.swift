@@ -1,6 +1,7 @@
 import UIKit
 import ComposableArchitecture
 import FileClient
+import UIUserInterfaceStyleClient
 
 typealias AppDelegateReducer = Reducer<UserSettings, AppDelegateAction, AppDelegateEnvironment>
 

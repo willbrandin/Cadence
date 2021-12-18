@@ -3,7 +3,8 @@ import ComposableArchitecture
 import ComponentClient
 import MaintenanceClient
 import Models
-import MileageClient
+import Style
+import SwiftUIHelpers
 
 typealias ComponentDetailReducer = Reducer<ComponentDetailState, ComponentDetailAction, ComponentDetailEnvironment>
 

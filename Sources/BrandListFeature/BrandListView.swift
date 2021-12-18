@@ -13,7 +13,14 @@ public enum BrandListContext: Int, Equatable {
 }
 
 public struct BrandListState: Equatable {
-    public init(brandContext: BrandListContext = .both, brands: [Brand] = [], filteredBrands: [Brand] = [], isBrandRequestInFlight: Bool = false, selectedBrand: Brand? = nil, isAddAccountBrandNavigation: Bool = false) {
+    public init(
+        brandContext: BrandListContext = .both,
+        brands: [Brand] = [],
+        filteredBrands: [Brand] = [],
+        isBrandRequestInFlight: Bool = false,
+        selectedBrand: Brand? = nil,
+        isAddAccountBrandNavigation: Bool = false
+    ) {
         self.brandContext = brandContext
         self.brands = brands
         self.filteredBrands = filteredBrands
@@ -41,7 +48,10 @@ public enum BrandListAction: Equatable, BindableAction {
 }
 
 public struct BrandListEnvironment {
-    public init(brandClient: BrandClient = .live, mainQueue: AnySchedulerOf<DispatchQueue> = .main) {
+    public init(
+        brandClient: BrandClient = .mocked,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    ) {
         self.brandClient = brandClient
         self.mainQueue = mainQueue
     }

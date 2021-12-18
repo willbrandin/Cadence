@@ -5,17 +5,29 @@ import Models
 
 typealias SaveNewBikeReducer = Reducer<SaveNewBikeState, SaveNewBikeAction, SaveNewBikeEnvironment>
 
-struct SaveNewBikeState: Equatable {
-    var bikeType: BikeType = BikeType.mountain
-    var bikeBrand: Brand = .yeti
-    var mileage: Mileage = .base
-    var isSaveBikeRequestInFlight = false
+public struct SaveNewBikeState: Equatable {
+    public init(
+        bikeType: BikeType = BikeType.mountain,
+        bikeBrand: Brand = .yeti,
+        mileage: Mileage = .base,
+        isSaveBikeRequestInFlight: Bool = false
+    ) {
+        self.bikeType = bikeType
+        self.bikeBrand = bikeBrand
+        self.mileage = mileage
+        self.isSaveBikeRequestInFlight = isSaveBikeRequestInFlight
+    }
     
-    @BindableState var bikeName: String = ""
-    @BindableState var alert: AlertState<SaveNewBikeAction>?
+    public var bikeType: BikeType = BikeType.mountain
+    public var bikeBrand: Brand = .yeti
+    public var mileage: Mileage = .base
+    public var isSaveBikeRequestInFlight = false
+    
+    @BindableState public var bikeName: String = ""
+    @BindableState public var alert: AlertState<SaveNewBikeAction>?
 }
 
-enum SaveNewBikeAction: Equatable, BindableAction {
+public enum SaveNewBikeAction: Equatable, BindableAction {
     case binding(BindingAction<SaveNewBikeState>)
     case saveBike
     case saveBikeResponse(Result<Bike, BikeClient.Failure>)
@@ -24,13 +36,23 @@ enum SaveNewBikeAction: Equatable, BindableAction {
     case alertDismissed
 }
 
-struct SaveNewBikeEnvironment {
-    var bikeClient: BikeClient = .mocked
-    var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var uuid: () -> UUID = { .init() }
+public struct SaveNewBikeEnvironment {
+    public init(
+        bikeClient: BikeClient = .mocked,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        uuid: @escaping () -> UUID = { .init() }
+    ) {
+        self.bikeClient = bikeClient
+        self.mainQueue = mainQueue
+        self.uuid = uuid
+    }
+    
+    public var bikeClient: BikeClient = .mocked
+    public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
+    public var uuid: () -> UUID = { .init() }
 }
 
-let saveNewBikeReducer = SaveNewBikeReducer
+public let saveNewBikeReducer = SaveNewBikeReducer
 { state, action, environment in
     switch action {
     case let .saveBikeResponse(.success(bike)):
@@ -76,18 +98,18 @@ let saveNewBikeReducer = SaveNewBikeReducer
 }
 .binding()
 
-struct SaveNewBikeView: View {
+public struct SaveNewBikeView: View {
     let store: Store<SaveNewBikeState, SaveNewBikeAction>
     @ObservedObject var viewStore: ViewStore<SaveNewBikeState, SaveNewBikeAction>
     
-    init(
+    public init(
         store: Store<SaveNewBikeState, SaveNewBikeAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             Section(footer: Text("Give your bike a name.")) {
                 TextField(

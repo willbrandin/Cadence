@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE0A188327444C1500A9860A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0A188227444C1500A9860A /* CloudKit.framework */; };
-		CE0A1887274452B300A9860A /* CloudKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1886274452B300A9860A /* CloudKitClient.swift */; };
 		CE0FA43526DA916100414628 /* CadenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FA43426DA916100414628 /* CadenceApp.swift */; };
 		CE0FA43926DA916100414628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43826DA916100414628 /* Assets.xcassets */; };
 		CE0FA43C26DA916100414628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43B26DA916100414628 /* Preview Assets.xcassets */; };
@@ -17,25 +16,13 @@
 		CE18B3CB26DAE96100DFF70F /* CreateComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CA26DAE96100DFF70F /* CreateComponentView.swift */; };
 		CE18B3CD26DAF6E200DFF70F /* BikeComponentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CC26DAF6E200DFF70F /* BikeComponentListView.swift */; };
 		CE18B3CF26DB2E6000DFF70F /* ComponentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CE26DB2E6000DFF70F /* ComponentDetailView.swift */; };
-		CE18B3D626DC057600DFF70F /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3D526DC057600DFF70F /* PrimaryButtonStyle.swift */; };
-		CE18B3D826DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3D726DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift */; };
 		CE18B3DA26DC523C00DFF70F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3D926DC523C00DFF70F /* HomeView.swift */; };
 		CE1A954C26E2A24000BB3441 /* StoreJsonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A954B26E2A24000BB3441 /* StoreJsonView.swift */; };
-		CE1A955126E2AA2300BB3441 /* UserDefaultsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955026E2AA2300BB3441 /* UserDefaultsClient.swift */; };
-		CE1A955326E2AA5200BB3441 /* UserDefaultsClient+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955226E2AA5200BB3441 /* UserDefaultsClient+Live.swift */; };
-		CE1A955526E2AA6800BB3441 /* UserDefaultsClient+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955426E2AA6800BB3441 /* UserDefaultsClient+Mocks.swift */; };
 		CE1A955826E2C18800BB3441 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955726E2C18800BB3441 /* AppCore.swift */; };
 		CE1A955C26E2C96400BB3441 /* MileageAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955B26E2C96400BB3441 /* MileageAnimationView.swift */; };
-		CE1A955E26E2D00E00BB3441 /* Effect+Keyframes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955D26E2D00E00BB3441 /* Effect+Keyframes.swift */; };
 		CE1A956026E2DB7A00BB3441 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A955F26E2DB7A00BB3441 /* OnboardingPageView.swift */; };
 		CE1A956326E42A4A00BB3441 /* BikeComponentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A956226E42A4A00BB3441 /* BikeComponentRow.swift */; };
 		CE1A956826E55D7900BB3441 /* CDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A956726E55D7900BB3441 /* CDTextField.swift */; };
-		CE1D416826E577830079563F /* View+Synchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D416726E577830079563F /* View+Synchronize.swift */; };
-		CE224F3C2727A2ED009C1168 /* StoreKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE224F3B2727A2ED009C1168 /* StoreKitClient.swift */; };
-		CE224F402727A64D009C1168 /* ShareSheetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE224F3F2727A64D009C1168 /* ShareSheetClient.swift */; };
-		CE28E29D26F58B8E001DE2BD /* ManagedObject+CadenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E29C26F58B8E001DE2BD /* ManagedObject+CadenceModels.swift */; };
-		CE28E29F26F81CB9001DE2BD /* BikeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E29E26F81CB9001DE2BD /* BikeClient.swift */; };
-		CE28E2A126F82092001DE2BD /* ComponentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28E2A026F82092001DE2BD /* ComponentClient.swift */; };
 		CE2AA73C26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA73B26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift */; };
 		CE2AA74B26ECF79A00AF26A8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = CE2AA74A26ECF79A00AF26A8 /* SnapshotTesting */; };
 		CE2AA74D26ECF7CD00AF26A8 /* AppCoreViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */; };
@@ -68,15 +55,8 @@
 		CE2AA79A26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */; };
 		CE2AA79D26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA79C26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift */; };
 		CE2AA79F26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA79E26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift */; };
-		CE2AA7A226ED9FDF00AF26A8 /* AddBikeFlowFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA7A126ED9FDF00AF26A8 /* AddBikeFlowFeatureTests.swift */; };
 		CE2AA7A526EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA7A426EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift */; };
-		CE2BFD6D26DF0D5000037E07 /* Date+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BFD6C26DF0D5000037E07 /* Date+Init.swift */; };
 		CE2E41A7270B508B00BEA5E4 /* AddRideFlowRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E41A6270B508B00BEA5E4 /* AddRideFlowRootView.swift */; };
-		CE2E41B0270B99C900BEA5E4 /* RideClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E41AF270B99C900BEA5E4 /* RideClient.swift */; };
-		CE2FFA4826DD8B7F00115171 /* AddBikeFlowRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4726DD8B7F00115171 /* AddBikeFlowRoot.swift */; };
-		CE2FFA4A26DD924800115171 /* Binding+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4926DD924800115171 /* Binding+RemoveDuplicates.swift */; };
-		CE2FFA4D26DDD5A900115171 /* Reducer+OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */; };
-		CE2FFA4F26DDD6A700115171 /* SaveNewBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4E26DDD6A700115171 /* SaveNewBikeView.swift */; };
 		CE2FFA5226DE984000115171 /* AddComponentFlowRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA5126DE984000115171 /* AddComponentFlowRoot.swift */; };
 		CE39F83B27062D6C00D2E8C5 /* appicon-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39F82F27062D6C00D2E8C5 /* appicon-3@3x.png */; };
 		CE39F83D27062D6C00D2E8C5 /* appicon-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39F83127062D6C00D2E8C5 /* appicon-3@2x.png */; };
@@ -94,12 +74,8 @@
 		CE6FA43026F175FA00CAF40A /* ComponentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA42F26F175FA00CAF40A /* ComponentSelectorView.swift */; };
 		CE74811626F38A7700DE5BA9 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74811526F38A7700DE5BA9 /* AppEnvironment.swift */; };
 		CE74811826F38AA200DE5BA9 /* AppCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74811726F38AA200DE5BA9 /* AppCoreView.swift */; };
-		CE83C82726E053CA000E4CA5 /* AdaptiveSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82626E053CA000E4CA5 /* AdaptiveSize.swift */; };
-		CE83C82926E05409000E4CA5 /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82826E05409000E4CA5 /* DeviceState.swift */; };
 		CE8D423C26EE48820034A4B2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D423B26EE48820034A4B2 /* SettingsView.swift */; };
-		CE8D423F26EE4C100034A4B2 /* UIApplicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D423E26EE4C100034A4B2 /* UIApplicationClient.swift */; };
 		CE8D424226EE50D80034A4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D424126EE50D80034A4B2 /* AppDelegate.swift */; };
-		CE8D424426EE63C60034A4B2 /* UIUserInterfaceStyleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D424326EE63C60034A4B2 /* UIUserInterfaceStyleClient.swift */; };
 		CE8D424626EEAAE10034A4B2 /* ColorSchemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D424526EEAAE10034A4B2 /* ColorSchemePickerView.swift */; };
 		CE8D424926EEAC5E0034A4B2 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D424826EEAC5E0034A4B2 /* DistanceUnit.swift */; };
 		CE8D424B26EEAC720034A4B2 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D424A26EEAC720034A4B2 /* AppIcon.swift */; };
@@ -117,9 +93,7 @@
 		CE8D426C26EFD76A0034A4B2 /* DistanceConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D426B26EFD76A0034A4B2 /* DistanceConversionTests.swift */; };
 		CEA919BB26DADE0700963EAE /* ComponentGroupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA919BA26DADE0700963EAE /* ComponentGroupSelectionView.swift */; };
 		CEA919BF26DAE75500963EAE /* ComponentTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA919BE26DAE75500963EAE /* ComponentTypeSelectionView.swift */; };
-		CEA919C126DAE7FC00963EAE /* BikeTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA919C026DAE7FC00963EAE /* BikeTypeSelectionView.swift */; };
 		CEB4898426EAE57800540A42 /* BikeComponentFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */; };
-		CEBA37EC2703A660001B647B /* MaintenanceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA37EB2703A660001B647B /* MaintenanceClient.swift */; };
 		CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA37F72704E8CE001B647B /* EditBikeView.swift */; };
 		CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE64AE276D4142007CAF57 /* FileClient+UserSettings.swift */; };
 		CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64B0276D5560007CAF57 /* AppFeature */; };
@@ -139,9 +113,6 @@
 		CEF80DD726F0392500D2E5E9 /* MileagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DD626F0392500D2E5E9 /* MileagePickerView.swift */; };
 		CEFEDD1A26F4117A00999416 /* Data+JSONPrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD1926F4117A00999416 /* Data+JSONPrettyPrint.swift */; };
 		CEFEDD1C26F4118700999416 /* Encodable+ToJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD1B26F4118700999416 /* Encodable+ToJsonData.swift */; };
-		CEFEDD1F26F52EC500999416 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD1E26F52E4100999416 /* Persistance.swift */; };
-		CEFEDD2226F531CA00999416 /* Cadence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD2026F531CA00999416 /* Cadence.xcdatamodeld */; };
-		CEFEDD2426F57FAD00999416 /* MileageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEDD2326F57FAD00999416 /* MileageClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,7 +142,6 @@
 /* Begin PBXFileReference section */
 		CE0A188227444C1500A9860A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CE0A188527444DEE00A9860A /* Cadence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cadence.entitlements; sourceTree = "<group>"; };
-		CE0A1886274452B300A9860A /* CloudKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitClient.swift; sourceTree = "<group>"; };
 		CE0FA43126DA916100414628 /* Cadence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cadence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0FA43426DA916100414628 /* CadenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadenceApp.swift; sourceTree = "<group>"; };
 		CE0FA43826DA916100414628 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,25 +154,13 @@
 		CE18B3CA26DAE96100DFF70F /* CreateComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateComponentView.swift; sourceTree = "<group>"; };
 		CE18B3CC26DAF6E200DFF70F /* BikeComponentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentListView.swift; sourceTree = "<group>"; };
 		CE18B3CE26DB2E6000DFF70F /* ComponentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailView.swift; sourceTree = "<group>"; };
-		CE18B3D526DC057600DFF70F /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
-		CE18B3D726DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryOutlineButtonStyle.swift; sourceTree = "<group>"; };
 		CE18B3D926DC523C00DFF70F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CE1A954B26E2A24000BB3441 /* StoreJsonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreJsonView.swift; sourceTree = "<group>"; };
-		CE1A955026E2AA2300BB3441 /* UserDefaultsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsClient.swift; sourceTree = "<group>"; };
-		CE1A955226E2AA5200BB3441 /* UserDefaultsClient+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsClient+Live.swift"; sourceTree = "<group>"; };
-		CE1A955426E2AA6800BB3441 /* UserDefaultsClient+Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsClient+Mocks.swift"; sourceTree = "<group>"; };
 		CE1A955726E2C18800BB3441 /* AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		CE1A955B26E2C96400BB3441 /* MileageAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageAnimationView.swift; sourceTree = "<group>"; };
-		CE1A955D26E2D00E00BB3441 /* Effect+Keyframes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Keyframes.swift"; sourceTree = "<group>"; };
 		CE1A955F26E2DB7A00BB3441 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		CE1A956226E42A4A00BB3441 /* BikeComponentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentRow.swift; sourceTree = "<group>"; };
 		CE1A956726E55D7900BB3441 /* CDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDTextField.swift; sourceTree = "<group>"; };
-		CE1D416726E577830079563F /* View+Synchronize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Synchronize.swift"; sourceTree = "<group>"; };
-		CE224F3B2727A2ED009C1168 /* StoreKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitClient.swift; sourceTree = "<group>"; };
-		CE224F3F2727A64D009C1168 /* ShareSheetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetClient.swift; sourceTree = "<group>"; };
-		CE28E29C26F58B8E001DE2BD /* ManagedObject+CadenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedObject+CadenceModels.swift"; sourceTree = "<group>"; };
-		CE28E29E26F81CB9001DE2BD /* BikeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeClient.swift; sourceTree = "<group>"; };
-		CE28E2A026F82092001DE2BD /* ComponentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentClient.swift; sourceTree = "<group>"; };
 		CE2AA73B26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageAnimationFeatureTests.swift; sourceTree = "<group>"; };
 		CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
@@ -227,15 +185,8 @@
 		CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationRecommended.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE2AA79C26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowFeatureTests.swift; sourceTree = "<group>"; };
 		CE2AA79E26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA7A126ED9FDF00AF26A8 /* AddBikeFlowFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBikeFlowFeatureTests.swift; sourceTree = "<group>"; };
 		CE2AA7A426EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentFlowFeatureTests.swift; sourceTree = "<group>"; };
-		CE2BFD6C26DF0D5000037E07 /* Date+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Init.swift"; sourceTree = "<group>"; };
 		CE2E41A6270B508B00BEA5E4 /* AddRideFlowRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRideFlowRootView.swift; sourceTree = "<group>"; };
-		CE2E41AF270B99C900BEA5E4 /* RideClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideClient.swift; sourceTree = "<group>"; };
-		CE2FFA4726DD8B7F00115171 /* AddBikeFlowRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBikeFlowRoot.swift; sourceTree = "<group>"; };
-		CE2FFA4926DD924800115171 /* Binding+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+RemoveDuplicates.swift"; sourceTree = "<group>"; };
-		CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reducer+OnChange.swift"; sourceTree = "<group>"; };
-		CE2FFA4E26DDD6A700115171 /* SaveNewBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewBikeView.swift; sourceTree = "<group>"; };
 		CE2FFA5126DE984000115171 /* AddComponentFlowRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentFlowRoot.swift; sourceTree = "<group>"; };
 		CE39F82F27062D6C00D2E8C5 /* appicon-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-3@3x.png"; sourceTree = "<group>"; };
 		CE39F83127062D6C00D2E8C5 /* appicon-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-3@2x.png"; sourceTree = "<group>"; };
@@ -258,16 +209,12 @@
 		CE74811526F38A7700DE5BA9 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		CE74811726F38AA200DE5BA9 /* AppCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreView.swift; sourceTree = "<group>"; };
 		CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentSnapshotTests.swift; sourceTree = "<group>"; };
-		CE83C82626E053CA000E4CA5 /* AdaptiveSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveSize.swift; sourceTree = "<group>"; };
-		CE83C82826E05409000E4CA5 /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
 		CE83C82D26E0571B000E4CA5 /* AssertAppStoreSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertAppStoreSnapshot.swift; sourceTree = "<group>"; };
 		CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorePreview.swift; sourceTree = "<group>"; };
 		CE83C83126E057C7000E4CA5 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AddComponentSnapshotTests; sourceTree = "<group>"; };
 		CE8D423B26EE48820034A4B2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		CE8D423E26EE4C100034A4B2 /* UIApplicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationClient.swift; sourceTree = "<group>"; };
 		CE8D424126EE50D80034A4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE8D424326EE63C60034A4B2 /* UIUserInterfaceStyleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUserInterfaceStyleClient.swift; sourceTree = "<group>"; };
 		CE8D424526EEAAE10034A4B2 /* ColorSchemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemePickerView.swift; sourceTree = "<group>"; };
 		CE8D424826EEAC5E0034A4B2 /* DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		CE8D424A26EEAC720034A4B2 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -285,9 +232,7 @@
 		CE8D426B26EFD76A0034A4B2 /* DistanceConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceConversionTests.swift; sourceTree = "<group>"; };
 		CEA919BA26DADE0700963EAE /* ComponentGroupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentGroupSelectionView.swift; sourceTree = "<group>"; };
 		CEA919BE26DAE75500963EAE /* ComponentTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTypeSelectionView.swift; sourceTree = "<group>"; };
-		CEA919C026DAE7FC00963EAE /* BikeTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeTypeSelectionView.swift; sourceTree = "<group>"; };
 		CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentFeatureTests.swift; sourceTree = "<group>"; };
-		CEBA37EB2703A660001B647B /* MaintenanceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceClient.swift; sourceTree = "<group>"; };
 		CEBA37F72704E8CE001B647B /* EditBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBikeView.swift; sourceTree = "<group>"; };
 		CECE64AE276D4142007CAF57 /* FileClient+UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileClient+UserSettings.swift"; sourceTree = "<group>"; };
 		CEF18D1526DC7356007509C3 /* MileageScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageScaleView.swift; sourceTree = "<group>"; };
@@ -306,9 +251,6 @@
 		CEF80DD626F0392500D2E5E9 /* MileagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileagePickerView.swift; sourceTree = "<group>"; };
 		CEFEDD1926F4117A00999416 /* Data+JSONPrettyPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+JSONPrettyPrint.swift"; sourceTree = "<group>"; };
 		CEFEDD1B26F4118700999416 /* Encodable+ToJsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+ToJsonData.swift"; sourceTree = "<group>"; };
-		CEFEDD1E26F52E4100999416 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
-		CEFEDD2126F531CA00999416 /* Cadence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cadence.xcdatamodel; sourceTree = "<group>"; };
-		CEFEDD2326F57FAD00999416 /* MileageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0A188527444DEE00A9860A /* Cadence.entitlements */,
-				CE18B3D326DC056200DFF70F /* Style */,
 				CEA9196C26DA927000963EAE /* Views */,
 				CE0FA43426DA916100414628 /* CadenceApp.swift */,
 				CE39F84727062F2A00D2E8C5 /* Info.plist */,
@@ -418,41 +359,12 @@
 			path = CadenceUITests;
 			sourceTree = "<group>";
 		};
-		CE18B3D326DC056200DFF70F /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				CE18B3D426DC056800DFF70F /* ButtonStyle */,
-				CE83C82626E053CA000E4CA5 /* AdaptiveSize.swift */,
-				CE83C82826E05409000E4CA5 /* DeviceState.swift */,
-			);
-			path = Style;
-			sourceTree = "<group>";
-		};
-		CE18B3D426DC056800DFF70F /* ButtonStyle */ = {
-			isa = PBXGroup;
-			children = (
-				CE18B3D526DC057600DFF70F /* PrimaryButtonStyle.swift */,
-				CE18B3D726DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift */,
-			);
-			path = ButtonStyle;
-			sourceTree = "<group>";
-		};
 		CE1A954A26E2A1C800BB3441 /* DebugMenu */ = {
 			isa = PBXGroup;
 			children = (
 				CE1A954B26E2A24000BB3441 /* StoreJsonView.swift */,
 			);
 			path = DebugMenu;
-			sourceTree = "<group>";
-		};
-		CE1A954F26E2AA1100BB3441 /* UserDefaultsClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE1A955026E2AA2300BB3441 /* UserDefaultsClient.swift */,
-				CE1A955226E2AA5200BB3441 /* UserDefaultsClient+Live.swift */,
-				CE1A955426E2AA6800BB3441 /* UserDefaultsClient+Mocks.swift */,
-			);
-			path = UserDefaultsClient;
 			sourceTree = "<group>";
 		};
 		CE1A955626E2C16A00BB3441 /* LoginFlow */ = {
@@ -494,27 +406,9 @@
 		CE224F3927279E96009C1168 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CEF18D2326DD2F27007509C3 /* Clients */,
-				CEA9197A26DA951C00963EAE /* Models */,
 				CEF18D1E26DD2D19007509C3 /* Utility */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		CE224F3A2727A2DD009C1168 /* StoreKitClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE224F3B2727A2ED009C1168 /* StoreKitClient.swift */,
-			);
-			path = StoreKitClient;
-			sourceTree = "<group>";
-		};
-		CE224F3E2727A641009C1168 /* ShareSheetClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE224F3F2727A64D009C1168 /* ShareSheetClient.swift */,
-			);
-			path = ShareSheetClient;
 			sourceTree = "<group>";
 		};
 		CE2AA73926ECEDFC00AF26A8 /* MileageAnimationTests */ = {
@@ -624,7 +518,6 @@
 		CE2AA7A026ED9FD000AF26A8 /* AddBikeFlowTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE2AA7A126ED9FDF00AF26A8 /* AddBikeFlowFeatureTests.swift */,
 			);
 			path = AddBikeFlowTests;
 			sourceTree = "<group>";
@@ -643,16 +536,6 @@
 				CE2E41A6270B508B00BEA5E4 /* AddRideFlowRootView.swift */,
 			);
 			path = AddRideFlow;
-			sourceTree = "<group>";
-		};
-		CE2FFA4B26DDC80200115171 /* AddBikeFlow */ = {
-			isa = PBXGroup;
-			children = (
-				CE2FFA4726DD8B7F00115171 /* AddBikeFlowRoot.swift */,
-				CEA919C026DAE7FC00963EAE /* BikeTypeSelectionView.swift */,
-				CE2FFA4E26DDD6A700115171 /* SaveNewBikeView.swift */,
-			);
-			path = AddBikeFlow;
 			sourceTree = "<group>";
 		};
 		CE2FFA5026DE982E00115171 /* AddComponentFlow */ = {
@@ -743,15 +626,6 @@
 			path = AppSettings;
 			sourceTree = "<group>";
 		};
-		CE8D423D26EE4BF90034A4B2 /* UIApplicationClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D423E26EE4C100034A4B2 /* UIApplicationClient.swift */,
-				CE8D424326EE63C60034A4B2 /* UIUserInterfaceStyleClient.swift */,
-			);
-			path = UIApplicationClient;
-			sourceTree = "<group>";
-		};
 		CE8D424026EE50CD0034A4B2 /* AppCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8D424026EE50CD0034A4B2 /* AppCore */,
-				CE2FFA4B26DDC80200115171 /* AddBikeFlow */,
 				CE2FFA5026DE982E00115171 /* AddComponentFlow */,
 				CE2E41A5270B507300BEA5E4 /* AddRideFlow */,
 				CE8D423A26EE48510034A4B2 /* AppSettings */,
@@ -850,13 +723,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEA9197A26DA951C00963EAE /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		CEB4898226EAE56600540A42 /* BikeComponentTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,28 +742,11 @@
 		CEF18D1E26DD2D19007509C3 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				CE2FFA4926DD924800115171 /* Binding+RemoveDuplicates.swift */,
 				CEFEDD1B26F4118700999416 /* Encodable+ToJsonData.swift */,
 				CEFEDD1926F4117A00999416 /* Data+JSONPrettyPrint.swift */,
 				CEF18D1F26DD2D26007509C3 /* BundleConfiguration.swift */,
-				CE2BFD6C26DF0D5000037E07 /* Date+Init.swift */,
-				CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */,
-				CE1A955D26E2D00E00BB3441 /* Effect+Keyframes.swift */,
-				CE1D416726E577830079563F /* View+Synchronize.swift */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		CEF18D2326DD2F27007509C3 /* Clients */ = {
-			isa = PBXGroup;
-			children = (
-				CE224F3E2727A641009C1168 /* ShareSheetClient */,
-				CE224F3A2727A2DD009C1168 /* StoreKitClient */,
-				CEFEDD1D26F52E0A00999416 /* Persistance */,
-				CE8D423D26EE4BF90034A4B2 /* UIApplicationClient */,
-				CE1A954F26E2AA1100BB3441 /* UserDefaultsClient */,
-			);
-			path = Clients;
 			sourceTree = "<group>";
 		};
 		CEF80DBA26F0313E00D2E5E9 /* TypeSelectionViewTests */ = {
@@ -954,22 +803,6 @@
 				CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */,
 			);
 			path = ComponentDetailViewTests;
-			sourceTree = "<group>";
-		};
-		CEFEDD1D26F52E0A00999416 /* Persistance */ = {
-			isa = PBXGroup;
-			children = (
-				CEFEDD2026F531CA00999416 /* Cadence.xcdatamodeld */,
-				CE28E29E26F81CB9001DE2BD /* BikeClient.swift */,
-				CE28E2A026F82092001DE2BD /* ComponentClient.swift */,
-				CE28E29C26F58B8E001DE2BD /* ManagedObject+CadenceModels.swift */,
-				CEFEDD2326F57FAD00999416 /* MileageClient.swift */,
-				CEBA37EB2703A660001B647B /* MaintenanceClient.swift */,
-				CEFEDD1E26F52E4100999416 /* Persistance.swift */,
-				CE2E41AF270B99C900BEA5E4 /* RideClient.swift */,
-				CE0A1886274452B300A9860A /* CloudKitClient.swift */,
-			);
-			path = Persistance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1181,71 +1014,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE2E41B0270B99C900BEA5E4 /* RideClient.swift in Sources */,
 				CE5C4E50273DB14500F9C94A /* WebView.swift in Sources */,
-				CE2FFA4D26DDD5A900115171 /* Reducer+OnChange.swift in Sources */,
 				CE5C4E53273DB23A00F9C94A /* PrivacyPolicyView.swift in Sources */,
 				CE8D424F26EEAEE20034A4B2 /* DistanceUnitPickerView.swift in Sources */,
 				CE6FA43026F175FA00CAF40A /* ComponentSelectorView.swift in Sources */,
 				CE6FA42E26F165A100CAF40A /* AddComponentMaintenanceView.swift in Sources */,
 				CE1A954C26E2A24000BB3441 /* StoreJsonView.swift in Sources */,
 				CE18B3CB26DAE96100DFF70F /* CreateComponentView.swift in Sources */,
-				CEBA37EC2703A660001B647B /* MaintenanceClient.swift in Sources */,
-				CE8D423F26EE4C100034A4B2 /* UIApplicationClient.swift in Sources */,
 				CE2FFA5226DE984000115171 /* AddComponentFlowRoot.swift in Sources */,
 				CE74811626F38A7700DE5BA9 /* AppEnvironment.swift in Sources */,
 				CE10779527431541003867B6 /* TermsAndConditionsView.swift in Sources */,
 				CE39F84B27067DC100D2E8C5 /* SignUpView.swift in Sources */,
 				CE1A956026E2DB7A00BB3441 /* OnboardingPageView.swift in Sources */,
-				CE0A1887274452B300A9860A /* CloudKitClient.swift in Sources */,
 				CE1A955826E2C18800BB3441 /* AppCore.swift in Sources */,
-				CE1D416826E577830079563F /* View+Synchronize.swift in Sources */,
 				CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */,
-				CE224F3C2727A2ED009C1168 /* StoreKitClient.swift in Sources */,
-				CE83C82926E05409000E4CA5 /* DeviceState.swift in Sources */,
-				CEFEDD2426F57FAD00999416 /* MileageClient.swift in Sources */,
 				CE8D424B26EEAC720034A4B2 /* AppIcon.swift in Sources */,
-				CE2FFA4A26DD924800115171 /* Binding+RemoveDuplicates.swift in Sources */,
-				CE28E2A126F82092001DE2BD /* ComponentClient.swift in Sources */,
 				CE18B3DA26DC523C00DFF70F /* HomeView.swift in Sources */,
-				CE8D424426EE63C60034A4B2 /* UIUserInterfaceStyleClient.swift in Sources */,
 				CE8D424226EE50D80034A4B2 /* AppDelegate.swift in Sources */,
-				CE1A955326E2AA5200BB3441 /* UserDefaultsClient+Live.swift in Sources */,
-				CE224F402727A64D009C1168 /* ShareSheetClient.swift in Sources */,
 				CE1A956826E55D7900BB3441 /* CDTextField.swift in Sources */,
 				CE8D424D26EEAC850034A4B2 /* ColorScheme.swift in Sources */,
-				CEA919C126DAE7FC00963EAE /* BikeTypeSelectionView.swift in Sources */,
-				CE1A955E26E2D00E00BB3441 /* Effect+Keyframes.swift in Sources */,
 				CEF80DD726F0392500D2E5E9 /* MileagePickerView.swift in Sources */,
-				CE28E29D26F58B8E001DE2BD /* ManagedObject+CadenceModels.swift in Sources */,
 				CEF18D2026DD2D26007509C3 /* BundleConfiguration.swift in Sources */,
 				CE1A955C26E2C96400BB3441 /* MileageAnimationView.swift in Sources */,
-				CE18B3D626DC057600DFF70F /* PrimaryButtonStyle.swift in Sources */,
 				CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */,
 				CE2E41A7270B508B00BEA5E4 /* AddRideFlowRootView.swift in Sources */,
 				CEF18D1626DC7356007509C3 /* MileageScaleView.swift in Sources */,
-				CE2FFA4F26DDD6A700115171 /* SaveNewBikeView.swift in Sources */,
 				CE1A956326E42A4A00BB3441 /* BikeComponentRow.swift in Sources */,
 				CE8D424626EEAAE10034A4B2 /* ColorSchemePickerView.swift in Sources */,
 				CEA919BB26DADE0700963EAE /* ComponentGroupSelectionView.swift in Sources */,
 				CEFEDD1C26F4118700999416 /* Encodable+ToJsonData.swift in Sources */,
 				CE8D424926EEAC5E0034A4B2 /* DistanceUnit.swift in Sources */,
-				CE2FFA4826DD8B7F00115171 /* AddBikeFlowRoot.swift in Sources */,
 				CE74811826F38AA200DE5BA9 /* AppCoreView.swift in Sources */,
-				CE1A955126E2AA2300BB3441 /* UserDefaultsClient.swift in Sources */,
 				CEA919BF26DAE75500963EAE /* ComponentTypeSelectionView.swift in Sources */,
 				CEFEDD1A26F4117A00999416 /* Data+JSONPrettyPrint.swift in Sources */,
 				CE0FA43526DA916100414628 /* CadenceApp.swift in Sources */,
 				CE18B3CF26DB2E6000DFF70F /* ComponentDetailView.swift in Sources */,
-				CE83C82726E053CA000E4CA5 /* AdaptiveSize.swift in Sources */,
 				CE18B3CD26DAF6E200DFF70F /* BikeComponentListView.swift in Sources */,
-				CE18B3D826DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift in Sources */,
-				CE28E29F26F81CB9001DE2BD /* BikeClient.swift in Sources */,
-				CEFEDD1F26F52EC500999416 /* Persistance.swift in Sources */,
-				CE1A955526E2AA6800BB3441 /* UserDefaultsClient+Mocks.swift in Sources */,
-				CEFEDD2226F531CA00999416 /* Cadence.xcdatamodeld in Sources */,
 				CE39F84927062FB500D2E8C5 /* AppIconPickerView.swift in Sources */,
-				CE2BFD6D26DF0D5000037E07 /* Date+Init.swift in Sources */,
 				CE8D423C26EE48820034A4B2 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1269,7 +1074,6 @@
 				CE8D426C26EFD76A0034A4B2 /* DistanceConversionTests.swift in Sources */,
 				CE2AA77426ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift in Sources */,
 				CE2AA77626ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift in Sources */,
-				CE2AA7A226ED9FDF00AF26A8 /* AddBikeFlowFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1713,19 +1517,6 @@
 			productName = AppFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		CEFEDD2026F531CA00999416 /* Cadence.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CEFEDD2126F531CA00999416 /* Cadence.xcdatamodel */,
-			);
-			currentVersion = CEFEDD2126F531CA00999416 /* Cadence.xcdatamodel */;
-			path = Cadence.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CE0FA42926DA916100414628 /* Project object */;
 }

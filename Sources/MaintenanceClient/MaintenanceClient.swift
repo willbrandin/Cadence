@@ -3,7 +3,7 @@ import Combine
 import Foundation
 import Models
 import World
-import ManagedObjects
+import CoreDataStack
 
 public struct MaintenanceClient {
     public struct Failure: Error, Equatable {}

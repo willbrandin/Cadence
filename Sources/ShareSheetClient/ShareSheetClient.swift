@@ -1,19 +1,12 @@
-//
-//  ShareSheetClient.swift
-//  Cadence
-//
-//  Created by William Brandin on 10/25/21.
-//
-
 import UIKit
 import ComposableArchitecture
 
-struct ShareSheetClient {
-    var present: () -> Effect<Never, Never>
+public struct ShareSheetClient {
+    public var present: () -> Effect<Never, Never>
 }
 
 // TODO: - Should this just be a SwiftUI Hosted VC that is presented?
-extension ShareSheetClient {
+public extension ShareSheetClient {
     static var live: Self = Self(
         present: {
             .fireAndForget {
@@ -31,7 +24,7 @@ extension ShareSheetClient {
     )
 }
 
-extension ShareSheetClient {
+public extension ShareSheetClient {
     static var noop: Self = Self(
         present: {
             return .none

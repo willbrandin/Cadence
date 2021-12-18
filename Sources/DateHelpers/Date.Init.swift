@@ -1,7 +1,6 @@
 import Foundation
 
 public extension Date {
-    
     static func initFromComponents(
         year: Int,
         month: Int,

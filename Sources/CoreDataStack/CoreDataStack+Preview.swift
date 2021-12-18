@@ -1,5 +1,4 @@
 import Foundation
-import CoreDataStack
 
 public extension CoreDataStack {
     static var preview: CoreDataStack = {

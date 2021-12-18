@@ -5,6 +5,8 @@ import BrandClient
 import BikeClient
 import ComponentClient
 import MaintenanceClient
+import Style
+import SwiftUIHelpers
 
 typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
 

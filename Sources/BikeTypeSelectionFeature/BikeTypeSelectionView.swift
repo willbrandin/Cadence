@@ -2,21 +2,27 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 
-typealias BikeTypeSelectionReducer = Reducer<BikeTypeSelectionState, BikeTypeSelectionAction, BikeTypeSelectionEnvironment>
+public typealias BikeTypeSelectionReducer = Reducer<BikeTypeSelectionState, BikeTypeSelectionAction, BikeTypeSelectionEnvironment>
 
-struct BikeTypeSelectionState: Equatable {
-    var selectedBikeType: BikeType? = nil
+public struct BikeTypeSelectionState: Equatable {
+    public init(selectedBikeType: BikeType? = nil) {
+        self.selectedBikeType = selectedBikeType
+    }
+    
+    public var selectedBikeType: BikeType? = nil
 }
 
-enum BikeTypeSelectionAction: Equatable {
+public enum BikeTypeSelectionAction: Equatable {
     case removeSelectedType
     case didSelect(BikeType)
 }
 
-struct BikeTypeSelectionEnvironment {}
+public struct BikeTypeSelectionEnvironment {
+    public init() {}
+}
 
-let bikeTypeSelectionReducer: BikeTypeSelectionReducer =
-Reducer { state, action, environment in
+public let bikeTypeSelectionReducer = BikeTypeSelectionReducer
+{ state, action, environment in
     switch action {
     case .removeSelectedType:
         state.selectedBikeType = nil
@@ -28,17 +34,17 @@ Reducer { state, action, environment in
     }
 }
 
-struct BikeTypeSelectionView: View {
+public struct BikeTypeSelectionView: View {
     
     let store: Store<BikeTypeSelectionState, BikeTypeSelectionAction>
     @ObservedObject var viewStore: ViewStore<BikeTypeSelectionState, BikeTypeSelectionAction>
     
-    init(store: Store<BikeTypeSelectionState, BikeTypeSelectionAction>) {
+    public init(store: Store<BikeTypeSelectionState, BikeTypeSelectionAction>) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
     
-    var body: some View {
+    public var body: some View {
         List(BikeType.allCases) { bike in
             Button(action: { viewStore.send(.didSelect(bike)) }) {
                 HStack {

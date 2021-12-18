@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension View {
+public extension View {
     /// Synchronizes a binding with a Focus State binding.
     /// Very important for syncing store Focused field state with SwiftUI FocusState.
     func synchronize<Value: Equatable>(

@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import Combine
 import Models
-import ManagedObjects
+import CoreDataStack
 import World
 
 public struct BikeClient {

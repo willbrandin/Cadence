@@ -2,7 +2,7 @@ import ComposableArchitecture
 import Combine
 import Models
 import World
-import ManagedObjects
+import CoreDataStack
 
 public struct MileageClient {
     public struct Failure: Error, Equatable {}

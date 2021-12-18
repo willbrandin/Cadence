@@ -1,6 +1,6 @@
 import ComposableArchitecture
 import Combine
-import ManagedObjects
+import CoreDataStack
 import Models
 import World
 

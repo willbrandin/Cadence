@@ -1,12 +1,12 @@
 import UIKit
 import ComposableArchitecture
 
-struct UIUserInterfaceStyleClient {
-    var setUserInterfaceStyle: (UIUserInterfaceStyle) -> Effect<Never, Never>
-    var getUserInterfaceStyle: () -> Effect<UIUserInterfaceStyle, Never>
+public struct UIUserInterfaceStyleClient {
+    public var setUserInterfaceStyle: (UIUserInterfaceStyle) -> Effect<Never, Never>
+    public var getUserInterfaceStyle: () -> Effect<UIUserInterfaceStyle, Never>
 }
 
-extension UIUserInterfaceStyleClient {
+public extension UIUserInterfaceStyleClient {
     static let noop = Self(
         setUserInterfaceStyle: { _ in .none },
         getUserInterfaceStyle: { .none }

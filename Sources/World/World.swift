@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import CoreDataStack
 
 #if DEBUG
 public var Current = World()
@@ -15,7 +14,7 @@ public struct World {
     public var timeZone = TimeZone.autoupdatingCurrent
     public var uuid: () -> UUID = { UUID() }
     // TODO: - Remove Dependency
-    public var coreDataStack: () -> CoreDataStack = { CoreDataStack.shared }
+//    public var coreDataStack: () -> CoreDataStack = { CoreDataStack.shared }
 }
 
 extension World {

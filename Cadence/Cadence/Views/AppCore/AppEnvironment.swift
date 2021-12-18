@@ -1,3 +1,4 @@
+import CloudKitClient
 import ComposableArchitecture
 import CoreDataStack
 import Foundation
@@ -10,6 +11,11 @@ import ComponentClient
 import MaintenanceClient
 import MileageClient
 import RideClient
+import UserDefaultsClient
+import StoreKitClient
+import ShareSheetClient
+import UIApplicationClient
+import UIUserInterfaceStyleClient
 
 struct AppCoreEnvironment {
     var uiApplicationClient: UIApplicationClient

@@ -1,12 +1,13 @@
 import CoreData
 import ComposableArchitecture
+import CoreDataStack
 
-struct CloudKitClient {
-    var isCloudSyncOn: () -> Bool
-    var setPersistantStore: (Bool) -> Effect<Never, Never>
+public struct CloudKitClient {
+    public var isCloudSyncOn: () -> Bool
+    public var setPersistantStore: (Bool) -> Effect<Never, Never>
 }
 
-extension CloudKitClient {
+public extension CloudKitClient {
     static var noop: Self {
         Self(
             isCloudSyncOn: { true },
@@ -15,7 +16,7 @@ extension CloudKitClient {
     }
 }
 
-extension CloudKitClient {
+public extension CloudKitClient {
     static var live: Self {
         Self(
             isCloudSyncOn: {

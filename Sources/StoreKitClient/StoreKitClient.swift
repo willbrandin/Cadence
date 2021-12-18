@@ -1,11 +1,11 @@
 import StoreKit
 import ComposableArchitecture
 
-struct StoreKitClient {
-    var requestReview: () -> Effect<Never, Never>
+public struct StoreKitClient {
+    public var requestReview: () -> Effect<Never, Never>
 }
 
-extension StoreKitClient {
+public extension StoreKitClient {
     static let live: Self = Self(
         requestReview: {
             .fireAndForget {
@@ -21,7 +21,7 @@ extension StoreKitClient {
     )
 }
 
-extension StoreKitClient {
+public extension StoreKitClient {
     static let noop: Self = Self(
         requestReview: {
             return .none

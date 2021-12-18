@@ -1,7 +1,10 @@
 import SwiftUI
 
-struct SecondaryOutlineButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
+public struct SecondaryOutlineButtonStyle: ButtonStyle {
+    
+    public init() {}
+    
+    public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(.title3, design: .default).bold())
             .foregroundColor(.primary)

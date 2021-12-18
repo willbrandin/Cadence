@@ -7,14 +7,20 @@ public class CoreDataStack {
     typealias ObjectType = NSManagedObject
     typealias PredicateType = NSPredicate
     
-    var container: NSPersistentCloudKitContainer
+    public var container: NSPersistentCloudKitContainer
     
     public var context: NSManagedObjectContext {
         return container.viewContext
     }
 
     public init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Cadence")
+        
+        let bundle = Bundle.module
+        let modelURL = bundle.url(forResource: "Cadence", withExtension: ".momd")!
+        let model = NSManagedObjectModel(contentsOf: modelURL)!
+        container = NSPersistentCloudKitContainer(name: "Cadence", managedObjectModel: model)
+
+//        container = NSPersistentCloudKitContainer(name: "Cadence")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -54,7 +60,7 @@ public class CoreDataStack {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
-    static func setupContainer(withSync iCloudSync: Bool) -> NSPersistentCloudKitContainer {
+    public static func setupContainer(withSync iCloudSync: Bool) -> NSPersistentCloudKitContainer {
         let container = NSPersistentCloudKitContainer(name: "Cadence")
        
         guard let description = container.persistentStoreDescriptions.first else {

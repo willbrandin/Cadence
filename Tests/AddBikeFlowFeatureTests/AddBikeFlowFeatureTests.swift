@@ -1,8 +1,10 @@
 import Combine
 import ComposableArchitecture
 import XCTest
+import Models
 
-@testable import Cadence
+@testable import SaveNewBikeFeature
+@testable import AddBikeFlowFeature
 
 class AddBikeFlowFeatureTests: XCTestCase {
     

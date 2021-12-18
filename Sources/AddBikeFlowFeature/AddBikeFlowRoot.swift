@@ -1,21 +1,38 @@
 import SwiftUI
 import BikeClient
 import ComposableArchitecture
+import ComposableHelpers
 import Models
 import BrandClient
 import BrandListFeature
+import SaveNewBikeFeature
+import BikeTypeSelectionFeature
+import SwiftUIHelpers
 
-typealias AddBikeFlowReducer = Reducer<AddBikeFlowState, AddBikeFlowAction, AddBikeFlowEnvironment>
+public typealias AddBikeFlowReducer = Reducer<AddBikeFlowState, AddBikeFlowAction, AddBikeFlowEnvironment>
 
-struct AddBikeFlowState: Equatable {
-    var selectedBikeType: BikeType?
+public struct AddBikeFlowState: Equatable {
+    public init(
+        selectedBikeType: BikeType? = nil,
+        isBrandNavigationActive: Bool = false,
+        brandSelectionState: BrandListState = BrandListState(brandContext: .bikes),
+        isSaveBikeNavigationActive: Bool = false,
+        saveNewBikeState: SaveNewBikeState? = nil
+    ) {
+        self.selectedBikeType = selectedBikeType
+        self.isBrandNavigationActive = isBrandNavigationActive
+        self.brandSelectionState = brandSelectionState
+        self.isSaveBikeNavigationActive = isSaveBikeNavigationActive
+        self.saveNewBikeState = saveNewBikeState
+    }
     
-    var isBrandNavigationActive = false
-    var brandSelectionState = BrandListState(brandContext: .bikes)
-    var isSaveBikeNavigationActive = false
-    var saveNewBikeState: SaveNewBikeState?
+    public var selectedBikeType: BikeType?
+    public var isBrandNavigationActive = false
+    public var brandSelectionState = BrandListState(brandContext: .bikes)
+    public var isSaveBikeNavigationActive = false
+    public var saveNewBikeState: SaveNewBikeState?
     
-    var bikeSelectionState: BikeTypeSelectionState {
+    public var bikeSelectionState: BikeTypeSelectionState {
         get {
             return BikeTypeSelectionState(selectedBikeType: selectedBikeType)
         }
@@ -26,7 +43,7 @@ struct AddBikeFlowState: Equatable {
     }
 }
 
-enum AddBikeFlowAction: Equatable {
+public enum AddBikeFlowAction: Equatable {
     case didTapCloseFlow
     case flowComplete(Bike)
     case bikeType(BikeTypeSelectionAction)
@@ -36,7 +53,19 @@ enum AddBikeFlowAction: Equatable {
     case setNewBikeNavigation(isActive: Bool)
 }
 
-struct AddBikeFlowEnvironment {
+public struct AddBikeFlowEnvironment {
+    public init(
+        brandClient: BrandClient = .mocked,
+        bikeClient: BikeClient = .mocked,
+        mainQueue: AnySchedulerOf<DispatchQueue> = .main,
+        uuid: @escaping () -> UUID = { .init() }
+    ) {
+        self.brandClient = brandClient
+        self.bikeClient = bikeClient
+        self.mainQueue = mainQueue
+        self.uuid = uuid
+    }
+    
     var brandClient: BrandClient = .mocked
     var bikeClient: BikeClient = .mocked
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
@@ -71,7 +100,7 @@ private let reducer = AddBikeFlowReducer
     }
 }
 
-let addBikeFlowReducer: AddBikeFlowReducer =
+public let addBikeFlowReducer: AddBikeFlowReducer =
 .combine(
     reducer,
     bikeTypeSelectionReducer
@@ -113,19 +142,19 @@ let addBikeFlowReducer: AddBikeFlowReducer =
     return .none
 }
 
-struct AddBikeFlowRootView: View {
+public struct AddBikeFlowRootView: View {
     
     let store: Store<AddBikeFlowState, AddBikeFlowAction>
     @ObservedObject var viewStore: ViewStore<AddBikeFlowState, AddBikeFlowAction>
     
-    init(
+    public init(
         store: Store<AddBikeFlowState, AddBikeFlowAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
                                                 
-    var body: some View {
+    public var body: some View {
         NavigationView {
             VStack {
                 NavigationLink(isActive: viewStore.binding(
