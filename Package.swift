@@ -82,7 +82,6 @@ let package = Package(
             dependencies: [
                 "ComponentTypeSelectionFeature",
                 "CreateComponentFeature",
-                "ComponentTypeSelectionFeature",
                 "Models",
                 "BrandClient",
                 "BrandListFeature",
