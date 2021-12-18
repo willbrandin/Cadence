@@ -1,4 +1,5 @@
 import SwiftUI
+import Models
 
 struct DistanceUnitPickerView: View {
     @Binding var distanceUnit: DistanceUnit

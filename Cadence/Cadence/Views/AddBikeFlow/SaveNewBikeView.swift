@@ -1,4 +1,5 @@
 import SwiftUI
+import BikeClient
 import ComposableArchitecture
 import Models
 
@@ -26,7 +27,7 @@ enum SaveNewBikeAction: Equatable, BindableAction {
 struct SaveNewBikeEnvironment {
     var bikeClient: BikeClient = .mocked
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var uuid: () -> UUID = Current.uuid
+    var uuid: () -> UUID = { .init() }
 }
 
 let saveNewBikeReducer = SaveNewBikeReducer

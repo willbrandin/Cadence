@@ -14,7 +14,6 @@
 		CE0FA43C26DA916100414628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43B26DA916100414628 /* Preview Assets.xcassets */; };
 		CE0FA45026DA916200414628 /* CadenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FA44F26DA916200414628 /* CadenceUITests.swift */; };
 		CE10779527431541003867B6 /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE10779427431541003867B6 /* TermsAndConditionsView.swift */; };
-		CE107798274319C1003867B6 /* EmailClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE107797274319C1003867B6 /* EmailClient.swift */; };
 		CE18B3CB26DAE96100DFF70F /* CreateComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CA26DAE96100DFF70F /* CreateComponentView.swift */; };
 		CE18B3CD26DAF6E200DFF70F /* BikeComponentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CC26DAF6E200DFF70F /* BikeComponentListView.swift */; };
 		CE18B3CF26DB2E6000DFF70F /* ComponentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18B3CE26DB2E6000DFF70F /* ComponentDetailView.swift */; };
@@ -74,7 +73,6 @@
 		CE2BFD6D26DF0D5000037E07 /* Date+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BFD6C26DF0D5000037E07 /* Date+Init.swift */; };
 		CE2E41A7270B508B00BEA5E4 /* AddRideFlowRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E41A6270B508B00BEA5E4 /* AddRideFlowRootView.swift */; };
 		CE2E41B0270B99C900BEA5E4 /* RideClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E41AF270B99C900BEA5E4 /* RideClient.swift */; };
-		CE2FFA4126DD3FFA00115171 /* BrandClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4026DD3FFA00115171 /* BrandClient.swift */; };
 		CE2FFA4826DD8B7F00115171 /* AddBikeFlowRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4726DD8B7F00115171 /* AddBikeFlowRoot.swift */; };
 		CE2FFA4A26DD924800115171 /* Binding+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4926DD924800115171 /* Binding+RemoveDuplicates.swift */; };
 		CE2FFA4D26DDD5A900115171 /* Reducer+OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */; };
@@ -90,16 +88,10 @@
 		CE39F84627062D6C00D2E8C5 /* appicon-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39F83A27062D6C00D2E8C5 /* appicon-2@2x.png */; };
 		CE39F84927062FB500D2E8C5 /* AppIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39F84827062FB500D2E8C5 /* AppIconPickerView.swift */; };
 		CE39F84B27067DC100D2E8C5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39F84A27067DC100D2E8C5 /* SignUpView.swift */; };
-		CE4E1CA9276D2A77007DE62E /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = CE4E1CA8276D2A77007DE62E /* Models */; };
-		CE4E1CAC276D2AFF007DE62E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CE4E1CAB276D2AFF007DE62E /* ComposableArchitecture */; };
-		CE4E1CAF276D396C007DE62E /* BrandListFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CE4E1CAE276D396C007DE62E /* BrandListFeature */; };
 		CE5C4E50273DB14500F9C94A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C4E4F273DB14500F9C94A /* WebView.swift */; };
 		CE5C4E53273DB23A00F9C94A /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C4E52273DB23A00F9C94A /* PrivacyPolicyView.swift */; };
 		CE6FA42E26F165A100CAF40A /* AddComponentMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA42D26F165A100CAF40A /* AddComponentMaintenanceView.swift */; };
 		CE6FA43026F175FA00CAF40A /* ComponentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA42F26F175FA00CAF40A /* ComponentSelectorView.swift */; };
-		CE6FA43626F2608400CAF40A /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA43526F2608300CAF40A /* World.swift */; };
-		CE6FA43826F2623300CAF40A /* Date+IsToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA43726F2623300CAF40A /* Date+IsToday.swift */; };
-		CE74811426F2F5DA00DE5BA9 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74811326F2F5DA00DE5BA9 /* CombineHelpers.swift */; };
 		CE74811626F38A7700DE5BA9 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74811526F38A7700DE5BA9 /* AppEnvironment.swift */; };
 		CE74811826F38AA200DE5BA9 /* AppCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74811726F38AA200DE5BA9 /* AppCoreView.swift */; };
 		CE83C82726E053CA000E4CA5 /* AdaptiveSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82626E053CA000E4CA5 /* AdaptiveSize.swift */; };
@@ -129,9 +121,8 @@
 		CEB4898426EAE57800540A42 /* BikeComponentFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */; };
 		CEBA37EC2703A660001B647B /* MaintenanceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA37EB2703A660001B647B /* MaintenanceClient.swift */; };
 		CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA37F72704E8CE001B647B /* EditBikeView.swift */; };
-		CECE64A9276D3EE1007CAF57 /* BrandClient in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64A8276D3EE1007CAF57 /* BrandClient */; };
-		CECE64AB276D40A4007CAF57 /* FileClient in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64AA276D40A4007CAF57 /* FileClient */; };
 		CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE64AE276D4142007CAF57 /* FileClient+UserSettings.swift */; };
+		CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64B0276D5560007CAF57 /* AppFeature */; };
 		CEF18D1626DC7356007509C3 /* MileageScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF18D1526DC7356007509C3 /* MileageScaleView.swift */; };
 		CEF18D2026DD2D26007509C3 /* BundleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF18D1F26DD2D26007509C3 /* BundleConfiguration.swift */; };
 		CEF80DBC26F0315400D2E5E9 /* TypeSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */; };
@@ -190,7 +181,6 @@
 		CE0FA44B26DA916200414628 /* CadenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0FA44F26DA916200414628 /* CadenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadenceUITests.swift; sourceTree = "<group>"; };
 		CE10779427431541003867B6 /* TermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsView.swift; sourceTree = "<group>"; };
-		CE107797274319C1003867B6 /* EmailClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailClient.swift; sourceTree = "<group>"; };
 		CE18B3CA26DAE96100DFF70F /* CreateComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateComponentView.swift; sourceTree = "<group>"; };
 		CE18B3CC26DAF6E200DFF70F /* BikeComponentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentListView.swift; sourceTree = "<group>"; };
 		CE18B3CE26DB2E6000DFF70F /* ComponentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailView.swift; sourceTree = "<group>"; };
@@ -242,7 +232,6 @@
 		CE2BFD6C26DF0D5000037E07 /* Date+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Init.swift"; sourceTree = "<group>"; };
 		CE2E41A6270B508B00BEA5E4 /* AddRideFlowRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRideFlowRootView.swift; sourceTree = "<group>"; };
 		CE2E41AF270B99C900BEA5E4 /* RideClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideClient.swift; sourceTree = "<group>"; };
-		CE2FFA4026DD3FFA00115171 /* BrandClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandClient.swift; sourceTree = "<group>"; };
 		CE2FFA4726DD8B7F00115171 /* AddBikeFlowRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBikeFlowRoot.swift; sourceTree = "<group>"; };
 		CE2FFA4926DD924800115171 /* Binding+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+RemoveDuplicates.swift"; sourceTree = "<group>"; };
 		CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reducer+OnChange.swift"; sourceTree = "<group>"; };
@@ -264,11 +253,8 @@
 		CE5C4E52273DB23A00F9C94A /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		CE6FA42D26F165A100CAF40A /* AddComponentMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentMaintenanceView.swift; sourceTree = "<group>"; };
 		CE6FA42F26F175FA00CAF40A /* ComponentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSelectorView.swift; sourceTree = "<group>"; };
-		CE6FA43526F2608300CAF40A /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		CE6FA43726F2623300CAF40A /* Date+IsToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+IsToday.swift"; sourceTree = "<group>"; };
 		CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreViewTests.swift; sourceTree = "<group>"; };
 		CE70484126E93CA300ACFEB8 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
-		CE74811326F2F5DA00DE5BA9 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		CE74811526F38A7700DE5BA9 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		CE74811726F38AA200DE5BA9 /* AppCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreView.swift; sourceTree = "<group>"; };
 		CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentSnapshotTests.swift; sourceTree = "<group>"; };
@@ -330,12 +316,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECE64A9276D3EE1007CAF57 /* BrandClient in Frameworks */,
-				CE4E1CA9276D2A77007DE62E /* Models in Frameworks */,
 				CE0A188327444C1500A9860A /* CloudKit.framework in Frameworks */,
-				CECE64AB276D40A4007CAF57 /* FileClient in Frameworks */,
-				CE4E1CAC276D2AFF007DE62E /* ComposableArchitecture in Frameworks */,
-				CE4E1CAF276D396C007DE62E /* BrandListFeature in Frameworks */,
+				CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,14 +416,6 @@
 				CE0FA44F26DA916200414628 /* CadenceUITests.swift */,
 			);
 			path = CadenceUITests;
-			sourceTree = "<group>";
-		};
-		CE107796274319B6003867B6 /* EmailClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE107797274319C1003867B6 /* EmailClient.swift */,
-			);
-			path = EmailClient;
 			sourceTree = "<group>";
 		};
 		CE18B3D326DC056200DFF70F /* Style */ = {
@@ -724,14 +698,6 @@
 			path = AppSupport;
 			sourceTree = "<group>";
 		};
-		CE6FA42B26F164E600CAF40A /* APIClient */ = {
-			isa = PBXGroup;
-			children = (
-				CE2FFA4026DD3FFA00115171 /* BrandClient.swift */,
-			);
-			path = APIClient;
-			sourceTree = "<group>";
-		};
 		CE6FA42C26F1658500CAF40A /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,14 +705,6 @@
 				CE6FA42F26F175FA00CAF40A /* ComponentSelectorView.swift */,
 			);
 			path = Maintenance;
-			sourceTree = "<group>";
-		};
-		CE6FA43426F2607900CAF40A /* World */ = {
-			isa = PBXGroup;
-			children = (
-				CE6FA43526F2608300CAF40A /* World.swift */,
-			);
-			path = World;
 			sourceTree = "<group>";
 		};
 		CE83C82026E05239000E4CA5 /* AppStoreSnapshotTests */ = {
@@ -926,8 +884,6 @@
 				CE2FFA4C26DDD5A900115171 /* Reducer+OnChange.swift */,
 				CE1A955D26E2D00E00BB3441 /* Effect+Keyframes.swift */,
 				CE1D416726E577830079563F /* View+Synchronize.swift */,
-				CE6FA43726F2623300CAF40A /* Date+IsToday.swift */,
-				CE74811326F2F5DA00DE5BA9 /* CombineHelpers.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -935,12 +891,9 @@
 		CEF18D2326DD2F27007509C3 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				CE107796274319B6003867B6 /* EmailClient */,
 				CE224F3E2727A641009C1168 /* ShareSheetClient */,
 				CE224F3A2727A2DD009C1168 /* StoreKitClient */,
 				CEFEDD1D26F52E0A00999416 /* Persistance */,
-				CE6FA43426F2607900CAF40A /* World */,
-				CE6FA42B26F164E600CAF40A /* APIClient */,
 				CE8D423D26EE4BF90034A4B2 /* UIApplicationClient */,
 				CE1A954F26E2AA1100BB3441 /* UserDefaultsClient */,
 			);
@@ -1036,11 +989,7 @@
 			);
 			name = Cadence;
 			packageProductDependencies = (
-				CE4E1CA8276D2A77007DE62E /* Models */,
-				CE4E1CAB276D2AFF007DE62E /* ComposableArchitecture */,
-				CE4E1CAE276D396C007DE62E /* BrandListFeature */,
-				CECE64A8276D3EE1007CAF57 /* BrandClient */,
-				CECE64AA276D40A4007CAF57 /* FileClient */,
+				CECE64B0276D5560007CAF57 /* AppFeature */,
 			);
 			productName = Cadence;
 			productReference = CE0FA43126DA916100414628 /* Cadence.app */;
@@ -1143,7 +1092,6 @@
 			mainGroup = CE0FA42826DA916100414628;
 			packageReferences = (
 				CE83C82326E052DF000E4CA5 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				CE4E1CAA276D2AFF007DE62E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = CE0FA43226DA916100414628 /* Products */;
 			projectDirPath = "";
@@ -1250,10 +1198,8 @@
 				CE39F84B27067DC100D2E8C5 /* SignUpView.swift in Sources */,
 				CE1A956026E2DB7A00BB3441 /* OnboardingPageView.swift in Sources */,
 				CE0A1887274452B300A9860A /* CloudKitClient.swift in Sources */,
-				CE107798274319C1003867B6 /* EmailClient.swift in Sources */,
 				CE1A955826E2C18800BB3441 /* AppCore.swift in Sources */,
 				CE1D416826E577830079563F /* View+Synchronize.swift in Sources */,
-				CE2FFA4126DD3FFA00115171 /* BrandClient.swift in Sources */,
 				CEBA37F82704E8CE001B647B /* EditBikeView.swift in Sources */,
 				CE224F3C2727A2ED009C1168 /* StoreKitClient.swift in Sources */,
 				CE83C82926E05409000E4CA5 /* DeviceState.swift in Sources */,
@@ -1276,7 +1222,6 @@
 				CE1A955C26E2C96400BB3441 /* MileageAnimationView.swift in Sources */,
 				CE18B3D626DC057600DFF70F /* PrimaryButtonStyle.swift in Sources */,
 				CECE64AF276D4142007CAF57 /* FileClient+UserSettings.swift in Sources */,
-				CE6FA43626F2608400CAF40A /* World.swift in Sources */,
 				CE2E41A7270B508B00BEA5E4 /* AddRideFlowRootView.swift in Sources */,
 				CEF18D1626DC7356007509C3 /* MileageScaleView.swift in Sources */,
 				CE2FFA4F26DDD6A700115171 /* SaveNewBikeView.swift in Sources */,
@@ -1286,7 +1231,6 @@
 				CEFEDD1C26F4118700999416 /* Encodable+ToJsonData.swift in Sources */,
 				CE8D424926EEAC5E0034A4B2 /* DistanceUnit.swift in Sources */,
 				CE2FFA4826DD8B7F00115171 /* AddBikeFlowRoot.swift in Sources */,
-				CE74811426F2F5DA00DE5BA9 /* CombineHelpers.swift in Sources */,
 				CE74811826F38AA200DE5BA9 /* AppCoreView.swift in Sources */,
 				CE1A955126E2AA2300BB3441 /* UserDefaultsClient.swift in Sources */,
 				CEA919BF26DAE75500963EAE /* ComponentTypeSelectionView.swift in Sources */,
@@ -1295,7 +1239,6 @@
 				CE18B3CF26DB2E6000DFF70F /* ComponentDetailView.swift in Sources */,
 				CE83C82726E053CA000E4CA5 /* AdaptiveSize.swift in Sources */,
 				CE18B3CD26DAF6E200DFF70F /* BikeComponentListView.swift in Sources */,
-				CE6FA43826F2623300CAF40A /* Date+IsToday.swift in Sources */,
 				CE18B3D826DC068A00DFF70F /* SecondaryOutlineButtonStyle.swift in Sources */,
 				CE28E29F26F81CB9001DE2BD /* BikeClient.swift in Sources */,
 				CEFEDD1F26F52EC500999416 /* Persistance.swift in Sources */,
@@ -1749,14 +1692,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE4E1CAA276D2AFF007DE62E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
-			};
-		};
 		CE83C82326E052DF000E4CA5 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -1773,26 +1708,9 @@
 			package = CE83C82326E052DF000E4CA5 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
-		CE4E1CA8276D2A77007DE62E /* Models */ = {
+		CECE64B0276D5560007CAF57 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Models;
-		};
-		CE4E1CAB276D2AFF007DE62E /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE4E1CAA276D2AFF007DE62E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		CE4E1CAE276D396C007DE62E /* BrandListFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = BrandListFeature;
-		};
-		CECE64A8276D3EE1007CAF57 /* BrandClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = BrandClient;
-		};
-		CECE64AA276D40A4007CAF57 /* FileClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FileClient;
+			productName = AppFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 

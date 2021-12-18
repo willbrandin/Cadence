@@ -1,6 +1,7 @@
 import SwiftUI
 import ComposableArchitecture
 import Models
+import BikeClient
 
 typealias EditBikeReducer = Reducer<EditBikeState, EditBikeAction, EditBikeEnvironment>
 

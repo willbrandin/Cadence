@@ -2,6 +2,9 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 import BrandClient
+import BikeClient
+import ComponentClient
+import MaintenanceClient
 
 typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
 
@@ -52,8 +55,8 @@ struct BikeComponentEnvironment {
     var componentClient: ComponentClient = .noop
     var maintenanceClient: MaintenanceClient = .noop
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = Current.date
-    var uuid: () -> UUID = Current.uuid
+    var date: () -> Date = { Date() }
+    var uuid: () -> UUID = { .init() }
 }
 
 private let reducer: BikeComponentReducer =

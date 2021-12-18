@@ -1,6 +1,9 @@
 import SwiftUI
 import ComposableArchitecture
+import ComponentClient
+import MaintenanceClient
 import Models
+import MileageClient
 
 typealias ComponentDetailReducer = Reducer<ComponentDetailState, ComponentDetailAction, ComponentDetailEnvironment>
 
@@ -305,8 +308,8 @@ extension ComponentDetailEnvironment {
             componentClient: .noop,
             maintenanceClient: .noop,
             mainQueue: .main,
-            date: Current.date,
-            uuid: Current.uuid
+            date: { Date() },
+            uuid: { .init() }
         )
     }
 }

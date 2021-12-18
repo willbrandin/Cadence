@@ -1,6 +1,9 @@
 import SwiftUI
+import BikeClient
 import ComposableArchitecture
+import ComponentClient
 import Models
+import RideClient
 
 typealias AddRideFlowReducer = Reducer<AddRideFlowState, AddRideFlowAction, AddRideFlowEnvironment>
 
@@ -31,8 +34,8 @@ struct AddRideFlowEnvironment {
     var componentClient: ComponentClient = .noop
     var rideClient: RideClient = .noop
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var date: () -> Date = Current.date
-    var uuid: () -> UUID = Current.uuid
+    var date: () -> Date = { Date() }
+    var uuid: () -> UUID = { .init() }
 }
 
 let addRideReducer = AddRideFlowReducer

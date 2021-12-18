@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BikeMO" representedClassName="BikeMO" syncable="YES" codeGenerationType="class">
+        <attribute name="bikeTypeId" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="4" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BrandMO" inverseName="bike" inverseEntity="BrandMO"/>
+        <relationship name="components" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ComponentMO" inverseName="bike" inverseEntity="ComponentMO"/>
+        <relationship name="maintenances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MaintenanceMO" inverseName="bike" inverseEntity="MaintenanceMO"/>
+        <relationship name="mileage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MileageMO" inverseName="bike" inverseEntity="MileageMO"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RideMO" inverseName="bike" inverseEntity="RideMO"/>
+    </entity>
+    <entity name="BrandMO" representedClassName="BrandMO" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isComponentOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="bike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeMO" inverseName="brand" inverseEntity="BikeMO"/>
+        <relationship name="component" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComponentMO" inverseName="brand" inverseEntity="ComponentMO"/>
+    </entity>
+    <entity name="ComponentMO" representedClassName="ComponentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="addedToBikeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="componentDescription" optional="YES" attributeType="String"/>
+        <attribute name="componentGroupId" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="7" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="componentTypeId" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="26" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="model" optional="YES" attributeType="String"/>
+        <relationship name="bike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeMO" inverseName="components" inverseEntity="BikeMO"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrandMO" inverseName="component" inverseEntity="BrandMO"/>
+        <relationship name="maintenances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MaintenanceMO" inverseName="components" inverseEntity="MaintenanceMO"/>
+        <relationship name="mileage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MileageMO" inverseName="component" inverseEntity="MileageMO"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RideMO" inverseName="components" inverseEntity="RideMO"/>
+    </entity>
+    <entity name="MaintenanceMO" representedClassName="MaintenanceMO" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="serviceDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="serviceDescription" optional="YES" attributeType="String"/>
+        <relationship name="bike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeMO" inverseName="maintenances" inverseEntity="BikeMO"/>
+        <relationship name="components" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ComponentMO" inverseName="maintenances" inverseEntity="ComponentMO"/>
+    </entity>
+    <entity name="MileageMO" representedClassName=".MileageMO" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="miles" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recommendedMiles" optional="YES" attributeType="Integer 16" defaultValueString="500" usesScalarValueType="YES"/>
+        <relationship name="bike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeMO" inverseName="mileage" inverseEntity="BikeMO"/>
+        <relationship name="component" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComponentMO" inverseName="mileage" inverseEntity="ComponentMO"/>
+    </entity>
+    <entity name="RideMO" representedClassName="RideMO" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="bike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeMO" inverseName="rides" inverseEntity="BikeMO"/>
+        <relationship name="components" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ComponentMO" inverseName="rides" inverseEntity="ComponentMO"/>
+    </entity>
+    <elements>
+        <element name="BikeMO" positionX="-54" positionY="18" width="128" height="149"/>
+        <element name="BrandMO" positionX="-36" positionY="45" width="128" height="104"/>
+        <element name="ComponentMO" positionX="-18" positionY="63" width="128" height="194"/>
+        <element name="MaintenanceMO" positionX="0" positionY="108" width="128" height="104"/>
+        <element name="MileageMO" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="RideMO" positionX="-36" positionY="108" width="128" height="104"/>
+    </elements>
+</model>

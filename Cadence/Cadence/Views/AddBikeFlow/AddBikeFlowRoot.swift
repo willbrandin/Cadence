@@ -1,4 +1,5 @@
 import SwiftUI
+import BikeClient
 import ComposableArchitecture
 import Models
 import BrandClient
@@ -39,7 +40,7 @@ struct AddBikeFlowEnvironment {
     var brandClient: BrandClient = .mocked
     var bikeClient: BikeClient = .mocked
     var mainQueue: AnySchedulerOf<DispatchQueue> = .main
-    var uuid: () -> UUID = Current.uuid
+    var uuid: () -> UUID = { .init() }
 }
 
 private let reducer = AddBikeFlowReducer

@@ -1,11 +1,11 @@
 import UIKit
 import ComposableArchitecture
 
-struct EmailClient {
-    var sendEmail: () -> Effect<Never, Never>
+public struct EmailClient {
+    public var sendEmail: () -> Effect<Never, Never>
 }
 
-extension EmailClient {
+public extension EmailClient {
     static var live: Self {
         let recipientEmail = "info@cadence.app"
         let subject = "Help"
@@ -46,7 +46,7 @@ extension EmailClient {
     }
 }
 
-extension EmailClient {
+public extension EmailClient {
     static var noop: Self {
         return Self(
             sendEmail: { .none }

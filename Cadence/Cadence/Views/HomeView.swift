@@ -3,6 +3,12 @@ import ComposableArchitecture
 import Models
 import BrandClient
 import FileClient
+import EmailClient
+import BikeClient
+import ComponentClient
+import MaintenanceClient
+import MileageClient
+import RideClient
 
 typealias AccountBikesReducer = Reducer<HomeState, HomeAction, HomeEnvironment>
 
@@ -522,8 +528,8 @@ extension HomeEnvironment {
             mileageClient: .noop,
             rideClient: .noop,
             brandAPIClient: .mocked,
-            date: Current.date,
-            uuid: Current.uuid,
+            date: { .distantFuture },
+            uuid: { .init() },
             storeKitClient: .noop,
             shareSheetClient: .noop,
             emailClient: .noop,

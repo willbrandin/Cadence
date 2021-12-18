@@ -1,6 +1,9 @@
 import SwiftUI
 import ComposableArchitecture
 import FileClient
+import EmailClient
+import Models
+import MileageClient
 
 struct UserSettings: Codable, Equatable {
     var colorScheme: ColorScheme

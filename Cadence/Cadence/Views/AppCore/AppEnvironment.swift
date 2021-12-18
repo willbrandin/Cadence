@@ -1,7 +1,15 @@
 import ComposableArchitecture
+import CoreDataStack
 import Foundation
 import BrandClient
 import FileClient
+import EmailClient
+import World
+import BikeClient
+import ComponentClient
+import MaintenanceClient
+import MileageClient
+import RideClient
 
 struct AppCoreEnvironment {
     var uiApplicationClient: UIApplicationClient
