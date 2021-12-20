@@ -2,23 +2,22 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 
+extension ComponentGroup: TypeViewSelectable {}
+
 public typealias ComponentGroupSelectionReducer = Reducer<ComponentGroupSelectionState, ComponentGroupSelectionAction, ComponentGroupSelectionEnvironment>
 
 public struct ComponentGroupSelectionState: Equatable {
     public init(
-        selectedComponentType: ComponentGroup? = nil,
-        components: [ComponentGroup] = ComponentGroup.allCases
+        selectedComponentType: ComponentGroup? = nil
     ) {
-        self.selectedComponentType = selectedComponentType
-        self.components = components
+        self.selectedComponentGroupType = selectedComponentGroupType
     }
-    
-    public var selectedComponentType: ComponentGroup? = nil
-    public var components: [ComponentGroup] = ComponentGroup.allCases
+
+    @BindableState public var selectedComponentGroupType: ComponentGroup? = nil
 }
 
-public enum ComponentGroupSelectionAction: Equatable {
-    case didSelect(ComponentGroup)
+public enum ComponentGroupSelectionAction: Equatable, BindableAction {
+    case binding(BindingAction<ComponentGroupSelectionState>)
 }
 
 public struct ComponentGroupSelectionEnvironment {
@@ -27,12 +26,9 @@ public struct ComponentGroupSelectionEnvironment {
 
 public let componentGroupSelectionReducer = ComponentGroupSelectionReducer
 { state, action, environment in
-    switch action {
-    case let .didSelect(component):
-        state.selectedComponentType = component
-        return .none
-    }
+    return .none
 }
+.binding()
 
 public struct ComponentGroupSelectionView: View {
     
@@ -47,23 +43,11 @@ public struct ComponentGroupSelectionView: View {
     }
     
     public var body: some View {
-        List(viewStore.components) { component in
-            Button(action: { viewStore.send(.didSelect(component)) }) {
-                HStack {
-                    Text(component.title)
-                        .padding(.vertical)
-                    Spacer()
-                    if component == viewStore.selectedComponentType {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.green)
-                    }
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.secondary)
-                }
-                .foregroundColor(.primary)
-            }
-        }
-        .navigationTitle("Component Group")
+        TypeSelectorView(
+            title: "Component Group",
+            items: ComponentGroup.allCases,
+            selected: viewStore.binding(\.$selectedComponentGroupType)
+        )
     }
 }
 
@@ -77,8 +61,6 @@ struct ComponentGroupSelectionView_Previews: PreviewProvider {
                     environment: ComponentGroupSelectionEnvironment()
                 )
             )
-            .navigationTitle("Component Group")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

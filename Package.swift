@@ -17,7 +17,6 @@ let package = Package(
         .library(name: "BikeClient", targets: ["BikeClient"]),
         .library(name: "BikeComponentListFeature", targets: ["BikeComponentListFeature"]),
         .library(name: "BikeComponentRowFeature", targets: ["BikeComponentRowFeature"]),
-        .library(name: "BikeTypeSelectionFeature", targets: ["BikeTypeSelectionFeature"]),
         .library(name: "BrandClient", targets: ["BrandClient"]),
         .library(name: "BrandListFeature", targets: ["BrandListFeature"]),
         .library(name: "CloudKitClient", targets: ["CloudKitClient"]),
@@ -25,7 +24,6 @@ let package = Package(
         .library(name: "ComponentClient", targets: ["ComponentClient"]),
         .library(name: "ComponentDetailFeature", targets: ["ComponentDetailFeature"]),
         .library(name: "ComponentSelectorFeature", targets: ["ComponentSelectorFeature"]),
-        .library(name: "ComponentTypeSelectionFeature", targets: ["ComponentTypeSelectionFeature"]),
         .library(name: "ComposableHelpers", targets: ["ComposableHelpers"]),
         .library(name: "CoreDataStack", targets: ["CoreDataStack"]),
         .library(name: "CreateComponentFeature", targets: ["CreateComponentFeature"]),
@@ -46,6 +44,7 @@ let package = Package(
         .library(name: "ShareSheetClient", targets: ["ShareSheetClient"]),
         .library(name: "Style", targets: ["Style"]),
         .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
+        .library(name: "TypeSelectionFeature", targets: ["TypeSelectionFeature"]),
         .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
         .library(name: "UIUserInterfaceStyleClient", targets: ["UIUserInterfaceStyleClient"]),
         .library(name: "UserSettingsFeature", targets: ["UserSettingsFeature"]),
@@ -67,25 +66,25 @@ let package = Package(
             name: "AddBikeFlowFeature",
             dependencies: [
                 "BikeClient",
-                "BikeTypeSelectionFeature",
                 "BrandClient",
                 "BrandListFeature",
                 "ComposableHelpers",
                 "Models",
                 "SaveNewBikeFeature",
                 "SwiftUIHelpers",
+                "TypeSelectionFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
         .target(
             name: "AddComponentFlowFeature",
             dependencies: [
-                "ComponentTypeSelectionFeature",
-                "CreateComponentFeature",
-                "Models",
                 "BrandClient",
                 "BrandListFeature",
+                "CreateComponentFeature",
                 "ComponentClient",
+                "Models",
+                "TypeSelectionFeature",
                 "World",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
@@ -132,7 +131,6 @@ let package = Package(
                 "BikeClient",
                 "BikeComponentListFeature",
                 "BikeComponentRowFeature",
-                "BikeTypeSelectionFeature",
                 "BrandClient",
                 "BrandListFeature",
                 "CloudKitClient",
@@ -140,7 +138,6 @@ let package = Package(
                 "ComponentClient",
                 "ComponentDetailFeature",
                 "ComponentSelectorFeature",
-                "ComponentTypeSelectionFeature",
                 "CoreDataStack",
                 "CreateComponentFeature",
                 "DateHelpers",
@@ -160,6 +157,7 @@ let package = Package(
                 "ShareSheetClient",
                 "Style",
                 "SwiftUIHelpers",
+                "TypeSelectionFeature",
                 "UIApplicationClient",
                 "UIUserInterfaceStyleClient",
                 "UserSettingsFeature",
@@ -204,13 +202,6 @@ let package = Package(
                 "MileageClient",
                 "Models",
                 "MileageScaleFeature",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-            ]
-        ),
-        .target(
-            name: "BikeTypeSelectionFeature",
-            dependencies: [
-                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -268,13 +259,6 @@ let package = Package(
                 "World",
                 "CoreDataStack",
                 "MileageScaleFeature",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-            ]
-        ),
-        .target(
-            name: "ComponentTypeSelectionFeature",
-            dependencies: [
-                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -441,6 +425,13 @@ let package = Package(
         .target(name: "Style"),
         .target(name: "SwiftUIHelpers"),
         .target(
+            name: "TypeSelectionFeature",
+            dependencies: [
+                "Models",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "UIApplicationClient",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
@@ -482,14 +473,17 @@ let package = Package(
         ),
         .target(
             name: "World"
-        ),
-        .testTarget(
-            name: "AddBikeFlowFeatureTests",
-            dependencies: [
-                "AddBikeFlowFeature",
-                "SaveNewBikeFeature",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-            ]
         )
     ]
 )
+
+package.targets.append(contentsOf: [
+    .testTarget(
+        name: "AddBikeFlowFeatureTests",
+        dependencies: [
+            "AddBikeFlowFeature",
+            "SaveNewBikeFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    )
+])

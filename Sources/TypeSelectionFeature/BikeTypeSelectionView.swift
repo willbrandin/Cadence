@@ -2,6 +2,8 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 
+extension BikeType: TypeViewSelectable {}
+
 public typealias BikeTypeSelectionReducer = Reducer<BikeTypeSelectionState, BikeTypeSelectionAction, BikeTypeSelectionEnvironment>
 
 public struct BikeTypeSelectionState: Equatable {
@@ -9,12 +11,11 @@ public struct BikeTypeSelectionState: Equatable {
         self.selectedBikeType = selectedBikeType
     }
     
-    public var selectedBikeType: BikeType? = nil
+    @BindableState public var selectedBikeType: BikeType? = nil
 }
 
-public enum BikeTypeSelectionAction: Equatable {
-    case removeSelectedType
-    case didSelect(BikeType)
+public enum BikeTypeSelectionAction: Equatable, BindableAction {
+    case binding(BindingAction<BikeTypeSelectionState>)
 }
 
 public struct BikeTypeSelectionEnvironment {
@@ -23,16 +24,9 @@ public struct BikeTypeSelectionEnvironment {
 
 public let bikeTypeSelectionReducer = BikeTypeSelectionReducer
 { state, action, environment in
-    switch action {
-    case .removeSelectedType:
-        state.selectedBikeType = nil
-        return .none
-        
-    case let .didSelect(type):
-        state.selectedBikeType = type
-        return .none
-    }
+    return .none
 }
+.binding()
 
 public struct BikeTypeSelectionView: View {
     
@@ -45,23 +39,11 @@ public struct BikeTypeSelectionView: View {
     }
     
     public var body: some View {
-        List(BikeType.allCases) { bike in
-            Button(action: { viewStore.send(.didSelect(bike)) }) {
-                HStack {
-                    Text(bike.title)
-                        .padding(.vertical)
-                    Spacer()
-                    if bike == viewStore.selectedBikeType {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.green)
-                    }
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.secondary)
-                }
-                .foregroundColor(.primary)
-            }
-        }
-        .navigationTitle("Bike Type")
+        TypeSelectorView(
+            title: "Bike Type",
+            items: BikeType.allCases,
+            selected: viewStore.binding(\.$selectedBikeType)
+        )
     }
 }
 
@@ -75,8 +57,6 @@ struct BikeTypeSelectionView_Previews: PreviewProvider {
                     environment: BikeTypeSelectionEnvironment()
                 )
             )
-            .navigationTitle("Bike Type")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

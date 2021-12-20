@@ -6,7 +6,7 @@ import Models
 import BrandClient
 import BrandListFeature
 import SaveNewBikeFeature
-import BikeTypeSelectionFeature
+import TypeSelectionFeature
 import SwiftUIHelpers
 
 public typealias AddBikeFlowReducer = Reducer<AddBikeFlowState, AddBikeFlowAction, AddBikeFlowEnvironment>
@@ -87,7 +87,7 @@ private let reducer = AddBikeFlowReducer
         return Effect(value: AddBikeFlowAction.flowComplete(bike))
             .eraseToEffect()
         
-    case .bikeType(.didSelect):
+    case .bikeType(.binding(\.$selectedBikeType)):
         state.isBrandNavigationActive = true
         return .none
         

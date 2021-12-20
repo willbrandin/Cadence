@@ -1,7 +1,6 @@
 import SwiftUI
-import ComponentTypeSelectionFeature
+import TypeSelectionFeature
 import ComposableArchitecture
-import ComponentTypeSelectionFeature
 import CreateComponentFeature
 import Models
 import BrandClient
@@ -100,11 +99,11 @@ private let reducer = AddComponentFlowReducer
         state.isComponentDetailNavigationActive = isActive
         return .none
         
-    case .groupSelection(.didSelect):
+    case .groupSelection(.binding(\.$selectedComponentGroupType)):
         state.isTypeSelectionNavigationActive = true
         return .none
         
-    case .typeSelection(.didSelect):
+    case .typeSelection(.binding(\.$selectedComponentType)):
         state.isBrandNavigationActive = true
         return .none
         
@@ -155,7 +154,7 @@ public let addComponentFlowReducer: AddComponentFlowReducer =
     reducer
 )
 .onChange(of: \.brandListState.selectedBrand) { typeState, state, _, environment in
-    guard let group = state.groupSelectionState.selectedComponentType,
+    guard let group = state.groupSelectionState.selectedComponentGroupType,
           let type = state.typeSelectionState.selectedComponentType,
           let brand = state.brandListState.selectedBrand
     else { return .none }
