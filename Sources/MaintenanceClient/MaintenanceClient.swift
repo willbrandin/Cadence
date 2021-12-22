@@ -16,12 +16,12 @@ public extension MaintenanceClient {
     static var live: Self = Self(
         create: { componentIds, maintenance in
             let searchPredicate = NSPredicate(format: "id IN %@", componentIds)
-            guard let components = try? Current.coreDataStack().fetch(ComponentMO.self, predicate: searchPredicate).get() else {
+            guard let components = try? Current.coreDataStack().fetch(_ComponentMO.self, predicate: searchPredicate).get() else {
                 return Effect(error: .init())
             }
             
-            let modelObject = MaintenanceMO.initFrom(maintenance)
-            modelObject.addToComponents(NSSet(array: components))
+            let modelObject = _MaintenanceMO.initFrom(maintenance)
+            modelObject.components = NSSet(array: components) // TEST
             
             return Current.coreDataStack().create(modelObject)
                 .publisher
@@ -30,7 +30,7 @@ public extension MaintenanceClient {
                 .eraseToEffect()
             
         }, delete: { maintenance in
-            let modelObject = MaintenanceMO.initFrom(maintenance)
+            let modelObject = _MaintenanceMO.initFrom(maintenance)
             return .fireAndForget {
                 Current.coreDataStack().delete(modelObject)
             }

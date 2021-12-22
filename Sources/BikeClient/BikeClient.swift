@@ -16,20 +16,20 @@ public struct BikeClient {
 public extension BikeClient {
     static var live: Self = Self(
         fetch: {
-            Current.coreDataStack().fetch(BikeMO.self, predicate: nil, limit: nil)
+            Current.coreDataStack().fetch(_BikeMO.self, predicate: nil, limit: nil)
                 .publisher
                 .map({ $0.map({ $0.asBike() }) })
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, create: { model in
-            let managedObject = BikeMO.initFrom(model)
+            let managedObject = _BikeMO.initFrom(model)
             return Current.coreDataStack().create(managedObject)
                 .publisher
                 .map({ $0.asBike() })
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, update: { model in
-            guard let managedObject = try? Current.coreDataStack().fetchFirst(BikeMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
+            guard let managedObject = try? Current.coreDataStack().fetchFirst(_BikeMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
                 return Effect(error: .init())
             }
             
@@ -40,8 +40,8 @@ public extension BikeClient {
             if model.mileage.miles != (managedObject.mileage?.miles ?? 0) {
                 managedObject.mileage?.miles = Int16(model.mileage.miles)
                 
-                let managedComponents = managedObject.components as? Set<ComponentMO>
-                var updatedComponents = managedComponents?.map { component -> ComponentMO in
+                let managedComponents = managedObject.components as? Set<_ComponentMO>
+                var updatedComponents = managedComponents?.map { component -> _ComponentMO in
                     var updatedComponent = component
                     updatedComponent.mileage?.miles = Int16(model.mileage.miles)
                     return updatedComponent
@@ -59,7 +59,7 @@ public extension BikeClient {
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, delete: { model in
-            guard let managedObject = try? Current.coreDataStack().fetchFirst(BikeMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
+            guard let managedObject = try? Current.coreDataStack().fetchFirst(_BikeMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
                 return .none
             }
             

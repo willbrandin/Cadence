@@ -13,15 +13,15 @@ public extension RideClient {
     static var live: Self = Self(
         create: { bikeId, componentIds, ride in
             let searchPredicate = NSPredicate(format: "id IN %@", componentIds)
-            guard let components = try? Current.coreDataStack().fetch(ComponentMO.self, predicate: searchPredicate).get() else {
+            guard let components = try? Current.coreDataStack().fetch(_ComponentMO.self, predicate: searchPredicate).get() else {
                 return Effect(error: .init())
             }
             
-            guard let bike = try? Current.coreDataStack().fetchFirst(BikeMO.self, predicate: NSPredicate(format: "id == %@", bikeId)).get() else {
+            guard let bike = try? Current.coreDataStack().fetchFirst(_BikeMO.self, predicate: NSPredicate(format: "id == %@", bikeId)).get() else {
                 return Effect(error: .init())
             }
             
-            let rideMO = RideMO.initFrom(ride)
+            let rideMO = _RideMO.initFrom(ride)
             rideMO.bike = bike
             rideMO.components = NSSet(array: components)
 

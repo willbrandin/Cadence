@@ -15,14 +15,14 @@ public struct MileageClient {
 public extension MileageClient {
     static var live: Self = Self(
         create: { mileage in
-            let mileageMO = MileageMO.initFrom(mileage)
+            let mileageMO = _MileageMO.initFrom(mileage)
             return Current.coreDataStack().create(mileageMO)
                 .publisher
                 .map({$0.asMileage()})
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, update: { mileage in
-            guard let mileageMO = try? Current.coreDataStack().fetchFirst(MileageMO.self, predicate: NSPredicate(format: "id == %@", mileage.id.uuidString)).get() else {
+            guard let mileageMO = try? Current.coreDataStack().fetchFirst(_MileageMO.self, predicate: NSPredicate(format: "id == %@", mileage.id.uuidString)).get() else {
                 return Effect(error: .init())
             }
             
@@ -32,7 +32,7 @@ public extension MileageClient {
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, updateFromUnit: { unit in
-            guard let mileages = try? Current.coreDataStack().fetch(MileageMO.self, predicate: nil, limit: nil).get()
+            guard let mileages = try? Current.coreDataStack().fetch(_MileageMO.self, predicate: nil, limit: nil).get()
             else { return Effect(error: .init()) }
             
             var effects = mileages.map { mileage -> Effect<Mileage, MileageClient.Failure> in

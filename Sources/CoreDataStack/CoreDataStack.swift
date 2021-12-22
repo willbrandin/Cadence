@@ -15,10 +15,11 @@ public class CoreDataStack {
 
     public init(inMemory: Bool = false) {
         
-        let bundle = Bundle.module
-        let modelURL = bundle.url(forResource: "Cadence", withExtension: ".momd")!
-        let model = NSManagedObjectModel(contentsOf: modelURL)!
-        container = NSPersistentCloudKitContainer(name: "Cadence", managedObjectModel: model)
+//        let bundle = Bundle.module
+//        let modelURL = bundle.url(forResource: "Cadence", withExtension: ".momd")!
+//        let model = NSManagedObjectModel(contentsOf: modelURL)!
+        
+        container = NSPersistentCloudKitContainer(name: "Cadence", managedObjectModel: cadenceModel)
 
 //        container = NSPersistentCloudKitContainer(name: "Cadence")
         if inMemory {
