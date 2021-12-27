@@ -57,6 +57,10 @@ let package = Package(
             from: "0.28.1"
         ),
         .package(
+            url: "https://github.com/dmytro-anokhin/core-data-model-description",
+            from: "0.0.11"
+        ),
+        .package(
             name: "SnapshotTesting", url: "https://github.com/pointfreeco/swift-snapshot-testing",
             from: "1.9.0"
         )
@@ -272,7 +276,8 @@ let package = Package(
             name: "CoreDataStack",
             dependencies: [
                 "Models",
-                "World"
+                "World",
+                .product(name: "CoreDataModelDescription", package: "core-data-model-description")
             ],
             resources: [
                 .copy("Resources/Cadence.xcdatamodeld")

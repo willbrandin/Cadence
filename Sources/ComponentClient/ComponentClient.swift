@@ -16,17 +16,17 @@ public struct ComponentClient {
 public extension ComponentClient {
     static var live: Self = Self(
         create: { bikeId, model in
-            guard let bike = try? Current.coreDataStack().fetchFirst(BikeMO.self, predicate: NSPredicate(format: "id == %@", bikeId)).get() else {
+            guard let bike = try? Current.coreDataStack().fetchFirst(_BikeMO.self, predicate: NSPredicate(format: "id == %@", bikeId)).get() else {
                 return Effect(error: .init())
             }
             
-            let component = ComponentMO.initFrom(model)
+            let component = _ComponentMO.initFrom(model)
             component.bike = bike
             
-            let brand = BrandMO.initFrom(model.brand)
+            let brand = _BrandMO.initFrom(model.brand)
             component.brand = brand
             
-            let mileage = MileageMO.initFrom(model.mileage)
+            let mileage = _MileageMO.initFrom(model.mileage)
             component.mileage = mileage
             
             return Current.coreDataStack().create(component)
@@ -35,7 +35,7 @@ public extension ComponentClient {
                 .mapError { _ in Failure() }
                 .eraseToEffect()
         }, update: { model in
-            guard let managedObject = try? Current.coreDataStack().fetchFirst(ComponentMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
+            guard let managedObject = try? Current.coreDataStack().fetchFirst(_ComponentMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
                 return Effect(error: .init())
             }
             
@@ -51,16 +51,16 @@ public extension ComponentClient {
             let componentMileageIds = components.map(({ $0.mileage.id.uuidString }))
             let searchPredicate = NSPredicate(format: "id IN %@", componentMileageIds)
             
-            return Current.coreDataStack().batchUpdate(MileageMO.self, updatedProperties, predicate: searchPredicate)
+            return Current.coreDataStack().batchUpdate(_MileageMO.self, updatedProperties, predicate: searchPredicate)
                 .publisher
                 .mapError({ _ in Failure() })
-                .flatMap({ _ in Current.coreDataStack().fetch(ComponentMO.self, predicate: componentPredicate).publisher })
+                .flatMap({ _ in Current.coreDataStack().fetch(_ComponentMO.self, predicate: componentPredicate).publisher })
                 .map({ $0.map({ $0.asComponent() }) })
                 .mapError { _ in Failure() }
                 .eraseToEffect()
             
         }, delete: { model in
-            guard let managedObject = try? Current.coreDataStack().fetchFirst(ComponentMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
+            guard let managedObject = try? Current.coreDataStack().fetchFirst(_ComponentMO.self, predicate: NSPredicate(format: "id == %@", model.id.uuidString)).get() else {
                 return .none
             }
             

@@ -77,8 +77,6 @@ public let onboardingReducer: OnboardingReducer =
 
 struct OnboardingContainerView<Content: View>: View {
     
-    @Environment(\.colorScheme) var colorScheme
-
     var title: String
     var description: String
     var index = 0
@@ -103,7 +101,7 @@ struct OnboardingContainerView<Content: View>: View {
             VStack {
                 content()
                 .padding()
-                .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
+                .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 4)
             }
@@ -221,13 +219,28 @@ public struct OnboardingPageView: View {
 
 struct OnboardingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingPageView(
-            store: Store(
-                initialState: OnboardingState(),
-                reducer: onboardingReducer,
-                environment: OnboardingEnvironment()
-            )
-        )
-            .preferredColorScheme(.dark)
+        Group {
+            NavigationView {
+                OnboardingPageView(
+                    store: Store(
+                        initialState: OnboardingState(),
+                        reducer: onboardingReducer,
+                        environment: OnboardingEnvironment()
+                    )
+                )
+                .navigationTitle("Cadence")
+            }
+            NavigationView {
+                OnboardingPageView(
+                    store: Store(
+                        initialState: OnboardingState(),
+                        reducer: onboardingReducer,
+                        environment: OnboardingEnvironment()
+                    )
+                )
+                    .preferredColorScheme(.dark)
+                    .navigationTitle("Cadence")
+            }
+        }
     }
 }
