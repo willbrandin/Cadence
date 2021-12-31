@@ -278,9 +278,6 @@ let package = Package(
                 "Models",
                 "World",
                 .product(name: "CoreDataModelDescription", package: "core-data-model-description")
-            ],
-            resources: [
-                .copy("Resources/Cadence.xcdatamodeld")
             ]
         ),
         .target(
@@ -489,6 +486,12 @@ package.targets.append(contentsOf: [
             "AddBikeFlowFeature",
             "SaveNewBikeFeature",
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "CoreDataStackTests",
+        dependencies: [
+            "CoreDataStack"
         ]
     )
 ])

@@ -5,27 +5,27 @@ public extension CoreDataStack {
         let result = CoreDataStack(inMemory: true)
         let viewContext = result.context
         
-        let brand = _BrandMO(context: viewContext)
+        let brand = BrandMO(context: viewContext)
         brand.id = 2
         brand.isComponentOnly = false
         brand.name = "Yeti"
         
-        let compBrand = _BrandMO(context: viewContext)
+        let compBrand = BrandMO(context: viewContext)
         compBrand.id = 3
         compBrand.isComponentOnly = true
         compBrand.name = "Shimano"
         
-        let mileage = _MileageMO(context: viewContext)
+        let mileage = MileageMO(context: viewContext)
         mileage.id = UUID()
         mileage.miles = 250
         mileage.recommendedMiles = 500
         
-        let compMileage = _MileageMO(context: viewContext)
+        let compMileage = MileageMO(context: viewContext)
         compMileage.id = UUID()
         compMileage.miles = 250
         compMileage.recommendedMiles = 500
         
-        let component = _ComponentMO(context: viewContext)
+        let component = ComponentMO(context: viewContext)
         component.id = UUID()
         component.brand = compBrand
         component.mileage = compMileage
@@ -36,7 +36,7 @@ public extension CoreDataStack {
         component.componentGroupId = 2
         component.maintenances = []
         
-        let bike = _BikeMO(context: viewContext)
+        let bike = BikeMO(context: viewContext)
         bike.id = UUID()
         bike.name = "Yeti 165 Carbon"
         bike.brand = brand

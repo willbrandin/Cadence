@@ -3,10 +3,10 @@ import Combine
 import Models
 import World
 
-public extension _MileageMO {
-    static func initFrom(_ mileage: Mileage) -> _MileageMO {
+public extension MileageMO {
+    static func initFrom(_ mileage: Mileage) -> MileageMO {
         let context = Current.coreDataStack().context
-        let mileageMO = _MileageMO(context: context)
+        let mileageMO = MileageMO(context: context)
 
         mileageMO.id = mileage.id
         mileageMO.miles = Int16(mileage.miles)
@@ -24,19 +24,19 @@ public extension _MileageMO {
     }
 }
 
-public extension _BikeMO {
-    static func initFrom(_ bike: Bike) -> _BikeMO {
+public extension BikeMO {
+    static func initFrom(_ bike: Bike) -> BikeMO {
         let context = Current.coreDataStack().context
-        let managedObject = _BikeMO(context: context)
+        let managedObject = BikeMO(context: context)
         
         managedObject.name = bike.name
         managedObject.id = bike.id
-        managedObject.brand = _BrandMO.initFrom(bike.brand)
+        managedObject.brand = BrandMO.initFrom(bike.brand)
         managedObject.bikeTypeId = Int16(bike.bikeTypeId.rawValue)
-        managedObject.components = NSSet(array: bike.components.map { _ComponentMO.initFrom($0) } )
-        managedObject.maintenances = NSSet(array: bike.maintenances?.compactMap { _MaintenanceMO.initFrom($0) } ?? [])
-        managedObject.mileage = _MileageMO.initFrom(bike.mileage)
-        managedObject.rides = NSSet(array: bike.rides.map { _RideMO.initFrom($0) } )
+        managedObject.components = NSSet(array: bike.components.map { ComponentMO.initFrom($0) } )
+        managedObject.maintenances = NSSet(array: bike.maintenances?.compactMap { MaintenanceMO.initFrom($0) } ?? [])
+        managedObject.mileage = MileageMO.initFrom(bike.mileage)
+        managedObject.rides = NSSet(array: bike.rides.map { RideMO.initFrom($0) } )
 
         return managedObject
     }
@@ -44,30 +44,30 @@ public extension _BikeMO {
     func asBike() -> Bike {
         Bike(id: self.id!,
              name: self.name!,
-             components: Array(self.components as! Set<_ComponentMO>).map({ $0.asComponent() }),
+             components: Array(self.components as! Set<ComponentMO>).map({ $0.asComponent() }),
              bikeTypeId: BikeType(rawValue: Int(exactly: self.bikeTypeId)!) ?? .mountain,
              mileage: self.mileage!.asMileage(),
-             maintenances: Array(self.maintenances as? Set<_MaintenanceMO> ?? []).map({ $0.asMaintenance() }),
+             maintenances: Array(self.maintenances as? Set<MaintenanceMO> ?? []).map({ $0.asMaintenance() }),
              brand: self.brand!.asBrand(),
-             rides: Array(self.rides as? Set<_RideMO> ?? []).map({ $0.asRide() })
+             rides: Array(self.rides as? Set<RideMO> ?? []).map({ $0.asRide() })
         )
     }
 }
 
-public extension _ComponentMO {
-    static func initFrom(_ component: Component) -> _ComponentMO {
+public extension ComponentMO {
+    static func initFrom(_ component: Component) -> ComponentMO {
         let context = Current.coreDataStack().context
-        let managedObject = _ComponentMO(context: context)
+        let managedObject = ComponentMO(context: context)
         
         managedObject.id = component.id
-        managedObject.brand = _BrandMO.initFrom(component.brand)
-        managedObject.mileage = _MileageMO.initFrom(component.mileage)
+        managedObject.brand = BrandMO.initFrom(component.brand)
+        managedObject.mileage = MileageMO.initFrom(component.mileage)
         managedObject.addedToBikeDate = component.addedToBikeDate
         managedObject.componentDescription = component.description
         managedObject.model = component.model
         managedObject.componentTypeId = Int16(component.componentTypeId.rawValue)
         managedObject.componentGroupId = Int16(component.componentGroupId.rawValue)
-        managedObject.maintenances = NSSet(array: component.maintenances.map { _MaintenanceMO.initFrom($0) } )
+        managedObject.maintenances = NSSet(array: component.maintenances.map { MaintenanceMO.initFrom($0) } )
         
         return managedObject
     }
@@ -81,16 +81,16 @@ public extension _ComponentMO {
             componentGroupId: ComponentGroup(rawValue: Int(exactly: self.componentGroupId) ?? 0) ?? .miscellaneus,
             addedToBikeDate: self.addedToBikeDate!,
             mileage: self.mileage!.asMileage(),
-            maintenances: Array(self.maintenances as? Set<_MaintenanceMO> ?? []).map({ $0.asMaintenance() }),
+            maintenances: Array(self.maintenances as? Set<MaintenanceMO> ?? []).map({ $0.asMaintenance() }),
             brand: self.brand!.asBrand()
         )
     }
 }
 
-public extension _MaintenanceMO {
-    static func initFrom(_ service: Maintenance) -> _MaintenanceMO {
+public extension MaintenanceMO {
+    static func initFrom(_ service: Maintenance) -> MaintenanceMO {
         let context = Current.coreDataStack().context
-        let managedObject = _MaintenanceMO(context: context)
+        let managedObject = MaintenanceMO(context: context)
         
         managedObject.id = service.id
         managedObject.serviceDate = service.serviceDate
@@ -108,10 +108,10 @@ public extension _MaintenanceMO {
     }
 }
 
-public extension _BrandMO {
-    static func initFrom(_ brand: Brand) -> _BrandMO {
+public extension BrandMO {
+    static func initFrom(_ brand: Brand) -> BrandMO {
         let context = Current.coreDataStack().context
-        let managedObject = _BrandMO(context: context)
+        let managedObject = BrandMO(context: context)
         
         managedObject.id = Int16(brand.id)
         managedObject.isComponentOnly = brand.isComponentManufacturerOnly
@@ -129,10 +129,10 @@ public extension _BrandMO {
     }
 }
 
-public extension _RideMO {
-    static func initFrom(_ ride: Ride) -> _RideMO {
+public extension RideMO {
+    static func initFrom(_ ride: Ride) -> RideMO {
         let context = Current.coreDataStack().context
-        let managedObject = _RideMO(context: context)
+        let managedObject = RideMO(context: context)
 
         managedObject.id = ride.id
         managedObject.date = ride.date
