@@ -11,6 +11,7 @@ import SwiftUIHelpers
 import EditBikeFeature
 import BikeComponentRowFeature
 import ComponentDetailFeature
+import UserSettingsFeature
 
 public typealias BikeComponentReducer = Reducer<BikeComponentState, BikeComponentAction, BikeComponentEnvironment>
 
@@ -24,7 +25,7 @@ public struct BikeComponentState: Equatable {
         addComponentFlowState: AddComponentFlowState? = nil,
         editBikeState: EditBikeState? = nil,
         isEditBikeFlowNavigationActive: Bool = false,
-        distanceUnit: DistanceUnit = .miles
+        userSettings: UserSettings
     ) {
         self.bike = bike
         self.isShowing = isShowing
@@ -34,7 +35,7 @@ public struct BikeComponentState: Equatable {
         self.addComponentFlowState = addComponentFlowState
         self.editBikeState = editBikeState
         self.isEditBikeFlowNavigationActive = isEditBikeFlowNavigationActive
-        self.distanceUnit = distanceUnit
+        self.userSettings = userSettings
     }
     
     public var bike: Bike = .yetiMountain
@@ -45,7 +46,7 @@ public struct BikeComponentState: Equatable {
     public var addComponentFlowState: AddComponentFlowState?
     public var editBikeState: EditBikeState?
     public var isEditBikeFlowNavigationActive = false
-    public var distanceUnit: DistanceUnit = .miles
+    public var userSettings: UserSettings
     
     public var components: IdentifiedArrayOf<Component> {
         get {
@@ -120,7 +121,7 @@ Reducer { state, action, environment in
             ComponentDetailState(
                 component: component,
                 bikeComponents: state.bike.components,
-                distanceUnit: state.distanceUnit
+                userSettings: state.userSettings
             ),
             id: id
         )
@@ -137,7 +138,7 @@ Reducer { state, action, environment in
    
     case let .setComponentFlowNavigation(isActive):
         if isActive {
-            state.addComponentFlowState = AddComponentFlowState(bikeId: state.bike.id)
+            state.addComponentFlowState = AddComponentFlowState(bikeId: state.bike.id, userSettings: state.userSettings)
         } else {
             state.addComponentFlowState = nil
         }
@@ -175,7 +176,7 @@ Reducer { state, action, environment in
         
     case .editOptionSelected:
         state.isEditBikeFlowNavigationActive = true
-        state.editBikeState = EditBikeState(bike: state.bike)
+        state.editBikeState = EditBikeState(bike: state.bike, userSettings: state.userSettings)
         
         return .none
         
@@ -276,7 +277,7 @@ struct BikeComponentComponentRowView: View {
             send: BikeComponentAction.setNavigation(selection:)
           )
         ) {
-            BikeComponentRow(component: component, distanceUnit: viewStore.distanceUnit)
+            BikeComponentRow(component: component, distanceUnit: viewStore.userSettings.distanceUnit)
         }
         .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -347,7 +348,7 @@ public struct BikeComponentListView: View {
                     
                     Image(systemName: "wrench.and.screwdriver")
                         .font(.title2)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(viewStore.userSettings.accentColor.color)
                     
                     Spacer()
                 }
@@ -436,6 +437,7 @@ public struct BikeComponentListView: View {
                     Image(systemName: "ellipsis.circle")
                         .font(.body.bold())
                 }
+                .foregroundColor(viewStore.userSettings.accentColor.color)
             }
             
             ToolbarItem(placement: .bottomBar) {
@@ -448,7 +450,8 @@ public struct BikeComponentListView: View {
                                 .font(.headline)
                         }
                     }
-                    
+                    .foregroundColor(viewStore.userSettings.accentColor.color)
+
                     Spacer()
                 }
             }
@@ -478,7 +481,8 @@ struct BikeComponentView_Previews: PreviewProvider {
                             maintenances: [],
                             brand: .yeti,
                             rides: []
-                        )
+                        ),
+                        userSettings: .init()
                     ),
                     reducer: bikeComponentReducer,
                     environment: BikeComponentEnvironment()

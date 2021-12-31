@@ -2,6 +2,7 @@ import SwiftUI
 import BikeClient
 import ComposableArchitecture
 import Models
+import UserSettingsFeature
 
 typealias SaveNewBikeReducer = Reducer<SaveNewBikeState, SaveNewBikeAction, SaveNewBikeEnvironment>
 
@@ -10,12 +11,14 @@ public struct SaveNewBikeState: Equatable {
         bikeType: BikeType = BikeType.mountain,
         bikeBrand: Brand = .yeti,
         mileage: Mileage = .base,
-        isSaveBikeRequestInFlight: Bool = false
+        isSaveBikeRequestInFlight: Bool = false,
+        userSettings: UserSettings
     ) {
         self.bikeType = bikeType
         self.bikeBrand = bikeBrand
         self.mileage = mileage
         self.isSaveBikeRequestInFlight = isSaveBikeRequestInFlight
+        self.userSettings = userSettings
     }
     
     public var bikeType: BikeType = BikeType.mountain
@@ -25,6 +28,7 @@ public struct SaveNewBikeState: Equatable {
     
     @BindableState public var bikeName: String = ""
     @BindableState public var alert: AlertState<SaveNewBikeAction>?
+    public var userSettings: UserSettings
 }
 
 public enum SaveNewBikeAction: Equatable, BindableAction {
@@ -136,7 +140,7 @@ public struct SaveNewBikeView: View {
             ToolbarItem(placement: .automatic) {
                 Button("Save", action: { viewStore.send(.saveBike) })
                     .font(.headline.bold())
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(viewStore.userSettings.accentColor.color)
                     .alert(
                         self.store.scope(state: \.alert),
                         dismiss: .alertDismissed
@@ -151,7 +155,7 @@ struct SaveNewBikeView_Previews: PreviewProvider {
         NavigationView {
             SaveNewBikeView(
                 store: Store(
-                    initialState: SaveNewBikeState(),
+                    initialState: SaveNewBikeState(userSettings: .init()),
                     reducer: saveNewBikeReducer,
                     environment: SaveNewBikeEnvironment()
                 )

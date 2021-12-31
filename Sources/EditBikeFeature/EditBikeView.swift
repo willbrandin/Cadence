@@ -2,16 +2,19 @@ import SwiftUI
 import ComposableArchitecture
 import Models
 import BikeClient
+import UserSettingsFeature
 
 public typealias EditBikeReducer = Reducer<EditBikeState, EditBikeAction, EditBikeEnvironment>
 
 public struct EditBikeState: Equatable {
     public init(
         bike: Bike = .yetiMountain,
-        isSaveBikeRequestInFlight: Bool = false
+        isSaveBikeRequestInFlight: Bool = false,
+        userSettings: UserSettings
     ) {
         self.bike = bike
         self.isSaveBikeRequestInFlight = isSaveBikeRequestInFlight
+        self.userSettings = userSettings
     }
     
     public var bike: Bike = .yetiMountain
@@ -28,6 +31,7 @@ public struct EditBikeState: Equatable {
     
     public var isSaveBikeRequestInFlight = false
     @BindableState public var alert: AlertState<EditBikeAction>?
+    public var userSettings: UserSettings
 }
 
 public enum EditBikeAction: Equatable, BindableAction {
@@ -148,7 +152,7 @@ struct EditBikeView: View {
             ToolbarItem(placement: .automatic) {
                 Button("Save", action: { viewStore.send(.saveBike) })
                     .font(.headline.bold())
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(viewStore.userSettings.accentColor.color)
                     .alert(
                         self.store.scope(state: \.alert),
                         dismiss: .alertDismissed
@@ -163,7 +167,7 @@ struct EditBikeView_Previews: PreviewProvider {
         NavigationView {
             EditBikeView(
                 store: Store(
-                    initialState: EditBikeState(),
+                    initialState: EditBikeState(userSettings: .init()),
                     reducer: editBikeReducer,
                     environment: EditBikeEnvironment()
                 )

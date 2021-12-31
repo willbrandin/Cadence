@@ -150,7 +150,7 @@ Reducer { state, action, environment in
             state.selectedBike = Identified(
                 BikeComponentState(
                     bike: bike,
-                    distanceUnit: state.settingsState.userSettings.distanceUnit
+                    userSettings: state.settingsState.userSettings
                 ),
                 id: id
             )
@@ -181,7 +181,7 @@ Reducer { state, action, environment in
         state.isAddBikeFlowActive = isActive
         
         if isActive {
-            state.addBikeFlowState = AddBikeFlowState()
+            state.addBikeFlowState = AddBikeFlowState(userSettings: state.settingsState.userSettings)
         } else {
             state.addBikeFlowState = nil
         }
@@ -442,7 +442,7 @@ public struct HomeView: View {
                     
                     Image(systemName: "bicycle")
                         .font(.title2)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(viewStore.settingsState.userSettings.accentColor.color)
                     
                     Spacer()
                 }
@@ -523,6 +523,7 @@ public struct HomeView: View {
                         Button(action: { viewStore.send(.addRideTapped) }) {
                             Image(systemName: "bicycle")
                         }
+                        .foregroundColor(viewStore.settingsState.accentColor.color)
                         .sheet(
                             isPresented: viewStore.binding(\.$isAddRideSheetActive).removeDuplicates()
                         ) {
@@ -544,6 +545,7 @@ public struct HomeView: View {
                     Button(action: { viewStore.send(.set(\.$isSettingsSheetActive, true)) }) {
                         Image(systemName: "gear")
                             .font(.body.bold())
+                            .foregroundColor(viewStore.settingsState.accentColor.color)
                     }
                 }
                 
@@ -557,6 +559,7 @@ public struct HomeView: View {
                                     .font(.headline)
                             }
                         }
+                        .foregroundColor(viewStore.settingsState.accentColor.color)
                         
                         Spacer()
                     }

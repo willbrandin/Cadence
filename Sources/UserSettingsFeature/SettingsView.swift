@@ -22,6 +22,7 @@ public struct SettingsState: Equatable {
         isSyncWithiCloudOn: Bool = true,
         colorScheme: ColorScheme = .system,
         appIcon: AppIcon? = nil,
+        accentColor: AccentColor = .blue,
         distanceUnit: DistanceUnit = .miles,
         isColorSchemeNavigationActive: Bool = false,
         isUnitPickerNavigationActive: Bool = false,
@@ -32,6 +33,7 @@ public struct SettingsState: Equatable {
         self.colorScheme = colorScheme
         self.appIcon = appIcon
         self.distanceUnit = distanceUnit
+        self.accentColor = accentColor
         self.isColorSchemeNavigationActive = isColorSchemeNavigationActive
         self.isUnitPickerNavigationActive = isUnitPickerNavigationActive
         self.isAppIconNavigationActive = isAppIconNavigationActive
@@ -42,10 +44,12 @@ public struct SettingsState: Equatable {
     @BindableState public var colorScheme: ColorScheme = .system
     @BindableState public var appIcon: AppIcon?
     @BindableState public var distanceUnit: DistanceUnit = .miles
+    @BindableState public var accentColor: AccentColor = .blue
     @BindableState public var isColorSchemeNavigationActive = false
     @BindableState public var isUnitPickerNavigationActive = false
     @BindableState public var isAppIconNavigationActive = false
-    
+    @BindableState public var isAccentColorNavigationActive = false
+
     #if DEBUG
     @BindableState public var isStoreJsonNavigationActive = false
     #endif
@@ -55,13 +59,15 @@ public struct SettingsState: Equatable {
             return UserSettings(
                 colorScheme: colorScheme,
                 distanceUnit: distanceUnit,
-                appIcon: appIcon
+                appIcon: appIcon,
+                accentColor: accentColor
             )
         }
         set {
             self.colorScheme = newValue.colorScheme
             self.appIcon = newValue.appIcon
             self.distanceUnit = newValue.distanceUnit
+            self.accentColor = newValue.accentColor
         }
     }
 }
@@ -202,7 +208,7 @@ public struct SettingsView: View {
                 } label: {
                     HStack {
                         Image(systemName: "dial.max")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(viewStore.accentColor.color)
                         Text("Units")
                         Spacer()
                         Text(viewStore.distanceUnit.title.capitalized)
@@ -210,12 +216,25 @@ public struct SettingsView: View {
                     }
                 }
             
+                NavigationLink(isActive: viewStore.binding(\.$isAccentColorNavigationActive).removeDuplicates()) {
+                    AccentColorPickerView(accentColor: viewStore.binding(\.$accentColor))
+                } label: {
+                    HStack {
+                        Image(systemName: "scribble.variable")
+                            .foregroundColor(viewStore.accentColor.color)
+                        Text("Accent Color")
+                        Spacer()
+                        Text(viewStore.accentColor.title.capitalized)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
                 NavigationLink(isActive: viewStore.binding(\.$isColorSchemeNavigationActive).removeDuplicates()) {
                     ColorSchemePickerView(colorScheme: viewStore.binding(\.$colorScheme))
                 } label: {
                     HStack {
                         Image(systemName: "paintbrush.pointed")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(viewStore.accentColor.color)
                         Text("Theme")
                         Spacer()
                         Text(viewStore.colorScheme.title)
@@ -229,7 +248,7 @@ public struct SettingsView: View {
                 )) {
                     HStack {
                         Image(systemName: "icloud")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(viewStore.accentColor.color)
                         Text("iCloud Sync")
                     }
                 }
@@ -240,7 +259,7 @@ public struct SettingsView: View {
                     } label: {
                         HStack {
                             Image(systemName: "app")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(viewStore.accentColor.color)
                             Text("App Icon")
                             Spacer()
                         }
@@ -253,7 +272,7 @@ public struct SettingsView: View {
                 Button(action: { viewStore.send(.helpAndSupportTapped) }) {
                     HStack {
                         Image(systemName: "envelope")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(viewStore.accentColor.color)
                         Text("Help and Support")
                             .foregroundColor(.primary)
                     }
@@ -285,18 +304,6 @@ public struct SettingsView: View {
                     .foregroundColor(.primary)
                     .padding(.leading, -16)
             ) {
-//                NavigationLink(
-//                    isActive: viewStore.binding(\.$isStoreJsonNavigationActive),
-//                    destination: {
-//                        StoreJsonView()
-//                    }) {
-//                    HStack {
-//                        Image(systemName: "hammer")
-//                            .foregroundColor(.accentColor)
-//                        Text("Store Viewer")
-//                    }
-//                }
-//
                 Button(action: { viewStore.send(.clearCache) }) {
                     HStack {
                         Image(systemName: "trash")
@@ -314,6 +321,7 @@ public struct SettingsView: View {
                 Button(action: { viewStore.send(.didTapClose) }) {
                     Image(systemName: "xmark")
                 }
+                .foregroundColor(viewStore.accentColor.color)
             }
         }
         .onAppear {
