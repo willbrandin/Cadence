@@ -1,22 +1,22 @@
 import Combine
 import ComposableArchitecture
 import XCTest
+import Models
 
-@testable import Cadence
+@testable import TypeSelectionFeature
 
 class ComponentGroupSelectionFeatureTests: XCTestCase {
     func testComponentGroupSelection() {
         let store = TestStore(
             initialState: ComponentGroupSelectionState(
-                selectedComponentType: nil,
-                components: ComponentGroup.allCases
+                selectedComponentType: nil
             ),
             reducer: componentGroupSelectionReducer,
             environment: ComponentGroupSelectionEnvironment()
         )
         
-        store.send(.didSelect(.brakes)) {
-            $0.selectedComponentType = .brakes
+        store.send(.set(\.$selectedComponentGroupType, .brakes)) {
+            $0.selectedComponentGroupType = .brakes
         }
     }
 }

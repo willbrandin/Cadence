@@ -12,7 +12,6 @@
 		CE0FA43926DA916100414628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43826DA916100414628 /* Assets.xcassets */; };
 		CE0FA43C26DA916100414628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43B26DA916100414628 /* Preview Assets.xcassets */; };
 		CE0FA45026DA916200414628 /* CadenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FA44F26DA916200414628 /* CadenceUITests.swift */; };
-		CE2AA73C26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA73B26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift */; };
 		CE2AA74B26ECF79A00AF26A8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = CE2AA74A26ECF79A00AF26A8 /* SnapshotTesting */; };
 		CE2AA74D26ECF7CD00AF26A8 /* AppCoreViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */; };
 		CE2AA74E26ECF7DE00AF26A8 /* AddComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */; };
@@ -21,13 +20,7 @@
 		CE2AA75126ECF7F600AF26A8 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C83126E057C7000E4CA5 /* SnapshotView.swift */; };
 		CE2AA75226ECF7F600AF26A8 /* AppStorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */; };
 		CE2AA75326ECF7F600AF26A8 /* AssertAppStoreSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82D26E0571B000E4CA5 /* AssertAppStoreSnapshot.swift */; };
-		CE2AA75526ECF82600AF26A8 /* CreateComponentFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FA44526DA916200414628 /* CreateComponentFeatureTests.swift */; };
 		CE2AA75826ECFA2600AF26A8 /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */; };
-		CE2AA77426ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA77326ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift */; };
-		CE2AA77626ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA77526ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift */; };
-		CE2AA77826ED030E00AF26A8 /* ComponentTypeSelectionFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA77726ED030E00AF26A8 /* ComponentTypeSelectionFeatureTests.swift */; };
-		CE2AA77B26ED04F000AF26A8 /* BrandListFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA77A26ED04F000AF26A8 /* BrandListFeatureTests.swift */; };
-		CE2AA77D26ED0C6800AF26A8 /* ComponentDetailFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA77C26ED0C6800AF26A8 /* ComponentDetailFeatureTests.swift */; };
 		CE2AA78D26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA77F26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png */; };
 		CE2AA78E26ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78026ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png */; };
 		CE2AA78F26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78126ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png */; };
@@ -42,10 +35,6 @@
 		CE2AA79826ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78A26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png */; };
 		CE2AA79926ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78B26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png */; };
 		CE2AA79A26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */; };
-		CE2AA79D26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA79C26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift */; };
-		CE2AA79F26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA79E26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift */; };
-		CE2AA7A526EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA7A426EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift */; };
-		CE8D425426EFB1D80034A4B2 /* UserSettingsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D425326EFB1D80034A4B2 /* UserSettingsFeatureTests.swift */; };
 		CE8D425726EFD2FD0034A4B2 /* AppSettingsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D425626EFD2FC0034A4B2 /* AppSettingsViewTests.swift */; };
 		CE8D425E26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D425C26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png */; };
 		CE8D425F26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D425D26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png */; };
@@ -53,8 +42,6 @@
 		CE8D426526EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426126EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png */; };
 		CE8D426626EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426226EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png */; };
 		CE8D426726EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426326EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png */; };
-		CE8D426A26EFD5450034A4B2 /* DataJsonPrettyPrintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D426926EFD5450034A4B2 /* DataJsonPrettyPrintTests.swift */; };
-		CE8D426C26EFD76A0034A4B2 /* DistanceConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D426B26EFD76A0034A4B2 /* DistanceConversionTests.swift */; };
 		CEABB91C276EA791008F481A /* appicon-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90B276EA4AC008F481A /* appicon-1@2x.png */; };
 		CEABB91D276EA791008F481A /* cadence-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB911276EA4AD008F481A /* cadence-icon@2x.png */; };
 		CEABB91E276EA791008F481A /* appicon-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90A276EA4AC008F481A /* appicon-1@3x.png */; };
@@ -63,7 +50,6 @@
 		CEABB921276EA791008F481A /* appicon-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90F276EA4AD008F481A /* appicon-2@2x.png */; };
 		CEABB922276EA791008F481A /* appicon-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90D276EA4AD008F481A /* appicon-3@2x.png */; };
 		CEABB923276EA791008F481A /* appicon-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB910276EA4AD008F481A /* appicon-3@3x.png */; };
-		CEB4898426EAE57800540A42 /* BikeComponentFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */; };
 		CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64B0276D5560007CAF57 /* AppFeature */; };
 		CEF80DBC26F0315400D2E5E9 /* TypeSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */; };
 		CEF80DC526F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */; };
@@ -72,20 +58,9 @@
 		CEF80DC826F0323600D2E5E9 /* testComponentType.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC226F0323600D2E5E9 /* testComponentType.iPhone_5_5.png */; };
 		CEF80DC926F0323600D2E5E9 /* testComponentType.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC326F0323600D2E5E9 /* testComponentType.iPhone_6_5.png */; };
 		CEF80DCA26F0323600D2E5E9 /* testBikeType.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC426F0323600D2E5E9 /* testBikeType.iPhone_5_5.png */; };
-		CEF80DCC26F0332000D2E5E9 /* Component+CellTitleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DCB26F0332000D2E5E9 /* Component+CellTitleTests.swift */; };
-		CEF80DCF26F034E300D2E5E9 /* ComponentDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DCE26F034E300D2E5E9 /* ComponentDetailViewTests.swift */; };
-		CEF80DD426F0355200D2E5E9 /* testComponentView.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DD226F0355200D2E5E9 /* testComponentView.iPhone_5_5.png */; };
-		CEF80DD526F0355200D2E5E9 /* testComponentView.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CE0FA44226DA916200414628 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE0FA42926DA916100414628 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE0FA43026DA916100414628;
-			remoteInfo = Cadence;
-		};
 		CE0FA44C26DA916200414628 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE0FA42926DA916100414628 /* Project object */;
@@ -109,18 +84,10 @@
 		CE0FA43426DA916100414628 /* CadenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadenceApp.swift; sourceTree = "<group>"; };
 		CE0FA43826DA916100414628 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE0FA43B26DA916100414628 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CE0FA44126DA916200414628 /* CadenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0FA44526DA916200414628 /* CreateComponentFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateComponentFeatureTests.swift; sourceTree = "<group>"; };
 		CE0FA44B26DA916200414628 /* CadenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0FA44F26DA916200414628 /* CadenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadenceUITests.swift; sourceTree = "<group>"; };
-		CE2AA73B26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageAnimationFeatureTests.swift; sourceTree = "<group>"; };
 		CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
-		CE2AA77326ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeTypeSelectionFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA77526ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentGroupSelectionFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA77726ED030E00AF26A8 /* ComponentTypeSelectionFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTypeSelectionFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA77A26ED04F000AF26A8 /* BrandListFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA77C26ED0C6800AF26A8 /* ComponentDetailFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailFeatureTests.swift; sourceTree = "<group>"; };
 		CE2AA77F26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationGood.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE2AA78026ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_Page1.iPhone_5_5.png; sourceTree = "<group>"; };
 		CE2AA78126ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationOkay.iPhone_5_5.png; sourceTree = "<group>"; };
@@ -135,9 +102,6 @@
 		CE2AA78A26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationOkay.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE2AA78B26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationRecommended.iPhone_5_5.png; sourceTree = "<group>"; };
 		CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationRecommended.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA79C26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA79E26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormFeatureTests.swift; sourceTree = "<group>"; };
-		CE2AA7A426EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentFlowFeatureTests.swift; sourceTree = "<group>"; };
 		CE39F84727062F2A00D2E8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE4E1CAD276D3898007DE62E /* Cadence */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Cadence; path = ..; sourceTree = "<group>"; };
 		CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreViewTests.swift; sourceTree = "<group>"; };
@@ -147,7 +111,6 @@
 		CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorePreview.swift; sourceTree = "<group>"; };
 		CE83C83126E057C7000E4CA5 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AddComponentSnapshotTests; sourceTree = "<group>"; };
-		CE8D425326EFB1D80034A4B2 /* UserSettingsFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsFeatureTests.swift; sourceTree = "<group>"; };
 		CE8D425626EFD2FC0034A4B2 /* AppSettingsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewTests.swift; sourceTree = "<group>"; };
 		CE8D425C26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAppSettings.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE8D425D26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAppSettings.iPhone_5_5.png; sourceTree = "<group>"; };
@@ -155,8 +118,6 @@
 		CE8D426126EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDeleteAccount.iPhone_5_5.png; sourceTree = "<group>"; };
 		CE8D426226EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDeleteAccount.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE8D426326EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAccountSettings.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE8D426926EFD5450034A4B2 /* DataJsonPrettyPrintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataJsonPrettyPrintTests.swift; sourceTree = "<group>"; };
-		CE8D426B26EFD76A0034A4B2 /* DistanceConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceConversionTests.swift; sourceTree = "<group>"; };
 		CEABB90A276EA4AC008F481A /* appicon-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-1@3x.png"; sourceTree = "<group>"; };
 		CEABB90B276EA4AC008F481A /* appicon-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-1@2x.png"; sourceTree = "<group>"; };
 		CEABB90C276EA4AD008F481A /* cadence-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cadence-icon@3x.png"; sourceTree = "<group>"; };
@@ -165,7 +126,6 @@
 		CEABB90F276EA4AD008F481A /* appicon-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-2@2x.png"; sourceTree = "<group>"; };
 		CEABB910276EA4AD008F481A /* appicon-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-3@3x.png"; sourceTree = "<group>"; };
 		CEABB911276EA4AD008F481A /* cadence-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cadence-icon@2x.png"; sourceTree = "<group>"; };
-		CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComponentFeatureTests.swift; sourceTree = "<group>"; };
 		CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectionViewTests.swift; sourceTree = "<group>"; };
 		CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentGroup.iPhone_6_5.png; sourceTree = "<group>"; };
 		CEF80DC026F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentGroup.iPhone_5_5.png; sourceTree = "<group>"; };
@@ -173,10 +133,6 @@
 		CEF80DC226F0323600D2E5E9 /* testComponentType.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentType.iPhone_5_5.png; sourceTree = "<group>"; };
 		CEF80DC326F0323600D2E5E9 /* testComponentType.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentType.iPhone_6_5.png; sourceTree = "<group>"; };
 		CEF80DC426F0323600D2E5E9 /* testBikeType.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testBikeType.iPhone_5_5.png; sourceTree = "<group>"; };
-		CEF80DCB26F0332000D2E5E9 /* Component+CellTitleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Component+CellTitleTests.swift"; sourceTree = "<group>"; };
-		CEF80DCE26F034E300D2E5E9 /* ComponentDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailViewTests.swift; sourceTree = "<group>"; };
-		CEF80DD226F0355200D2E5E9 /* testComponentView.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentView.iPhone_5_5.png; sourceTree = "<group>"; };
-		CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentView.iPhone_6_5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,13 +142,6 @@
 			files = (
 				CE0A188327444C1500A9860A /* CloudKit.framework in Frameworks */,
 				CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE0FA43E26DA916200414628 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +168,6 @@
 			children = (
 				CE4E1CAD276D3898007DE62E /* Cadence */,
 				CE0FA43326DA916100414628 /* Cadence */,
-				CE0FA44426DA916200414628 /* CadenceTests */,
 				CE2AA74226ECF78700AF26A8 /* CadenceSnapshotTests */,
 				CE0FA44E26DA916200414628 /* CadenceUITests */,
 				CE0FA43226DA916100414628 /* Products */,
@@ -231,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0FA43126DA916100414628 /* Cadence.app */,
-				CE0FA44126DA916200414628 /* CadenceTests.xctest */,
 				CE0FA44B26DA916200414628 /* CadenceUITests.xctest */,
 				CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */,
 			);
@@ -259,23 +206,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CE0FA44426DA916200414628 /* CadenceTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA7A026ED9FD000AF26A8 /* AddBikeFlowTests */,
-				CE2AA7A326EDA81800AF26A8 /* AddComponentFlowTests */,
-				CEB4898226EAE56600540A42 /* BikeComponentTests */,
-				CE2AA77926ED04DC00AF26A8 /* BrandListTests */,
-				CE2AA73A26ECEE4800AF26A8 /* CreateComponentTests */,
-				CE2AA73926ECEDFC00AF26A8 /* MileageAnimationTests */,
-				CE2AA79B26ED9CBD00AF26A8 /* OnboardingFlowTests */,
-				CE2AA77226ED004C00AF26A8 /* TypeSelectionTests */,
-				CE8D425226EFB1B70034A4B2 /* UserSettingsFeatureTests */,
-				CE8D426826EFD5160034A4B2 /* UtilityTests */,
-			);
-			path = CadenceTests;
-			sourceTree = "<group>";
-		};
 		CE0FA44E26DA916200414628 /* CadenceUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,27 +214,9 @@
 			path = CadenceUITests;
 			sourceTree = "<group>";
 		};
-		CE2AA73926ECEDFC00AF26A8 /* MileageAnimationTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA73B26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift */,
-			);
-			path = MileageAnimationTests;
-			sourceTree = "<group>";
-		};
-		CE2AA73A26ECEE4800AF26A8 /* CreateComponentTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE0FA44526DA916200414628 /* CreateComponentFeatureTests.swift */,
-				CE2AA77C26ED0C6800AF26A8 /* ComponentDetailFeatureTests.swift */,
-			);
-			path = CreateComponentTests;
-			sourceTree = "<group>";
-		};
 		CE2AA74226ECF78700AF26A8 /* CadenceSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
-				CEF80DCD26F034CD00D2E5E9 /* ComponentDetailViewTests */,
 				CEF80DBA26F0313E00D2E5E9 /* TypeSelectionViewTests */,
 				CE8D425526EFD2EC0034A4B2 /* AppSettingsViewTests */,
 				CE2AA75626ECFA0E00AF26A8 /* OnboardingViewTests */,
@@ -340,24 +252,6 @@
 			path = __Snapshots__;
 			sourceTree = "<group>";
 		};
-		CE2AA77226ED004C00AF26A8 /* TypeSelectionTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA77326ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift */,
-				CE2AA77526ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift */,
-				CE2AA77726ED030E00AF26A8 /* ComponentTypeSelectionFeatureTests.swift */,
-			);
-			path = TypeSelectionTests;
-			sourceTree = "<group>";
-		};
-		CE2AA77926ED04DC00AF26A8 /* BrandListTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA77A26ED04F000AF26A8 /* BrandListFeatureTests.swift */,
-			);
-			path = BrandListTests;
-			sourceTree = "<group>";
-		};
 		CE2AA77E26ED290100AF26A8 /* OnboardingViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,30 +273,6 @@
 			path = OnboardingViewTests;
 			sourceTree = "<group>";
 		};
-		CE2AA79B26ED9CBD00AF26A8 /* OnboardingFlowTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA79C26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift */,
-				CE2AA79E26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift */,
-			);
-			path = OnboardingFlowTests;
-			sourceTree = "<group>";
-		};
-		CE2AA7A026ED9FD000AF26A8 /* AddBikeFlowTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddBikeFlowTests;
-			sourceTree = "<group>";
-		};
-		CE2AA7A326EDA81800AF26A8 /* AddComponentFlowTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA7A426EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift */,
-			);
-			path = AddComponentFlowTests;
-			sourceTree = "<group>";
-		};
 		CE83C82026E05239000E4CA5 /* AppStoreSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,14 +291,6 @@
 				CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */,
 			);
 			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CE8D425226EFB1B70034A4B2 /* UserSettingsFeatureTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D425326EFB1D80034A4B2 /* UserSettingsFeatureTests.swift */,
-			);
-			path = UserSettingsFeatureTests;
 			sourceTree = "<group>";
 		};
 		CE8D425526EFD2EC0034A4B2 /* AppSettingsViewTests */ = {
@@ -461,16 +323,6 @@
 			path = AppSettingsViewTests;
 			sourceTree = "<group>";
 		};
-		CE8D426826EFD5160034A4B2 /* UtilityTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D426926EFD5450034A4B2 /* DataJsonPrettyPrintTests.swift */,
-				CE8D426B26EFD76A0034A4B2 /* DistanceConversionTests.swift */,
-				CEF80DCB26F0332000D2E5E9 /* Component+CellTitleTests.swift */,
-			);
-			path = UtilityTests;
-			sourceTree = "<group>";
-		};
 		CEA9197426DA947500963EAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,14 +344,6 @@
 				CEABB90C276EA4AD008F481A /* cadence-icon@3x.png */,
 			);
 			path = icons;
-			sourceTree = "<group>";
-		};
-		CEB4898226EAE56600540A42 /* BikeComponentTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEB4898326EAE57800540A42 /* BikeComponentFeatureTests.swift */,
-			);
-			path = BikeComponentTests;
 			sourceTree = "<group>";
 		};
 		CEF80DBA26F0313E00D2E5E9 /* TypeSelectionViewTests */ = {
@@ -532,32 +376,6 @@
 			path = TypeSelectionViewTests;
 			sourceTree = "<group>";
 		};
-		CEF80DCD26F034CD00D2E5E9 /* ComponentDetailViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DD026F0355200D2E5E9 /* __Snapshots__ */,
-				CEF80DCE26F034E300D2E5E9 /* ComponentDetailViewTests.swift */,
-			);
-			path = ComponentDetailViewTests;
-			sourceTree = "<group>";
-		};
-		CEF80DD026F0355200D2E5E9 /* __Snapshots__ */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DD126F0355200D2E5E9 /* ComponentDetailViewTests */,
-			);
-			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CEF80DD126F0355200D2E5E9 /* ComponentDetailViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DD226F0355200D2E5E9 /* testComponentView.iPhone_5_5.png */,
-				CEF80DD326F0355200D2E5E9 /* testComponentView.iPhone_6_5.png */,
-			);
-			path = ComponentDetailViewTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -580,26 +398,6 @@
 			productName = Cadence;
 			productReference = CE0FA43126DA916100414628 /* Cadence.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CE0FA44026DA916200414628 /* CadenceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE0FA45626DA916200414628 /* Build configuration list for PBXNativeTarget "CadenceTests" */;
-			buildPhases = (
-				CE0FA43D26DA916200414628 /* Sources */,
-				CE0FA43E26DA916200414628 /* Frameworks */,
-				CE0FA43F26DA916200414628 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE0FA44326DA916200414628 /* PBXTargetDependency */,
-			);
-			name = CadenceTests;
-			packageProductDependencies = (
-			);
-			productName = CadenceTests;
-			productReference = CE0FA44126DA916200414628 /* CadenceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		CE0FA44A26DA916200414628 /* CadenceUITests */ = {
 			isa = PBXNativeTarget;
@@ -653,10 +451,6 @@
 					CE0FA43026DA916100414628 = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					CE0FA44026DA916200414628 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = CE0FA43026DA916100414628;
-					};
 					CE0FA44A26DA916200414628 = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = CE0FA43026DA916100414628;
@@ -684,7 +478,6 @@
 			projectRoot = "";
 			targets = (
 				CE0FA43026DA916100414628 /* Cadence */,
-				CE0FA44026DA916200414628 /* CadenceTests */,
 				CE0FA44A26DA916200414628 /* CadenceUITests */,
 				CE2AA74026ECF78700AF26A8 /* CadenceSnapshotTests */,
 			);
@@ -709,13 +502,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0FA43F26DA916200414628 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CE0FA44926DA916200414628 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -735,7 +521,6 @@
 				CE8D426626EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png in Resources */,
 				CEF80DC726F0323600D2E5E9 /* testBikeType.iPhone_6_5.png in Resources */,
 				CE8D426526EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png in Resources */,
-				CEF80DD526F0355200D2E5E9 /* testComponentView.iPhone_6_5.png in Resources */,
 				CEF80DC626F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png in Resources */,
 				CE8D425F26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png in Resources */,
 				CE8D425E26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png in Resources */,
@@ -753,7 +538,6 @@
 				CEF80DC926F0323600D2E5E9 /* testComponentType.iPhone_6_5.png in Resources */,
 				CE2AA79726ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png in Resources */,
 				CE2AA78E26ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png in Resources */,
-				CEF80DD426F0355200D2E5E9 /* testComponentView.iPhone_5_5.png in Resources */,
 				CE2AA79A26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png in Resources */,
 				CE2AA79226ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png in Resources */,
 				CE2AA79126ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png in Resources */,
@@ -771,28 +555,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0FA43D26DA916200414628 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE2AA79D26ED9CD900AF26A8 /* OnboardingFlowFeatureTests.swift in Sources */,
-				CE8D426A26EFD5450034A4B2 /* DataJsonPrettyPrintTests.swift in Sources */,
-				CE2AA77D26ED0C6800AF26A8 /* ComponentDetailFeatureTests.swift in Sources */,
-				CE8D425426EFB1D80034A4B2 /* UserSettingsFeatureTests.swift in Sources */,
-				CE2AA77B26ED04F000AF26A8 /* BrandListFeatureTests.swift in Sources */,
-				CEF80DCC26F0332000D2E5E9 /* Component+CellTitleTests.swift in Sources */,
-				CE2AA75526ECF82600AF26A8 /* CreateComponentFeatureTests.swift in Sources */,
-				CE2AA73C26ECEE5F00AF26A8 /* MileageAnimationFeatureTests.swift in Sources */,
-				CE2AA7A526EDA82900AF26A8 /* AddComponentFlowFeatureTests.swift in Sources */,
-				CE2AA77826ED030E00AF26A8 /* ComponentTypeSelectionFeatureTests.swift in Sources */,
-				CEB4898426EAE57800540A42 /* BikeComponentFeatureTests.swift in Sources */,
-				CE2AA79F26ED9E0000AF26A8 /* SignUpFormFeatureTests.swift in Sources */,
-				CE8D426C26EFD76A0034A4B2 /* DistanceConversionTests.swift in Sources */,
-				CE2AA77426ED006200AF26A8 /* BikeTypeSelectionFeatureTests.swift in Sources */,
-				CE2AA77626ED024300AF26A8 /* ComponentGroupSelectionFeatureTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CE0FA44726DA916200414628 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -805,7 +567,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEF80DCF26F034E300D2E5E9 /* ComponentDetailViewTests.swift in Sources */,
 				CE2AA75826ECFA2600AF26A8 /* OnboardingViewTests.swift in Sources */,
 				CE2AA75126ECF7F600AF26A8 /* SnapshotView.swift in Sources */,
 				CE2AA75326ECF7F600AF26A8 /* AssertAppStoreSnapshot.swift in Sources */,
@@ -820,11 +581,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CE0FA44326DA916200414628 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE0FA43026DA916100414628 /* Cadence */;
-			targetProxy = CE0FA44226DA916200414628 /* PBXContainerItemProxy */;
-		};
 		CE0FA44D26DA916200414628 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CE0FA43026DA916100414628 /* Cadence */;
@@ -1018,56 +774,6 @@
 			};
 			name = Release;
 		};
-		CE0FA45726DA916200414628 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YFY3G6R9U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.willbrandin.dev.CadenceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cadence.app/Cadence";
-			};
-			name = Debug;
-		};
-		CE0FA45826DA916200414628 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YFY3G6R9U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.willbrandin.dev.CadenceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cadence.app/Cadence";
-			};
-			name = Release;
-		};
 		CE0FA45A26DA916200414628 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1178,15 +884,6 @@
 			buildConfigurations = (
 				CE0FA45426DA916200414628 /* Debug */,
 				CE0FA45526DA916200414628 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE0FA45626DA916200414628 /* Build configuration list for PBXNativeTarget "CadenceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE0FA45726DA916200414628 /* Debug */,
-				CE0FA45826DA916200414628 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,8 +1,11 @@
 import Combine
 import ComposableArchitecture
+import ComponentClient
+import MileagePickerFeature
+import Models
 import XCTest
 
-@testable import Cadence
+@testable import CreateComponentFeature
 
 class CreateComponentFeatureTests: XCTestCase {
     

@@ -1,7 +1,7 @@
 import XCTest
 import CustomDump
 
-@testable import Cadence
+@testable import Models
 
 class ComponentCellTitleTests: XCTestCase {
     func testComponentCellTitle() {

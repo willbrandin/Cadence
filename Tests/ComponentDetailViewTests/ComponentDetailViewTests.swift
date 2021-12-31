@@ -2,9 +2,10 @@ import Combine
 import ComposableArchitecture
 import XCTest
 import SnapshotTesting
+import Models
 import SwiftUI
 
-@testable import Cadence
+@testable import ComponentDetailFeature
 
 class ComponentDetailViewTests: XCTestCase {
     static override func setUp() {
@@ -43,8 +44,8 @@ class ComponentDetailViewTests: XCTestCase {
         }
         
         assertSnapshot(
-            for: snapshotView,
-            colorScheme: .light
+            matching: snapshotView,
+            as: .image(layout: .device(config: .iPhoneXsMax))
         )
     }
 }

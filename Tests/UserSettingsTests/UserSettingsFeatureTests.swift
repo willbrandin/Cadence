@@ -2,7 +2,7 @@ import Combine
 import ComposableArchitecture
 import XCTest
 
-@testable import Cadence
+@testable import UserSettingsFeature
 
 class UserSettingsFeatureTests: XCTestCase {
     func testColorScheme() {
@@ -11,6 +11,7 @@ class UserSettingsFeatureTests: XCTestCase {
         
         environment.uiUserInterfaceStyleClient.setUserInterfaceStyle = { _ in .none }
         environment.mainQueue = scheduler.eraseToAnyScheduler()
+        environment.fileClient = .noop
         
         let store = TestStore(
             initialState: SettingsState(),
@@ -39,7 +40,8 @@ class UserSettingsFeatureTests: XCTestCase {
         var environment: SettingsEnvironment = .failing
 
         environment.mainQueue = scheduler.eraseToAnyScheduler()
-        
+        environment.fileClient = .noop
+
         let store = TestStore(
             initialState: SettingsState(),
             reducer: userSettingsReducer,

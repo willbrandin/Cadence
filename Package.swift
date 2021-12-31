@@ -489,9 +489,87 @@ package.targets.append(contentsOf: [
         ]
     ),
     .testTarget(
+        name: "AddComponentTests",
+        dependencies: [
+            "AddComponentFlowFeature",
+            "CoreDataStack",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "BikeComponentFeatureTests",
+        dependencies: [
+            "BikeComponentListFeature",
+            "CoreDataStack",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "BrandListTests",
+        dependencies: [
+            "BrandListFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "ComponentDetailViewTests",
+        dependencies: [
+            "ComponentDetailFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
         name: "CoreDataStackTests",
         dependencies: [
             "CoreDataStack"
+        ]
+    ),
+    .testTarget(
+        name: "CreateComponentTests",
+        dependencies: [
+            "CreateComponentFeature",
+            "ComponentDetailFeature",
+            "MileagePickerFeature",
+            "CoreDataStack",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "MileageAnimationTests",
+        dependencies: [
+            "OnboardingFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "OnboardingFlowTests",
+        dependencies: [
+            "OnboardingFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "TypeSelectionTests",
+        dependencies: [
+            "TypeSelectionFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "UserSettingsTests",
+        dependencies: [
+            "UserSettingsFeature",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "UtilityTests",
+        dependencies: [
+            "Models",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
         ]
     )
 ])

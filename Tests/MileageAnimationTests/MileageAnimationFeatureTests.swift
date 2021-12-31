@@ -1,8 +1,9 @@
 import Combine
 import ComposableArchitecture
+import Models
 import XCTest
 
-@testable import Cadence
+@testable import OnboardingFeature
 
 class MileageAnimationFeatureTests: XCTestCase {
     func testAnimation() {

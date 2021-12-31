@@ -19,7 +19,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>20</integer>
 		</dict>
 		<key>CustomDump (Playground) 10.xcscheme</key>
 		<dict>
@@ -96,7 +96,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>21</integer>
 		</dict>
 		<key>CustomDump (Playground) 20.xcscheme</key>
 		<dict>
@@ -327,7 +327,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>19</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

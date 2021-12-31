@@ -5,7 +5,9 @@ import Models
 import World
 
 public struct ComponentClient {
-    public struct Failure: Error, Equatable {}
+    public struct Failure: Error, Equatable {
+        public init() {}
+    }
 
     public var create: (String, Component) -> Effect<Component, ComponentClient.Failure>
     public var update: (Component) -> Effect<Component, ComponentClient.Failure>

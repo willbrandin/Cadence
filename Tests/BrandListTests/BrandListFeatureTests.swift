@@ -2,7 +2,7 @@ import Combine
 import ComposableArchitecture
 import XCTest
 
-@testable import Cadence
+@testable import BrandListFeature
 
 class BrandListFeatureTests: XCTestCase {
     let testScheduler = DispatchQueue.test

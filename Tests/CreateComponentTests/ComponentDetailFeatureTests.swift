@@ -2,7 +2,7 @@ import Combine
 import ComposableArchitecture
 import XCTest
 
-@testable import Cadence
+@testable import ComponentDetailFeature
 
 class ComponentDetailFeatureTests: XCTestCase {
     func testComponentDetail_ShowingOptions() {

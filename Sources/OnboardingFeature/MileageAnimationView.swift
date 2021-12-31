@@ -20,7 +20,7 @@ public extension MileageStatus {
     }
 }
 
-typealias MileageAnimationReducer = Reducer<MileageAnimationState, MileageAnimationAction, MileageAnimationEnvironment>
+public typealias MileageAnimationReducer = Reducer<MileageAnimationState, MileageAnimationAction, MileageAnimationEnvironment>
 
 public struct MileageAnimationState: Equatable {
     public init(
@@ -56,7 +56,7 @@ public struct MileageAnimationEnvironment {
     public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
 }
 
-let mileageAnimationReducer = MileageAnimationReducer
+public let mileageAnimationReducer = MileageAnimationReducer
 { state, action, environment in
     struct MileageAnimationCancelId: Hashable {}
     

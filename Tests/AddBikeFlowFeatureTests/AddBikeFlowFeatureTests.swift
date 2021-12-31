@@ -43,7 +43,7 @@ class AddBikeFlowFeatureTests: XCTestCase {
             environment: environment
         )
         
-        store.send(.bikeType(.didSelect(.mountain))) {
+        store.send(.bikeType(.set(\.$selectedBikeType, .mountain))) {
             $0.selectedBikeType = .mountain
             $0.isBrandNavigationActive = true
         }

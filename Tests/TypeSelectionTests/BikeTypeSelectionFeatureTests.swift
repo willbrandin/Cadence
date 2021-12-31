@@ -1,8 +1,9 @@
 import Combine
 import ComposableArchitecture
 import XCTest
+import Models
 
-@testable import Cadence
+@testable import TypeSelectionFeature
 
 class BikeTypeSelectionFeatureTests: XCTestCase {
     func testSelectedBike() {
@@ -12,19 +13,15 @@ class BikeTypeSelectionFeatureTests: XCTestCase {
             environment: BikeTypeSelectionEnvironment()
         )
         
-        store.send(.didSelect(.mountain)) {
+        store.send(.set(\.$selectedBikeType, .mountain)) {
             $0.selectedBikeType = .mountain
         }
         
-        store.send(.didSelect(.commuter)) {
+        store.send(.set(\.$selectedBikeType, .commuter)) {
             $0.selectedBikeType = .commuter
         }
         
-        store.send(.removeSelectedType) {
-            $0.selectedBikeType = nil
-        }
-        
-        store.send(.didSelect(.road)) {
+        store.send(.set(\.$selectedBikeType, .road)) {
             $0.selectedBikeType = .road
         }
     }
