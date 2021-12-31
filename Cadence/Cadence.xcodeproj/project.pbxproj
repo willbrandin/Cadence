@@ -12,36 +12,6 @@
 		CE0FA43926DA916100414628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43826DA916100414628 /* Assets.xcassets */; };
 		CE0FA43C26DA916100414628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0FA43B26DA916100414628 /* Preview Assets.xcassets */; };
 		CE0FA45026DA916200414628 /* CadenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FA44F26DA916200414628 /* CadenceUITests.swift */; };
-		CE2AA74B26ECF79A00AF26A8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = CE2AA74A26ECF79A00AF26A8 /* SnapshotTesting */; };
-		CE2AA74D26ECF7CD00AF26A8 /* AppCoreViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */; };
-		CE2AA74E26ECF7DE00AF26A8 /* AddComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */; };
-		CE2AA74F26ECF7E900AF26A8 /* AddComponentSnapshotTests in Resources */ = {isa = PBXBuildFile; fileRef = CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */; };
-		CE2AA75026ECF7F000AF26A8 /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = CE70484126E93CA300ACFEB8 /* __Snapshots__ */; };
-		CE2AA75126ECF7F600AF26A8 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C83126E057C7000E4CA5 /* SnapshotView.swift */; };
-		CE2AA75226ECF7F600AF26A8 /* AppStorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */; };
-		CE2AA75326ECF7F600AF26A8 /* AssertAppStoreSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C82D26E0571B000E4CA5 /* AssertAppStoreSnapshot.swift */; };
-		CE2AA75826ECFA2600AF26A8 /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */; };
-		CE2AA78D26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA77F26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png */; };
-		CE2AA78E26ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78026ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png */; };
-		CE2AA78F26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78126ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png */; };
-		CE2AA79026ED290100AF26A8 /* testOnboarding_Page2.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78226ED290100AF26A8 /* testOnboarding_Page2.iPhone_6_5.png */; };
-		CE2AA79126ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78326ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png */; };
-		CE2AA79226ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78426ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png */; };
-		CE2AA79326ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78526ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_5_5.png */; };
-		CE2AA79426ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78626ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_6_5.png */; };
-		CE2AA79526ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78726ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_5_5.png */; };
-		CE2AA79626ED290100AF26A8 /* testOnboarding_Page1.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78826ED290100AF26A8 /* testOnboarding_Page1.iPhone_6_5.png */; };
-		CE2AA79726ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78926ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png */; };
-		CE2AA79826ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78A26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png */; };
-		CE2AA79926ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78B26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png */; };
-		CE2AA79A26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */; };
-		CE8D425726EFD2FD0034A4B2 /* AppSettingsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D425626EFD2FC0034A4B2 /* AppSettingsViewTests.swift */; };
-		CE8D425E26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D425C26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png */; };
-		CE8D425F26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D425D26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png */; };
-		CE8D426426EFD48C0034A4B2 /* testAccountSettings.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426026EFD48C0034A4B2 /* testAccountSettings.iPhone_5_5.png */; };
-		CE8D426526EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426126EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png */; };
-		CE8D426626EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426226EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png */; };
-		CE8D426726EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8D426326EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png */; };
 		CEABB91C276EA791008F481A /* appicon-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90B276EA4AC008F481A /* appicon-1@2x.png */; };
 		CEABB91D276EA791008F481A /* cadence-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB911276EA4AD008F481A /* cadence-icon@2x.png */; };
 		CEABB91E276EA791008F481A /* appicon-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90A276EA4AC008F481A /* appicon-1@3x.png */; };
@@ -51,24 +21,10 @@
 		CEABB922276EA791008F481A /* appicon-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB90D276EA4AD008F481A /* appicon-3@2x.png */; };
 		CEABB923276EA791008F481A /* appicon-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABB910276EA4AD008F481A /* appicon-3@3x.png */; };
 		CECE64B1276D5560007CAF57 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CECE64B0276D5560007CAF57 /* AppFeature */; };
-		CEF80DBC26F0315400D2E5E9 /* TypeSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */; };
-		CEF80DC526F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */; };
-		CEF80DC626F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC026F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png */; };
-		CEF80DC726F0323600D2E5E9 /* testBikeType.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC126F0323600D2E5E9 /* testBikeType.iPhone_6_5.png */; };
-		CEF80DC826F0323600D2E5E9 /* testComponentType.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC226F0323600D2E5E9 /* testComponentType.iPhone_5_5.png */; };
-		CEF80DC926F0323600D2E5E9 /* testComponentType.iPhone_6_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC326F0323600D2E5E9 /* testComponentType.iPhone_6_5.png */; };
-		CEF80DCA26F0323600D2E5E9 /* testBikeType.iPhone_5_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF80DC426F0323600D2E5E9 /* testBikeType.iPhone_5_5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		CE0FA44C26DA916200414628 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE0FA42926DA916100414628 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE0FA43026DA916100414628;
-			remoteInfo = Cadence;
-		};
-		CE2AA74526ECF78700AF26A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE0FA42926DA916100414628 /* Project object */;
 			proxyType = 1;
@@ -86,38 +42,8 @@
 		CE0FA43B26DA916100414628 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE0FA44B26DA916200414628 /* CadenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0FA44F26DA916200414628 /* CadenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadenceUITests.swift; sourceTree = "<group>"; };
-		CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CadenceSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
-		CE2AA77F26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationGood.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78026ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_Page1.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78126ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationOkay.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78226ED290100AF26A8 /* testOnboarding_Page2.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_Page2.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78326ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationNeeded.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78426ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationGreat.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78526ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationGood.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78626ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationGreat.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78726ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationNeeded.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78826ED290100AF26A8 /* testOnboarding_Page1.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_Page1.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78926ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_Page2.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78A26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationOkay.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE2AA78B26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationRecommended.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testOnboarding_AnimationRecommended.iPhone_6_5.png; sourceTree = "<group>"; };
 		CE39F84727062F2A00D2E8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE4E1CAD276D3898007DE62E /* Cadence */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Cadence; path = ..; sourceTree = "<group>"; };
-		CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreViewTests.swift; sourceTree = "<group>"; };
-		CE70484126E93CA300ACFEB8 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
-		CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddComponentSnapshotTests.swift; sourceTree = "<group>"; };
-		CE83C82D26E0571B000E4CA5 /* AssertAppStoreSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertAppStoreSnapshot.swift; sourceTree = "<group>"; };
-		CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorePreview.swift; sourceTree = "<group>"; };
-		CE83C83126E057C7000E4CA5 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
-		CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AddComponentSnapshotTests; sourceTree = "<group>"; };
-		CE8D425626EFD2FC0034A4B2 /* AppSettingsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewTests.swift; sourceTree = "<group>"; };
-		CE8D425C26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAppSettings.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE8D425D26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAppSettings.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE8D426026EFD48C0034A4B2 /* testAccountSettings.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAccountSettings.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE8D426126EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDeleteAccount.iPhone_5_5.png; sourceTree = "<group>"; };
-		CE8D426226EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDeleteAccount.iPhone_6_5.png; sourceTree = "<group>"; };
-		CE8D426326EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testAccountSettings.iPhone_6_5.png; sourceTree = "<group>"; };
 		CEABB90A276EA4AC008F481A /* appicon-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-1@3x.png"; sourceTree = "<group>"; };
 		CEABB90B276EA4AC008F481A /* appicon-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-1@2x.png"; sourceTree = "<group>"; };
 		CEABB90C276EA4AD008F481A /* cadence-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cadence-icon@3x.png"; sourceTree = "<group>"; };
@@ -126,13 +52,6 @@
 		CEABB90F276EA4AD008F481A /* appicon-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-2@2x.png"; sourceTree = "<group>"; };
 		CEABB910276EA4AD008F481A /* appicon-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-3@3x.png"; sourceTree = "<group>"; };
 		CEABB911276EA4AD008F481A /* cadence-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cadence-icon@2x.png"; sourceTree = "<group>"; };
-		CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectionViewTests.swift; sourceTree = "<group>"; };
-		CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentGroup.iPhone_6_5.png; sourceTree = "<group>"; };
-		CEF80DC026F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentGroup.iPhone_5_5.png; sourceTree = "<group>"; };
-		CEF80DC126F0323600D2E5E9 /* testBikeType.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testBikeType.iPhone_6_5.png; sourceTree = "<group>"; };
-		CEF80DC226F0323600D2E5E9 /* testComponentType.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentType.iPhone_5_5.png; sourceTree = "<group>"; };
-		CEF80DC326F0323600D2E5E9 /* testComponentType.iPhone_6_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testComponentType.iPhone_6_5.png; sourceTree = "<group>"; };
-		CEF80DC426F0323600D2E5E9 /* testBikeType.iPhone_5_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testBikeType.iPhone_5_5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,14 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE2AA73E26ECF78700AF26A8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE2AA74B26ECF79A00AF26A8 /* SnapshotTesting in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -168,7 +79,6 @@
 			children = (
 				CE4E1CAD276D3898007DE62E /* Cadence */,
 				CE0FA43326DA916100414628 /* Cadence */,
-				CE2AA74226ECF78700AF26A8 /* CadenceSnapshotTests */,
 				CE0FA44E26DA916200414628 /* CadenceUITests */,
 				CE0FA43226DA916100414628 /* Products */,
 				CEA9197426DA947500963EAE /* Frameworks */,
@@ -180,7 +90,6 @@
 			children = (
 				CE0FA43126DA916100414628 /* Cadence.app */,
 				CE0FA44B26DA916200414628 /* CadenceUITests.xctest */,
-				CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,115 +123,6 @@
 			path = CadenceUITests;
 			sourceTree = "<group>";
 		};
-		CE2AA74226ECF78700AF26A8 /* CadenceSnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DBA26F0313E00D2E5E9 /* TypeSelectionViewTests */,
-				CE8D425526EFD2EC0034A4B2 /* AppSettingsViewTests */,
-				CE2AA75626ECFA0E00AF26A8 /* OnboardingViewTests */,
-				CE83C82026E05239000E4CA5 /* AppStoreSnapshotTests */,
-				CE2AA74C26ECF7BC00AF26A8 /* AppCoreTests */,
-			);
-			path = CadenceSnapshotTests;
-			sourceTree = "<group>";
-		};
-		CE2AA74C26ECF7BC00AF26A8 /* AppCoreTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE70484126E93CA300ACFEB8 /* __Snapshots__ */,
-				CE70483F26E93B2700ACFEB8 /* AppCoreViewTests.swift */,
-			);
-			path = AppCoreTests;
-			sourceTree = "<group>";
-		};
-		CE2AA75626ECFA0E00AF26A8 /* OnboardingViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA75C26ECFC4000AF26A8 /* __Snapshots__ */,
-				CE2AA75726ECFA2600AF26A8 /* OnboardingViewTests.swift */,
-			);
-			path = OnboardingViewTests;
-			sourceTree = "<group>";
-		};
-		CE2AA75C26ECFC4000AF26A8 /* __Snapshots__ */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA77E26ED290100AF26A8 /* OnboardingViewTests */,
-			);
-			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CE2AA77E26ED290100AF26A8 /* OnboardingViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE2AA77F26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png */,
-				CE2AA78026ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png */,
-				CE2AA78126ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png */,
-				CE2AA78226ED290100AF26A8 /* testOnboarding_Page2.iPhone_6_5.png */,
-				CE2AA78326ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png */,
-				CE2AA78426ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png */,
-				CE2AA78526ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_5_5.png */,
-				CE2AA78626ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_6_5.png */,
-				CE2AA78726ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_5_5.png */,
-				CE2AA78826ED290100AF26A8 /* testOnboarding_Page1.iPhone_6_5.png */,
-				CE2AA78926ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png */,
-				CE2AA78A26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png */,
-				CE2AA78B26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png */,
-				CE2AA78C26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png */,
-			);
-			path = OnboardingViewTests;
-			sourceTree = "<group>";
-		};
-		CE83C82026E05239000E4CA5 /* AppStoreSnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE83C83326E05B28000E4CA5 /* __Snapshots__ */,
-				CE83C82126E0525F000E4CA5 /* AddComponentSnapshotTests.swift */,
-				CE83C82D26E0571B000E4CA5 /* AssertAppStoreSnapshot.swift */,
-				CE83C82F26E0574D000E4CA5 /* AppStorePreview.swift */,
-				CE83C83126E057C7000E4CA5 /* SnapshotView.swift */,
-			);
-			path = AppStoreSnapshotTests;
-			sourceTree = "<group>";
-		};
-		CE83C83326E05B28000E4CA5 /* __Snapshots__ */ = {
-			isa = PBXGroup;
-			children = (
-				CE83C84126E0607F000E4CA5 /* AddComponentSnapshotTests */,
-			);
-			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CE8D425526EFD2EC0034A4B2 /* AppSettingsViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D425A26EFD3D80034A4B2 /* __Snapshots__ */,
-				CE8D425626EFD2FC0034A4B2 /* AppSettingsViewTests.swift */,
-			);
-			path = AppSettingsViewTests;
-			sourceTree = "<group>";
-		};
-		CE8D425A26EFD3D80034A4B2 /* __Snapshots__ */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D425B26EFD3D80034A4B2 /* AppSettingsViewTests */,
-			);
-			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CE8D425B26EFD3D80034A4B2 /* AppSettingsViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE8D426026EFD48C0034A4B2 /* testAccountSettings.iPhone_5_5.png */,
-				CE8D426326EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png */,
-				CE8D426126EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png */,
-				CE8D426226EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png */,
-				CE8D425C26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png */,
-				CE8D425D26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png */,
-			);
-			path = AppSettingsViewTests;
-			sourceTree = "<group>";
-		};
 		CEA9197426DA947500963EAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,36 +144,6 @@
 				CEABB90C276EA4AD008F481A /* cadence-icon@3x.png */,
 			);
 			path = icons;
-			sourceTree = "<group>";
-		};
-		CEF80DBA26F0313E00D2E5E9 /* TypeSelectionViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DBD26F0323600D2E5E9 /* __Snapshots__ */,
-				CEF80DBB26F0315400D2E5E9 /* TypeSelectionViewTests.swift */,
-			);
-			path = TypeSelectionViewTests;
-			sourceTree = "<group>";
-		};
-		CEF80DBD26F0323600D2E5E9 /* __Snapshots__ */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DBE26F0323600D2E5E9 /* TypeSelectionViewTests */,
-			);
-			path = __Snapshots__;
-			sourceTree = "<group>";
-		};
-		CEF80DBE26F0323600D2E5E9 /* TypeSelectionViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEF80DBF26F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png */,
-				CEF80DC026F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png */,
-				CEF80DC126F0323600D2E5E9 /* testBikeType.iPhone_6_5.png */,
-				CEF80DC226F0323600D2E5E9 /* testComponentType.iPhone_5_5.png */,
-				CEF80DC326F0323600D2E5E9 /* testComponentType.iPhone_6_5.png */,
-				CEF80DC426F0323600D2E5E9 /* testBikeType.iPhone_5_5.png */,
-			);
-			path = TypeSelectionViewTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,27 +187,6 @@
 			productReference = CE0FA44B26DA916200414628 /* CadenceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		CE2AA74026ECF78700AF26A8 /* CadenceSnapshotTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE2AA74726ECF78700AF26A8 /* Build configuration list for PBXNativeTarget "CadenceSnapshotTests" */;
-			buildPhases = (
-				CE2AA73D26ECF78700AF26A8 /* Sources */,
-				CE2AA73E26ECF78700AF26A8 /* Frameworks */,
-				CE2AA73F26ECF78700AF26A8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE2AA74626ECF78700AF26A8 /* PBXTargetDependency */,
-			);
-			name = CadenceSnapshotTests;
-			packageProductDependencies = (
-				CE2AA74A26ECF79A00AF26A8 /* SnapshotTesting */,
-			);
-			productName = CadenceSnapshotTests;
-			productReference = CE2AA74126ECF78700AF26A8 /* CadenceSnapshotTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -452,10 +201,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					CE0FA44A26DA916200414628 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = CE0FA43026DA916100414628;
-					};
-					CE2AA74026ECF78700AF26A8 = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = CE0FA43026DA916100414628;
 					};
@@ -479,7 +224,6 @@
 			targets = (
 				CE0FA43026DA916100414628 /* Cadence */,
 				CE0FA44A26DA916200414628 /* CadenceUITests */,
-				CE2AA74026ECF78700AF26A8 /* CadenceSnapshotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -509,41 +253,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE2AA73F26ECF78700AF26A8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE2AA75026ECF7F000AF26A8 /* __Snapshots__ in Resources */,
-				CE2AA79526ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_5_5.png in Resources */,
-				CE2AA78D26ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_6_5.png in Resources */,
-				CEF80DC526F0323600D2E5E9 /* testComponentGroup.iPhone_6_5.png in Resources */,
-				CE2AA78F26ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_5_5.png in Resources */,
-				CE8D426626EFD48C0034A4B2 /* testDeleteAccount.iPhone_6_5.png in Resources */,
-				CEF80DC726F0323600D2E5E9 /* testBikeType.iPhone_6_5.png in Resources */,
-				CE8D426526EFD48C0034A4B2 /* testDeleteAccount.iPhone_5_5.png in Resources */,
-				CEF80DC626F0323600D2E5E9 /* testComponentGroup.iPhone_5_5.png in Resources */,
-				CE8D425F26EFD3D80034A4B2 /* testAppSettings.iPhone_5_5.png in Resources */,
-				CE8D425E26EFD3D80034A4B2 /* testAppSettings.iPhone_6_5.png in Resources */,
-				CE2AA79826ED290100AF26A8 /* testOnboarding_AnimationOkay.iPhone_6_5.png in Resources */,
-				CE2AA79326ED290100AF26A8 /* testOnboarding_AnimationGood.iPhone_5_5.png in Resources */,
-				CE2AA74F26ECF7E900AF26A8 /* AddComponentSnapshotTests in Resources */,
-				CEF80DC826F0323600D2E5E9 /* testComponentType.iPhone_5_5.png in Resources */,
-				CE2AA79426ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_6_5.png in Resources */,
-				CE2AA79626ED290100AF26A8 /* testOnboarding_Page1.iPhone_6_5.png in Resources */,
-				CE8D426726EFD48C0034A4B2 /* testAccountSettings.iPhone_6_5.png in Resources */,
-				CE8D426426EFD48C0034A4B2 /* testAccountSettings.iPhone_5_5.png in Resources */,
-				CE2AA79926ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_5_5.png in Resources */,
-				CEF80DCA26F0323600D2E5E9 /* testBikeType.iPhone_5_5.png in Resources */,
-				CE2AA79026ED290100AF26A8 /* testOnboarding_Page2.iPhone_6_5.png in Resources */,
-				CEF80DC926F0323600D2E5E9 /* testComponentType.iPhone_6_5.png in Resources */,
-				CE2AA79726ED290100AF26A8 /* testOnboarding_Page2.iPhone_5_5.png in Resources */,
-				CE2AA78E26ED290100AF26A8 /* testOnboarding_Page1.iPhone_5_5.png in Resources */,
-				CE2AA79A26ED290100AF26A8 /* testOnboarding_AnimationRecommended.iPhone_6_5.png in Resources */,
-				CE2AA79226ED290100AF26A8 /* testOnboarding_AnimationGreat.iPhone_5_5.png in Resources */,
-				CE2AA79126ED290100AF26A8 /* testOnboarding_AnimationNeeded.iPhone_6_5.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -563,21 +272,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE2AA73D26ECF78700AF26A8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE2AA75826ECFA2600AF26A8 /* OnboardingViewTests.swift in Sources */,
-				CE2AA75126ECF7F600AF26A8 /* SnapshotView.swift in Sources */,
-				CE2AA75326ECF7F600AF26A8 /* AssertAppStoreSnapshot.swift in Sources */,
-				CE2AA74E26ECF7DE00AF26A8 /* AddComponentSnapshotTests.swift in Sources */,
-				CE2AA75226ECF7F600AF26A8 /* AppStorePreview.swift in Sources */,
-				CEF80DBC26F0315400D2E5E9 /* TypeSelectionViewTests.swift in Sources */,
-				CE2AA74D26ECF7CD00AF26A8 /* AppCoreViewTests.swift in Sources */,
-				CE8D425726EFD2FD0034A4B2 /* AppSettingsViewTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -585,11 +279,6 @@
 			isa = PBXTargetDependency;
 			target = CE0FA43026DA916100414628 /* Cadence */;
 			targetProxy = CE0FA44C26DA916200414628 /* PBXContainerItemProxy */;
-		};
-		CE2AA74626ECF78700AF26A8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE0FA43026DA916100414628 /* Cadence */;
-			targetProxy = CE2AA74526ECF78700AF26A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -820,53 +509,6 @@
 			};
 			name = Release;
 		};
-		CE2AA74826ECF78700AF26A8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YFY3G6R9U;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.willbrandin.dev.CadenceSnapshotTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cadence.app/Cadence";
-			};
-			name = Debug;
-		};
-		CE2AA74926ECF78700AF26A8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YFY3G6R9U;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.willbrandin.dev.CadenceSnapshotTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cadence.app/Cadence";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -897,15 +539,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE2AA74726ECF78700AF26A8 /* Build configuration list for PBXNativeTarget "CadenceSnapshotTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE2AA74826ECF78700AF26A8 /* Debug */,
-				CE2AA74926ECF78700AF26A8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -920,11 +553,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE2AA74A26ECF79A00AF26A8 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE83C82326E052DF000E4CA5 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
 		CECE64B0276D5560007CAF57 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

@@ -5,7 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "Cadence",
-    platforms: [.iOS(.v15)],
+    platforms: [
+        .iOS(.v15)
+    ],
     products: [
         .library(name: "AddBikeFlowFeature", targets: ["AddBikeFlowFeature"]),
         .library(name: "AddComponentFlowFeature", targets: ["AddComponentFlowFeature"]),
@@ -497,6 +499,27 @@ package.targets.append(contentsOf: [
         ]
     ),
     .testTarget(
+        name: "AppSettingsViewTests",
+        dependencies: [
+            "UserSettingsFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
+        name: "AppStoreSnapshotTests",
+        dependencies: [
+            "CreateComponentFeature",
+            "HomeFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
         name: "BikeComponentFeatureTests",
         dependencies: [
             "BikeComponentListFeature",
@@ -552,10 +575,30 @@ package.targets.append(contentsOf: [
         ]
     ),
     .testTarget(
+        name: "OnboardingViewTests",
+        dependencies: [
+            "OnboardingFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
         name: "TypeSelectionTests",
         dependencies: [
             "TypeSelectionFeature",
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        ]
+    ),
+    .testTarget(
+        name: "TypeSelectionViewTests",
+        dependencies: [
+            "TypeSelectionFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
         ]
     ),
     .testTarget(
