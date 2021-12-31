@@ -3,7 +3,7 @@ import CoreDataModelDescription
 import CoreData
 
 fileprivate let bikeEntity: CoreDataEntityDescription = .entity(
-    name: "_BikeMO",
+    name: "BikeMO",
     managedObjectClass: BikeMO.self,
     attributes: [
         .attribute(name: "bikeTypeId", type: .integer16AttributeType, isOptional: true),
@@ -11,16 +11,16 @@ fileprivate let bikeEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "name", type: .stringAttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "brand", destination: "_BrandMO", toMany: false, inverse: "bike"),
-        .relationship(name: "components", destination: "_ComponentMO", toMany: true, inverse: "bike"),
-        .relationship(name: "maintenances", destination: "_MaintenanceMO", toMany: true, inverse: "bike"),
-        .relationship(name: "mileage", destination: "_MileageMO", toMany: false, inverse: "bike"),
-        .relationship(name: "rides", destination: "_RideMO", toMany: true, inverse: "bike")
+        .relationship(name: "brand", destination: "BrandMO", toMany: false, inverse: "bike"),
+        .relationship(name: "components", destination: "ComponentMO", toMany: true, inverse: "bike"),
+        .relationship(name: "maintenances", destination: "MaintenanceMO", toMany: true, inverse: "bike"),
+        .relationship(name: "mileage", destination: "MileageMO", toMany: false, inverse: "bike"),
+        .relationship(name: "rides", destination: "RideMO", toMany: true, inverse: "bike")
     ]
 )
 
 fileprivate let brandEntity: CoreDataEntityDescription = .entity(
-    name: "_BrandMO",
+    name: "BrandMO",
     managedObjectClass: BrandMO.self,
     attributes: [
         .attribute(name: "id", type: .integer16AttributeType, isOptional: true),
@@ -28,13 +28,13 @@ fileprivate let brandEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "name", type: .stringAttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "bike", destination: "_BikeMO", toMany: false, inverse: "brand"),
-        .relationship(name: "component", destination: "_ComponentMO", toMany: true, inverse: "brand"),
+        .relationship(name: "bike", destination: "BikeMO", toMany: false, inverse: "brand"),
+        .relationship(name: "component", destination: "ComponentMO", toMany: true, inverse: "brand"),
     ]
 )
 
 fileprivate let componentEntity: CoreDataEntityDescription = .entity(
-    name: "_ComponentMO",
+    name: "ComponentMO",
     managedObjectClass: ComponentMO.self,
     attributes: [
         .attribute(name: "addedToBikeDate", type: .dateAttributeType, isOptional: true),
@@ -45,16 +45,16 @@ fileprivate let componentEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "model", type: .stringAttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "bike", destination: "_BikeMO", toMany: false, inverse: "components"),
-        .relationship(name: "brand", destination: "_BrandMO", toMany: false, inverse: "component"),
-        .relationship(name: "maintenances", destination: "_MaintenanceMO", toMany: true, inverse: "components"),
-        .relationship(name: "mileage", destination: "_MileageMO", toMany: false, inverse: "component"),
-        .relationship(name: "rides", destination: "_RideMO", toMany: true, inverse: "components")
+        .relationship(name: "bike", destination: "BikeMO", toMany: false, inverse: "components"),
+        .relationship(name: "brand", destination: "BrandMO", toMany: false, inverse: "component"),
+        .relationship(name: "maintenances", destination: "MaintenanceMO", toMany: true, inverse: "components"),
+        .relationship(name: "mileage", destination: "MileageMO", toMany: false, inverse: "component"),
+        .relationship(name: "rides", destination: "RideMO", toMany: true, inverse: "components")
     ]
 )
 
 fileprivate let maintenanceEntity: CoreDataEntityDescription = .entity(
-    name: "_MaintenanceMO",
+    name: "MaintenanceMO",
     managedObjectClass: MaintenanceMO.self,
     attributes: [
         .attribute(name: "id", type: .UUIDAttributeType, isOptional: true),
@@ -62,13 +62,13 @@ fileprivate let maintenanceEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "serviceDescription", type: .stringAttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "bike", destination: "_BikeMO", toMany: false, inverse: "maintenances"),
-        .relationship(name: "components", destination: "_ComponentMO", toMany: true, inverse: "maintenances"),
+        .relationship(name: "bike", destination: "BikeMO", toMany: false, inverse: "maintenances"),
+        .relationship(name: "components", destination: "ComponentMO", toMany: true, inverse: "maintenances"),
     ]
 )
 
 fileprivate let mileageEntity: CoreDataEntityDescription = .entity(
-    name: "_MileageMO",
+    name: "MileageMO",
     managedObjectClass: MileageMO.self,
     attributes: [
         .attribute(name: "id", type: .UUIDAttributeType, isOptional: true),
@@ -76,13 +76,13 @@ fileprivate let mileageEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "recommendedMiles", type: .integer16AttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "bike", destination: "_BikeMO", toMany: false, inverse: "mileage"),
-        .relationship(name: "component", destination: "_ComponentMO", toMany: true, inverse: "mileage"),
+        .relationship(name: "bike", destination: "BikeMO", toMany: false, inverse: "mileage"),
+        .relationship(name: "component", destination: "ComponentMO", toMany: true, inverse: "mileage"),
     ]
 )
 
 fileprivate let rideEntity: CoreDataEntityDescription = .entity(
-    name: "_RideMO",
+    name: "RideMO",
     managedObjectClass: RideMO.self,
     attributes: [
         .attribute(name: "date", type: .dateAttributeType, isOptional: true),
@@ -90,8 +90,8 @@ fileprivate let rideEntity: CoreDataEntityDescription = .entity(
         .attribute(name: "id", type: .UUIDAttributeType, isOptional: true)
     ],
     relationships: [
-        .relationship(name: "bike", destination: "_BikeMO", toMany: false, inverse: "rides"),
-        .relationship(name: "components", destination: "_ComponentMO", toMany: true, inverse: "rides")
+        .relationship(name: "bike", destination: "BikeMO", toMany: false, inverse: "rides"),
+        .relationship(name: "components", destination: "ComponentMO", toMany: true, inverse: "rides")
     ]
 )
 
