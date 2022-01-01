@@ -47,12 +47,12 @@
 		<key>BikeClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>31</integer>
 		</dict>
 		<key>BikeComponentListFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>19</integer>
 		</dict>
 		<key>BikeComponentRowFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -87,7 +87,7 @@
 		<key>ComponentClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>32</integer>
 		</dict>
 		<key>ComponentDetailFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -97,7 +97,7 @@
 		<key>ComponentSelectorFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>16</integer>
 		</dict>
 		<key>ComposableHelpers.xcscheme_^#shared#^_</key>
 		<dict>
@@ -107,12 +107,12 @@
 		<key>CoreDataStack.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>29</integer>
 		</dict>
 		<key>CreateComponentFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>41</integer>
 		</dict>
 		<key>CustomDump (Playground) 1.xcscheme</key>
 		<dict>
@@ -200,12 +200,12 @@
 		<key>HomeFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>42</integer>
 		</dict>
 		<key>MaintenanceClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>34</integer>
 		</dict>
 		<key>ManagedObjects.xcscheme_^#shared#^_</key>
 		<dict>
@@ -215,7 +215,7 @@
 		<key>MileageClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>36</integer>
 		</dict>
 		<key>MileagePickerFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -235,12 +235,12 @@
 		<key>OnboardingFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>12</integer>
 		</dict>
 		<key>RideClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>37</integer>
 		</dict>
 		<key>SaveNewBikeFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -290,7 +290,7 @@
 		<key>UserSettingsFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>41</integer>
+			<integer>28</integer>
 		</dict>
 		<key>World.xcscheme_^#shared#^_</key>
 		<dict>

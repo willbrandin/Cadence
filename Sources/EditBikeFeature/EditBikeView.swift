@@ -98,11 +98,13 @@ public let editBikeReducer = EditBikeReducer
 
 public struct EditBikeNavigationView: View {
     let store: Store<EditBikeState, EditBikeAction>
-    
+    @ObservedObject var viewStore: ViewStore<EditBikeState, EditBikeAction>
+
     public init(
         store: Store<EditBikeState, EditBikeAction>
     ) {
         self.store = store
+        self.viewStore = ViewStore(self.store)
     }
     
     public var body: some View {
@@ -111,6 +113,7 @@ public struct EditBikeNavigationView: View {
                 store: self.store
             )
             .navigationTitle("Edit Bike")
+            .accentColor(viewStore.userSettings.accentColor.color)
         }
     }
 }

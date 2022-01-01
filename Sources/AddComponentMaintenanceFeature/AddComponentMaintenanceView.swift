@@ -5,6 +5,7 @@ import World
 import MaintenanceClient
 import ComponentClient
 import ComponentSelectorFeature
+import UserSettingsFeature
 
 public typealias ComponentMaintenanceReducer = Reducer<AddComponentMaintenanceState, AddComponentMaintenanceAction, AddComponentMaintenenanceEnvironment>
 
@@ -24,12 +25,12 @@ public struct AddComponentMaintenanceState: Equatable {
         isCustomDate: Bool = false,
         alert: AlertState<AddComponentMaintenanceAction>? = nil,
         isSelectedComponentsNavigationActive: Bool = false,
-        distanceUnit: DistanceUnit = .miles
+        userSettings: UserSettings
     ) {
         self.components = components
         self.selectedComponents = selectedComponents
         self.isSelectedComponentsNavigationActive = isSelectedComponentsNavigationActive
-        self.distanceUnit = distanceUnit
+        self.userSettings = userSettings
     }
     
     public var components: [Component]
@@ -41,14 +42,14 @@ public struct AddComponentMaintenanceState: Equatable {
     @BindableState public var alert: AlertState<AddComponentMaintenanceAction>?
 
     public var isSelectedComponentsNavigationActive = false
-    public var distanceUnit: DistanceUnit = .miles
+    public var userSettings: UserSettings
     
     public var componentSelectorState: ComponentSelectorState {
         get {
             return ComponentSelectorState(
                 components: self.components,
                 selectedComponents: self.selectedComponents,
-                distanceUnit: self.distanceUnit
+                distanceUnit: self.userSettings.distanceUnit
             )
         }
         set {
@@ -264,6 +265,7 @@ public struct AddComponentMaintenanceView: View {
                     displayedComponents: [.date]
                 )
                 .datePickerStyle(.graphical)
+                .accentColor(viewStore.userSettings.accentColor.color)
             }
         }
         .navigationTitle("Add Service")
@@ -284,7 +286,7 @@ struct AddComponentMaintenanceView_Previews: PreviewProvider {
         NavigationView {
             AddComponentMaintenanceView(
                 store: Store(
-                    initialState: AddComponentMaintenanceState(),
+                    initialState: AddComponentMaintenanceState(userSettings: .init()),
                     reducer: addComponentMaintenanceReducer,
                     environment: AddComponentMaintenenanceEnvironment())
             )

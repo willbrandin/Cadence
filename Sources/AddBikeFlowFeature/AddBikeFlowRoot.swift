@@ -218,6 +218,7 @@ public struct AddBikeFlowRootView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(viewStore.userSettings.accentColor.color)
     }
 }
 

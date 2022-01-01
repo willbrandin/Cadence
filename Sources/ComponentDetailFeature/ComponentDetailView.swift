@@ -100,7 +100,7 @@ private let reducer = ComponentDetailReducer
                 selectedComponents: [
                     state.component.id : state.component
                 ],
-                distanceUnit: state.userSettings.distanceUnit
+                userSettings: state.userSettings
             )
         } else {
             state.addComponentServiceState = nil

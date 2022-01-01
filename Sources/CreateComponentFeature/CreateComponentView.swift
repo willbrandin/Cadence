@@ -349,6 +349,7 @@ public struct CreateComponentView: View {
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(.graphical)
+                    .accentColor(viewStore.userSettings.accentColor.color)
                 }
                 
             }
@@ -367,7 +368,7 @@ struct AddComponentView_Previews: PreviewProvider {
         NavigationView {
             CreateComponentView(
                 store: Store(
-                    initialState: CreateComponentState(bikeId: UUID(), userSettings: .init()),
+                    initialState: CreateComponentState(bikeId: UUID(), userSettings: .init(accentColor: .purple)),
                     reducer: addComponentReducer,
                     environment: CreateComponentEnvironment()
                 )

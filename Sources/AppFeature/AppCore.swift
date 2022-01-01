@@ -10,16 +10,16 @@ public struct AppCoreState: Equatable {
     public init(
         isOnboardingSheetActive: Bool = false,
         onboardingFlowState: OnboardingState? = nil,
-        accountBikesState: HomeState = HomeState()
+        accountBikesState: HomeState = .init()
     ) {
         self.isOnboardingSheetActive = isOnboardingSheetActive
         self.onboardingFlowState = onboardingFlowState
         self.accountBikesState = accountBikesState
     }
     
-    public var isOnboardingSheetActive = false
-    public var onboardingFlowState:OnboardingState?
-    public var accountBikesState: HomeState = HomeState()
+    public var isOnboardingSheetActive: Bool
+    public var onboardingFlowState: OnboardingState?
+    public var accountBikesState: HomeState
 }
 
 public enum AppCoreAction: Equatable {

@@ -329,6 +329,7 @@ public struct AddComponentFlowRoot: View {
             }
             .navigationTitle("Component Group")
         }
+        .accentColor(viewStore.userSettings.accentColor.color)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

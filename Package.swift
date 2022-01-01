@@ -103,6 +103,7 @@ let package = Package(
                 "MaintenanceClient",
                 "ComponentClient",
                 "ComponentSelectorFeature",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -113,6 +114,7 @@ let package = Package(
                 "ComponentClient",
                 "Models",
                 "RideClient",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),

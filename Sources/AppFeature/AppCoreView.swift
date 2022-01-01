@@ -24,6 +24,7 @@ public struct AppCoreView: View {
             ))
                 .navigationTitle("Cadence")
         }
+        .accentColor(viewStore.accountBikesState.settingsState.accentColor.color)
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(
             isPresented: viewStore.binding(
@@ -41,6 +42,7 @@ public struct AppCoreView: View {
                         OnboardingPageView(store: store)
                             .navigationTitle("Cadence")
                     }
+                    .accentColor(viewStore.accountBikesState.settingsState.accentColor.color)
                     .navigationViewStyle(StackNavigationViewStyle())
                     .interactiveDismissDisabled()
                 }
