@@ -4,6 +4,7 @@ import ComposableArchitecture
 import ComponentClient
 import Models
 import RideClient
+import UserSettingsFeature
 
 public typealias AddRideFlowReducer = Reducer<AddRideFlowState, AddRideFlowAction, AddRideFlowEnvironment>
 
@@ -12,12 +13,14 @@ public struct AddRideFlowState: Equatable {
         selectableBikes: [Bike],
         selectedBike: Bike,
         miles: String = "",
-        date: Date = Date()
+        date: Date = Date(),
+        userSettings: UserSettings
     ) {
         self.selectableBikes = selectableBikes
         self.selectedBike = selectedBike
         self.miles = miles
         self.date = date
+        self.userSettings = userSettings
     }
     
     public var selectableBikes: [Bike]
@@ -25,6 +28,7 @@ public struct AddRideFlowState: Equatable {
     
     @BindableState public var miles: String = ""
     @BindableState public var date: Date = Date()
+    public var userSettings: UserSettings
 }
 
 public enum AddRideFlowAction: Equatable, BindableAction {
@@ -155,11 +159,20 @@ public struct AddRideFlowRootView: View {
             
             Section {
                 DatePicker("Date", selection: viewStore.binding(\.$date), displayedComponents: [.date])
+                    .accentColor(viewStore.userSettings.accentColor.color)
             }
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save", action: { viewStore.send(.saveButtonTapped) })
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { viewStore.send(.didTapCloseFlow) }) {
+                    Image(systemName: "xmark")
+                        .font(.body.bold())
+                }
+                .foregroundColor(viewStore.userSettings.accentColor.color)
             }
         }
         .onAppear {
@@ -177,7 +190,8 @@ struct AddRideFlowRootView_Previews: PreviewProvider {
                     initialState: AddRideFlowState(
                         selectableBikes: [.yetiMountain, .canyonRoad, .specializedMountain],
                         selectedBike: .yetiMountain,
-                        miles: ""
+                        miles: "",
+                        userSettings: .init()
                     ),
                     reducer: addRideReducer,
                     environment: AddRideFlowEnvironment()

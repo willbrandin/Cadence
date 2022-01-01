@@ -3,6 +3,7 @@ import SwiftUI
 import ComposableArchitecture
 import BrandClient
 import Models
+import UserSettingsFeature
 
 typealias BrandListReducer = Reducer<BrandListState, BrandListAction, BrandListEnvironment>
 
@@ -19,7 +20,8 @@ public struct BrandListState: Equatable {
         filteredBrands: [Brand] = [],
         isBrandRequestInFlight: Bool = false,
         selectedBrand: Brand? = nil,
-        isAddAccountBrandNavigation: Bool = false
+        isAddAccountBrandNavigation: Bool = false,
+        userSettings: UserSettings
     ) {
         self.brandContext = brandContext
         self.brands = brands
@@ -27,6 +29,7 @@ public struct BrandListState: Equatable {
         self.isBrandRequestInFlight = isBrandRequestInFlight
         self.selectedBrand = selectedBrand
         self.isAddAccountBrandNavigation = isAddAccountBrandNavigation
+        self.userSettings = userSettings
     }
     
     public var brandContext: BrandListContext = .both
@@ -36,6 +39,7 @@ public struct BrandListState: Equatable {
     public var isBrandRequestInFlight = false
     public var selectedBrand: Brand?
     public var isAddAccountBrandNavigation = false
+    public var userSettings: UserSettings
 }
 
 public enum BrandListAction: Equatable, BindableAction {
@@ -166,7 +170,7 @@ public struct BrandListView: View {
                 Button(action: {}) {
                     Image(systemName: "plus")
                 }
-                .foregroundColor(.accentColor)
+                .foregroundColor(viewStore.userSettings.accentColor.color)
             }
         }
     }
@@ -177,7 +181,7 @@ struct BrandListView_Previews: PreviewProvider {
         NavigationView {
             BrandListView(
                 store: Store(
-                    initialState: BrandListState(),
+                    initialState: BrandListState(userSettings: .init()),
                     reducer: brandListReducer,
                     environment: BrandListEnvironment())
             )

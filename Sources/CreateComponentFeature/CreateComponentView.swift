@@ -7,6 +7,7 @@ import ComponentClient
 import MileagePickerFeature
 import World
 import SwiftUIHelpers
+import UserSettingsFeature
 
 public typealias CreateComponentReducer = Reducer<CreateComponentState, CreateComponentAction, CreateComponentEnvironment>
 
@@ -26,7 +27,8 @@ public struct CreateComponentState: Equatable {
         mileagePickerState: MileagePickerState? = nil,
         brandListState: BrandListState? = nil,
         isBrandNavigationActive: Bool = false,
-        distanceUnit: DistanceUnit = .miles
+        distanceUnit: DistanceUnit = .miles,
+        userSettings: UserSettings
     ) {
         self.model = model
         self.description = description
@@ -43,6 +45,7 @@ public struct CreateComponentState: Equatable {
         self.brandListState = brandListState
         self.isBrandNavigationActive = isBrandNavigationActive
         self.distanceUnit = distanceUnit
+        self.userSettings = userSettings
     }
     
     @BindableState public var model: String = ""
@@ -61,6 +64,7 @@ public struct CreateComponentState: Equatable {
     public var brandListState: BrandListState?
     public var isBrandNavigationActive = false
     public var distanceUnit: DistanceUnit = .miles
+    public var userSettings: UserSettings
 
     public var mileageText: String {
         return "\(recommendedMiles) \(distanceUnit.title)"
@@ -185,7 +189,11 @@ private let reducer = CreateComponentReducer
         return .none
         
     case .setBrandNavigation(isActive: true):
-        state.brandListState = BrandListState(brandContext: .components, selectedBrand: state.brand)
+        state.brandListState = BrandListState(
+            brandContext: .components,
+            selectedBrand: state.brand,
+            userSettings: state.userSettings
+        )
         state.isBrandNavigationActive = true
         return .none
         
@@ -341,6 +349,7 @@ public struct CreateComponentView: View {
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(.graphical)
+                    .accentColor(viewStore.userSettings.accentColor.color)
                 }
                 
             }
@@ -348,7 +357,7 @@ public struct CreateComponentView: View {
         .toolbar {
             ToolbarItem(placement: ToolbarItemPlacement.confirmationAction) {
                 Button("Save", action: { viewStore.send(.didTapSave) })
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(viewStore.userSettings.accentColor.color)
             }
         }
     }
@@ -359,7 +368,7 @@ struct AddComponentView_Previews: PreviewProvider {
         NavigationView {
             CreateComponentView(
                 store: Store(
-                    initialState: CreateComponentState(bikeId: UUID()),
+                    initialState: CreateComponentState(bikeId: UUID(), userSettings: .init(accentColor: .purple)),
                     reducer: addComponentReducer,
                     environment: CreateComponentEnvironment()
                 )

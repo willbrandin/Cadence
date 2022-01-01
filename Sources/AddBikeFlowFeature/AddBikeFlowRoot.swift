@@ -8,6 +8,7 @@ import BrandListFeature
 import SaveNewBikeFeature
 import TypeSelectionFeature
 import SwiftUIHelpers
+import UserSettingsFeature
 
 public typealias AddBikeFlowReducer = Reducer<AddBikeFlowState, AddBikeFlowAction, AddBikeFlowEnvironment>
 
@@ -15,22 +16,25 @@ public struct AddBikeFlowState: Equatable {
     public init(
         selectedBikeType: BikeType? = nil,
         isBrandNavigationActive: Bool = false,
-        brandSelectionState: BrandListState = BrandListState(brandContext: .bikes),
+        brandSelectionState: BrandListState = BrandListState(brandContext: .bikes, userSettings: .init()),
         isSaveBikeNavigationActive: Bool = false,
-        saveNewBikeState: SaveNewBikeState? = nil
+        saveNewBikeState: SaveNewBikeState? = nil,
+        userSettings: UserSettings
     ) {
         self.selectedBikeType = selectedBikeType
         self.isBrandNavigationActive = isBrandNavigationActive
-        self.brandSelectionState = brandSelectionState
+        self.brandSelectionState = BrandListState(brandContext: .bikes, userSettings: userSettings)
         self.isSaveBikeNavigationActive = isSaveBikeNavigationActive
         self.saveNewBikeState = saveNewBikeState
+        self.userSettings = userSettings
     }
     
     public var selectedBikeType: BikeType?
     public var isBrandNavigationActive = false
-    public var brandSelectionState = BrandListState(brandContext: .bikes)
+    public var brandSelectionState: BrandListState
     public var isSaveBikeNavigationActive = false
     public var saveNewBikeState: SaveNewBikeState?
+    public var userSettings: UserSettings
     
     public var bikeSelectionState: BikeTypeSelectionState {
         get {
@@ -136,7 +140,8 @@ public let addBikeFlowReducer: AddBikeFlowReducer =
     
     state.saveNewBikeState = SaveNewBikeState(
         bikeType: bikeType,
-        bikeBrand: brand
+        bikeBrand: brand,
+        userSettings: state.userSettings
     )
     
     return .none
@@ -208,10 +213,12 @@ public struct AddBikeFlowRootView: View {
                         Image(systemName: "xmark")
                             .font(.body.bold())
                     }
+                    .foregroundColor(viewStore.userSettings.accentColor.color)
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(viewStore.userSettings.accentColor.color)
     }
 }
 
@@ -219,7 +226,7 @@ struct BikeFlowRootView_Previews: PreviewProvider {
     static var previews: some View {
         AddBikeFlowRootView(
             store: Store(
-                initialState: AddBikeFlowState(),
+                initialState: AddBikeFlowState(userSettings: .init()),
                 reducer: addBikeFlowReducer,
                 environment: AddBikeFlowEnvironment())
         )

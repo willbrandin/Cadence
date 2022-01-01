@@ -79,6 +79,7 @@ let package = Package(
                 "SaveNewBikeFeature",
                 "SwiftUIHelpers",
                 "TypeSelectionFeature",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -92,6 +93,7 @@ let package = Package(
                 "Models",
                 "TypeSelectionFeature",
                 "World",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -103,6 +105,7 @@ let package = Package(
                 "MaintenanceClient",
                 "ComponentClient",
                 "ComponentSelectorFeature",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -113,6 +116,7 @@ let package = Package(
                 "ComponentClient",
                 "Models",
                 "RideClient",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -198,6 +202,7 @@ let package = Package(
                 "World",
                 "Style",
                 "BikeComponentRowFeature",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -226,6 +231,7 @@ let package = Package(
             dependencies: [
                 "Models",
                 "BrandClient",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -255,6 +261,7 @@ let package = Package(
                 "Models",
                 "Style",
                 "SwiftUIHelpers",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -292,6 +299,7 @@ let package = Package(
                 "MileagePickerFeature",
                 "World",
                 "SwiftUIHelpers",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -301,6 +309,7 @@ let package = Package(
             dependencies: [
                 "Models",
                 "BikeClient",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -411,6 +420,7 @@ let package = Package(
             dependencies: [
                 "Models",
                 "BikeClient",
+                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),

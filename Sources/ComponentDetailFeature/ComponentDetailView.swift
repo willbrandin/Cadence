@@ -7,6 +7,7 @@ import MileageScaleFeature
 import Models
 import Style
 import SwiftUIHelpers
+import UserSettingsFeature
 
 public typealias ComponentDetailReducer = Reducer<ComponentDetailState, ComponentDetailAction, ComponentDetailEnvironment>
 
@@ -17,14 +18,14 @@ public struct ComponentDetailState: Equatable {
         isShowingOptions: Bool = false,
         isAddComponentServiceNavigationActive: Bool = false,
         addComponentServiceState: AddComponentMaintenanceState? = nil,
-        distanceUnit: DistanceUnit = .miles
+        userSettings: UserSettings
     ) {
         self.component = component
         self.bikeComponents = bikeComponents
         self.isShowingOptions = isShowingOptions
         self.isAddComponentServiceNavigationActive = isAddComponentServiceNavigationActive
         self.addComponentServiceState = addComponentServiceState
-        self.distanceUnit = distanceUnit
+        self.userSettings = userSettings
     }
     
     public var component: Component = .shimanoSLXBrakes
@@ -33,7 +34,7 @@ public struct ComponentDetailState: Equatable {
     
     public var isAddComponentServiceNavigationActive = false
     public var addComponentServiceState: AddComponentMaintenanceState?
-    public var distanceUnit: DistanceUnit = .miles
+    public var userSettings: UserSettings
 }
 
 public enum ComponentDetailAction: Equatable {
@@ -99,7 +100,7 @@ private let reducer = ComponentDetailReducer
                 selectedComponents: [
                     state.component.id : state.component
                 ],
-                distanceUnit: state.distanceUnit
+                userSettings: state.userSettings
             )
         } else {
             state.addComponentServiceState = nil
@@ -260,7 +261,7 @@ public struct ComponentDetailView: View {
     
     public var body: some View {
         ScrollView {
-            ComponentDetailCardView(component: viewStore.component, distanceUnit: viewStore.distanceUnit)
+            ComponentDetailCardView(component: viewStore.component, distanceUnit: viewStore.userSettings.distanceUnit)
             
             NavigationLink(
                 "Add Service",
@@ -304,6 +305,7 @@ public struct ComponentDetailView: View {
                 Button(action: { viewStore.send(.toggleShowOptions(true)) }) {
                     Image(systemName: "ellipsis.circle")
                 }
+                .foregroundColor(viewStore.userSettings.accentColor.color)
             }
         }
         .confirmationDialog(
@@ -323,7 +325,7 @@ struct ComponentDetailView_Previews: PreviewProvider {
             NavigationView {
                 ComponentDetailView(
                     store: Store(
-                        initialState: ComponentDetailState(component: .yeti165Frame_WithMaintenance),
+                        initialState: ComponentDetailState(component: .yeti165Frame_WithMaintenance, userSettings: .init()),
                         reducer: componentDetailReducer,
                         environment: .mocked
                     )

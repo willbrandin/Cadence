@@ -7,6 +7,7 @@ import BrandClient
 import BrandListFeature
 import ComponentClient
 import World
+import UserSettingsFeature
 
 public typealias AddComponentFlowReducer = Reducer<AddComponentFlowState, AddComponentFlowAction, AddComponentFlowEnvironment>
 
@@ -17,18 +18,20 @@ public struct AddComponentFlowState: Equatable {
         isTypeSelectionNavigationActive: Bool = false,
         typeSelectionState: ComponentTypeSelectionState = ComponentTypeSelectionState(),
         isBrandNavigationActive: Bool = false,
-        brandListState: BrandListState = BrandListState(brandContext: .components),
+        brandListState: BrandListState = BrandListState(brandContext: .components, userSettings: .init()),
         isComponentDetailNavigationActive: Bool = false,
-        componentDetailState: CreateComponentState? = nil
+        componentDetailState: CreateComponentState? = nil,
+        userSettings: UserSettings
     ) {
         self.bikeId = bikeId
         self.groupSelectionState = groupSelectionState
         self.isTypeSelectionNavigationActive = isTypeSelectionNavigationActive
         self.typeSelectionState = typeSelectionState
         self.isBrandNavigationActive = isBrandNavigationActive
-        self.brandListState = brandListState
+        self.brandListState = BrandListState(brandContext: .components, userSettings: userSettings)
         self.isComponentDetailNavigationActive = isComponentDetailNavigationActive
         self.componentDetailState = componentDetailState
+        self.userSettings = userSettings
     }
     
     public var bikeId: UUID
@@ -38,10 +41,11 @@ public struct AddComponentFlowState: Equatable {
     public var typeSelectionState = ComponentTypeSelectionState()
 
     public var isBrandNavigationActive = false
-    public var brandListState = BrandListState(brandContext: .components)
+    public var brandListState: BrandListState
     
     public var isComponentDetailNavigationActive = false
     public var componentDetailState: CreateComponentState?
+    public var userSettings: UserSettings
 }
 
 public enum AddComponentFlowAction: Equatable {
@@ -164,7 +168,8 @@ public let addComponentFlowReducer: AddComponentFlowReducer =
         bikeId: state.bikeId,
         brand: brand,
         componentGroup: group,
-        componentType: type
+        componentType: type,
+        userSettings: state.userSettings
     )
     return .none
 }
@@ -318,12 +323,13 @@ public struct AddComponentFlowRoot: View {
                             Image(systemName: "xmark")
                                 .font(.body.bold())
                         }
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(viewStore.userSettings.accentColor.color)
                     }
                 }
             }
             .navigationTitle("Component Group")
         }
+        .accentColor(viewStore.userSettings.accentColor.color)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -332,7 +338,7 @@ struct AddComponentFlowRoot_Previews: PreviewProvider {
     static var previews: some View {
         AddComponentFlowRoot(
             store: Store(
-                initialState: AddComponentFlowState(bikeId: UUID()),
+                initialState: AddComponentFlowState(bikeId: UUID(), userSettings: .init()),
                 reducer: addComponentFlowReducer,
                 environment: AddComponentFlowEnvironment()
             )

@@ -27,15 +27,15 @@ public typealias AccountBikesReducer = Reducer<HomeState, HomeAction, HomeEnviro
 
 public struct HomeState: Equatable {
     public init(
-        bikes: IdentifiedArrayOf<Bike> = [],
-        selectedBike: Identified<Bike.ID, BikeComponentState>? = nil,
-        isAccountBikesRequestInFlight: Bool = false,
-        isAddBikeFlowActive: Bool = false,
-        addBikeFlowState: AddBikeFlowState? = nil,
-        settingsState: SettingsState = SettingsState(),
-        addRideState: AddRideFlowState? = nil,
-        isSettingsSheetActive: Bool = false,
-        isAddRideSheetActive: Bool = false
+        bikes: IdentifiedArrayOf<Bike>,
+        selectedBike: Identified<Bike.ID, BikeComponentState>?,
+        isAccountBikesRequestInFlight: Bool,
+        isAddBikeFlowActive: Bool,
+        addBikeFlowState: AddBikeFlowState?,
+        settingsState: SettingsState,
+        addRideState: AddRideFlowState?,
+        isSettingsSheetActive: Bool,
+        isAddRideSheetActive: Bool
     ) {
         self.bikes = bikes
         self.selectedBike = selectedBike
@@ -48,18 +48,29 @@ public struct HomeState: Equatable {
         self.isAddRideSheetActive = isAddRideSheetActive
     }
     
-    public var bikes: IdentifiedArrayOf<Bike> = []
+    public var bikes: IdentifiedArrayOf<Bike>
     public var selectedBike: Identified<Bike.ID, BikeComponentState>?
-    public var isAccountBikesRequestInFlight = false
-
-    public var isAddBikeFlowActive = false
+    public var isAccountBikesRequestInFlight: Bool
+    public var isAddBikeFlowActive: Bool
     public var addBikeFlowState: AddBikeFlowState?
-    
-    @BindableState public var isSettingsSheetActive = false
-    public var settingsState = SettingsState()
-    
-    @BindableState public var isAddRideSheetActive = false
+    public var settingsState: SettingsState
     public var addRideState: AddRideFlowState?
+    @BindableState public var isSettingsSheetActive: Bool
+    @BindableState public var isAddRideSheetActive: Bool
+}
+
+extension HomeState {
+    public init() {
+        self.bikes = []
+        self.selectedBike = nil
+        self.isAccountBikesRequestInFlight = false
+        self.isAddBikeFlowActive = false
+        self.addBikeFlowState = nil
+        self.settingsState = SettingsState()
+        self.addRideState = nil
+        self.isSettingsSheetActive = false
+        self.isAddRideSheetActive = false
+    }
 }
 
 public enum HomeAction: Equatable, BindableAction {
@@ -150,7 +161,7 @@ Reducer { state, action, environment in
             state.selectedBike = Identified(
                 BikeComponentState(
                     bike: bike,
-                    distanceUnit: state.settingsState.userSettings.distanceUnit
+                    userSettings: state.settingsState.userSettings
                 ),
                 id: id
             )
@@ -181,7 +192,7 @@ Reducer { state, action, environment in
         state.isAddBikeFlowActive = isActive
         
         if isActive {
-            state.addBikeFlowState = AddBikeFlowState()
+            state.addBikeFlowState = AddBikeFlowState(userSettings: state.settingsState.userSettings)
         } else {
             state.addBikeFlowState = nil
         }
@@ -249,7 +260,8 @@ Reducer { state, action, environment in
             selectableBikes: state.bikes.elements,
             selectedBike: state.bikes.elements.first!,
             miles: "",
-            date: environment.date()
+            date: environment.date(),
+            userSettings: state.settingsState.userSettings
         )
         
         return .none
@@ -442,7 +454,7 @@ public struct HomeView: View {
                     
                     Image(systemName: "bicycle")
                         .font(.title2)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(viewStore.settingsState.userSettings.accentColor.color)
                     
                     Spacer()
                 }
@@ -467,6 +479,38 @@ public struct HomeView: View {
         }
     }
     
+    var addRideCard: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Go for a ride?")
+                        .font(.title2.bold())
+                    
+                    Image(systemName: "map")
+                        .font(.title3)
+                        .foregroundColor(viewStore.settingsState.userSettings.accentColor.color)
+                    
+                    Spacer()
+                }
+                .padding()
+                
+                HStack {
+                    Text("After your ride add mileage to your bike.")
+                        .frame(alignment: .leading)
+                        .lineSpacing(8)
+                        .multilineTextAlignment(.leading)
+                        .padding([.horizontal, .bottom])
+                }
+                
+                Button("Add Miles", action: { viewStore.send(.setAddBikeFlow(active: true)) })
+                    .buttonStyle(SecondaryOutlineButtonStyle())
+            }
+            .background(Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .padding(.horizontal)
+        }
+    }
+    
     public var body: some View {
         ZStack {
             Color(colorScheme == .light ? .secondarySystemBackground : .systemBackground)
@@ -481,6 +525,11 @@ public struct HomeView: View {
                     ProgressView()
                 } else {
                     ScrollView {
+                        if viewStore.bikes.flatMap({ $0.rides }).isEmpty && !viewStore.bikes.isEmpty {
+                            addRideCard
+                                .padding(.vertical)
+                        }
+                        
                         ForEach(BikeType.allCases) { type in
                             BikeSection(bikeType: type, store: store)
                         }
@@ -515,6 +564,7 @@ public struct HomeView: View {
                     )
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
+                .accentColor(viewStore.settingsState.accentColor.color)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -523,6 +573,7 @@ public struct HomeView: View {
                         Button(action: { viewStore.send(.addRideTapped) }) {
                             Image(systemName: "bicycle")
                         }
+                        .foregroundColor(viewStore.settingsState.accentColor.color)
                         .sheet(
                             isPresented: viewStore.binding(\.$isAddRideSheetActive).removeDuplicates()
                         ) {
@@ -535,6 +586,7 @@ public struct HomeView: View {
                                   NavigationView {
                                       AddRideFlowRootView(store: store)
                                   }
+                                  .accentColor(viewStore.settingsState.accentColor.color)
                               }
                             )
                         }
@@ -544,6 +596,7 @@ public struct HomeView: View {
                     Button(action: { viewStore.send(.set(\.$isSettingsSheetActive, true)) }) {
                         Image(systemName: "gear")
                             .font(.body.bold())
+                            .foregroundColor(viewStore.settingsState.accentColor.color)
                     }
                 }
                 
@@ -557,6 +610,7 @@ public struct HomeView: View {
                                     .font(.headline)
                             }
                         }
+                        .foregroundColor(viewStore.settingsState.accentColor.color)
                         
                         Spacer()
                     }
@@ -572,11 +626,20 @@ public struct HomeView: View {
 struct AccountBikesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-          
             NavigationView {
                 HomeView(
                     store: Store(
-                        initialState: HomeState(bikes: []),
+                        initialState: HomeState(
+                            bikes: [.yetiMountain, .canyonRoad],
+                            selectedBike: nil,
+                            isAccountBikesRequestInFlight: false,
+                            isAddBikeFlowActive: false,
+                            addBikeFlowState: nil,
+                            settingsState: SettingsState(),
+                            addRideState: nil,
+                            isSettingsSheetActive: false,
+                            isAddRideSheetActive: false
+                        ),
                         reducer: homeReducer,
                         environment: .mocked
                     )
