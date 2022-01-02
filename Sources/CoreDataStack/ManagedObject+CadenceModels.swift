@@ -129,6 +129,27 @@ public extension BrandMO {
     }
 }
 
+public extension CustomBrandMO {
+    static func initFrom(_ brand: Brand) -> CustomBrandMO {
+        let context = Current.coreDataStack().context
+        let managedObject = CustomBrandMO(context: context)
+        
+        managedObject.id = Int16(brand.id)
+        managedObject.isComponentOnly = brand.isComponentManufacturerOnly
+        managedObject.name = brand.brand
+        
+        return managedObject
+    }
+    
+    func asBrand() -> Brand {
+        Brand(
+            id: Int(self.id),
+            brand: self.name!,
+            isComponentManufacturerOnly: self.isComponentOnly
+        )
+    }
+}
+
 public extension RideMO {
     static func initFrom(_ ride: Ride) -> RideMO {
         let context = Current.coreDataStack().context

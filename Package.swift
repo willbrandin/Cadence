@@ -12,6 +12,7 @@ let package = Package(
         .library(name: "AddBikeFlowFeature", targets: ["AddBikeFlowFeature"]),
         .library(name: "AddComponentFlowFeature", targets: ["AddComponentFlowFeature"]),
         .library(name: "AddComponentMaintenanceFeature", targets: ["AddComponentMaintenanceFeature"]),
+        .library(name: "AddCustomBrandFeature", targets: ["AddCustomBrandFeature"]),
         .library(name: "AddRideFlowFeature", targets: ["AddRideFlowFeature"]),
         .library(name: "AppDelegateFeature", targets: ["AppDelegateFeature"]),
         .library(name: "AppFeature", targets: ["AppFeature"]),
@@ -106,6 +107,15 @@ let package = Package(
                 "MaintenanceClient",
                 "ComponentClient",
                 "ComponentSelectorFeature",
+                "UserSettingsFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "AddCustomBrandFeature",
+            dependencies: [
+                "BrandClient",
+                "Models",
                 "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
@@ -220,7 +230,9 @@ let package = Package(
         .target(
             name: "BrandClient",
             dependencies: [
+                "CoreDataStack",
                 "Models",
+                "World",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ],
             resources: [
@@ -230,9 +242,11 @@ let package = Package(
         .target(
             name: "BrandListFeature",
             dependencies: [
+                "AddCustomBrandFeature",
                 "Models",
                 "BrandClient",
                 "UserSettingsFeature",
+                "World",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),

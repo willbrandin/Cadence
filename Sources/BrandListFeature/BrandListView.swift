@@ -1,3 +1,4 @@
+import AddCustomBrandFeature
 import Foundation
 import SwiftUI
 import ComposableArchitecture
@@ -17,38 +18,52 @@ public struct BrandListState: Equatable {
     public init(
         brandContext: BrandListContext = .both,
         brands: [Brand] = [],
+        recentBrands: [Brand] = [],
+        userBrands: [Brand] = [],
         filteredBrands: [Brand] = [],
         isBrandRequestInFlight: Bool = false,
         selectedBrand: Brand? = nil,
-        isAddAccountBrandNavigation: Bool = false,
-        userSettings: UserSettings
+        isUserBrandRequestInFlight: Bool = false,
+        userSettings: UserSettings = .init(),
+        addBrandState: AddBrandState = .init(),
+        isAddBrandNavigationActive: Bool = false
     ) {
         self.brandContext = brandContext
         self.brands = brands
+        self.recentBrands = recentBrands
+        self.userBrands = userBrands
         self.filteredBrands = filteredBrands
+        self.filterQuery = ""
         self.isBrandRequestInFlight = isBrandRequestInFlight
         self.selectedBrand = selectedBrand
-        self.isAddAccountBrandNavigation = isAddAccountBrandNavigation
+        self.isUserBrandRequestInFlight = isUserBrandRequestInFlight
         self.userSettings = userSettings
+        self.addBrandState = addBrandState
+        self.isAddBrandNavigationActive = isAddBrandNavigationActive
     }
     
-    public var brandContext: BrandListContext = .both
-    public var brands: [Brand] = []
-    public var filteredBrands: [Brand] = []
-    @BindableState public var filterQuery: String = ""
-    public var isBrandRequestInFlight = false
+    public var brandContext: BrandListContext
+    public var brands: [Brand]
+    public var recentBrands: [Brand]
+    public var userBrands: [Brand]
+    public var filteredBrands: [Brand]
+    @BindableState public var filterQuery: String
+    public var isBrandRequestInFlight: Bool
+    public var isUserBrandRequestInFlight: Bool
     public var selectedBrand: Brand?
-    public var isAddAccountBrandNavigation = false
     public var userSettings: UserSettings
+    public var addBrandState: AddBrandState
+    @BindableState public var isAddBrandNavigationActive: Bool
 }
 
 public enum BrandListAction: Equatable, BindableAction {
     case binding(BindingAction<BrandListState>)
     case setSelected(brand: Brand)
-    case setAddBrandFlow(active: Bool)
     case viewLoaded
     case brandsLoaded([Brand])
-    case setAddAccountBrandNavigation(isActive: Bool)
+    case userBrandsResponse(Result<[Brand], BrandClient.Failure>)
+    case addBrandAction(AddBrandAction)
+    case addBrandButtonTapped
 }
 
 public struct BrandListEnvironment {
@@ -64,14 +79,15 @@ public struct BrandListEnvironment {
     public var mainQueue: AnySchedulerOf<DispatchQueue>
 }
 
-public let brandListReducer = BrandListReducer
+private let reducer = BrandListReducer
 { state, action, environment in
     switch action {
     case let .setSelected(brand):
         state.selectedBrand = brand
         return .none
 
-    case let .setAddBrandFlow(isActive):
+    case .addBrandButtonTapped:
+        state.isAddBrandNavigationActive = true
         return .none
         
     case .viewLoaded:
@@ -79,11 +95,34 @@ public let brandListReducer = BrandListReducer
         else { return .none }
         
         state.isBrandRequestInFlight = true
-        return environment.brandClient
-            .requestBrands()
-            .receive(on: environment.mainQueue)
-            .map(BrandListAction.brandsLoaded)
-            .eraseToEffect()
+        state.isUserBrandRequestInFlight = true
+        
+        return .merge(
+            environment.brandClient
+                .requestBrands()
+                .receive(on: environment.mainQueue)
+                .map(BrandListAction.brandsLoaded)
+                .eraseToEffect(),
+            environment.brandClient
+                .requestUserBrands()
+                .receive(on: environment.mainQueue)
+                .catchToEffect(BrandListAction.userBrandsResponse)
+        )
+        
+    case let .userBrandsResponse(.success(brands)):
+        state.isUserBrandRequestInFlight = false
+        
+        if state.brandContext == .bikes {
+            state.userBrands = brands.filter { !$0.isComponentManufacturerOnly }
+        } else {
+            state.userBrands = brands
+        }
+
+        return .none
+        
+    case let .userBrandsResponse(.failure(error)):
+        state.isUserBrandRequestInFlight = false
+        return .none
         
     case let .brandsLoaded(brands):
         state.isBrandRequestInFlight = false
@@ -105,16 +144,42 @@ public let brandListReducer = BrandListReducer
             state.filteredBrands = state.brands
         }
         return .none
-        
-    case let .setAddAccountBrandNavigation(isActive):
-        state.isAddAccountBrandNavigation = isActive
+     
+    case .binding:
         return .none
         
-    case .binding:
+    case let .addBrandAction(.didAddBrand(brand)):
+        state.userBrands.append(brand)
+        state.isAddBrandNavigationActive = false
+        state.selectedBrand = brand
+        
+        return .none
+        
+    case .addBrandAction(.didTapClose):
+        state.isAddBrandNavigationActive = false
+        return .none
+    
+    case .addBrandAction:
         return .none
     }
 }
 .binding()
+
+public let brandListReducer = BrandListReducer
+.combine(
+    addBrandReducer
+        .pullback(
+            state: \BrandListState.addBrandState,
+            action: /BrandListAction.addBrandAction,
+            environment: {
+                AddBrandEnvironment(
+                    brandClient: $0.brandClient,
+                    mainQueue: $0.mainQueue
+                )
+            }
+        ),
+    reducer
+)
 
 public struct BrandListView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -138,22 +203,74 @@ public struct BrandListView: View {
                     ProgressView()
                 }
             } else {
-                List(viewStore.filteredBrands) { brand in
-                    Button(action: { viewStore.send(.setSelected(brand: brand)) }) {
-                        HStack {
-                            Text(brand.brand)
-                            Spacer()
-                            
-                            if brand == viewStore.selectedBrand {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.green)
+                List {
+                    
+                    if !viewStore.userBrands.isEmpty {
+                        Section(
+                            footer: Text("My Brands")
+                        ) {
+                            ForEach(viewStore.userBrands) { brand in
+                                Button(action: { viewStore.send(.setSelected(brand: brand)) }) {
+                                    HStack {
+                                        Text(brand.brand)
+                                        Spacer()
+                                        
+                                        if brand == viewStore.selectedBrand {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.green)
+                                        }
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .foregroundColor(.primary)
+                                }
                             }
-                            
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
                         }
-                        .foregroundColor(.primary)
                     }
+                    
+                    if !viewStore.recentBrands.isEmpty {
+                        Section(
+                            footer: Text("Recent Brands")
+                        ) {
+                            ForEach(viewStore.recentBrands) { recentBrand in
+                                Button(action: { viewStore.send(.setSelected(brand: recentBrand)) }) {
+                                    HStack {
+                                        Text(recentBrand.brand)
+                                        Spacer()
+                                        
+                                        if recentBrand == viewStore.selectedBrand {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.green)
+                                        }
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .foregroundColor(.primary)
+                                }
+                            }
+                        }
+                    }
+                    
+                    ForEach(viewStore.filteredBrands) { brand in
+                        Button(action: { viewStore.send(.setSelected(brand: brand)) }) {
+                            HStack {
+                                Text(brand.brand)
+                                Spacer()
+                                
+                                if brand == viewStore.selectedBrand {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.green)
+                                }
+                                
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.secondary)
+                            }
+                            .foregroundColor(.primary)
+                        }
+                    }
+                    
                 }
                 .searchable(
                     text: viewStore.binding(\.$filterQuery),
@@ -162,12 +279,26 @@ public struct BrandListView: View {
                 )
             }
         }
+        .sheet(
+            isPresented: viewStore.binding(\.$isAddBrandNavigationActive).removeDuplicates()
+        ) {
+            NavigationView {
+                AddBrandView(
+                    store: store.scope(
+                        state: \.addBrandState,
+                        action: BrandListAction.addBrandAction
+                    )
+                )
+            }
+            .accentColor(viewStore.userSettings.accentColor.color)
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
         .onAppear {
             viewStore.send(.viewLoaded)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {}) {
+                Button(action: { viewStore.send(.addBrandButtonTapped) }) {
                     Image(systemName: "plus")
                 }
                 .foregroundColor(viewStore.userSettings.accentColor.color)
@@ -181,7 +312,15 @@ struct BrandListView_Previews: PreviewProvider {
         NavigationView {
             BrandListView(
                 store: Store(
-                    initialState: BrandListState(userSettings: .init()),
+                    initialState: BrandListState(
+                        recentBrands: [
+                            .shimano
+                        ],
+                        userBrands: [
+                            .init(id: 00123, brand: "Owenhouse", isComponentManufacturerOnly: false)
+                        ],
+                        userSettings: .init())
+                    ,
                     reducer: brandListReducer,
                     environment: BrandListEnvironment())
             )

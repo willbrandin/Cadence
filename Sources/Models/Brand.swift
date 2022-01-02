@@ -10,7 +10,6 @@ public struct Brand: Codable, Identifiable, Equatable, Hashable {
     public var id: Int
     public let brand: String
     public let isComponentManufacturerOnly: Bool
-    // isComponentManufacturerOnly
 }
 
 public extension Brand {

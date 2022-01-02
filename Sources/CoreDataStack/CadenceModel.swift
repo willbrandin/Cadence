@@ -53,6 +53,16 @@ fileprivate let componentEntity: CoreDataEntityDescription = .entity(
     ]
 )
 
+fileprivate let customBrandEntity: CoreDataEntityDescription = .entity(
+    name: "CustomBrandMO",
+    managedObjectClass: CustomBrandMO.self,
+    attributes: [
+        .attribute(name: "id", type: .integer16AttributeType, isOptional: true),
+        .attribute(name: "name", type: .stringAttributeType, isOptional: true),
+        .attribute(name: "isComponentOnly", type: .booleanAttributeType, isOptional: true)
+    ]
+)
+
 fileprivate let maintenanceEntity: CoreDataEntityDescription = .entity(
     name: "MaintenanceMO",
     managedObjectClass: MaintenanceMO.self,
@@ -100,6 +110,7 @@ fileprivate let modelDescription = CoreDataModelDescription(
         bikeEntity,
         brandEntity,
         componentEntity,
+        customBrandEntity,
         maintenanceEntity,
         mileageEntity,
         rideEntity

@@ -1,14 +1,24 @@
 import Foundation
 import ComposableArchitecture
+import CoreDataStack
 import Models
+import World
 
 public struct BrandClient {
+    public struct Failure: Error, Equatable {}
+
     public var requestBrands: () -> Effect<[Brand], Never>
+    public var createUserBrand: (Brand) -> Effect<Brand, BrandClient.Failure>
+    public var requestUserBrands: () -> Effect<[Brand], BrandClient.Failure>
     
     public init(
-        requestBrands: @escaping () -> Effect<[Brand], Never>
+        requestBrands: @escaping () -> Effect<[Brand], Never>,
+        createUserBrand: @escaping (Brand) -> Effect<Brand, BrandClient.Failure>,
+        requestUserBrands: @escaping () -> Effect<[Brand], BrandClient.Failure>
     ) {
         self.requestBrands = requestBrands
+        self.createUserBrand = createUserBrand
+        self.requestUserBrands = requestUserBrands
     }
 }
 
@@ -27,7 +37,21 @@ public extension BrandClient {
                 print(error)
                 return .none
             }
-            
+        },
+        createUserBrand: { brand in
+            let managedObject = CustomBrandMO.initFrom(brand)
+            return Current.coreDataStack().create(managedObject)
+                .publisher
+                .map({ $0.asBrand() })
+                .mapError { _ in Failure() }
+                .eraseToEffect()
+        },
+        requestUserBrands: {
+            Current.coreDataStack().fetch(CustomBrandMO.self, predicate: nil)
+                .publisher
+                .map({ $0.map({ $0.asBrand() }) })
+                .mapError { _ in Failure() }
+                .eraseToEffect()
         }
     )
 }
@@ -38,11 +62,21 @@ extension BrandClient {
         requestBrands: {
             return Effect(value: .brandList)
                 .eraseToEffect()
+        },
+        createUserBrand: { brand in
+            return Effect(value: brand)
+                .eraseToEffect()
+        },
+        requestUserBrands: {
+            return Effect(value: [])
+                .eraseToEffect()
         }
     )
     
     public static let alwaysFailing = BrandClient(
-        requestBrands: { .failing("BrandClient.requestBrands") }
+        requestBrands: { .failing("BrandClient.requestBrands") },
+        createUserBrand: { _ in .failing("BrandClient.createUserBrand")},
+        requestUserBrands: { .failing("BrandClient.requestUserBrands") }
     )
 }
 

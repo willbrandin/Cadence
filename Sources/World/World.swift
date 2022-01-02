@@ -13,6 +13,10 @@ public struct World {
     public var locale = Locale.autoupdatingCurrent
     public var timeZone = TimeZone.autoupdatingCurrent
     public var uuid: () -> UUID = { UUID() }
+    
+    public var randomNumber: () -> Int = {
+        Int.random(in: 200..<500)
+    }
 }
 
 extension World {
