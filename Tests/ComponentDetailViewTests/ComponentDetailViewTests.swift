@@ -32,7 +32,7 @@ class ComponentDetailViewTests: XCTestCase {
         component.mileage = .okay
 
         let store = Store(
-            initialState: ComponentDetailState(component: component),
+            initialState: ComponentDetailState(component: component, userSettings: .init()),
             reducer: componentDetailReducer,
             environment: .mocked
         )

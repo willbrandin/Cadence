@@ -45,7 +45,7 @@ class AddComponentFlowFeatureTests: XCTestCase {
         }
 
         let store = TestStore(
-            initialState: AddComponentFlowState(bikeId: Bike.yetiMountain.id),
+            initialState: AddComponentFlowState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentFlowReducer,
             environment: environment
         )
@@ -80,7 +80,8 @@ class AddComponentFlowFeatureTests: XCTestCase {
                 bikeId: Bike.yetiMountain.id,
                 brand: .shimano,
                 componentGroup: .drivetrain,
-                componentType: .derailleur
+                componentType: .derailleur,
+                userSettings: .init()
             )
 
             $0.isComponentDetailNavigationActive = true

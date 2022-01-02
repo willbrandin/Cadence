@@ -11,7 +11,7 @@ class CreateComponentFeatureTests: XCTestCase {
     
     func testUpdateComponentModelText() {
         let store = TestStore(
-            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: CreateComponentEnvironment()
         )
@@ -23,7 +23,7 @@ class CreateComponentFeatureTests: XCTestCase {
     
     func testUpdateComponentDescriptionText() {
         let store = TestStore(
-            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: CreateComponentEnvironment()
         )
@@ -40,7 +40,7 @@ class CreateComponentFeatureTests: XCTestCase {
         let updatedDate = Date.initFromComponents(year: 2021, month: 3, day: 19, hour: 8, minute: 0)!
         
         let store = TestStore(
-            initialState: CreateComponentState(date: baseDate, bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(date: baseDate, bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: CreateComponentEnvironment(
                 date: { baseDate }
@@ -86,7 +86,7 @@ class CreateComponentFeatureTests: XCTestCase {
         environment.mainQueue = scheduler.eraseToAnyScheduler()
                 
         let store = TestStore(
-            initialState: CreateComponentState(date: .distantPast, bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(date: .distantPast, bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: environment
         )
@@ -119,7 +119,7 @@ class CreateComponentFeatureTests: XCTestCase {
         environment.mainQueue = scheduler.eraseToAnyScheduler()
         
         let store = TestStore(
-            initialState: CreateComponentState(date: .distantPast, bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(date: .distantPast, bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: environment
         )
@@ -140,7 +140,8 @@ class CreateComponentFeatureTests: XCTestCase {
     func testMileageAlert_Options() {
         let store = TestStore(
             initialState: CreateComponentState(
-                bikeId: Bike.yetiMountain.id
+                bikeId: Bike.yetiMountain.id,
+                userSettings: .init()
             ),
             reducer: addComponentReducer,
             environment: .failing
@@ -163,7 +164,7 @@ class CreateComponentFeatureTests: XCTestCase {
     
     func testMileageAlert_Custom() {
         let store = TestStore(
-            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: .failing
         )
@@ -195,7 +196,7 @@ class CreateComponentFeatureTests: XCTestCase {
     
     func testMileageAlert_Custom_Empty() {
         let store = TestStore(
-            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: .failing
         )
@@ -222,7 +223,7 @@ class CreateComponentFeatureTests: XCTestCase {
     
     func testMileageAlert_Custom_Empty_SwitchOption() {
         let store = TestStore(
-            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id),
+            initialState: CreateComponentState(bikeId: Bike.yetiMountain.id, userSettings: .init()),
             reducer: addComponentReducer,
             environment: .failing
         )

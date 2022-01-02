@@ -16,7 +16,7 @@ class BrandListFeatureTests: XCTestCase {
         }
         
         let store = TestStore(
-            initialState: BrandListState(),
+            initialState: BrandListState(userSettings: .init()),
             reducer: brandListReducer,
             environment: environment
         )
@@ -48,7 +48,8 @@ class BrandListFeatureTests: XCTestCase {
         let store = TestStore(
             initialState: BrandListState(
                 brands: .brandList,
-                filteredBrands: .brandList
+                filteredBrands: .brandList,
+                userSettings: .init()
             ),
             reducer: brandListReducer,
             environment: environment
@@ -72,7 +73,8 @@ class BrandListFeatureTests: XCTestCase {
         let store = TestStore(
             initialState: BrandListState(
                 brands: .brandList,
-                filteredBrands: .brandList
+                filteredBrands: .brandList,
+                userSettings: .init()
             ),
             reducer: brandListReducer,
             environment: environment

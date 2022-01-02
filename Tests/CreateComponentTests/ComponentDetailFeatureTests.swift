@@ -7,7 +7,7 @@ import XCTest
 class ComponentDetailFeatureTests: XCTestCase {
     func testComponentDetail_ShowingOptions() {
         let store = TestStore(
-            initialState: ComponentDetailState(),
+            initialState: ComponentDetailState(userSettings: .init()),
             reducer: componentDetailReducer,
             environment: .mocked
         )

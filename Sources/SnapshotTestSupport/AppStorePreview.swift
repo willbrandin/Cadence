@@ -96,12 +96,18 @@ SnapshotContent: View
             VStack(spacing: .grid(self.deviceState.idiom == .pad ? 14 : 7)) {
                 VStack(spacing: .grid(self.deviceState.idiom == .pad ? 14 : 7)) {
                     // TODO: LOGO
-                    //          Image(systemName: "cube.fill")
-                    //            .foregroundColor(Color.black)
-                    //            .font(.system(size: self.deviceState.idiom == .pad ? 50 : 30))
+                    Image(systemName: "bicycle")
+                        .foregroundColor(Color.black)
+                        .font(.system(size: self.deviceState.idiom == .pad ? 50 : 30))
                     
                     self.description()
-                        .font(.system(size: self.deviceState.idiom == .pad ? 75 : 36))
+                        .font(
+                            .system(
+                                size: self.deviceState.idiom == .pad ? 75 : 36,
+                                weight: .bold,
+                                design: .rounded
+                            )
+                        )
                         .multilineTextAlignment(.center)
                 }
                 .foreground(
@@ -178,6 +184,7 @@ struct Notch: Shape {
         }
     }
 }
+
 struct CellularBars: View {
     let barsCount = 4
     let minimumHeightRatio = CGFloat(0.5)

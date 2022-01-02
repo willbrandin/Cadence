@@ -11,14 +11,14 @@ class BikeComponentFeatureTests: XCTestCase {
     
     func testSetComponentFlowActive() {
         let store = TestStore(
-            initialState: BikeComponentState(bike: .yetiMountain),
+            initialState: BikeComponentState(bike: .yetiMountain, userSettings: .init()),
             reducer: bikeComponentReducer,
             environment: BikeComponentEnvironment()
         )
 
         store.send(.setComponentFlowNavigation(isActive: true)) {
             $0.isAddComponentFlowNavigationActive = true
-            $0.addComponentFlowState = AddComponentFlowState(bikeId: Bike.yetiMountain.id)
+            $0.addComponentFlowState = AddComponentFlowState(bikeId: Bike.yetiMountain.id, userSettings: .init())
         }
         
         store.send(.addComponentFlow(.didTapCloseFlow))
@@ -32,7 +32,8 @@ class BikeComponentFeatureTests: XCTestCase {
     func testComponentFlowDidComplete() {
         let store = TestStore(
             initialState: BikeComponentState(
-                bike: .specializedMountain
+                bike: .specializedMountain,
+                userSettings: .init()
             ),
             reducer: bikeComponentReducer,
             environment: BikeComponentEnvironment()
@@ -40,7 +41,7 @@ class BikeComponentFeatureTests: XCTestCase {
         
         store.send(.setComponentFlowNavigation(isActive: true)) {
             $0.isAddComponentFlowNavigationActive = true
-            $0.addComponentFlowState = AddComponentFlowState(bikeId: Bike.specializedMountain.id)
+            $0.addComponentFlowState = AddComponentFlowState(bikeId: Bike.specializedMountain.id, userSettings: .init())
         }
         
         store.send(.addComponentFlow(.flowComplete(.racefaceCarbon69Handlebars))) {
@@ -61,7 +62,10 @@ class BikeComponentFeatureTests: XCTestCase {
     
     func testSetBikeOptionsSheetActive() {
         let store = TestStore(
-            initialState: BikeComponentState(bike: .yetiMountain),
+            initialState: BikeComponentState(
+                bike: .yetiMountain,
+                userSettings: .init()
+            ),
             reducer: bikeComponentReducer,
             environment: BikeComponentEnvironment()
         )
@@ -77,7 +81,8 @@ class BikeComponentFeatureTests: XCTestCase {
         
         let store = TestStore(
             initialState: BikeComponentState(
-                bike: bike
+                bike: bike,
+                userSettings: .init()
             ),
             reducer: bikeComponentReducer,
             environment: BikeComponentEnvironment()
@@ -85,7 +90,11 @@ class BikeComponentFeatureTests: XCTestCase {
         
         store.send(.setNavigation(selection: Component.racefaceCarbon69Handlebars.id)) {
             $0.selection = Identified(
-                ComponentDetailState(component: Component.racefaceCarbon69Handlebars, bikeComponents: bike.components),
+                ComponentDetailState(
+                    component: Component.racefaceCarbon69Handlebars,
+                    bikeComponents: bike.components,
+                    userSettings: .init()
+                ),
                 id: Component.racefaceCarbon69Handlebars.id
             )
         }

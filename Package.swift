@@ -44,6 +44,7 @@ let package = Package(
         .library(name: "SaveNewBikeFeature", targets: ["SaveNewBikeFeature"]),
         .library(name: "StoreKitClient", targets: ["StoreKitClient"]),
         .library(name: "ShareSheetClient", targets: ["ShareSheetClient"]),
+        .library(name: "SnapshotTestSupport", targets: ["SnapshotTestSupport"]),
         .library(name: "Style", targets: ["Style"]),
         .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
         .library(name: "TypeSelectionFeature", targets: ["TypeSelectionFeature"]),
@@ -431,6 +432,12 @@ let package = Package(
             ]
         ),
         .target(
+            name: "SnapshotTestSupport",
+            dependencies: [
+                .product(name: "SnapshotTesting", package: "SnapshotTesting")
+            ]
+        ),
+        .target(
             name: "StoreKitClient",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
@@ -521,8 +528,12 @@ package.targets.append(contentsOf: [
     .testTarget(
         name: "AppStoreSnapshotTests",
         dependencies: [
+            "BikeComponentListFeature",
+            "ComponentDetailFeature",
             "CreateComponentFeature",
             "HomeFeature",
+            "Models",
+            "SnapshotTestSupport",
             .product(name: "SnapshotTesting", package: "SnapshotTesting"),
         ],
         exclude: [

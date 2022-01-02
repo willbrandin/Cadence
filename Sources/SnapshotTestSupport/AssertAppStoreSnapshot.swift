@@ -1,7 +1,7 @@
 import SnapshotTesting
 import SwiftUI
 
-func assertSnapshot<SnapshotContent>(
+public func assertSnapshot<SnapshotContent>(
     for view: SnapshotContent,
     colorScheme: ColorScheme,
     precision: Float = 1,
@@ -32,7 +32,7 @@ SnapshotContent: View
 }
 
 
-func assertAppStoreSnapshots<Description, SnapshotContent>(
+public func assertAppStoreSnapshots<Description, SnapshotContent>(
     for view: SnapshotContent,
     @ViewBuilder description: @escaping () -> Description,
     backgroundColor: Color,

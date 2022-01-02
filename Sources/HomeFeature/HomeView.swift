@@ -479,38 +479,6 @@ public struct HomeView: View {
         }
     }
     
-    var addRideCard: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Go for a ride?")
-                        .font(.title2.bold())
-                    
-                    Image(systemName: "map")
-                        .font(.title3)
-                        .foregroundColor(viewStore.settingsState.userSettings.accentColor.color)
-                    
-                    Spacer()
-                }
-                .padding()
-                
-                HStack {
-                    Text("After your ride add mileage to your bike.")
-                        .frame(alignment: .leading)
-                        .lineSpacing(8)
-                        .multilineTextAlignment(.leading)
-                        .padding([.horizontal, .bottom])
-                }
-                
-                Button("Add Miles", action: { viewStore.send(.setAddBikeFlow(active: true)) })
-                    .buttonStyle(SecondaryOutlineButtonStyle())
-            }
-            .background(Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .padding(.horizontal)
-        }
-    }
-    
     public var body: some View {
         ZStack {
             Color(colorScheme == .light ? .secondarySystemBackground : .systemBackground)
@@ -525,11 +493,6 @@ public struct HomeView: View {
                     ProgressView()
                 } else {
                     ScrollView {
-                        if viewStore.bikes.flatMap({ $0.rides }).isEmpty && !viewStore.bikes.isEmpty {
-                            addRideCard
-                                .padding(.vertical)
-                        }
-                        
                         ForEach(BikeType.allCases) { type in
                             BikeSection(bikeType: type, store: store)
                         }

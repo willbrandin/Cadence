@@ -12,12 +12,12 @@
 		<key>AddBikeFlowFeatureTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>88</integer>
+			<integer>49</integer>
 		</dict>
 		<key>AddComponentFlowFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>AddComponentMaintenanceFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -27,7 +27,7 @@
 		<key>AddComponentTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>28</integer>
 		</dict>
 		<key>AddRideFlowFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -47,12 +47,12 @@
 		<key>AppSettingsViewTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>31</integer>
 		</dict>
 		<key>AppStoreSnapshotTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>37</integer>
 		</dict>
 		<key>AppSupportFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -62,17 +62,17 @@
 		<key>BikeClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>31</integer>
+			<integer>16</integer>
 		</dict>
 		<key>BikeComponentFeatureTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>27</integer>
 		</dict>
 		<key>BikeComponentListFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>12</integer>
 		</dict>
 		<key>BikeComponentRowFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -92,12 +92,17 @@
 		<key>BrandListTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>56</integer>
+			<integer>46</integer>
 		</dict>
 		<key>Cadence-Package.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>CadenceTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>51</integer>
 		</dict>
 		<key>CloudKitClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -112,7 +117,7 @@
 		<key>ComponentClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>32</integer>
+			<integer>18</integer>
 		</dict>
 		<key>ComponentDetailFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -122,12 +127,12 @@
 		<key>ComponentDetailViewTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>30</integer>
 		</dict>
 		<key>ComponentSelectorFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>11</integer>
 		</dict>
 		<key>ComposableHelpers.xcscheme_^#shared#^_</key>
 		<dict>
@@ -137,22 +142,22 @@
 		<key>CoreDataStack.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>29</integer>
+			<integer>15</integer>
 		</dict>
 		<key>CoreDataStackTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>33</integer>
 		</dict>
 		<key>CreateComponentFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>41</integer>
+			<integer>24</integer>
 		</dict>
 		<key>CreateComponentTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>52</integer>
+			<integer>40</integer>
 		</dict>
 		<key>CustomDump (Playground) 1.xcscheme</key>
 		<dict>
@@ -240,12 +245,12 @@
 		<key>HomeFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>42</integer>
+			<integer>26</integer>
 		</dict>
 		<key>MaintenanceClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>19</integer>
 		</dict>
 		<key>ManagedObjects.xcscheme_^#shared#^_</key>
 		<dict>
@@ -255,12 +260,12 @@
 		<key>MileageAnimationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>36</integer>
 		</dict>
 		<key>MileageClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>36</integer>
+			<integer>21</integer>
 		</dict>
 		<key>MileagePickerFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -280,22 +285,22 @@
 		<key>OnboardingFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>10</integer>
 		</dict>
 		<key>OnboardingFlowTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>53</integer>
+			<integer>41</integer>
 		</dict>
 		<key>OnboardingViewTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>55</integer>
+			<integer>44</integer>
 		</dict>
 		<key>RideClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>37</integer>
+			<integer>23</integer>
 		</dict>
 		<key>SaveNewBikeFeature.xcscheme_^#shared#^_</key>
 		<dict>
@@ -306,6 +311,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>36</integer>
+		</dict>
+		<key>SnapshotTestSupport.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>53</integer>
 		</dict>
 		<key>StoreKitClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -330,12 +340,12 @@
 		<key>TypeSelectionTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>51</integer>
+			<integer>39</integer>
 		</dict>
 		<key>TypeSelectionViewTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>34</integer>
 		</dict>
 		<key>UIApplicationClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -355,17 +365,17 @@
 		<key>UserSettingsFeature.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>28</integer>
+			<integer>13</integer>
 		</dict>
 		<key>UserSettingsTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>54</integer>
+			<integer>43</integer>
 		</dict>
 		<key>UtilityTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>57</integer>
+			<integer>48</integer>
 		</dict>
 		<key>World.xcscheme_^#shared#^_</key>
 		<dict>
@@ -571,6 +581,11 @@
 			<true/>
 		</dict>
 		<key>ShareSheetClient</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>SnapshotTestSupport</key>
 		<dict>
 			<key>primary</key>
 			<true/>

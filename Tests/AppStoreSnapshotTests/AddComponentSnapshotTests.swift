@@ -5,22 +5,9 @@ import XCTest
 import Models
 import CreateComponentFeature
 import HomeFeature
-
-struct SnapshotConfig {
-    let adaptiveSize: AdaptiveSize
-    let deviceState: DeviceState
-    let viewImageConfig: ViewImageConfig
-}
-
-//let scrollView = ViewImageConfig(safeArea: .zero, size: .init(width: 480, height: 2000))
-
-// All sizes needed for app store
-let appStoreViewConfigs: [String: SnapshotConfig] = [
-    "iPhone_5_5": .init(adaptiveSize: .medium, deviceState: .phone, viewImageConfig: .iPhone8Plus),
-    "iPhone_6_5": .init(adaptiveSize: .large, deviceState: .phone, viewImageConfig: .iPhoneXsMax)
-    // TODO: When iPad Support is mucho better
-    //  "iPad_12_9": .init(adaptiveSize: .large, deviceState: .pad, viewImageConfig: .iPadPro12_9(.portrait)),
-]
+import SnapshotTestSupport
+import BikeComponentListFeature
+import ComponentDetailFeature
 
 class AppStoreSnapshotTests: XCTestCase {
     static override func setUp() {
@@ -41,26 +28,139 @@ class AppStoreSnapshotTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAddComponent_Snapshot () {
-        assertSnapshot(
-            for: addComponentAppStoreView,
-               colorScheme: .light
-        )
-    }
-    
-    func testAccountHome_Snapshot() {
+    func testAccountHome_Light() {
         assertAppStoreSnapshots(
             for: homeBikesView,
                description: {
                    Text("Track your entire garage.")
+                       .foregroundColor(.white)
                },
-               backgroundColor: Color(uiColor: .systemIndigo),
+               backgroundColor: .indigo,
                colorScheme: .light
+        )
+    }
+    
+    func testAccountHome_Dark() {
+        assertAppStoreSnapshots(
+            for: homeBikesView,
+               description: {
+                   Text("Track your entire garage.")
+                       .foregroundColor(.black)
+               },
+               backgroundColor: .indigo,
+               colorScheme: .dark
+        )
+    }
+    
+    func testBikeComponents_Light() {
+        assertAppStoreSnapshots(
+            for: bikeComponentView,
+               description: {
+                   Text("Add components to your bike")
+                       .foregroundColor(.white)
+               },
+               backgroundColor: .cyan,
+               colorScheme: .light
+        )
+    }
+    
+    func testBikeComponents_Dark() {
+        assertAppStoreSnapshots(
+            for: bikeComponentView,
+               description: {
+                   Text("Add components to your bike")
+                       .foregroundColor(.black)
+               },
+               backgroundColor: .cyan,
+               colorScheme: .dark
+        )
+    }
+    
+    func testComponentDetail_Light() {
+        assertAppStoreSnapshots(
+            for: componentDetailView,
+               description: {
+                   Text("Add components to your bike")
+                       .foregroundColor(.white)
+               },
+               backgroundColor: .teal,
+               colorScheme: .light
+        )
+    }
+    
+    func testComponentDetail_Dark() {
+        assertAppStoreSnapshots(
+            for: componentDetailView,
+               description: {
+                   Text("Add components to your bike")
+                       .foregroundColor(.black)
+               },
+               backgroundColor: .teal,
+               colorScheme: .dark
         )
     }
 }
 
-var addComponentAppStoreView: AnyView {
+private var componentDetailView: AnyView {
+    var component = Component.shimanoSLXRearDerailleur
+    
+    let date = Date.initFromComponents(year: 2021, month: 12, day: 10, hour: 8, minute: 0)!
+
+    component.mileage = .upper
+    component.maintenances = [.init(id: .init(), description: "Routine Maintenance", serviceDate: date)]
+    
+    
+    let view = NavigationView {
+        ComponentDetailView(
+            store: Store(
+                initialState: ComponentDetailState(
+                    component: component,
+                    bikeComponents: [],
+                    isShowingOptions: false,
+                    isAddComponentServiceNavigationActive: false,
+                    addComponentServiceState: nil,
+                    userSettings: .init()),
+                reducer: componentDetailReducer,
+                environment: ComponentDetailEnvironment(
+                    componentClient: .noop,
+                    maintenanceClient: .noop,
+                    mainQueue: .main,
+                    date: { .distantFuture },
+                    uuid: { .init() }
+                )
+            )
+        )
+    }
+    
+    return AnyView(view)
+}
+
+private var bikeComponentView: AnyView {
+    
+    let view = NavigationView {
+        BikeComponentListView(
+            store: Store(
+                initialState: BikeComponentState(
+                    bike: .yetiMountain,
+                    isShowing: false,
+                    selection: nil,
+                    isBikeOptionSheetActive: false,
+                    isAddComponentFlowNavigationActive: false,
+                    addComponentFlowState: nil,
+                    editBikeState: nil,
+                    isEditBikeFlowNavigationActive: false,
+                    userSettings: .init()
+                ),
+                reducer: bikeComponentReducer,
+                environment: BikeComponentEnvironment()
+            )
+        )
+    }
+    
+    return AnyView(view)
+}
+
+private var addComponentAppStoreView: AnyView {
     let date = Date.initFromComponents(year: 2021, month: 8, day: 23, hour: 8, minute: 0)!
     
     let view = NavigationView {
@@ -73,7 +173,8 @@ var addComponentAppStoreView: AnyView {
                     bikeId: Bike.yetiMountain.id,
                     brand: .shimano,
                     componentGroup: .brakes,
-                    componentType: .brake
+                    componentType: .brake,
+                    userSettings: .init()
                 ),
                 reducer: addComponentReducer,
                 environment: CreateComponentEnvironment(date: { date }))
@@ -84,12 +185,20 @@ var addComponentAppStoreView: AnyView {
     return AnyView(view)
 }
 
-var homeBikesView: AnyView {
+private var homeBikesView: AnyView {
     let view = NavigationView {
         HomeView(
             store: Store(
                 initialState: HomeState(
-                    bikes: [.yetiMountain, .canyonRoad]
+                    bikes: [.yetiMountain, .canyonRoad],
+                    selectedBike: nil,
+                    isAccountBikesRequestInFlight: false,
+                    isAddBikeFlowActive: false,
+                    addBikeFlowState: nil,
+                    settingsState: .init(),
+                    addRideState: nil,
+                    isSettingsSheetActive: false,
+                    isAddRideSheetActive: false
                 ),
                 reducer: homeReducer,
                 environment: .mocked

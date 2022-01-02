@@ -38,7 +38,7 @@ class AddBikeFlowFeatureTests: XCTestCase {
         environment.uuid = { id }
         
         let store = TestStore(
-            initialState: AddBikeFlowState(),
+            initialState: AddBikeFlowState(userSettings: .init()),
             reducer: addBikeFlowReducer,
             environment: environment
         )
@@ -62,7 +62,7 @@ class AddBikeFlowFeatureTests: XCTestCase {
                 
         store.send(.brandList(.setSelected(brand: .yeti))) {
             $0.brandSelectionState.selectedBrand = .yeti
-            $0.saveNewBikeState = SaveNewBikeState(bikeType: .mountain, bikeBrand: .yeti, mileage: .base)
+            $0.saveNewBikeState = SaveNewBikeState(bikeType: .mountain, bikeBrand: .yeti, mileage: .base, userSettings: .init())
             $0.isSaveBikeNavigationActive = true
         }
         
