@@ -530,6 +530,13 @@ package.targets.append(contentsOf: [
         ]
     ),
     .testTarget(
+        name: "AddCustomBrandTests",
+        dependencies: [
+            "AddCustomBrandFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ]
+    ),
+    .testTarget(
         name: "AppSettingsViewTests",
         dependencies: [
             "UserSettingsFeature",

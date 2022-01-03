@@ -62,6 +62,25 @@ public enum ComponentType: Int, Codable, CaseIterable, Identifiable, Hashable {
         case .other: return "Other"
         }
     }
+    
+    public static func componentType(in group: ComponentGroup) -> [ComponentType] {
+        switch group {
+        case .brakes:
+            return [.brakeCable, .brakeLever, .brake, .brakeRotor]
+        case .drivetrain:
+            return [.cogset, .crankset, .derailleur, .chain, .pedal, .sprocket, .shifter, .shiftCable]
+        case .frame:
+            return [.frame, .dropper, .fork, .saddle]
+        case .suspension:
+            return [.shockRear, .shockFront]
+        case .wheelset:
+            return [.hub, .wheel, .tire, .innerTube]
+        case .handlebars:
+            return [.handlebars, .stem]
+        case .miscellaneus:
+            return [.other]
+        }
+    }
 }
 
 extension ComponentType {

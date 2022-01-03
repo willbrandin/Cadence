@@ -21,7 +21,7 @@ public struct AddComponentFlowState: Equatable {
         brandListState: BrandListState = BrandListState(brandContext: .components, userSettings: .init()),
         isComponentDetailNavigationActive: Bool = false,
         componentDetailState: CreateComponentState? = nil,
-        userSettings: UserSettings
+        userSettings: UserSettings = .init()
     ) {
         self.bikeId = bikeId
         self.groupSelectionState = groupSelectionState
@@ -35,15 +35,15 @@ public struct AddComponentFlowState: Equatable {
     }
     
     public var bikeId: UUID
-    public var groupSelectionState = ComponentGroupSelectionState()
+    public var groupSelectionState: ComponentGroupSelectionState
     
-    public var isTypeSelectionNavigationActive = false
-    public var typeSelectionState = ComponentTypeSelectionState()
+    public var isTypeSelectionNavigationActive: Bool
+    public var typeSelectionState: ComponentTypeSelectionState
 
-    public var isBrandNavigationActive = false
+    public var isBrandNavigationActive: Bool
     public var brandListState: BrandListState
     
-    public var isComponentDetailNavigationActive = false
+    public var isComponentDetailNavigationActive: Bool
     public var componentDetailState: CreateComponentState?
     public var userSettings: UserSettings
 }
@@ -105,6 +105,11 @@ private let reducer = AddComponentFlowReducer
         
     case .groupSelection(.binding(\.$selectedComponentGroupType)):
         state.isTypeSelectionNavigationActive = true
+        
+        if let group = state.groupSelectionState.selectedComponentGroupType {
+            state.typeSelectionState.components = ComponentType.componentType(in: group)
+        }
+        
         return .none
         
     case .typeSelection(.binding(\.$selectedComponentType)):

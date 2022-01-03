@@ -9,14 +9,17 @@ public typealias AddBrandReducer = Reducer<AddBrandState, AddBrandAction, AddBra
 public struct AddBrandState: Equatable {
     public init(
         brandName: String = "",
-        isComponentOnly: Bool = false
+        isComponentOnly: Bool = false,
+        alert: AlertState<AddBrandAction>? = nil
     ) {
         self.brandName = brandName
         self.isComponentOnly = isComponentOnly
+        self.alert = alert
     }
     
     @BindableState public var brandName: String
     @BindableState public var isComponentOnly: Bool
+    @BindableState public var alert: AlertState<AddBrandAction>?
 }
 
 public enum AddBrandAction: Equatable, BindableAction {
@@ -25,6 +28,8 @@ public enum AddBrandAction: Equatable, BindableAction {
     case saveBrandResponse(Result<Brand, BrandClient.Failure>)
     case didAddBrand(Brand)
     case didTapClose
+    case alertOkayTapped
+    case alertDismissed
 }
 
 public struct AddBrandEnvironment {
@@ -43,7 +48,20 @@ public struct AddBrandEnvironment {
 public let addBrandReducer = AddBrandReducer
 { state, action, environment in
     switch action {
+    case .alertOkayTapped, .alertDismissed:
+        state.alert = nil
+        return .none
+        
     case .saveButtonTapped:
+        if state.brandName.isEmpty {
+            state.alert = AlertState(
+                title: .init("Brand name cannot be empty"),
+                message: nil,
+                dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
+            )
+            return .none
+        }
+        
         let id = Current.randomNumber()
         let brand = Brand(id: id, brand: state.brandName, isComponentManufacturerOnly: state.isComponentOnly)
         
@@ -94,6 +112,10 @@ public struct AddBrandView: View {
                 Button(action: { viewStore.send(.saveButtonTapped) }) {
                     Text("Save")
                 }
+                .alert(
+                    self.store.scope(state: \.alert),
+                    dismiss: .alertDismissed
+                )
             }
             
             ToolbarItem(placement: .navigationBarLeading) {
@@ -119,3 +141,14 @@ struct AddBrandView_Previews: PreviewProvider {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
+#if DEBUG
+public extension AddBrandEnvironment {
+    static var failing: Self {
+        Self(
+            brandClient: .alwaysFailing,
+            mainQueue: .failing
+        )
+    }
+}
+#endif

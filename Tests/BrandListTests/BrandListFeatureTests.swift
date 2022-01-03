@@ -1,5 +1,6 @@
 import Combine
 import ComposableArchitecture
+import Models
 import XCTest
 
 @testable import BrandListFeature
@@ -15,6 +16,11 @@ class BrandListFeatureTests: XCTestCase {
             Effect(value: .brandList)
         }
         
+        let userBrand: Brand = .init(id: 0001, brand: "Owenhouse", isComponentManufacturerOnly: false)
+        environment.brandClient.requestUserBrands = {
+            Effect(value: [userBrand])
+        }
+        
         let store = TestStore(
             initialState: BrandListState(userSettings: .init()),
             reducer: brandListReducer,
@@ -23,6 +29,7 @@ class BrandListFeatureTests: XCTestCase {
         
         store.send(.viewLoaded) {
             $0.isBrandRequestInFlight = true
+            $0.isUserBrandRequestInFlight = true
         }
         
         self.testScheduler.advance()
@@ -32,6 +39,11 @@ class BrandListFeatureTests: XCTestCase {
             $0.brands = .brandList
             $0.filteredBrands = .brandList
             $0.selectedBrand = nil
+        }
+        
+        store.receive(.userBrandsResponse(.success([userBrand]))) {
+            $0.isUserBrandRequestInFlight = false
+            $0.userBrands = [userBrand]
         }
         
         self.testScheduler.run()

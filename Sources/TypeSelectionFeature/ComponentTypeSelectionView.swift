@@ -8,12 +8,15 @@ public typealias ComponentTypeSelectionReducer = Reducer<ComponentTypeSelectionS
 
 public struct ComponentTypeSelectionState: Equatable {
     public init(
-        selectedComponentType: ComponentType? = nil
+        selectedComponentType: ComponentType? = nil,
+        components: [ComponentType] = ComponentType.allCases
     ) {
         self.selectedComponentType = selectedComponentType
+        self.components = components
     }
     
-    @BindableState public var selectedComponentType: ComponentType? = nil
+    public var components: [ComponentType]
+    @BindableState public var selectedComponentType: ComponentType?
 }
 
 public enum ComponentTypeSelectionAction: Equatable, BindableAction {
@@ -45,7 +48,7 @@ public struct ComponentTypeSelectionView: View {
     public var body: some View {
         TypeSelectorView(
             title: "Component Type",
-            items: ComponentType.allCases,
+            items: viewStore.components,
             selected: viewStore.binding(\.$selectedComponentType)
         )
     }
@@ -53,16 +56,33 @@ public struct ComponentTypeSelectionView: View {
 
 struct ComponentTypeSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ComponentTypeSelectionView(
-                store: Store(
-                    initialState: ComponentTypeSelectionState(),
-                    reducer: componentTypeSelectionReducer,
-                    environment: ComponentTypeSelectionEnvironment()
+        Group {
+            NavigationView {
+                ComponentTypeSelectionView(
+                    store: Store(
+                        initialState: ComponentTypeSelectionState(),
+                        reducer: componentTypeSelectionReducer,
+                        environment: ComponentTypeSelectionEnvironment()
+                    )
                 )
-            )
-            .navigationTitle("Component Type")
-            .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Component Type")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+            NavigationView {
+                ComponentTypeSelectionView(
+                    store: Store(
+                        initialState: ComponentTypeSelectionState(
+                            components: ComponentType.componentType(in: .drivetrain)
+                        ),
+                        reducer: componentTypeSelectionReducer,
+                        environment: ComponentTypeSelectionEnvironment()
+                    )
+                )
+                    .navigationTitle("Component Type")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .preferredColorScheme(.dark)
+            .environment(\.sizeCategory, .extraExtraLarge)
         }
     }
 }

@@ -30,6 +30,12 @@ class AddBikeFlowFeatureTests: XCTestCase {
             Effect(value: .brandList)
         }
         
+        let userBrand = Brand(id: 0001, brand: "Owenhouse", isComponentManufacturerOnly: false)
+        
+        environment.brandClient.requestUserBrands = {
+            Effect(value: [userBrand])
+        }
+        
         environment.bikeClient.create = { bike in
             XCTAssertNoDifference(bike, newYeti)
             return Effect(value: newYeti)
@@ -50,6 +56,7 @@ class AddBikeFlowFeatureTests: XCTestCase {
         
         store.send(.brandList(.viewLoaded)) {
             $0.brandSelectionState.isBrandRequestInFlight = true
+            $0.brandSelectionState.isUserBrandRequestInFlight = true
         }
         
         scheduler.advance()
@@ -58,6 +65,11 @@ class AddBikeFlowFeatureTests: XCTestCase {
             $0.brandSelectionState.isBrandRequestInFlight = false
             $0.brandSelectionState.filteredBrands = .bikeOnlyBrands
             $0.brandSelectionState.brands = .bikeOnlyBrands
+        }
+        
+        store.receive(.brandList(.userBrandsResponse(.success([userBrand])))) {
+            $0.brandSelectionState.isUserBrandRequestInFlight = false
+            $0.brandSelectionState.userBrands = [userBrand]
         }
                 
         store.send(.brandList(.setSelected(brand: .yeti))) {

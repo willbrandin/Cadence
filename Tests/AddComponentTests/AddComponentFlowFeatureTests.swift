@@ -29,6 +29,10 @@ class AddComponentFlowFeatureTests: XCTestCase {
         environment.brandClient.requestBrands = {
             Effect(value: .brandList)
         }
+        
+        environment.brandClient.requestUserBrands = {
+            Effect(value: [])
+        }
 
         environment.uuid = { Component.shimanoSLXRearDerailleur.id }
 
@@ -53,6 +57,7 @@ class AddComponentFlowFeatureTests: XCTestCase {
         store.send(.groupSelection(.binding(.set(\.$selectedComponentGroupType, .drivetrain)))) {
             $0.groupSelectionState.selectedComponentGroupType = .drivetrain
             $0.isTypeSelectionNavigationActive = true
+            $0.typeSelectionState.components = ComponentType.componentType(in: .drivetrain)
         }
 
         store.send(.typeSelection(.binding(.set(\.$selectedComponentType, .derailleur)))) {
@@ -62,6 +67,7 @@ class AddComponentFlowFeatureTests: XCTestCase {
 
         store.send(.brandList(.viewLoaded)) {
             $0.brandListState.isBrandRequestInFlight = true
+            $0.brandListState.isUserBrandRequestInFlight = true
         }
 
         scheduler.advance()
@@ -70,6 +76,11 @@ class AddComponentFlowFeatureTests: XCTestCase {
             $0.brandListState.isBrandRequestInFlight = false
             $0.brandListState.filteredBrands = .brandList
             $0.brandListState.brands = .brandList
+        }
+        
+        store.receive(.brandList(.userBrandsResponse(.success([])))) {
+            $0.brandListState.isUserBrandRequestInFlight = false
+            $0.brandListState.userBrands = []
         }
 
         store.send(.brandList(.setSelected(brand: .shimano))) {
