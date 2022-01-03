@@ -46,14 +46,14 @@ public enum EditBikeAction: Equatable, BindableAction {
 
 public struct EditBikeEnvironment {
     public init(
-        bikeClient: BikeClient = .mocked,
+        bikeClient: BikeClient,
         mainQueue: AnySchedulerOf<DispatchQueue> = .main
     ) {
         self.bikeClient = bikeClient
         self.mainQueue = mainQueue
     }
     
-    public var bikeClient: BikeClient = .mocked
+    public var bikeClient: BikeClient
     public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
 }
 
@@ -176,6 +176,7 @@ struct EditBikeView: View {
     }
 }
 
+#if DEBUG
 struct EditBikeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -183,10 +184,11 @@ struct EditBikeView_Previews: PreviewProvider {
                 store: Store(
                     initialState: EditBikeState(userSettings: .init()),
                     reducer: editBikeReducer,
-                    environment: EditBikeEnvironment()
+                    environment: EditBikeEnvironment(bikeClient: .mocked)
                 )
             )
             .navigationTitle("Edit Bike")
         }
     }
 }
+#endif

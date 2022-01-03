@@ -98,7 +98,6 @@ public extension BikeClient {
     )
 }
 
-#if DEBUG
 private let queue = DispatchQueue(label: "BikeClient")
 private var bikes: [Bike] = []
 public extension BikeClient {
@@ -120,4 +119,3 @@ public extension BikeClient {
         }
     )
 }
-#endif

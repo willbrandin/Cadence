@@ -58,7 +58,6 @@ public extension BrandClient {
     )
 }
 
-#if DEBUG
 extension BrandClient {
     public static let mocked = BrandClient(
         requestBrands: {
@@ -83,4 +82,3 @@ extension BrandClient {
 }
 
 private let queue = DispatchQueue(label: "BrandClient")
-#endif

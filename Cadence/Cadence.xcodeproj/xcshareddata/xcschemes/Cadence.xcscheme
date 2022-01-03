@@ -121,6 +121,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Cadence"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

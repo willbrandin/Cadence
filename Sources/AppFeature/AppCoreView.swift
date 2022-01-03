@@ -54,6 +54,7 @@ public struct AppCoreView: View {
     }
 }
 
+#if DEBUG
 struct AppCoreView_Previews: PreviewProvider {
     static var previews: some View {
         AppCoreView(
@@ -65,3 +66,4 @@ struct AppCoreView_Previews: PreviewProvider {
         )
     }
 }
+#endif

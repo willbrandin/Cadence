@@ -382,6 +382,7 @@ public struct SettingsView: View {
     }
 }
 
+#if DEBUG
 struct AppSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -396,7 +397,6 @@ struct AppSettingsView_Previews: PreviewProvider {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
 
 public extension SettingsEnvironment {
     static var failing: Self {
@@ -431,3 +431,4 @@ public extension SettingsEnvironment {
         )
     }
 }
+#endif

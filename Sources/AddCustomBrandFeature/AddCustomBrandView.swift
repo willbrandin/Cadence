@@ -41,7 +41,7 @@ public enum AddBrandAction: Equatable, BindableAction {
 
 public struct AddBrandEnvironment {
     public init(
-        brandClient: BrandClient = .mocked,
+        brandClient: BrandClient,
         mainQueue: AnySchedulerOf<DispatchQueue> = .main
     ) {
         self.brandClient = brandClient
@@ -179,6 +179,7 @@ public struct AddBrandView: View {
     }
 }
 
+#if DEBUG
 struct AddBrandView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -194,7 +195,6 @@ struct AddBrandView_Previews: PreviewProvider {
     }
 }
 
-#if DEBUG
 public extension AddBrandEnvironment {
     static var failing: Self {
         Self(

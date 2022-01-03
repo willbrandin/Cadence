@@ -115,7 +115,8 @@ public extension AppCoreEnvironment {
         emailClient: .live,
         cloudKitClient: .noop
     )
-
+    
+    #if DEBUG
     static var dev: Self {
         
         Current.coreDataStack = { CoreDataStack.preview }
@@ -160,4 +161,5 @@ public extension AppCoreEnvironment {
         emailClient: .noop,
         cloudKitClient: .noop
     )
+    #endif
 }

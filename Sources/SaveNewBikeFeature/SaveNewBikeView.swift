@@ -42,7 +42,7 @@ public enum SaveNewBikeAction: Equatable, BindableAction {
 
 public struct SaveNewBikeEnvironment {
     public init(
-        bikeClient: BikeClient = .mocked,
+        bikeClient: BikeClient,
         mainQueue: AnySchedulerOf<DispatchQueue> = .main,
         uuid: @escaping () -> UUID = { .init() }
     ) {
@@ -51,7 +51,7 @@ public struct SaveNewBikeEnvironment {
         self.uuid = uuid
     }
     
-    public var bikeClient: BikeClient = .mocked
+    public var bikeClient: BikeClient
     public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
     public var uuid: () -> UUID = { .init() }
 }
@@ -150,6 +150,7 @@ public struct SaveNewBikeView: View {
     }
 }
 
+#if DEBUG
 struct SaveNewBikeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -157,10 +158,11 @@ struct SaveNewBikeView_Previews: PreviewProvider {
                 store: Store(
                     initialState: SaveNewBikeState(userSettings: .init()),
                     reducer: saveNewBikeReducer,
-                    environment: SaveNewBikeEnvironment()
+                    environment: SaveNewBikeEnvironment(bikeClient: .mocked)
                 )
             )
             .navigationTitle("Bike Details")
         }
     }
 }
+#endif
