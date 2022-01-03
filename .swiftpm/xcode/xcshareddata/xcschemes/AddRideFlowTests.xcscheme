@@ -12,23 +12,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AddCustomBrandFeature"
-            BuildableName = "AddCustomBrandFeature"
-            BlueprintName = "AddCustomBrandFeature"
-            ReferencedContainer = "container:">
-         </BuildableReference>
-      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AddCustomBrandTests"
-               BuildableName = "AddCustomBrandTests"
-               BlueprintName = "AddCustomBrandTests"
+               BlueprintIdentifier = "AddRideFlowTests"
+               BuildableName = "AddRideFlowTests"
+               BlueprintName = "AddRideFlowTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

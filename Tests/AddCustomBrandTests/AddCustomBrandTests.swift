@@ -2,6 +2,7 @@ import ComposableArchitecture
 import Models
 import XCTest
 import AddCustomBrandFeature
+import BrandClient
 import World
 
 class AddCustomBrandFeatureTests: XCTestCase {
@@ -76,5 +77,46 @@ class AddCustomBrandFeatureTests: XCTestCase {
         store.send(.alertOkayTapped) {
             $0.alert = nil
         }
+    }
+    
+    func testFailingClient() {
+        var environment = AddBrandEnvironment.failing
+        let scheduler = DispatchQueue.test
+                    
+        environment.mainQueue = scheduler.eraseToAnyScheduler()
+        
+        let failure = BrandClient.Failure()
+        
+        environment.brandClient.createUserBrand = { _ in
+            return Effect(error: failure)
+        }
+        
+        let store = TestStore(
+            initialState: AddBrandState(),
+            reducer: addBrandReducer,
+            environment: environment
+        )
+        
+        store.send(.set(\.$brandName, "Owenhouse")) {
+            $0.brandName = "Owenhouse"
+        }
+        
+        store.send(.set(\.$isComponentOnly, true)) {
+            $0.isComponentOnly = true
+        }
+        
+        store.send(.saveButtonTapped)
+        
+        scheduler.advance()
+        
+        store.receive(.saveBrandResponse(.failure(failure))) {
+            $0.alert = AlertState(
+                title: .init("Sorry, could not save brand."),
+                message: .init("Please try again."),
+                dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
+            )
+        }
+        
+        scheduler.run()
     }
 }

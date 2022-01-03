@@ -14,7 +14,7 @@ public struct AddRideFlowState: Equatable {
         selectedBike: Bike,
         miles: String = "",
         date: Date = Date(),
-        userSettings: UserSettings
+        userSettings: UserSettings = .init()
     ) {
         self.selectableBikes = selectableBikes
         self.selectedBike = selectedBike
@@ -25,10 +25,9 @@ public struct AddRideFlowState: Equatable {
     
     public var selectableBikes: [Bike]
     public var selectedBike: Bike
-    
-    @BindableState public var miles: String = ""
-    @BindableState public var date: Date = Date()
     public var userSettings: UserSettings
+    @BindableState public var miles: String
+    @BindableState public var date: Date
 }
 
 public enum AddRideFlowAction: Equatable, BindableAction {
@@ -200,3 +199,18 @@ struct AddRideFlowRootView_Previews: PreviewProvider {
         }
     }
 }
+
+#if DEBUG
+public extension AddRideFlowEnvironment {
+    static var failing: AddRideFlowEnvironment {
+        AddRideFlowEnvironment(
+            bikeClient: .failing,
+            componentClient: .failing,
+            rideClient: .failing,
+            mainQueue: .failing,
+            date: { .distantPast },
+            uuid: { .init() }
+        )
+    }
+}
+#endif

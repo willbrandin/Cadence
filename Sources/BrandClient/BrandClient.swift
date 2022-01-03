@@ -5,7 +5,9 @@ import Models
 import World
 
 public struct BrandClient {
-    public struct Failure: Error, Equatable {}
+    public struct Failure: Error, Equatable {
+        public init() {}
+    }
 
     public var requestBrands: () -> Effect<[Brand], Never>
     public var createUserBrand: (Brand) -> Effect<Brand, BrandClient.Failure>

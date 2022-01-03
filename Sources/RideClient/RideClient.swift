@@ -5,7 +5,10 @@ import World
 import CoreDataStack
 
 public struct RideClient {
-    public struct Failure: Error, Equatable {}
+    public struct Failure: Error, Equatable {
+        public init() {}
+    }
+    
     public var create: (String, [String], Ride) -> Effect<Ride, RideClient.Failure>
 }
 

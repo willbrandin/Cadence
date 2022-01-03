@@ -53,6 +53,26 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AddCustomBrandTests"
+               BuildableName = "AddCustomBrandTests"
+               BlueprintName = "AddCustomBrandTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AddRideFlowTests"
+               BuildableName = "AddRideFlowTests"
+               BlueprintName = "AddRideFlowTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "AppSettingsViewTests"
                BuildableName = "AppSettingsViewTests"
                BlueprintName = "AppSettingsViewTests"
@@ -186,16 +206,6 @@
                BlueprintIdentifier = "UtilityTests"
                BuildableName = "UtilityTests"
                BlueprintName = "UtilityTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AddCustomBrandTests"
-               BuildableName = "AddCustomBrandTests"
-               BlueprintName = "AddCustomBrandTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

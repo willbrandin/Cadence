@@ -534,6 +534,19 @@ package.targets.append(contentsOf: [
         dependencies: [
             "AddCustomBrandFeature",
             .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
+        name: "AddRideFlowTests",
+        dependencies: [
+            "AddRideFlowFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
         ]
     ),
     .testTarget(

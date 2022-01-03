@@ -74,6 +74,12 @@ public let addBrandReducer = AddBrandReducer
             .eraseToEffect()
         
     case let .saveBrandResponse(.failure(error)):
+        state.alert = AlertState(
+            title: .init("Sorry, could not save brand."),
+            message: .init("Please try again."),
+            dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
+        )
+        
         return .none
         
     default:
