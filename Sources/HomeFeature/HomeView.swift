@@ -532,7 +532,6 @@ public struct HomeView: View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    #if DEBUG
                     if !viewStore.bikes.isEmpty {
                         Button(action: { viewStore.send(.addRideTapped) }) {
                             Image(systemName: "bicycle")
@@ -555,7 +554,6 @@ public struct HomeView: View {
                             )
                         }
                     }
-                    #endif
                     
                     Button(action: { viewStore.send(.set(\.$isSettingsSheetActive, true)) }) {
                         Image(systemName: "gear")
