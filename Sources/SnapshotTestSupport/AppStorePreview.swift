@@ -97,7 +97,7 @@ SnapshotContent: View
                 VStack(spacing: .grid(self.deviceState.idiom == .pad ? 14 : 7)) {
                     // TODO: LOGO
                     Image(systemName: "bicycle")
-                        .foregroundColor(Color.black)
+                        .foregroundColor(colorScheme == .dark ? .black : .white)
                         .font(.system(size: self.deviceState.idiom == .pad ? 50 : 30))
                     
                     self.description()
