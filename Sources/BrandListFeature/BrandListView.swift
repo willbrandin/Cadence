@@ -64,6 +64,7 @@ public enum BrandListAction: Equatable, BindableAction {
     case userBrandsResponse(Result<[Brand], BrandClient.Failure>)
     case addBrandAction(AddBrandAction)
     case addBrandButtonTapped
+    case addBrandClosedTapped
 }
 
 public struct BrandListEnvironment {
@@ -155,7 +156,7 @@ private let reducer = BrandListReducer
         
         return .none
         
-    case .addBrandAction(.didTapClose):
+    case .addBrandAction(.didTapClose), .addBrandClosedTapped:
         state.isAddBrandNavigationActive = false
         return .none
     
@@ -207,7 +208,7 @@ public struct BrandListView: View {
                     
                     if !viewStore.userBrands.isEmpty {
                         Section(
-                            footer: Text("My Brands")
+                            header: Text("My Brands")
                         ) {
                             ForEach(viewStore.userBrands) { brand in
                                 Button(action: { viewStore.send(.setSelected(brand: brand)) }) {
@@ -227,6 +228,7 @@ public struct BrandListView: View {
                                 }
                             }
                         }
+                        .textCase(nil)
                     }
                     
                     if !viewStore.recentBrands.isEmpty {
@@ -289,6 +291,14 @@ public struct BrandListView: View {
                         action: BrandListAction.addBrandAction
                     )
                 )
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: { viewStore.send(.addBrandClosedTapped) }) {
+                            Image(systemName: "xmark")
+                                .font(.body.bold())
+                        }
+                    }
+                }
             }
             .accentColor(viewStore.userSettings.accentColor.color)
             .navigationViewStyle(StackNavigationViewStyle())

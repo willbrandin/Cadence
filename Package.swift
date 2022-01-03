@@ -116,7 +116,6 @@ let package = Package(
             dependencies: [
                 "BrandClient",
                 "Models",
-                "UserSettingsFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -481,7 +480,9 @@ let package = Package(
         .target(
             name: "UserSettingsFeature",
             dependencies: [
+                "AddCustomBrandFeature",
                 "AppSupportFeature",
+                "BrandClient",
                 "CloudKitClient",
                 "ComposableHelpers",
                 "EmailClient",

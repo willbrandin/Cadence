@@ -289,7 +289,8 @@ public let homeReducer: AccountBikesReducer =
                     storeKitClient: $0.storeKitClient,
                     shareSheetClient: $0.shareSheetClient,
                     emailClient: $0.emailClient,
-                    cloudKitClient: $0.cloudKitClient
+                    cloudKitClient: $0.cloudKitClient,
+                    brandClient: $0.brandAPIClient
                 )
             }
         ),

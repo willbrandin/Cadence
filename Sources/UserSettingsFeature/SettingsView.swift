@@ -13,6 +13,8 @@ import ShareSheetClient
 import SwiftUIHelpers
 import UIApplicationClient
 import UIUserInterfaceStyleClient
+import AddCustomBrandFeature
+import BrandClient
 
 typealias UserSettingsReducer = Reducer<SettingsState, SettingsAction, SettingsEnvironment>
 
@@ -20,14 +22,18 @@ public struct SettingsState: Equatable {
     public init(
         supportsAlternativeIcon: Bool = true,
         isSyncWithiCloudOn: Bool = true,
+        addBrandState: AddBrandState = .init(),
         colorScheme: ColorScheme = .system,
         appIcon: AppIcon? = nil,
         accentColor: AccentColor = .blue,
         distanceUnit: DistanceUnit = .miles,
         isColorSchemeNavigationActive: Bool = false,
         isUnitPickerNavigationActive: Bool = false,
-        isAppIconNavigationActive: Bool = false
+        isAppIconNavigationActive: Bool = false,
+        isAccentColorNavigationActive: Bool = false,
+        isAddBrandNavigationActive: Bool = false
     ) {
+        self.addBrandState = addBrandState
         self.supportsAlternativeIcon = supportsAlternativeIcon
         self.isSyncWithiCloudOn = isSyncWithiCloudOn
         self.colorScheme = colorScheme
@@ -37,21 +43,25 @@ public struct SettingsState: Equatable {
         self.isColorSchemeNavigationActive = isColorSchemeNavigationActive
         self.isUnitPickerNavigationActive = isUnitPickerNavigationActive
         self.isAppIconNavigationActive = isAppIconNavigationActive
+        self.isAccentColorNavigationActive = isAccentColorNavigationActive
+        self.isAddBrandNavigationActive = isAddBrandNavigationActive
     }
     
-    public var supportsAlternativeIcon: Bool = true
-    public var isSyncWithiCloudOn = true
-    @BindableState public var colorScheme: ColorScheme = .system
+    public var addBrandState: AddBrandState
+    public var supportsAlternativeIcon: Bool
+    public var isSyncWithiCloudOn: Bool
+    @BindableState public var colorScheme: ColorScheme
     @BindableState public var appIcon: AppIcon?
-    @BindableState public var distanceUnit: DistanceUnit = .miles
-    @BindableState public var accentColor: AccentColor = .blue
-    @BindableState public var isColorSchemeNavigationActive = false
-    @BindableState public var isUnitPickerNavigationActive = false
-    @BindableState public var isAppIconNavigationActive = false
-    @BindableState public var isAccentColorNavigationActive = false
-
+    @BindableState public var distanceUnit: DistanceUnit
+    @BindableState public var accentColor: AccentColor
+    @BindableState public var isColorSchemeNavigationActive: Bool
+    @BindableState public var isUnitPickerNavigationActive: Bool
+    @BindableState public var isAppIconNavigationActive: Bool
+    @BindableState public var isAccentColorNavigationActive: Bool
+    @BindableState public var isAddBrandNavigationActive: Bool
+    
     #if DEBUG
-    @BindableState public var isStoreJsonNavigationActive = false
+    @BindableState public var isStoreJsonNavigationActive: Bool = false
     #endif
     
     public var userSettings: UserSettings {
@@ -80,6 +90,7 @@ public enum SettingsAction: BindableAction, Equatable {
     case helpAndSupportTapped
     case rateCadenceTapped
     case shareCadenceTapped
+    case addBrand(AddBrandAction)
     
     #if DEBUG
     case clearCache
@@ -97,7 +108,8 @@ public struct SettingsEnvironment {
         storeKitClient: StoreKitClient,
         shareSheetClient: ShareSheetClient,
         emailClient: EmailClient,
-        cloudKitClient: CloudKitClient
+        cloudKitClient: CloudKitClient,
+        brandClient: BrandClient
     ) {
         self.applicationClient = applicationClient
         self.uiUserInterfaceStyleClient = uiUserInterfaceStyleClient
@@ -109,6 +121,7 @@ public struct SettingsEnvironment {
         self.shareSheetClient = shareSheetClient
         self.emailClient = emailClient
         self.cloudKitClient = cloudKitClient
+        self.brandClient = brandClient
     }
     
     public var applicationClient: UIApplicationClient
@@ -121,6 +134,7 @@ public struct SettingsEnvironment {
     public var shareSheetClient: ShareSheetClient
     public var emailClient: EmailClient
     public var cloudKitClient: CloudKitClient
+    public var brandClient: BrandClient
 }
 
 public let userSettingsReducer = UserSettingsReducer
@@ -172,6 +186,10 @@ public let userSettingsReducer = UserSettingsReducer
         return environment.emailClient.sendEmail()
             .fireAndForget()
         
+    case .addBrand(.didAddBrand):
+        state.isAddBrandNavigationActive = false
+        return .none
+        
     default:
         return .none
     }
@@ -185,6 +203,19 @@ public let userSettingsReducer = UserSettingsReducer
         .fireAndForget()
         .debounce(id: SaveDebounceId(), for: .seconds(1), scheduler: environment.mainQueue)
 }
+.combined(
+    with: addBrandReducer
+        .pullback(
+            state: \.addBrandState,
+            action: /SettingsAction.addBrand,
+            environment: {
+                AddBrandEnvironment(
+                    brandClient: $0.brandClient,
+                    mainQueue: $0.mainQueue
+                )
+            }
+        )
+)
 
 public struct SettingsView: View {
     let store: Store<SettingsState, SettingsAction>
@@ -216,11 +247,43 @@ public struct SettingsView: View {
                     }
                 }
             
+                NavigationLink(isActive: viewStore.binding(\.$isAddBrandNavigationActive).removeDuplicates()) {
+                    AddBrandView(store: store.scope(state: \.addBrandState, action: SettingsAction.addBrand))
+                } label: {
+                    HStack {
+                        Image(systemName: "star")
+                            .foregroundColor(viewStore.accentColor.color)
+                        Text("My Brands")
+                        Spacer()
+                    }
+                }
+                
+                Toggle(isOn: viewStore.binding(
+                    get: \.isSyncWithiCloudOn,
+                    send: SettingsAction.iCloudSyncToggled(isOn:)
+                )) {
+                    HStack {
+                        Image(systemName: "icloud")
+                            .foregroundColor(viewStore.accentColor.color)
+                        Text("iCloud Sync")
+                    }
+                }
+                
+            }
+            .textCase(nil)
+            
+            Section(
+                header:
+                    Text("Theme")
+                        .font(.title3.bold())
+                        .foregroundColor(.primary)
+                        .padding(.leading, -16)
+            ) {
                 NavigationLink(isActive: viewStore.binding(\.$isAccentColorNavigationActive).removeDuplicates()) {
                     AccentColorPickerView(accentColor: viewStore.binding(\.$accentColor))
                 } label: {
                     HStack {
-                        Image(systemName: "scribble.variable")
+                        Image(systemName: "paintpalette")
                             .foregroundColor(viewStore.accentColor.color)
                         Text("Accent Color")
                         Spacer()
@@ -242,17 +305,6 @@ public struct SettingsView: View {
                     }
                 }
                 
-                Toggle(isOn: viewStore.binding(
-                    get: \.isSyncWithiCloudOn,
-                    send: SettingsAction.iCloudSyncToggled(isOn:)
-                )) {
-                    HStack {
-                        Image(systemName: "icloud")
-                            .foregroundColor(viewStore.accentColor.color)
-                        Text("iCloud Sync")
-                    }
-                }
-                
                 if viewStore.supportsAlternativeIcon {
                     NavigationLink(isActive: viewStore.binding(\.$isAppIconNavigationActive).removeDuplicates()) {
                         AppIconPickerView(appIcon: viewStore.binding(\.$appIcon))
@@ -263,18 +315,6 @@ public struct SettingsView: View {
                             Text("App Icon")
                             Spacer()
                         }
-                    }
-                }
-            }
-            .textCase(nil)
-            
-            Section {
-                Button(action: { viewStore.send(.helpAndSupportTapped) }) {
-                    HStack {
-                        Image(systemName: "envelope")
-                            .foregroundColor(viewStore.accentColor.color)
-                        Text("Help and Support")
-                            .foregroundColor(.primary)
                     }
                 }
             }
@@ -294,6 +334,18 @@ public struct SettingsView: View {
             Section {
                 NavigationLink("Terms of Service", destination: TermsAndConditionsView())
                 NavigationLink("Privacy", destination: PrivacyPolicyView())
+            }
+            .textCase(nil)
+            
+            Section {
+                Button(action: { viewStore.send(.helpAndSupportTapped) }) {
+                    HStack {
+                        Image(systemName: "envelope")
+                            .foregroundColor(viewStore.accentColor.color)
+                        Text("Help and Support")
+                            .foregroundColor(.primary)
+                    }
+                }
             }
             .textCase(nil)
             
@@ -358,7 +410,8 @@ public extension SettingsEnvironment {
             storeKitClient: .noop,
             shareSheetClient: .noop,
             emailClient: .noop,
-            cloudKitClient: .noop
+            cloudKitClient: .noop,
+            brandClient: .alwaysFailing
         )
     }
     
@@ -373,7 +426,8 @@ public extension SettingsEnvironment {
             storeKitClient: .noop,
             shareSheetClient: .noop,
             emailClient: .noop,
-            cloudKitClient: .noop
+            cloudKitClient: .noop,
+            brandClient: .mocked
         )
     }
 }

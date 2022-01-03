@@ -9,14 +9,17 @@ public typealias AddBrandReducer = Reducer<AddBrandState, AddBrandAction, AddBra
 public struct AddBrandState: Equatable {
     public init(
         brandName: String = "",
+        brands: [Brand] = [],
         isComponentOnly: Bool = false,
         alert: AlertState<AddBrandAction>? = nil
     ) {
         self.brandName = brandName
+        self.brands = brands
         self.isComponentOnly = isComponentOnly
         self.alert = alert
     }
     
+    public var brands: [Brand]
     @BindableState public var brandName: String
     @BindableState public var isComponentOnly: Bool
     @BindableState public var alert: AlertState<AddBrandAction>?
@@ -30,6 +33,10 @@ public enum AddBrandAction: Equatable, BindableAction {
     case didTapClose
     case alertOkayTapped
     case alertDismissed
+    case viewLoaded
+    case delete(atOffset: IndexSet)
+    case deleteAlertTapped(forOffset: IndexSet)
+    case brandsRequestResult(Result<[Brand], BrandClient.Failure>)
 }
 
 public struct AddBrandEnvironment {
@@ -82,6 +89,33 @@ public let addBrandReducer = AddBrandReducer
         
         return .none
         
+    case let .deleteAlertTapped(forOffset: indexSet):
+        indexSet.forEach { index in
+            state.brands.remove(at: index)
+        }
+        
+        return .none
+        
+    case let .delete(atOffset: indexSet):
+        state.alert = AlertState(
+            title: .init("Are you sure you want to delete this brand?"),
+            message: .init("Existing components will not be changed."),
+            buttons: [
+                .destructive(.init("Yes, Delete"), action: .send(.deleteAlertTapped(forOffset: indexSet)))
+            ]
+        )
+        
+        return .none
+        
+    case let .brandsRequestResult(.success(brands)):
+        state.brands = brands
+        return .none
+        
+    case .viewLoaded:
+        return environment.brandClient.requestUserBrands()
+            .receive(on: environment.mainQueue)
+            .catchToEffect(AddBrandAction.brandsRequestResult)
+        
     default:
         return .none
     }
@@ -111,8 +145,26 @@ public struct AddBrandView: View {
                 TextField("Brand Name", text: viewStore.binding(\.$brandName), prompt: Text("Brand"))
                 Toggle("Component Manufacturer Only", isOn: viewStore.binding(\.$isComponentOnly))
             }
+            
+            Section(
+                header: Text("My Brands")
+            ) {
+                ForEach(viewStore.brands) { brand in
+                    HStack {
+                        Text(brand.brand)
+                            .font(.subheadline.bold())
+                            .foregroundColor(.secondary)
+                    }
+                }
+//                .onDelete { offset in
+//                    viewStore.send(.delete(atOffset: offset))
+//                }
+            }
         }
         .navigationTitle("Add Brand")
+        .onAppear {
+            viewStore.send(.viewLoaded)
+        }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button(action: { viewStore.send(.saveButtonTapped) }) {
@@ -123,13 +175,6 @@ public struct AddBrandView: View {
                     dismiss: .alertDismissed
                 )
             }
-            
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: { viewStore.send(.didTapClose) }) {
-                    Image(systemName: "xmark")
-                        .font(.body.bold())
-                }
-            }
         }
     }
 }
@@ -139,9 +184,10 @@ struct AddBrandView_Previews: PreviewProvider {
         NavigationView {
             AddBrandView(
                 store: Store(
-                    initialState: AddBrandState(),
+                    initialState: AddBrandState(brands: [.shimano]),
                     reducer: addBrandReducer,
-                    environment: AddBrandEnvironment())
+                    environment: AddBrandEnvironment(brandClient: .mocked, mainQueue: .main)
+                )
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())

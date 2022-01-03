@@ -70,7 +70,7 @@ extension BrandClient {
                 .eraseToEffect()
         },
         requestUserBrands: {
-            return Effect(value: [])
+            return Effect(value: [.shimano, .yeti])
                 .eraseToEffect()
         }
     )
