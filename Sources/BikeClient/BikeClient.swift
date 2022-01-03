@@ -5,7 +5,9 @@ import CoreDataStack
 import World
 
 public struct BikeClient {
-    public struct Failure: Error, Equatable {}
+    public struct Failure: Error, Equatable {
+        public init() {}
+    }
     
     public var fetch: () -> Effect<[Bike], BikeClient.Failure>
     public var create: (Bike) -> Effect<Bike, BikeClient.Failure>

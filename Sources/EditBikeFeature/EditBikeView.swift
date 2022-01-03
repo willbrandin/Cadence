@@ -10,7 +10,7 @@ public struct EditBikeState: Equatable {
     public init(
         bike: Bike = .yetiMountain,
         isSaveBikeRequestInFlight: Bool = false,
-        userSettings: UserSettings
+        userSettings: UserSettings = .init()
     ) {
         self.bike = bike
         self.isSaveBikeRequestInFlight = isSaveBikeRequestInFlight
@@ -30,8 +30,8 @@ public struct EditBikeState: Equatable {
     }
     
     public var isSaveBikeRequestInFlight = false
-    @BindableState public var alert: AlertState<EditBikeAction>?
     public var userSettings: UserSettings
+    @BindableState public var alert: AlertState<EditBikeAction>?
 }
 
 public enum EditBikeAction: Equatable, BindableAction {
@@ -72,7 +72,12 @@ public let editBikeReducer = EditBikeReducer
         
     case let .saveBikeResponse(.failure(error)):
         state.isSaveBikeRequestInFlight = false
-
+        state.alert = AlertState(
+            title: .init("Something went wrong"),
+            message: .init("Please try again."),
+            dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
+        )
+        
         return .none
         
     case .saveBike:
@@ -85,11 +90,17 @@ public let editBikeReducer = EditBikeReducer
             return .none
         }
         
+        state.isSaveBikeRequestInFlight = true
+        
         return environment.bikeClient
             .update(state.bike)
             .receive(on: environment.mainQueue)
             .catchToEffect(EditBikeAction.saveBikeResponse)
     
+    case .alertOkayTapped, .alertDismissed:
+        state.alert = nil
+        return .none
+        
     default:
         return .none
     }

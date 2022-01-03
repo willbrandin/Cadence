@@ -616,6 +616,16 @@ package.targets.append(contentsOf: [
         ]
     ),
     .testTarget(
+        name: "EditBikeFeatureTests",
+        dependencies: [
+            "EditBikeFeature",
+            .product(name: "SnapshotTesting", package: "SnapshotTesting"),
+        ],
+        exclude: [
+            "__Snapshots__"
+        ]
+    ),
+    .testTarget(
         name: "MileageAnimationTests",
         dependencies: [
             "OnboardingFeature",

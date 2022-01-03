@@ -37,9 +37,8 @@ public struct ComponentSelectorState: Equatable {
     public var components: [Component]
     public var selectedComponents: [UUID: Component]
     public var filteredComponents: [Component]
-    
-    @BindableState public var filterQuery = ""
-    public var distanceUnit: DistanceUnit = .miles
+    public var distanceUnit: DistanceUnit
+    @BindableState public var filterQuery: String
 }
 
 public enum ComponentSelectorAction: Equatable, BindableAction {
@@ -157,13 +156,26 @@ public struct ComponentSelectorView: View {
 
 struct ComponentSelectorView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ComponentSelectorView(
-                store: Store(
-                    initialState: ComponentSelectorState(),
-                    reducer: componentSelectorReducer,
-                    environment: ComponentSelectorEnvironment())
-            )
+        Group {
+            NavigationView {
+                ComponentSelectorView(
+                    store: Store(
+                        initialState: ComponentSelectorState(),
+                        reducer: componentSelectorReducer,
+                        environment: ComponentSelectorEnvironment())
+                )
+            }
+            NavigationView {
+                Text("")
+                ComponentSelectorView(
+                    store: Store(
+                        initialState: ComponentSelectorState(),
+                        reducer: componentSelectorReducer,
+                        environment: ComponentSelectorEnvironment())
+                )
+            }
+            .previewDevice("iPad Air (4th generation)")
+            .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 }
