@@ -130,26 +130,26 @@ public let addComponentFlowReducer: AddComponentFlowReducer =
     componentGroupSelectionReducer
         .pullback(
             state: \.groupSelectionState,
-            action: /AddComponentFlowAction.groupSelection,
+            action: CasePath(AddComponentFlowAction.groupSelection),
             environment: { _ in ComponentGroupSelectionEnvironment() }
         ),
     componentTypeSelectionReducer
         .pullback(
             state: \.typeSelectionState,
-            action: /AddComponentFlowAction.typeSelection,
+            action: CasePath(AddComponentFlowAction.typeSelection),
             environment: { _ in ComponentTypeSelectionEnvironment() }
         ),
     brandListReducer
         .pullback(
             state: \.brandListState,
-            action: /AddComponentFlowAction.brandList,
+            action: CasePath(AddComponentFlowAction.brandList),
             environment: { BrandListEnvironment(brandClient: $0.brandClient, mainQueue: $0.mainQueue) }
         ),
     addComponentReducer
         .optional()
         .pullback(
             state: \.componentDetailState,
-            action: /AddComponentFlowAction.componentDetail,
+            action: CasePath(AddComponentFlowAction.componentDetail),
             environment: {
                 CreateComponentEnvironment(
                     componentClient: $0.componentClient,

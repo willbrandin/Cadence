@@ -207,7 +207,7 @@ public let userSettingsReducer = UserSettingsReducer
     with: addBrandReducer
         .pullback(
             state: \.addBrandState,
-            action: /SettingsAction.addBrand,
+            action: CasePath(SettingsAction.addBrand),
             environment: {
                 AddBrandEnvironment(
                     brandClient: $0.brandClient,

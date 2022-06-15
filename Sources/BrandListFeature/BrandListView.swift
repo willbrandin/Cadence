@@ -171,7 +171,7 @@ public let brandListReducer = BrandListReducer
     addBrandReducer
         .pullback(
             state: \BrandListState.addBrandState,
-            action: /BrandListAction.addBrandAction,
+            action: CasePath(BrandListAction.addBrandAction),
             environment: {
                 AddBrandEnvironment(
                     brandClient: $0.brandClient,

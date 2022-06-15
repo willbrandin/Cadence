@@ -1,4 +1,5 @@
 import SwiftUI
+
 import ComposableArchitecture
 import Models
 import World
@@ -6,9 +7,9 @@ import MaintenanceClient
 import ComponentClient
 import ComponentSelectorFeature
 import UserSettingsFeature
-
+//
 public typealias ComponentMaintenanceReducer = Reducer<AddComponentMaintenanceState, AddComponentMaintenanceAction, AddComponentMaintenenanceEnvironment>
-
+//
 public struct AddComponentMaintenanceState: Equatable {
     public init(
         components: [Component] = [
@@ -32,10 +33,10 @@ public struct AddComponentMaintenanceState: Equatable {
         self.isSelectedComponentsNavigationActive = isSelectedComponentsNavigationActive
         self.userSettings = userSettings
     }
-    
+
     public var components: [Component]
     public var selectedComponents: [UUID: Component]
-    
+
     @BindableState public var description: String = ""
     @BindableState public var serviceDate: Date = Current.date()
     @BindableState public var isCustomDate = false
@@ -43,7 +44,7 @@ public struct AddComponentMaintenanceState: Equatable {
 
     public var isSelectedComponentsNavigationActive = false
     public var userSettings: UserSettings
-    
+
     public var componentSelectorState: ComponentSelectorState {
         get {
             return ComponentSelectorState(
@@ -56,7 +57,7 @@ public struct AddComponentMaintenanceState: Equatable {
             self.selectedComponents = newValue.selectedComponents
         }
     }
-    
+
     public var serviceDateText: String {
         if Date.isToday(serviceDate) {
             return "Today"
@@ -65,10 +66,10 @@ public struct AddComponentMaintenanceState: Equatable {
             return formatter.string(from: serviceDate)
         }
     }
-    
+
     fileprivate let mileageAdjustment: Int = 0
 }
-
+//
 public enum AddComponentMaintenanceAction: Equatable, BindableAction {
     case binding(BindingAction<AddComponentMaintenanceState>)
     case didSelect(component: Component)
@@ -95,13 +96,14 @@ public struct AddComponentMaintenenanceEnvironment {
         self.date = date
         self.uuid = uuid
     }
-    
+
     public var maintenanceClient: MaintenanceClient = .noop
     public var componentClient: ComponentClient = .noop
     public var mainQueue: AnySchedulerOf<DispatchQueue> = .main
     public var date: () -> Date = Current.date
     public var uuid: () -> UUID = Current.uuid
 }
+
 
 private let reducer = ComponentMaintenanceReducer
 { state, action, environment in
@@ -112,36 +114,39 @@ private let reducer = ComponentMaintenanceReducer
         let properties: [AnyHashable: Any] = [
             "miles": NSNumber(value: state.mileageAdjustment)
         ]
-        
+
         state.selectedComponents.keys.forEach {
             var component = state.selectedComponents[$0]!
             component.mileage.miles = state.mileageAdjustment
             state.selectedComponents[$0] = component
         }
-        
+
         return environment.componentClient.batchUpdate(properties, selectedComponents)
             .receive(on: environment.mainQueue)
             .catchToEffect(AddComponentMaintenanceAction.serviceComponentsUpdateResponse)
-        
+//
     case let .maintenanceSavedResponse(.failure(error)):
         return .none
-        
+//
     case .alertOkayTapped, .alertDismissed:
         state.alert = nil
         return .none
-        
-    case .binding(.set(\.$isCustomDate, false)):
-        state.serviceDate = environment.date()
+
+    case .binding(\.$isCustomDate):
+        if !state.isCustomDate {
+            state.serviceDate = environment.date()
+        }
+
         return .none
-        
+//
     case .binding(\.$serviceDate):
         // If we are locking to today's date, do not allow the state to change.
         if !state.isCustomDate {
             state.serviceDate = environment.date()
         }
-        
+
         return .none
-        
+
     case .didTapSave:
         if state.selectedComponents.isEmpty {
             state.alert = AlertState(
@@ -149,7 +154,7 @@ private let reducer = ComponentMaintenanceReducer
                 message: nil,
                 dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
             )
-            
+
             return .none
         } else if state.description.isEmpty {
             state.alert = AlertState(
@@ -157,7 +162,7 @@ private let reducer = ComponentMaintenanceReducer
                 message: nil,
                 dismissButton: .default(.init("Okay"), action: .send(.alertOkayTapped))
             )
-            
+
             return .none
         } else {
             let newMaintenance = Maintenance(
@@ -165,13 +170,13 @@ private let reducer = ComponentMaintenanceReducer
                 description: state.description,
                 serviceDate: state.serviceDate
             )
-            
+
             state.selectedComponents.keys.forEach {
                 var component = state.selectedComponents[$0]!
                 component.maintenances.append(newMaintenance)
                 state.selectedComponents[$0] = component
             }
-            
+
             return environment.maintenanceClient
                 .create(
                     state.selectedComponents.keys.map({ $0.uuidString }),
@@ -180,38 +185,38 @@ private let reducer = ComponentMaintenanceReducer
                 .receive(on: environment.mainQueue)
                 .catchToEffect(AddComponentMaintenanceAction.maintenanceSavedResponse)
         }
-        
+
     case let .setSelectComponentsNavigationActive(isActive):
         state.isSelectedComponentsNavigationActive = isActive
         return .none
-        
+
     default:
         return .none
     }
 }
-.binding()
 
 public let addComponentMaintenanceReducer = ComponentMaintenanceReducer.combine(
     componentSelectorReducer
         .pullback(
             state: \.componentSelectorState,
-            action: /AddComponentMaintenanceAction.componentSelector,
+            action: CasePath(AddComponentMaintenanceAction.componentSelector),
             environment: { _ in ComponentSelectorEnvironment()}
         ),
     reducer
+        .binding()
 )
 
 public struct AddComponentMaintenanceView: View {
     let store: Store<AddComponentMaintenanceState, AddComponentMaintenanceAction>
     @ObservedObject var viewStore: ViewStore<AddComponentMaintenanceState, AddComponentMaintenanceAction>
-    
+
     public init(
         store: Store<AddComponentMaintenanceState, AddComponentMaintenanceAction>
     ) {
         self.store = store
         self.viewStore = ViewStore(self.store)
     }
-    
+
     public var body: some View {
         Form {
             Section {
@@ -221,7 +226,7 @@ public struct AddComponentMaintenanceView: View {
                     TextField("Description", text: viewStore.binding(\.$description), prompt: Text("Brake Bleed"))
                 }
             }
-            
+
             Section(
                 footer: Text("Some maintenance affects multiple components. Select all that may be affected.")
             ) {
@@ -247,17 +252,17 @@ public struct AddComponentMaintenanceView: View {
                 }
             }
             VStack(spacing: 0) {
-                
-                Toggle(isOn: viewStore.binding(\.$isCustomDate)) {
+
+                Toggle(isOn: viewStore.binding(\.$isCustomDate).animation(.interactiveSpring())) {
                     VStack(alignment: .leading) {
                         Text("Date")
                         Text(viewStore.serviceDateText)
                             .font(.caption)
                     }
                 }
-               
+
             }
-            
+
             if viewStore.isCustomDate {
                 DatePicker(
                     "Date serviced",

@@ -125,8 +125,8 @@ public let componentDetailReducer: ComponentDetailReducer = .combine(
     addComponentMaintenanceReducer
         .optional()
         .pullback(
-            state: \.addComponentServiceState,
-            action: /ComponentDetailAction.componentService,
+            state: \ComponentDetailState.addComponentServiceState,
+            action: CasePath(ComponentDetailAction.componentService),
             environment: {
                 AddComponentMaintenenanceEnvironment(
                     maintenanceClient: $0.maintenanceClient,

@@ -24,6 +24,7 @@ public struct MileagePickerState: Equatable {
 public enum MileagePickerAction: BindableAction, Equatable {
     case binding(BindingAction<MileagePickerState>)
     case didTapSave
+    case toggleCustomVisible(Bool)
 }
 
 public struct MileagePickerEnvironment {
@@ -34,15 +35,19 @@ public let mileagePickerReducer = MileagePickerReducer
 { state, action, environment in
     switch action {
     case .binding(\.$selectedOption):
-        if state.selectedOption == .custom {
-            state.isShowingCustomTextField = true
-        } else {
-            state.isShowingCustomTextField = false
+        return Effect(
+            value: .toggleCustomVisible(state.selectedOption == .custom)
+        )
+        .receive(on: DispatchQueue.main.animation(.easeInOut))
+        .eraseToEffect()
+
+    case let .toggleCustomVisible(isVisible):
+        state.isShowingCustomTextField = isVisible
+        if !isVisible {
             state.customText = ""
         }
-        
+
         return .none
-        
     default:
         return .none
     }

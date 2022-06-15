@@ -205,7 +205,7 @@ public let bikeComponentReducer: BikeComponentReducer =
         .optional()
         .pullback(
             state: \.selection,
-            action: /BikeComponentAction.componentDetail,
+            action: CasePath(BikeComponentAction.componentDetail),
             environment: {
                 ComponentDetailEnvironment(
                     componentClient: $0.componentClient,
@@ -220,7 +220,7 @@ public let bikeComponentReducer: BikeComponentReducer =
         .optional()
         .pullback(
             state: \.addComponentFlowState,
-            action: /BikeComponentAction.addComponentFlow,
+            action: CasePath(BikeComponentAction.addComponentFlow),
             environment: {
                 AddComponentFlowEnvironment(
                     brandClient: $0.brandAPIClient,
@@ -235,7 +235,7 @@ public let bikeComponentReducer: BikeComponentReducer =
         .optional()
         .pullback(
             state: \.editBikeState,
-            action: /BikeComponentAction.editBike,
+            action: CasePath(BikeComponentAction.editBike),
             environment: {
                 EditBikeEnvironment(
                     bikeClient: $0.bikeClient,

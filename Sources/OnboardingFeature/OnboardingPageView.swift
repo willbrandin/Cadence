@@ -69,7 +69,7 @@ public let onboardingReducer: OnboardingReducer =
     mileageAnimationReducer
         .pullback(
             state: \.mileageAnimation,
-            action: /OnboardingAction.mileageAnimation,
+            action: CasePath(OnboardingAction.mileageAnimation),
             environment: { _ in MileageAnimationEnvironment() }
         ),
     reducer
@@ -193,7 +193,6 @@ public struct OnboardingPageView: View {
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            .animation(.easeInOut)
             .transition(.slide)
             
             Button(action: { viewStore.send(.didLogin) }) {
@@ -207,7 +206,7 @@ public struct OnboardingPageView: View {
             .padding(.vertical, 8)
             
             Button("Continue", action: {
-                viewStore.send(.continueTapped)
+                viewStore.send(.continueTapped, animation: .easeInOut)
             })
             .buttonStyle(PrimaryButtonStyle())
         }
@@ -219,28 +218,15 @@ public struct OnboardingPageView: View {
 
 struct OnboardingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            NavigationView {
-                OnboardingPageView(
-                    store: Store(
-                        initialState: OnboardingState(),
-                        reducer: onboardingReducer,
-                        environment: OnboardingEnvironment()
-                    )
+        NavigationView {
+            OnboardingPageView(
+                store: Store(
+                    initialState: OnboardingState(),
+                    reducer: onboardingReducer,
+                    environment: OnboardingEnvironment()
                 )
-                .navigationTitle("Cadence")
-            }
-            NavigationView {
-                OnboardingPageView(
-                    store: Store(
-                        initialState: OnboardingState(),
-                        reducer: onboardingReducer,
-                        environment: OnboardingEnvironment()
-                    )
-                )
-                    .preferredColorScheme(.dark)
-                    .navigationTitle("Cadence")
-            }
+            )
+            .navigationTitle("Cadence")
         }
     }
 }

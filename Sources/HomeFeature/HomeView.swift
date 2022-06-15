@@ -277,7 +277,7 @@ public let homeReducer: AccountBikesReducer =
     userSettingsReducer
         .pullback(
             state: \.settingsState,
-            action: /HomeAction.settings,
+            action: CasePath(HomeAction.settings),
             environment: {
                 SettingsEnvironment(
                     applicationClient: $0.uiApplicationClient,
@@ -298,7 +298,7 @@ public let homeReducer: AccountBikesReducer =
         .optional()
         .pullback(
             state: \.addBikeFlowState,
-            action: /HomeAction.addBikeFlow,
+            action: CasePath(HomeAction.addBikeFlow),
             environment: {
                 AddBikeFlowEnvironment(
                     brandClient: $0.brandAPIClient,
@@ -313,7 +313,7 @@ public let homeReducer: AccountBikesReducer =
         .optional()
         .pullback(
             state: \HomeState.selectedBike,
-            action: /HomeAction.bikeComponent,
+            action: CasePath(HomeAction.bikeComponent),
             environment: {
                 BikeComponentEnvironment(
                     bikeClient: $0.bikeClient,
@@ -330,7 +330,7 @@ public let homeReducer: AccountBikesReducer =
         .optional()
         .pullback(
             state: \HomeState.addRideState,
-            action: /HomeAction.addRide,
+            action: CasePath(HomeAction.addRide),
             environment: {
                 AddRideFlowEnvironment(
                     bikeClient: $0.bikeClient,

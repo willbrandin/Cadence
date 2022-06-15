@@ -153,8 +153,11 @@ private let reducer = CreateComponentReducer
             .receive(on: environment.mainQueue)
             .catchToEffect(CreateComponentAction.componentSavedResponse)
 
-    case .binding(.set(\.$isCustomDate, false)):
-        state.date = environment.date()
+    case .binding(\.$isCustomDate):
+        if !state.isCustomDate {
+            state.date = environment.date()
+        }
+
         return .none
         
     case .binding(\.$date):
@@ -223,14 +226,14 @@ public let addComponentReducer: CreateComponentReducer = .combine(
         .optional()
         .pullback(
             state: \.mileagePickerState,
-            action: /CreateComponentAction.mileagePicker,
+            action: CasePath(CreateComponentAction.mileagePicker),
             environment: { _ in MileagePickerEnvironment() }
         ),
     brandListReducer
         .optional()
         .pullback(
             state: \.brandListState,
-            action: /CreateComponentAction.brandList,
+            action: CasePath(CreateComponentAction.brandList),
             environment: {
                 BrandListEnvironment(
                     brandClient: $0.brandClient,

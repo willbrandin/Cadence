@@ -110,20 +110,20 @@ public let addBikeFlowReducer: AddBikeFlowReducer =
     bikeTypeSelectionReducer
         .pullback(
             state: \.bikeSelectionState,
-            action: /AddBikeFlowAction.bikeType,
+            action: CasePath(AddBikeFlowAction.bikeType),
             environment: { _ in BikeTypeSelectionEnvironment() }
         ),
     brandListReducer
         .pullback(
             state: \.brandSelectionState,
-            action: /AddBikeFlowAction.brandList,
+            action: CasePath(AddBikeFlowAction.brandList),
             environment: { BrandListEnvironment(brandClient: $0.brandClient, mainQueue: $0.mainQueue) }
         ),
     saveNewBikeReducer
         .optional()
         .pullback(
             state: \.saveNewBikeState,
-            action: /AddBikeFlowAction.saveBike,
+            action: CasePath(AddBikeFlowAction.saveBike),
             environment: {
                 SaveNewBikeEnvironment(
                     bikeClient: $0.bikeClient,

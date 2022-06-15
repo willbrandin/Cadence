@@ -61,7 +61,7 @@ public let appCoreReducer: AppCoreReducer =
     appDelegateReducer
         .pullback(
             state: \.accountBikesState.settingsState.userSettings,
-            action: /AppCoreAction.appDelegate,
+            action: CasePath(AppCoreAction.appDelegate),
             environment: {
                 AppDelegateEnvironment(
                     mainQueue: $0.mainQueue,
@@ -73,7 +73,7 @@ public let appCoreReducer: AppCoreReducer =
     homeReducer
         .pullback(
             state: \.accountBikesState,
-            action: /AppCoreAction.home,
+            action: CasePath(AppCoreAction.home),
             environment: {
                 HomeEnvironment(
                     uiApplicationClient: $0.uiApplicationClient,
@@ -100,7 +100,7 @@ public let appCoreReducer: AppCoreReducer =
         .optional()
         .pullback(
             state: \.onboardingFlowState,
-            action: /AppCoreAction.onboarding,
+            action: CasePath(AppCoreAction.onboarding),
             environment: { _ in OnboardingEnvironment() }
         ),
     reducer
